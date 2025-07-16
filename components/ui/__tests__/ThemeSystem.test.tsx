@@ -12,25 +12,7 @@ import { ThemedText, ThemedView, ThemedButton } from '../ThemedComponents';
 import { ThemeToggle, ThemeToggleIcon } from '../ThemeToggle';
 import { Grid, Container, Flex } from '../Grid';
 
-// Mock AsyncStorage
-jest.mock('@react-native-async-storage/async-storage', () => ({
-  getItem: jest.fn(),
-  setItem: jest.fn(),
-}));
-
-// Mock Dimensions
-const mockDimensions = {
-  get: jest.fn(() => ({ width: 375, height: 812 })),
-  addEventListener: jest.fn(() => ({ remove: jest.fn() })),
-};
-jest.mock('react-native', () => ({
-  ...jest.requireActual('react-native'),
-  Dimensions: mockDimensions,
-  Appearance: {
-    getColorScheme: jest.fn(() => 'light'),
-    addChangeListener: jest.fn(() => ({ remove: jest.fn() })),
-  },
-}));
+// Mocks are already set up in jest-setup.js
 
 // Test component to access theme context
 function TestComponent() {
@@ -162,7 +144,7 @@ describe('Responsive Design', () => {
   });
 
   it('should detect mobile breakpoint', () => {
-    mockDimensions.get.mockReturnValue({ width: 375, height: 812 });
+    global.mockDimensions.get.mockReturnValue({ width: 375, height: 812 });
     
     const { getByTestId } = render(
       <ThemeProvider>
@@ -174,7 +156,7 @@ describe('Responsive Design', () => {
   });
 
   it('should detect tablet breakpoint', () => {
-    mockDimensions.get.mockReturnValue({ width: 768, height: 1024 });
+    global.mockDimensions.get.mockReturnValue({ width: 768, height: 1024 });
     
     const { getByTestId } = render(
       <ThemeProvider>
@@ -186,7 +168,7 @@ describe('Responsive Design', () => {
   });
 
   it('should detect desktop breakpoint', () => {
-    mockDimensions.get.mockReturnValue({ width: 1200, height: 800 });
+    global.mockDimensions.get.mockReturnValue({ width: 1200, height: 800 });
     
     const { getByTestId } = render(
       <ThemeProvider>
@@ -198,7 +180,7 @@ describe('Responsive Design', () => {
   });
 
   it('should return responsive values based on breakpoint', () => {
-    mockDimensions.get.mockReturnValue({ width: 375, height: 812 });
+    global.mockDimensions.get.mockReturnValue({ width: 375, height: 812 });
     
     const { getByTestId } = render(
       <ThemeProvider>
@@ -210,7 +192,7 @@ describe('Responsive Design', () => {
   });
 
   it('should return tablet value for tablet breakpoint', () => {
-    mockDimensions.get.mockReturnValue({ width: 768, height: 1024 });
+    global.mockDimensions.get.mockReturnValue({ width: 768, height: 1024 });
     
     const { getByTestId } = render(
       <ThemeProvider>

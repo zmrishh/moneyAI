@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import {
   StyleSheet,
   View,
@@ -8,66 +8,93 @@ import {
   StatusBar,
 } from 'react-native';
 import Svg, { Circle } from 'react-native-svg';
-import { IconSymbol } from '@/components/ui/IconSymbol';
-import { dbService } from '@/services/database';
 
 export default function BudgetsScreen() {
   const [totalBudget] = useState(3000);
   const [spent] = useState(2468);
 
   const budgetCategories = [
-    { name: 'Food', budget: 489, spent: 10, icon: '🍔', color: '#FFB3BA' },
-    { name: 'Groceries', budget: 320, spent: 115, icon: '🛒', color: '#BFBFFF' },
-    { name: 'Subscriptions', budget: 140, spent: 10, icon: '🔄', color: '#B3E5D1' },
+    { 
+      name: 'Food', 
+      budget: 500, 
+      spent: 11, 
+      icon: '🍔', 
+      color: '#FF6B35',
+      percentSpent: 2,
+      remaining: 489,
+      daysLeft: 4
+    },
+    { 
+      name: 'Groceries', 
+      budget: 320, 
+      spent: 115, 
+      icon: '🛒', 
+      color: '#C77DFF',
+      percentSpent: 36,
+      remaining: 320,
+      daysLeft: 4
+    },
+    { 
+      name: 'Subscriptions', 
+      budget: 140, 
+      spent: 10, 
+      icon: '🔄', 
+      color: '#FF69B4',
+      percentSpent: 7,
+      remaining: 140,
+      daysLeft: 4
+    },
   ];
 
-  const formatCurrency = (amount: number) => {
-    return `$${amount}`;
-  };
-
-  const getProgressPercentage = (spent: number, budget: number) => {
-    return Math.min((spent / budget) * 100, 100);
-  };
-
   const remaining = totalBudget - spent;
-  const overallProgress = getProgressPercentage(spent, totalBudget);
+  const overallProgress = Math.round((spent / totalBudget) * 100);
 
-  // Circular progress component
-  const CircularProgress = ({ percentage, size = 200, strokeWidth = 20 }: { percentage: number; size?: number; strokeWidth?: number }) => {
+  // Semi-circular progress component
+  const SemiCircularProgress = ({ percentage, size = 240, strokeWidth = 20 }: { percentage: number; size?: number; strokeWidth?: number }) => {
     const radius = (size - strokeWidth) / 2;
-    const circumference = radius * 2 * Math.PI;
-    const strokeDasharray = circumference;
-    const strokeDashoffset = circumference - (percentage / 100) * circumference;
+    const circumference = 2 * Math.PI * radius;
+    const halfCircumference = circumference / 2;
+    const progressStroke = (percentage / 100) * halfCircumference;
 
     return (
-      <View style={{ width: size, height: size }}>
-        <Svg width={size} height={size} style={{ transform: [{ rotate: '-90deg' }] }}>
-          {/* Background circle */}
+      <View style={{ width: size, height: size / 2 + 60, position: 'relative' }}>
+        <Svg width={size} height={size / 2 + 10}>
+          {/* Background semi-circle */}
           <Circle
             cx={size / 2}
             cy={size / 2}
             r={radius}
-            stroke="#2C2C2E"
+            stroke="#3A3A3A"
             strokeWidth={strokeWidth}
             fill="transparent"
-          />
-          {/* Progress circle */}
-          <Circle
-            cx={size / 2}
-            cy={size / 2}
-            r={radius}
-            stroke="#FFFFFF"
-            strokeWidth={strokeWidth}
-            fill="transparent"
-            strokeDasharray={strokeDasharray}
-            strokeDashoffset={strokeDashoffset}
+            strokeDasharray={`${halfCircumference} ${halfCircumference}`}
+            strokeDashoffset={0}
             strokeLinecap="round"
+            transform={`rotate(180 ${size / 2} ${size / 2})`}
+          />
+          {/* Progress semi-circle */}
+          <Circle
+            cx={size / 2}
+            cy={size / 2}
+            r={radius}
+            stroke="#666666"
+            strokeWidth={strokeWidth}
+            fill="transparent"
+            strokeDasharray={`${progressStroke} ${halfCircumference}`}
+            strokeDashoffset={0}
+            strokeLinecap="round"
+            transform={`rotate(180 ${size / 2} ${size / 2})`}
           />
         </Svg>
         {/* Center content */}
-        <View style={styles.circleCenter}>
-          <Text style={styles.remainingAmount}>{formatCurrency(remaining)}</Text>
+        <View style={styles.semiCircleCenter}>
+          <Text style={styles.remainingAmount}>${remaining.toLocaleString()}</Text>
           <Text style={styles.remainingLabel}>left this month</Text>
+        </View>
+        {/* Budget range values positioned at arc ends */}
+        <View style={styles.budgetRangePositioned}>
+          <Text style={styles.budgetRangeTextLeft}>{spent.toLocaleString()}</Text>
+          <Text style={styles.budgetRangeTextRight}>{totalBudget.toLocaleString()}</Text>
         </View>
       </View>
     );
@@ -79,47 +106,98 @@ export default function BudgetsScreen() {
 
       {/* Header */}
       <View style={styles.header}>
-        <View style={styles.headerTop}>
-          <Text style={styles.headerTitle}>Budgets</Text>
-          <Pressable style={styles.newButton}>
-            <Text style={styles.newButtonText}>+ new</Text>
-          </Pressable>
-        </View>
+        <Text style={styles.headerTitle}>Budgets</Text>
+        <Pressable style={styles.newButton}>
+          <Text style={styles.newButtonText}>+ new</Text>
+        </Pressable>
       </View>
 
       <ScrollView style={styles.content} showsVerticalScrollIndicator={false}>
-        {/* Circular Progress */}
+        {/* Semi-Circular Progress */}
         <View style={styles.circularProgressContainer}>
-          <Text style={styles.overallSpentLabel}>OVERALL SPENT: {Math.round(overallProgress)}%</Text>
-          <CircularProgress percentage={overallProgress} />
-          <View style={styles.budgetRange}>
-            <Text style={styles.budgetRangeText}>{formatCurrency(spent)}</Text>
-            <Text style={styles.budgetRangeText}>{formatCurrency(totalBudget)}</Text>
-          </View>
+          <Text style={styles.overallSpentLabel}>OVERALL SPENT: {overallProgress}%</Text>
+          <SemiCircularProgress percentage={overallProgress} />
         </View>
 
         {/* Budget Categories */}
         <View style={styles.categoriesContainer}>
-          {budgetCategories.map((category, index) => {
-            const progress = getProgressPercentage(category.spent, category.budget);
-            const percentSpent = Math.round(progress);
-            
-            return (
-              <View key={category.name} style={styles.categoryRow}>
-                <View style={[styles.categoryIcon, { backgroundColor: category.color }]}>
-                  <Text style={styles.categoryEmoji}>{category.icon}</Text>
-                </View>
-                <View style={styles.categoryInfo}>
-                  <Text style={styles.categoryName}>{category.name}</Text>
-                  <Text style={styles.categoryMeta}>4d left • {percentSpent}% spent</Text>
-                </View>
-                <View style={styles.categoryAmount}>
-                  <Text style={styles.categorySpent}>${category.budget}</Text>
-                  <Text style={styles.categoryBudget}>under this month</Text>
+          {/* First Row - Food and Groceries */}
+          <View style={styles.categoryRow}>
+            {/* Food Card */}
+            <View style={styles.categoryCardSmall}>
+              <View style={styles.categoryHeader}>
+                <View style={styles.categoryTitleRow}>
+                  <Text style={styles.categoryEmoji}>{budgetCategories[0].icon}</Text>
+                  <Text style={styles.categoryName}>{budgetCategories[0].name}</Text>
                 </View>
               </View>
-            );
-          })}
+              <Text style={styles.categoryDaysLeft}>{budgetCategories[0].daysLeft} days left</Text>
+              <Text style={styles.categoryPercentLabel}>{budgetCategories[0].percentSpent}% SPENT</Text>
+              <Text style={styles.categoryAmount}>${budgetCategories[0].remaining}</Text>
+              <Text style={styles.categorySubtext}>left this month</Text>
+              <View style={styles.progressBarContainer}>
+                <View 
+                  style={[
+                    styles.progressBar, 
+                    { 
+                      backgroundColor: budgetCategories[0].color,
+                      width: `${budgetCategories[0].percentSpent}%`
+                    }
+                  ]} 
+                />
+              </View>
+            </View>
+            
+            {/* Groceries Card */}
+            <View style={styles.categoryCardSmall}>
+              <View style={styles.categoryHeader}>
+                <View style={styles.categoryTitleRow}>
+                  <Text style={styles.categoryEmoji}>{budgetCategories[1].icon}</Text>
+                  <Text style={styles.categoryName}>{budgetCategories[1].name}</Text>
+                </View>
+              </View>
+              <Text style={styles.categoryDaysLeft}>{budgetCategories[1].daysLeft} days left</Text>
+              <Text style={styles.categoryPercentLabel}>{budgetCategories[1].percentSpent}% SPENT</Text>
+              <Text style={styles.categoryAmount}>${budgetCategories[1].remaining}</Text>
+              <Text style={styles.categorySubtext}>left this month</Text>
+              <View style={styles.progressBarContainer}>
+                <View 
+                  style={[
+                    styles.progressBar, 
+                    { 
+                      backgroundColor: budgetCategories[1].color,
+                      width: `${budgetCategories[1].percentSpent}%`
+                    }
+                  ]} 
+                />
+              </View>
+            </View>
+          </View>
+          
+          {/* Subscriptions Card (Full Width) */}
+          <View style={styles.categoryCard}>
+            <View style={styles.categoryHeader}>
+              <View style={styles.categoryTitleRow}>
+                <Text style={styles.categoryEmoji}>{budgetCategories[2].icon}</Text>
+                <Text style={styles.categoryName}>{budgetCategories[2].name}</Text>
+              </View>
+            </View>
+            <Text style={styles.categoryDaysLeft}>{budgetCategories[2].daysLeft} days left</Text>
+            <Text style={styles.categoryPercentLabel}>{budgetCategories[2].percentSpent}% SPENT</Text>
+            <Text style={styles.categoryAmount}>${budgetCategories[2].remaining}</Text>
+            <Text style={styles.categorySubtext}>left this month</Text>
+            <View style={styles.progressBarContainer}>
+              <View 
+                style={[
+                  styles.progressBar, 
+                  { 
+                    backgroundColor: budgetCategories[2].color,
+                    width: `${budgetCategories[2].percentSpent}%`
+                  }
+                ]} 
+              />
+            </View>
+          </View>
         </View>
 
         <View style={styles.bottomSpacer} />
@@ -136,30 +214,25 @@ const styles = StyleSheet.create({
   
   // Header
   header: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
     paddingTop: 60,
     paddingHorizontal: 24,
     paddingBottom: 24,
   },
-  headerTop: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-  },
   headerTitle: {
     fontSize: 32,
     fontWeight: '700',
-    color: '#fff',
+    color: '#FFFFFF',
   },
   newButton: {
-    backgroundColor: '#2C2C2E',
-    paddingHorizontal: 16,
-    paddingVertical: 8,
-    borderRadius: 12,
+    backgroundColor: 'transparent',
   },
   newButtonText: {
-    fontSize: 14,
+    fontSize: 16,
     fontWeight: '500',
-    color: '#fff',
+    color: '#FFFFFF',
   },
 
   // Content
@@ -170,7 +243,7 @@ const styles = StyleSheet.create({
   // Circular Progress
   circularProgressContainer: {
     alignItems: 'center',
-    marginBottom: 60,
+    marginBottom: 40,
     paddingHorizontal: 24,
   },
   overallSpentLabel: {
@@ -179,7 +252,6 @@ const styles = StyleSheet.create({
     color: '#8E8E93',
     letterSpacing: 1,
     marginBottom: 20,
-    textAlign: 'center',
   },
   circleCenter: {
     position: 'absolute',
@@ -192,72 +264,132 @@ const styles = StyleSheet.create({
   },
   remainingAmount: {
     fontSize: 48,
-    fontWeight: '100',
-    color: '#fff',
+    fontWeight: '300',
+    color: '#FFFFFF',
     marginBottom: 4,
   },
   remainingLabel: {
-    fontSize: 16,
+    fontSize: 14,
     color: '#8E8E93',
+    fontWeight: '400',
   },
   budgetRange: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    width: 200,
-    marginTop: 20,
+    width: 240,
+    marginTop: 10,
+    paddingHorizontal: 20,
   },
   budgetRangeText: {
     fontSize: 14,
     color: '#8E8E93',
+    fontWeight: '500',
   },
 
   // Categories
   categoriesContainer: {
     paddingHorizontal: 24,
+    gap: 16,
   },
   categoryRow: {
     flexDirection: 'row',
-    alignItems: 'center',
-    paddingVertical: 16,
-    borderBottomWidth: 0.5,
-    borderBottomColor: '#2C2C2E',
+    justifyContent: 'space-between',
+    gap: 16,
   },
-  categoryIcon: {
-    width: 44,
-    height: 44,
-    borderRadius: 12,
-    alignItems: 'center',
+  categoryCard: {
+    backgroundColor: '#2A2A2A',
+    borderRadius: 16,
+    padding: 20,
+    borderWidth: 1,
+    borderColor: '#3A3A3A',
+  },
+  categoryCardSmall: {
+    flex: 1,
+    backgroundColor: '#2A2A2A',
+    borderRadius: 16,
+    padding: 16,
+    borderWidth: 1,
+    borderColor: '#3A3A3A',
+  },
+  semiCircleCenter: {
+    position: 'absolute',
+    bottom: 0,
+    left: 0,
+    right: 0,
     justifyContent: 'center',
-    marginRight: 16,
+    alignItems: 'center',
+    paddingBottom: 20,
+  },
+  budgetRangePositioned: {
+    position: 'absolute',
+    bottom: 25,
+    left: 0,
+    right: 0,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    paddingHorizontal: 10,
+  },
+  budgetRangeTextLeft: {
+    fontSize: 14,
+    color: '#8E8E93',
+    fontWeight: '500',
+  },
+  budgetRangeTextRight: {
+    fontSize: 14,
+    color: '#8E8E93',
+    fontWeight: '500',
+  },
+  categoryHeader: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'flex-start',
+    marginBottom: 16,
+  },
+  categoryTitleRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 8,
   },
   categoryEmoji: {
-    fontSize: 22,
-  },
-  categoryInfo: {
-    flex: 1,
+    fontSize: 20,
   },
   categoryName: {
     fontSize: 18,
     fontWeight: '600',
-    color: '#fff',
-    marginBottom: 4,
+    color: '#FFFFFF',
   },
-  categoryMeta: {
+  categoryDaysLeft: {
     fontSize: 14,
     color: '#8E8E93',
+    fontWeight: '400',
+  },
+  categoryPercentLabel: {
+    fontSize: 12,
+    fontWeight: '600',
+    color: '#34C759',
+    letterSpacing: 0.5,
+    marginBottom: 8,
   },
   categoryAmount: {
-    alignItems: 'flex-end',
+    fontSize: 32,
+    fontWeight: '300',
+    color: '#FFFFFF',
+    marginBottom: 4,
   },
-  categorySpent: {
-    fontSize: 24,
-    fontWeight: '600',
-    color: '#fff',
-    marginBottom: 2,
-  },
-  categoryBudget: {
-    fontSize: 12,
+  categorySubtext: {
+    fontSize: 14,
     color: '#8E8E93',
+    marginBottom: 16,
+  },
+  progressBarContainer: {
+    height: 8,
+    backgroundColor: '#3A3A3A',
+    borderRadius: 4,
+    overflow: 'hidden',
+  },
+  progressBar: {
+    height: '100%',
+    borderRadius: 4,
   },
 
   bottomSpacer: {

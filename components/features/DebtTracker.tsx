@@ -72,7 +72,12 @@ export default function DebtTracker({
     <View style={styles.container}>
       {/* Header */}
       <View style={styles.header}>
-        <Text style={styles.title}>Money Tracker</Text>
+        <View style={styles.headerLeft}>
+          <Text style={styles.title}>Debts & IOUs</Text>
+          <Text style={styles.subtitle}>
+            Track money you owe and lend
+          </Text>
+        </View>
         <Pressable style={styles.addButton} onPress={() => setShowAddModal(true)}>
           <IconSymbol name="plus" size={20} color="#007AFF" />
         </Pressable>
@@ -80,18 +85,24 @@ export default function DebtTracker({
 
       {/* Summary Cards */}
       <View style={styles.summaryContainer}>
-        <View style={[styles.summaryCard, styles.oweCard]}>
-          <Text style={styles.summaryLabel}>I Owe</Text>
-          <Text style={[styles.summaryAmount, { color: '#FF6B6B' }]}>
+        <View style={styles.summaryCard}>
+          <View style={styles.summaryHeader}>
+            <Text style={styles.summaryIcon}>💸</Text>
+            <Text style={styles.summaryLabel}>I Owe</Text>
+          </View>
+          <Text style={styles.summaryAmount}>
             {formatCurrency(totalOwed)}
           </Text>
           <Text style={styles.summaryCount}>
             {debts.filter(d => d.type === 'owe' && !d.is_settled).length} people
           </Text>
         </View>
-        <View style={[styles.summaryCard, styles.owedCard]}>
-          <Text style={styles.summaryLabel}>Owed to Me</Text>
-          <Text style={[styles.summaryAmount, { color: '#34C759' }]}>
+        <View style={styles.summaryCard}>
+          <View style={styles.summaryHeader}>
+            <Text style={styles.summaryIcon}>💰</Text>
+            <Text style={styles.summaryLabel}>Owed to Me</Text>
+          </View>
+          <Text style={styles.summaryAmount}>
             {formatCurrency(totalOwedToMe)}
           </Text>
           <Text style={styles.summaryCount}>
@@ -147,18 +158,29 @@ export default function DebtTracker({
               <View key={debt.id} style={styles.debtCard}>
                 <View style={styles.debtHeader}>
                   <View style={styles.debtInfo}>
-                    <Text style={styles.personName}>{debt.person_name}</Text>
-                    <Text style={styles.debtDescription}>{debt.description}</Text>
+                    <View style={styles.personRow}>
+                      <View style={styles.personAvatar}>
+                        <Text style={styles.personInitial}>
+                          {debt.person_name.charAt(0).toUpperCase()}
+                        </Text>
+                      </View>
+                      <View style={styles.personDetails}>
+                        <Text style={styles.personName}>{debt.person_name}</Text>
+                        <Text style={styles.debtDescription}>{debt.description}</Text>
+                      </View>
+                    </View>
                     {debt.due_date && (
-                      <Text style={[
-                        styles.dueDate,
-                        overdueDays && styles.overdue
-                      ]}>
-                        {overdueDays 
-                          ? `${overdueDays} days overdue`
-                          : `Due ${format(debt.due_date, 'MMM dd')}`
-                        }
-                      </Text>
+                      <View style={styles.dueDateContainer}>
+                        <Text style={[
+                          styles.dueDate,
+                          overdueDays && styles.overdue
+                        ]}>
+                          {overdueDays 
+                            ? `${overdueDays} days overdue`
+                            : `Due ${format(debt.due_date, 'MMM dd')}`
+                          }
+                        </Text>
+                      </View>
                     )}
                   </View>
                   <View style={styles.amountInfo}>
@@ -452,19 +474,28 @@ function AddPaymentModal({ visible, debt, onClose, onAdd }: {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#000',
+    backgroundColor: '#1A1A1A',
   },
   header: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
+    paddingTop: 60,
     paddingHorizontal: 24,
-    paddingVertical: 20,
+    paddingBottom: 24,
+  },
+  headerLeft: {
+    flex: 1,
   },
   title: {
     fontSize: 24,
     fontWeight: '700',
     color: '#fff',
+    marginBottom: 4,
+  },
+  subtitle: {
+    fontSize: 14,
+    color: '#8E8E93',
   },
   addButton: {
     width: 40,
@@ -487,22 +518,24 @@ const styles = StyleSheet.create({
     padding: 20,
     alignItems: 'center',
   },
-  oweCard: {
-    borderWidth: 1,
-    borderColor: '#FF6B6B',
+  summaryHeader: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginBottom: 12,
+    gap: 8,
   },
-  owedCard: {
-    borderWidth: 1,
-    borderColor: '#34C759',
+  summaryIcon: {
+    fontSize: 24,
   },
   summaryLabel: {
     fontSize: 14,
     color: '#8E8E93',
-    marginBottom: 8,
+    fontWeight: '500',
   },
   summaryAmount: {
     fontSize: 20,
     fontWeight: '700',
+    color: '#fff',
     marginBottom: 4,
   },
   summaryCount: {
@@ -570,6 +603,28 @@ const styles = StyleSheet.create({
   debtInfo: {
     flex: 1,
   },
+  personRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginBottom: 8,
+  },
+  personAvatar: {
+    width: 40,
+    height: 40,
+    borderRadius: 20,
+    backgroundColor: '#2C2C2E',
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginRight: 12,
+  },
+  personInitial: {
+    fontSize: 16,
+    fontWeight: '600',
+    color: '#fff',
+  },
+  personDetails: {
+    flex: 1,
+  },
   personName: {
     fontSize: 16,
     fontWeight: '600',
@@ -580,6 +635,9 @@ const styles = StyleSheet.create({
     fontSize: 14,
     color: '#8E8E93',
     marginBottom: 4,
+  },
+  dueDateContainer: {
+    marginTop: 4,
   },
   dueDate: {
     fontSize: 12,
@@ -668,7 +726,7 @@ const styles = StyleSheet.create({
   },
   modalContainer: {
     flex: 1,
-    backgroundColor: '#000',
+    backgroundColor: '#1A1A1A',
   },
   modalHeader: {
     flexDirection: 'row',

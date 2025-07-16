@@ -14,6 +14,9 @@ import {
   ActionSheetIOS,
   Animated,
   Keyboard,
+  LayoutAnimation,
+  UIManager,
+  Image,
 } from 'react-native';
 import * as ImagePicker from 'expo-image-picker';
 import { IconSymbol } from '@/components/ui/IconSymbol';
@@ -21,6 +24,11 @@ import { dbService } from '@/services/database';
 import { nlpService } from '@/services/nlp';
 
 const { width } = Dimensions.get('window');
+
+// Enable LayoutAnimation for Android
+if (Platform.OS === 'android' && UIManager.setLayoutAnimationEnabledExperimental) {
+  UIManager.setLayoutAnimationEnabledExperimental(true);
+}
 
 interface Message {
   id: string;
@@ -146,19 +154,32 @@ export default function AIScreen() {
   const [inputText, setInputText] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [isKeyboardVisible, setKeyboardVisible] = useState(false);
+  const [selectedImages, setSelectedImages] = useState<string[]>([]);
+  const [inputHeight, setInputHeight] = useState(50);
+  const [isRecording, setIsRecording] = useState(false);
+  const [showAttachmentMenu, setShowAttachmentMenu] = useState(false);
+
+  // Animation values for context menu
+  const menuOpacity = useRef(new Animated.Value(0)).current;
+  const menuScale = useRef(new Animated.Value(0.8)).current;
+  const menuTranslateY = useRef(new Animated.Value(20)).current;
+
   const inputRef = useRef<TextInput>(null);
   const scrollViewRef = useRef<ScrollView>(null);
 
   useEffect(() => {
     const keyboardDidShowListener = Keyboard.addListener(
       'keyboardDidShow',
-      () => {
+      (event) => {
+        LayoutAnimation.configureNext(LayoutAnimation.Presets.easeInEaseOut);
         setKeyboardVisible(true);
       }
     );
+
     const keyboardDidHideListener = Keyboard.addListener(
       'keyboardDidHide',
       () => {
+        LayoutAnimation.configureNext(LayoutAnimation.Presets.easeInEaseOut);
         setKeyboardVisible(false);
       }
     );
@@ -191,17 +212,18 @@ export default function AIScreen() {
   ];
 
   const handleSendMessage = async () => {
-    if (!inputText.trim()) return;
+    if (!inputText.trim() && selectedImages.length === 0) return;
 
     const userMessage: Message = {
       id: Date.now().toString(),
-      text: inputText.trim(),
+      text: inputText.trim() || `Sent ${selectedImages.length} image(s)`,
       isUser: true,
       timestamp: new Date(),
     };
 
     setMessages(prev => [...prev, userMessage]);
     setInputText('');
+    setSelectedImages([]);
     setIsLoading(true);
 
     // Scroll to bottom
@@ -316,38 +338,6 @@ export default function AIScreen() {
     inputRef.current?.focus();
   };
 
-  const handleAttachmentPress = () => {
-    if (Platform.OS === 'ios') {
-      ActionSheetIOS.showActionSheetWithOptions(
-        {
-          options: ['Cancel', 'Take Photo', 'Choose from Photos', 'Choose Document'],
-          cancelButtonIndex: 0,
-        },
-        (buttonIndex) => {
-          if (buttonIndex === 1) {
-            handleTakePhoto();
-          } else if (buttonIndex === 2) {
-            handleChoosePhoto();
-          } else if (buttonIndex === 3) {
-            handleChooseDocument();
-          }
-        }
-      );
-    } else {
-      // Android implementation
-      Alert.alert(
-        'Add Attachment',
-        'Choose an option',
-        [
-          { text: 'Cancel', style: 'cancel' },
-          { text: 'Take Photo', onPress: handleTakePhoto },
-          { text: 'Choose Photo', onPress: handleChoosePhoto },
-          { text: 'Choose Document', onPress: handleChooseDocument },
-        ]
-      );
-    }
-  };
-
   const handleTakePhoto = async () => {
     const { status } = await ImagePicker.requestCameraPermissionsAsync();
     if (status !== 'granted') {
@@ -362,9 +352,13 @@ export default function AIScreen() {
       quality: 0.8,
     });
 
-    if (!result.canceled) {
-      // Process the image (you can add OCR or AI processing here)
-      Alert.alert('Photo captured', 'Processing receipt...');
+    if (!result.canceled && result.assets[0]) {
+      LayoutAnimation.configureNext(LayoutAnimation.Presets.easeInEaseOut);
+      setSelectedImages(prev => [...prev, result.assets[0].uri]);
+
+      setTimeout(() => {
+        inputRef.current?.focus();
+      }, 300);
     }
   };
 
@@ -380,17 +374,88 @@ export default function AIScreen() {
       allowsEditing: true,
       aspect: [4, 3],
       quality: 0.8,
+      allowsMultipleSelection: true,
+      selectionLimit: 5,
     });
 
-    if (!result.canceled) {
-      // Process the image
-      Alert.alert('Photo selected', 'Processing receipt...');
+    if (!result.canceled && result.assets) {
+      LayoutAnimation.configureNext(LayoutAnimation.Presets.easeInEaseOut);
+      const newImages = result.assets.map(asset => asset.uri);
+      setSelectedImages(prev => [...prev, ...newImages].slice(0, 5));
+
+      setTimeout(() => {
+        inputRef.current?.focus();
+      }, 300);
     }
   };
 
+  const removeImage = (index: number) => {
+    LayoutAnimation.configureNext(LayoutAnimation.Presets.easeInEaseOut);
+    setSelectedImages(prev => prev.filter((_, i) => i !== index));
+  };
+
+  const handleVoicePress = () => {
+    setIsRecording(!isRecording);
+    setTimeout(() => {
+      setIsRecording(false);
+      Alert.alert('Voice Input', 'Voice recording processed!');
+    }, 3000);
+  };
+
   const handleChooseDocument = async () => {
-    // Simplified document handling without DocumentPicker
     Alert.alert('Coming Soon', 'Document upload feature will be available soon!');
+  };
+
+  // Animated context menu functions
+  const showAttachmentMenuAnimated = () => {
+    setShowAttachmentMenu(true);
+
+    // Reset animation values
+    menuOpacity.setValue(0);
+    menuScale.setValue(0.8);
+    menuTranslateY.setValue(20);
+
+    // Animate in
+    Animated.parallel([
+      Animated.timing(menuOpacity, {
+        toValue: 1,
+        duration: 200,
+        useNativeDriver: true,
+      }),
+      Animated.spring(menuScale, {
+        toValue: 1,
+        tension: 300,
+        friction: 20,
+        useNativeDriver: true,
+      }),
+      Animated.timing(menuTranslateY, {
+        toValue: 0,
+        duration: 200,
+        useNativeDriver: true,
+      }),
+    ]).start();
+  };
+
+  const hideAttachmentMenuAnimated = () => {
+    Animated.parallel([
+      Animated.timing(menuOpacity, {
+        toValue: 0,
+        duration: 150,
+        useNativeDriver: true,
+      }),
+      Animated.timing(menuScale, {
+        toValue: 0.8,
+        duration: 150,
+        useNativeDriver: true,
+      }),
+      Animated.timing(menuTranslateY, {
+        toValue: 20,
+        duration: 150,
+        useNativeDriver: true,
+      }),
+    ]).start(() => {
+      setShowAttachmentMenu(false);
+    });
   };
 
   return (
@@ -412,7 +477,7 @@ export default function AIScreen() {
       <KeyboardAvoidingView
         style={styles.mainContainer}
         behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
-        keyboardVerticalOffset={Platform.OS === 'ios' ? 90 : 0}
+        keyboardVerticalOffset={0}
       >
         {messages.length === 0 ? (
           // Perplexity-Style Welcome State
@@ -505,33 +570,156 @@ export default function AIScreen() {
           </ScrollView>
         )}
 
-        {/* Bottom Input Bar - Perplexity Style */}
+        {/* Animated Context Menu */}
+        {showAttachmentMenu && (
+          <View style={styles.contextMenuOverlay}>
+            <Pressable
+              style={styles.contextMenuBackdrop}
+              onPress={hideAttachmentMenuAnimated}
+            />
+            <Animated.View
+              style={[
+                styles.contextMenu,
+                {
+                  opacity: menuOpacity,
+                  transform: [
+                    { scale: menuScale },
+                    { translateY: menuTranslateY }
+                  ]
+                }
+              ]}
+            >
+              <Pressable
+                style={styles.contextMenuItem}
+                onPress={() => {
+                  hideAttachmentMenuAnimated();
+                  setTimeout(() => handleTakePhoto(), 150);
+                }}
+              >
+                <View style={[styles.contextMenuIcon, { backgroundColor: 'rgba(0, 122, 255, 0.15)' }]}>
+                  <IconSymbol name="camera.fill" size={20} color="#007AFF" />
+                </View>
+                <Text style={styles.contextMenuText}>Camera</Text>
+              </Pressable>
+
+              <View style={styles.contextMenuSeparator} />
+
+              <Pressable
+                style={styles.contextMenuItem}
+                onPress={() => {
+                  hideAttachmentMenuAnimated();
+                  setTimeout(() => handleChoosePhoto(), 150);
+                }}
+              >
+                <View style={[styles.contextMenuIcon, { backgroundColor: 'rgba(52, 199, 89, 0.15)' }]}>
+                  <IconSymbol name="photo.fill" size={20} color="#34C759" />
+                </View>
+                <Text style={styles.contextMenuText}>Photos</Text>
+              </Pressable>
+
+              <View style={styles.contextMenuSeparator} />
+
+              <Pressable
+                style={styles.contextMenuItem}
+                onPress={() => {
+                  hideAttachmentMenuAnimated();
+                  setTimeout(() => handleChooseDocument(), 150);
+                }}
+              >
+                <View style={[styles.contextMenuIcon, { backgroundColor: 'rgba(255, 149, 0, 0.15)' }]}>
+                  <IconSymbol name="doc.fill" size={20} color="#FF9500" />
+                </View>
+                <Text style={styles.contextMenuText}>Files</Text>
+              </Pressable>
+            </Animated.View>
+          </View>
+        )}
+
+        {/* Vertical Layout Input Container - Text Above, Icons Below */}
         <View style={[
           styles.inputContainer,
-          isKeyboardVisible && styles.inputContainerKeyboard
+          isKeyboardVisible && styles.inputContainerKeyboard,
         ]}>
-          <View style={styles.inputBar}>
-            <Pressable
-              style={styles.plusButton}
-              onPress={handleAttachmentPress}
-            >
-              <IconSymbol name="plus" size={20} color="#8E8E93" />
-            </Pressable>
-            <TextInput
-              ref={inputRef}
-              style={styles.textInput}
-              placeholder="Ask anything..."
-              placeholderTextColor="#6B7280"
-              value={inputText}
-              onChangeText={setInputText}
-              onSubmitEditing={handleSendMessage}
-              returnKeyType="send"
-              multiline={false}
-              maxLength={500}
-            />
-            <Pressable style={styles.voiceButton}>
-              <IconSymbol name="waveform" size={20} color="#8E8E93" />
-            </Pressable>
+          <View style={styles.verticalInputCard}>
+            {/* Top Section - Text Input Area */}
+            <View style={styles.textInputArea}>
+              {/* Image Preview Row */}
+              {selectedImages.length > 0 && (
+                <View style={styles.imagePreviewContainer}>
+                  <ScrollView
+                    horizontal
+                    showsHorizontalScrollIndicator={false}
+                    style={styles.imagePreviewScroll}
+                  >
+                    {selectedImages.map((uri, index) => (
+                      <View key={index} style={styles.imagePreviewWrapper}>
+                        <Image source={{ uri }} style={styles.imagePreview} />
+                        <Pressable
+                          style={styles.removeImageButton}
+                          onPress={() => removeImage(index)}
+                        >
+                          <IconSymbol name="xmark" size={12} color="#FFFFFF" />
+                        </Pressable>
+                      </View>
+                    ))}
+                  </ScrollView>
+                </View>
+              )}
+
+              <TextInput
+                ref={inputRef}
+                style={[
+                  styles.verticalTextInput,
+                  { height: Math.max(44, inputHeight) }
+                ]}
+                placeholder="Ask anything"
+                placeholderTextColor="#8E8E93"
+                value={inputText}
+                onChangeText={setInputText}
+                onSubmitEditing={handleSendMessage}
+                onContentSizeChange={(event) => {
+                  setInputHeight(Math.min(event.nativeEvent.contentSize.height + 16, 100));
+                }}
+                returnKeyType="send"
+                multiline={true}
+                maxLength={500}
+                textAlignVertical="top"
+              />
+            </View>
+
+            {/* Bottom Section - Icon Row */}
+            <View style={styles.iconRow}>
+              {/* Left Side - Plus Icon with Animated Context Menu */}
+              <Pressable
+                style={styles.bottomIconButton}
+                onPress={() => showAttachmentMenu ? hideAttachmentMenuAnimated() : showAttachmentMenuAnimated()}
+              >
+                <IconSymbol name="plus" size={24} color="#FFFFFF" />
+              </Pressable>
+
+              {/* Right Side - Mic and Send Icons */}
+              <View style={styles.rightIconGroup}>
+                <Pressable
+                  style={styles.bottomIconButton}
+                  onPress={handleVoicePress}
+                >
+                  <IconSymbol name="mic.fill" size={24} color="#FFFFFF" />
+                </Pressable>
+
+                {inputText.trim() || selectedImages.length > 0 ? (
+                  <Pressable
+                    style={styles.sendIconButton}
+                    onPress={handleSendMessage}
+                  >
+                    <IconSymbol name="arrow.up" size={20} color="#000000" />
+                  </Pressable>
+                ) : (
+                  <View style={styles.sendIconButton}>
+                    <IconSymbol name="arrow.up" size={20} color="#000000" />
+                  </View>
+                )}
+              </View>
+            </View>
           </View>
         </View>
       </KeyboardAvoidingView>
@@ -542,10 +730,10 @@ export default function AIScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#1A1A1A', // Dark background like Perplexity
+    backgroundColor: '#1A1A1A',
   },
 
-  // Header - Perplexity Style
+  // Header
   header: {
     flexDirection: 'row',
     justifyContent: 'space-between',
@@ -579,7 +767,7 @@ const styles = StyleSheet.create({
     flex: 1,
   },
 
-  // Welcome State - Perplexity Style
+  // Welcome State
   welcomeScrollView: {
     flex: 1,
   },
@@ -591,9 +779,10 @@ const styles = StyleSheet.create({
     paddingBottom: 40,
   },
   welcomeContainerKeyboard: {
-    justifyContent: 'flex-start',
-    paddingTop: 40,
+    justifyContent: 'flex-end',
+    paddingTop: 20,
     paddingBottom: 20,
+    minHeight: 200,
   },
   logoSection: {
     alignItems: 'center',
@@ -616,12 +805,13 @@ const styles = StyleSheet.create({
     letterSpacing: -0.5,
   },
 
-  // Suggestions Marquee - 2 Rows
+  // Suggestions Marquee
   suggestionsWrapper: {
-    gap: 4, // Reduced gap between rows
+    gap: 4,
   },
   suggestionsWrapperKeyboard: {
-    marginTop: 20,
+    marginTop: 0,
+    marginBottom: 20,
     gap: 4,
   },
   marqueeContainer: {
@@ -722,47 +912,256 @@ const styles = StyleSheet.create({
     backgroundColor: '#8E8E93',
   },
 
-  // Bottom Input Bar - Perplexity Style
+  // Input Container
   inputContainer: {
-    paddingHorizontal: 20,
-    paddingVertical: 16,
-    paddingBottom: Platform.OS === 'ios' ? 88 + 8 : 70 + 8, // Tab bar height + small gap
+    paddingHorizontal: 16,
+    paddingVertical: 12,
+    paddingBottom: Platform.OS === 'ios' ? 88 + 16 : 70 + 16,
     backgroundColor: '#1A1A1A',
   },
   inputContainerKeyboard: {
-    paddingBottom: Platform.OS === 'ios' ? 0 : 12, // Minimal padding when keyboard is visible
+    paddingBottom: 16,
+    paddingVertical: 12,
+    paddingHorizontal: 16,
   },
-  inputBar: {
+
+  // Vertical Layout - Compact Design
+  verticalInputCard: {
+    backgroundColor: '#2A2A2A',
+    borderRadius: 12,
+    borderWidth: 1,
+    borderColor: '#3A3A3A',
+    overflow: 'hidden',
+  },
+
+  // Text Input Area (Top Section) - No Border, Reduced Height
+  textInputArea: {
+    paddingHorizontal: 16,
+    paddingTop: 6,
+    paddingBottom: 2,
+  },
+
+  // Vertical Text Input
+  verticalTextInput: {
+    fontSize: 16,
+    color: '#FFFFFF',
+    paddingVertical: 6,
+    paddingHorizontal: 0,
+    maxHeight: 100,
+    textAlignVertical: 'top',
+    lineHeight: 22,
+    backgroundColor: 'transparent',
+  },
+
+  // Icon Row (Bottom Section) - Reduced Height
+  iconRow: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    paddingHorizontal: 16,
+    paddingVertical: 8,
+    backgroundColor: '#2A2A2A',
+  },
+
+  // Right Icon Group
+  rightIconGroup: {
     flexDirection: 'row',
     alignItems: 'center',
+    gap: 12,
+  },
+
+  // Bottom Icon Buttons
+  bottomIconButton: {
+    width: 36,
+    height: 36,
+    borderRadius: 18,
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: 'transparent',
+  },
+
+  // Send Icon Button (Round)
+  sendIconButton: {
+    width: 36,
+    height: 36,
+    borderRadius: 18,
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: '#FFFFFF',
+  },
+
+  // Animated Context Menu Styles
+  contextMenuOverlay: {
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
+    zIndex: 1000,
+    justifyContent: 'flex-end',
+    alignItems: 'flex-start',
+    paddingLeft: 32,
+    paddingBottom: Platform.OS === 'ios' ? 140 : 120,
+  },
+  contextMenuBackdrop: {
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
+    backgroundColor: 'rgba(0, 0, 0, 0.3)',
+  },
+  contextMenu: {
     backgroundColor: '#2A2A2A',
-    borderRadius: 25,
-    paddingHorizontal: 16,
-    paddingVertical: 12,
-    minHeight: 50,
+    borderRadius: 12,
+    paddingVertical: 8,
+    minWidth: 160,
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 4,
+    },
+    shadowOpacity: 0.3,
+    shadowRadius: 8,
+    elevation: 8,
     borderWidth: 1,
     borderColor: '#3A3A3A',
   },
-  plusButton: {
-    width: 28,
-    height: 28,
-    borderRadius: 14,
+  contextMenuItem: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    paddingHorizontal: 16,
+    paddingVertical: 12,
+  },
+  contextMenuIcon: {
+    width: 32,
+    height: 32,
+    borderRadius: 16,
     alignItems: 'center',
     justifyContent: 'center',
     marginRight: 12,
   },
-  textInput: {
-    flex: 1,
+  contextMenuText: {
     fontSize: 16,
+    fontWeight: '500',
     color: '#FFFFFF',
-    paddingVertical: 4,
   },
-  voiceButton: {
-    width: 28,
-    height: 28,
-    borderRadius: 14,
+  contextMenuSeparator: {
+    height: 1,
+    backgroundColor: '#3A3A3A',
+    marginHorizontal: 16,
+  },
+
+  // Custom Attachment Menu Styles
+  attachmentMenuOverlay: {
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
+    zIndex: 1000,
+    justifyContent: 'flex-end',
+  },
+  attachmentMenuBackdrop: {
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
+    backgroundColor: 'rgba(0, 0, 0, 0.5)',
+  },
+  attachmentMenu: {
+    backgroundColor: '#2A2A2A',
+    borderTopLeftRadius: 20,
+    borderTopRightRadius: 20,
+    paddingBottom: Platform.OS === 'ios' ? 88 : 70,
+    borderTopWidth: 1,
+    borderTopColor: '#3A3A3A',
+  },
+  attachmentMenuHeader: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    paddingHorizontal: 20,
+    paddingVertical: 16,
+    borderBottomWidth: 1,
+    borderBottomColor: '#3A3A3A',
+  },
+  attachmentMenuTitle: {
+    fontSize: 18,
+    fontWeight: '600',
+    color: '#FFFFFF',
+  },
+  attachmentMenuClose: {
+    width: 32,
+    height: 32,
+    borderRadius: 16,
     alignItems: 'center',
     justifyContent: 'center',
-    marginLeft: 12,
+    backgroundColor: '#3A3A3A',
+  },
+  attachmentOptions: {
+    paddingHorizontal: 20,
+    paddingVertical: 16,
+  },
+  attachmentOption: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    paddingVertical: 16,
+    paddingHorizontal: 16,
+    borderRadius: 12,
+    marginBottom: 8,
+    backgroundColor: '#1C1C1E',
+  },
+  attachmentOptionIcon: {
+    width: 48,
+    height: 48,
+    borderRadius: 24,
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginRight: 16,
+  },
+  attachmentOptionContent: {
+    flex: 1,
+  },
+  attachmentOptionTitle: {
+    fontSize: 16,
+    fontWeight: '600',
+    color: '#FFFFFF',
+    marginBottom: 4,
+  },
+  attachmentOptionSubtitle: {
+    fontSize: 14,
+    color: '#8E8E93',
+    lineHeight: 18,
+  },
+
+  // Image Preview Styles
+  imagePreviewContainer: {
+    marginBottom: 8,
+  },
+  imagePreviewScroll: {
+    maxHeight: 80,
+  },
+  imagePreviewWrapper: {
+    position: 'relative',
+    marginRight: 8,
+  },
+  imagePreview: {
+    width: 60,
+    height: 60,
+    borderRadius: 8,
+    backgroundColor: '#3A3A3A',
+  },
+  removeImageButton: {
+    position: 'absolute',
+    top: -6,
+    right: -6,
+    width: 20,
+    height: 20,
+    borderRadius: 10,
+    backgroundColor: '#FF3B30',
+    alignItems: 'center',
+    justifyContent: 'center',
   },
 });

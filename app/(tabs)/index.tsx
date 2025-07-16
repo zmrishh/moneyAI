@@ -12,6 +12,7 @@ import { IconSymbol } from '@/components/ui/IconSymbol';
 import InteractiveChart from '@/components/ui/InteractiveChart';
 import { dbService } from '@/services/database';
 import { format, subDays, startOfDay } from 'date-fns';
+import { router } from 'expo-router';
 
 const { width } = Dimensions.get('window');
 
@@ -51,6 +52,15 @@ export default function HomeScreen() {
       );
       const todayTotal = todayTransactions.reduce((sum, t) => sum + t.amount, 0);
       setTodaySpent(todayTotal);
+
+      // Load bills data for pending count
+      try {
+        const bills = await dbService.getBills();
+        const unpaidBills = bills.filter(bill => !bill.is_paid);
+        setPendingBills(unpaidBills.length);
+      } catch (billError) {
+        console.log('Bills not loaded yet, using default count');
+      }
 
       // Generate weekly spending data for chart
       const weekData = generateWeeklyData(recentTransactions);
@@ -120,13 +130,28 @@ export default function HomeScreen() {
         {/* Header with Date */}
         <View style={styles.header}>
           <View style={styles.dateSection}>
-            <Text style={styles.appName}>MoneyAI</Text>
-            <Text style={styles.currentDate}>{getCurrentDate()}</Text>
+            <Text 
+              style={styles.appName}
+              accessibilityRole="header"
+              accessibilityLevel={1}
+            >
+              MoneyAI
+            </Text>
+            <Text 
+              style={styles.currentDate}
+              accessibilityLabel={`Today is ${getCurrentDate()}`}
+            >
+              {getCurrentDate()}
+            </Text>
           </View>
         </View>
 
         {/* Greeting Section */}
-        <View style={styles.greetingSection}>
+        <View 
+          style={styles.greetingSection}
+          accessibilityRole="summary"
+          accessibilityLabel={`${getGreeting()}, You have ${pendingBills} bills and ${savingsGoals} goals left today`}
+        >
           <Text style={styles.greetingText}>{getGreeting()},</Text>
           <Text style={styles.summaryText}>
             You have <Text style={styles.highlightNumber}>💳 {pendingBills} bills</Text>
@@ -139,21 +164,92 @@ export default function HomeScreen() {
 
         {/* Quick Stats Cards */}
         <View style={styles.statsContainer}>
-          <View style={styles.statCard}>
+          <View 
+            style={styles.statCard}
+            accessibilityRole="text"
+            accessibilityLabel={`Current Balance: ${formatCurrency(totalBalance)}`}
+          >
             <Text style={styles.statValue}>{formatCurrency(totalBalance)}</Text>
             <Text style={styles.statLabel}>Current Balance</Text>
           </View>
-          <View style={styles.statCard}>
+          <View 
+            style={styles.statCard}
+            accessibilityRole="text"
+            accessibilityLabel={`Spent Today: ${formatCurrency(todaySpent)}`}
+          >
             <Text style={styles.statValue}>{formatCurrency(todaySpent)}</Text>
             <Text style={styles.statLabel}>Spent Today</Text>
           </View>
         </View>
 
+        {/* Quick Access Section */}
+        <View style={styles.quickAccessSection}>
+          <Text style={styles.quickAccessTitle}>Quick Access</Text>
+          <View style={styles.quickAccessGrid}>
+            <Pressable 
+              style={styles.quickAccessCard}
+              onPress={() => router.push('/bills')}
+              accessibilityRole="button"
+              accessibilityLabel="Bills - Track upcoming payments and bills"
+              accessibilityHint="Navigate to bills tracker"
+            >
+              <View style={[styles.quickAccessIcon, { backgroundColor: '#FF9500' }]}>
+                <IconSymbol name="doc.text.fill" size={24} color="#fff" />
+              </View>
+              <Text style={styles.quickAccessLabel}>Bills</Text>
+              <Text style={styles.quickAccessSubtext}>{pendingBills} pending</Text>
+            </Pressable>
+
+            <Pressable 
+              style={styles.quickAccessCard}
+              onPress={() => router.push('/debts')}
+              accessibilityRole="button"
+              accessibilityLabel="Debts - Track money owed and IOUs"
+              accessibilityHint="Navigate to debt tracker"
+            >
+              <View style={[styles.quickAccessIcon, { backgroundColor: '#34C759' }]}>
+                <IconSymbol name="person.2.fill" size={24} color="#fff" />
+              </View>
+              <Text style={styles.quickAccessLabel}>Debts</Text>
+              <Text style={styles.quickAccessSubtext}>IOUs & loans</Text>
+            </Pressable>
+
+            <Pressable 
+              style={styles.quickAccessCard}
+              onPress={() => router.push('/subscriptions')}
+              accessibilityRole="button"
+              accessibilityLabel="Subscriptions - Manage recurring payments"
+              accessibilityHint="Navigate to subscription tracker"
+            >
+              <View style={[styles.quickAccessIcon, { backgroundColor: '#007AFF' }]}>
+                <IconSymbol name="repeat.circle.fill" size={24} color="#fff" />
+              </View>
+              <Text style={styles.quickAccessLabel}>Subs</Text>
+              <Text style={styles.quickAccessSubtext}>Auto-renewing</Text>
+            </Pressable>
+          </View>
+        </View>
+
         {/* Spending Chart */}
-        <View style={styles.chartSection}>
+        <View 
+          style={styles.chartSection}
+          accessibilityRole="summary"
+          accessibilityLabel="Weekly spending chart showing daily expenses for the past 7 days"
+        >
           <View style={styles.chartHeader}>
-            <Text style={styles.chartTitle}>Weekly Spending</Text>
-            <Text style={styles.chartSubtitle}>Tap any bar to see details</Text>
+            <Text 
+              style={styles.chartTitle}
+              accessibilityRole="header"
+              accessibilityLevel={2}
+            >
+              Weekly Spending
+            </Text>
+            <Text 
+              style={styles.chartSubtitle}
+              accessibilityHint="Interactive chart - tap any bar to see details for that day"
+            >
+              Tap any bar to see details
+            </Text>
           </View>
 
           <InteractiveChart
@@ -165,14 +261,24 @@ export default function HomeScreen() {
         {/* Summary Section */}
         <View style={styles.summarySection}>
           <View style={styles.summaryHeader}>
-            <Text style={styles.summaryTitle}>Summary</Text>
+            <Text 
+              style={styles.summaryTitle}
+              accessibilityRole="header"
+              accessibilityLevel={2}
+            >
+              Summary
+            </Text>
           </View>
 
           {/* Summary Cards Grid */}
           <View style={styles.summaryGrid}>
             {/* Top Row */}
             <View style={styles.summaryRow}>
-              <View style={styles.summaryCard}>
+              <View 
+                style={styles.summaryCard}
+                accessibilityRole="text"
+                accessibilityLabel="Total Spent: ₹12,450, average ₹2,100"
+              >
                 <Text style={styles.cardLabel}>Total Spent</Text>
                 <View style={styles.cardValueContainer}>
                   <IconSymbol name="arrow.up" size={16} color="#fff" />
@@ -181,7 +287,11 @@ export default function HomeScreen() {
                 <Text style={styles.cardSubtext}>₹2,100 avg</Text>
               </View>
 
-              <View style={[styles.summaryCard, styles.highlightCard]}>
+              <View 
+                style={[styles.summaryCard, styles.highlightCard]}
+                accessibilityRole="text"
+                accessibilityLabel="Monthly Budget: ₹25,000, ₹12,550 left"
+              >
                 <Text style={styles.cardLabelWhite}>Monthly Budget</Text>
                 <View style={styles.cardValueContainer}>
                   <IconSymbol name="arrow.up" size={16} color="#fff" />
@@ -193,7 +303,11 @@ export default function HomeScreen() {
 
             {/* Bottom Row */}
             <View style={styles.summaryRow}>
-              <View style={styles.summaryCard}>
+              <View 
+                style={styles.summaryCard}
+                accessibilityRole="text"
+                accessibilityLabel="Transactions: 47 total, 12 this week"
+              >
                 <Text style={styles.cardLabel}>Transactions</Text>
                 <View style={styles.cardValueContainer}>
                   <IconSymbol name="arrow.up" size={16} color="#fff" />
@@ -202,7 +316,11 @@ export default function HomeScreen() {
                 <Text style={styles.cardSubtext}>12 this week</Text>
               </View>
 
-              <View style={styles.summaryCard}>
+              <View 
+                style={styles.summaryCard}
+                accessibilityRole="text"
+                accessibilityLabel="Top Category: Food, ₹4,200 spent"
+              >
                 <Text style={styles.cardLabel}>Top Category</Text>
                 <View style={styles.cardValueContainer}>
                   <IconSymbol name="arrow.up" size={16} color="#fff" />
@@ -217,36 +335,63 @@ export default function HomeScreen() {
         {/* Recent Activity Preview */}
         <View style={styles.recentSection}>
           <View style={styles.sectionHeader}>
-            <Text style={styles.sectionTitle}>Recent Activity</Text>
-            <Pressable>
+            <Text 
+              style={styles.sectionTitle}
+              accessibilityRole="header"
+              accessibilityLevel={2}
+            >
+              Recent Activity
+            </Text>
+            <Pressable
+              accessibilityRole="button"
+              accessibilityLabel="See all transactions"
+              accessibilityHint="Navigate to full transaction list"
+            >
               <Text style={styles.seeAllText}>See all</Text>
             </Pressable>
           </View>
 
-          {transactions.slice(0, 3).map((transaction, index) => (
-            <View key={transaction.id} style={styles.activityItem}>
-              <View style={styles.activityIcon}>
-                <Text style={styles.activityEmoji}>
-                  {transaction.category === 'Food & Dining' ? '🍕' :
-                    transaction.category === 'Transportation' ? '🚗' :
-                      transaction.category === 'Shopping' ? '🛍️' : '💰'}
+          {transactions.slice(0, 3).map((transaction, index) => {
+            const formattedAmount = formatCurrency(Math.abs(transaction.amount));
+            const formattedDate = format(transaction.date, 'MMM dd');
+            const transactionType = transaction.type === 'income' ? 'Income' : 'Expense';
+            const accessibilityLabel = `${transactionType}: ${transaction.description}, ${formattedAmount}, ${transaction.category}, ${formattedDate}`;
+            
+            return (
+              <Pressable 
+                key={transaction.id} 
+                style={styles.activityItem}
+                accessibilityRole="button"
+                accessibilityLabel={accessibilityLabel}
+                accessibilityHint="Double tap to view transaction details"
+              >
+                <View 
+                  style={styles.activityIcon}
+                  accessibilityRole="image"
+                  accessibilityLabel={`${transaction.category} category icon`}
+                >
+                  <Text style={styles.activityEmoji}>
+                    {transaction.category === 'Food & Dining' ? '🍕' :
+                      transaction.category === 'Transportation' ? '🚗' :
+                        transaction.category === 'Shopping' ? '🛍️' : '💰'}
+                  </Text>
+                </View>
+                <View style={styles.activityContent}>
+                  <Text style={styles.activityTitle}>{transaction.description}</Text>
+                  <Text style={styles.activityDate}>
+                    {formattedDate} • {transaction.category}
+                  </Text>
+                </View>
+                <Text style={[
+                  styles.activityAmount,
+                  { color: transaction.type === 'income' ? '#34C759' : '#FF3B30' }
+                ]}>
+                  {transaction.type === 'income' ? '+' : '-'}
+                  {formattedAmount}
                 </Text>
-              </View>
-              <View style={styles.activityContent}>
-                <Text style={styles.activityTitle}>{transaction.description}</Text>
-                <Text style={styles.activityDate}>
-                  {format(transaction.date, 'MMM dd')} • {transaction.category}
-                </Text>
-              </View>
-              <Text style={[
-                styles.activityAmount,
-                { color: transaction.type === 'income' ? '#34C759' : '#FF3B30' }
-              ]}>
-                {transaction.type === 'income' ? '+' : '-'}
-                {formatCurrency(Math.abs(transaction.amount))}
-              </Text>
-            </View>
-          ))}
+              </Pressable>
+            );
+          })}
         </View>
 
         <View style={styles.bottomSpacer} />
@@ -305,6 +450,48 @@ const styles = StyleSheet.create({
   highlightNumber: {
     color: '#fff',
     fontWeight: '600',
+  },
+
+  // Quick Access
+  quickAccessSection: {
+    paddingHorizontal: 24,
+    marginBottom: 32,
+  },
+  quickAccessTitle: {
+    fontSize: 20,
+    fontWeight: '600',
+    color: '#fff',
+    marginBottom: 16,
+  },
+  quickAccessGrid: {
+    flexDirection: 'row',
+    gap: 12,
+  },
+  quickAccessCard: {
+    flex: 1,
+    backgroundColor: '#1C1C1E',
+    borderRadius: 16,
+    padding: 16,
+    alignItems: 'center',
+  },
+  quickAccessIcon: {
+    width: 48,
+    height: 48,
+    borderRadius: 24,
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginBottom: 12,
+  },
+  quickAccessLabel: {
+    fontSize: 14,
+    fontWeight: '600',
+    color: '#fff',
+    marginBottom: 4,
+  },
+  quickAccessSubtext: {
+    fontSize: 12,
+    color: '#8E8E93',
+    textAlign: 'center',
   },
 
   // Stats

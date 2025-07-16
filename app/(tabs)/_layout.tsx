@@ -4,20 +4,23 @@ import { Platform } from 'react-native';
 
 import { HapticTab } from '@/components/HapticTab';
 import { IconSymbol } from '@/components/ui/IconSymbol';
+import { useTheme } from '@/contexts/ThemeContext';
 
 export default function TabLayout() {
+  const { theme, isDark } = useTheme();
+  
   return (
     <Tabs
       screenOptions={{
-        tabBarActiveTintColor: '#fff',
-        tabBarInactiveTintColor: '#8E8E93',
+        tabBarActiveTintColor: theme.colors.primary[500],
+        tabBarInactiveTintColor: theme.colors.text.tertiary,
         headerShown: false,
         tabBarButton: HapticTab,
         tabBarStyle: {
           position: 'absolute',
-          backgroundColor: '#1C1C1E',
+          backgroundColor: '#1A1A1A', // Match app's main background
           borderTopWidth: 0.5,
-          borderTopColor: '#2C2C2E',
+          borderTopColor: '#2C2C2E', // Subtle border
           shadowColor: '#000',
           shadowOffset: { width: 0, height: -4 },
           shadowOpacity: 0.3,
@@ -31,6 +34,7 @@ export default function TabLayout() {
           fontSize: 12,
           fontWeight: '500',
           marginTop: 4,
+          color: theme.colors.text.secondary,
         },
         tabBarIconStyle: {
           marginTop: 4,
@@ -40,11 +44,12 @@ export default function TabLayout() {
         name="index"
         options={{
           title: 'Today',
+          tabBarAccessibilityLabel: 'Today tab',
           tabBarIcon: ({ color, focused }) => (
             <IconSymbol 
               size={24} 
               name={focused ? "house.fill" : "house"} 
-              color={focused ? '#fff' : '#8E8E93'} 
+              color={focused ? theme.colors.primary[500] : theme.colors.text.tertiary} 
             />
           ),
         }}
@@ -53,11 +58,12 @@ export default function TabLayout() {
         name="transactions"
         options={{
           title: 'Transactions',
+          tabBarAccessibilityLabel: 'Transactions tab',
           tabBarIcon: ({ color, focused }) => (
             <IconSymbol 
               size={24} 
               name={focused ? "list.bullet.rectangle.fill" : "list.bullet.rectangle"} 
-              color={focused ? '#fff' : '#8E8E93'} 
+              color={focused ? theme.colors.primary[500] : theme.colors.text.tertiary} 
             />
           ),
         }}
@@ -66,11 +72,12 @@ export default function TabLayout() {
         name="add"
         options={{
           title: 'AI Chat',
+          tabBarAccessibilityLabel: 'AI Chat tab',
           tabBarIcon: ({ color, focused }) => (
             <IconSymbol 
               size={28} 
               name="plus.circle.fill" 
-              color="#007AFF"
+              color={theme.colors.primary[500]}
             />
           ),
         }}
@@ -79,11 +86,12 @@ export default function TabLayout() {
         name="budgets"
         options={{
           title: 'Budgets',
+          tabBarAccessibilityLabel: 'Budgets tab',
           tabBarIcon: ({ color, focused }) => (
             <IconSymbol 
               size={24} 
               name={focused ? "chart.pie.fill" : "chart.pie"} 
-              color={focused ? '#fff' : '#8E8E93'} 
+              color={focused ? theme.colors.primary[500] : theme.colors.text.tertiary} 
             />
           ),
         }}
@@ -92,11 +100,12 @@ export default function TabLayout() {
         name="insights"
         options={{
           title: 'Insights',
+          tabBarAccessibilityLabel: 'Insights tab',
           tabBarIcon: ({ color, focused }) => (
             <IconSymbol 
               size={24} 
               name={focused ? "chart.bar.fill" : "chart.bar"} 
-              color={focused ? '#fff' : '#8E8E93'} 
+              color={focused ? theme.colors.primary[500] : theme.colors.text.tertiary} 
             />
           ),
         }}

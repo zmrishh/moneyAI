@@ -209,14 +209,15 @@ export default function SubscriptionTracker({
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#000',
+    backgroundColor: '#1A1A1A',
   },
   header: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
+    paddingTop: 60,
     paddingHorizontal: 24,
-    paddingVertical: 20,
+    paddingBottom: 24,
   },
   title: {
     fontSize: 24,

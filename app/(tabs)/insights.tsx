@@ -114,12 +114,27 @@ export default function InsightsScreen() {
       <ScrollView showsVerticalScrollIndicator={false}>
         {/* Header */}
         <View style={styles.header}>
-          <Text style={styles.title}>Your Money Insights</Text>
-          <Text style={styles.subtitle}>Simple insights about your spending</Text>
+          <Text 
+            style={styles.title}
+            accessibilityRole="header"
+            accessibilityLevel={1}
+          >
+            Your Money Insights
+          </Text>
+          <Text 
+            style={styles.subtitle}
+            accessibilityRole="text"
+          >
+            Simple insights about your spending
+          </Text>
         </View>
 
         {/* This Month Card */}
-        <View style={styles.mainCard}>
+        <View 
+          style={styles.mainCard}
+          accessibilityRole="summary"
+          accessibilityLabel={`This month's spending: ${formatCurrency(insights.thisMonth)}. ${trend.text}`}
+        >
           <Text style={styles.cardTitle}>This Month</Text>
           <Text style={styles.bigAmount}>{formatCurrency(insights.thisMonth)}</Text>
           <View style={styles.trendContainer}>
@@ -130,12 +145,20 @@ export default function InsightsScreen() {
 
         {/* Quick Stats */}
         <View style={styles.statsRow}>
-          <View style={styles.statCard}>
+          <View 
+            style={styles.statCard}
+            accessibilityRole="text"
+            accessibilityLabel={`Daily Average: ${formatCurrency(insights.avgDaily)}`}
+          >
             <Text style={styles.statEmoji}>📅</Text>
             <Text style={styles.statValue}>{formatCurrency(insights.avgDaily)}</Text>
             <Text style={styles.statLabel}>Daily Average</Text>
           </View>
-          <View style={styles.statCard}>
+          <View 
+            style={styles.statCard}
+            accessibilityRole="text"
+            accessibilityLabel={`Top category: ${insights.topCategory.name}, ${formatCurrency(insights.topCategory.amount)} spent`}
+          >
             <Text style={styles.statEmoji}>🏆</Text>
             <Text style={styles.statValue}>{formatCurrency(insights.topCategory.amount)}</Text>
             <Text style={styles.statLabel}>Top: {insights.topCategory.name}</Text>
@@ -143,10 +166,20 @@ export default function InsightsScreen() {
         </View>
 
         {/* Budget Advice */}
-        <View style={styles.adviceCard}>
+        <View 
+          style={styles.adviceCard}
+          accessibilityRole="alert"
+          accessibilityLabel={`Budget Advice: ${advice.text} You can spend ${formatCurrency(insights.canSpend)} per day for the next ${insights.daysLeft} days`}
+        >
           <View style={styles.adviceHeader}>
             <Text style={styles.adviceEmoji}>{advice.icon}</Text>
-            <Text style={styles.adviceTitle}>Budget Advice</Text>
+            <Text 
+              style={styles.adviceTitle}
+              accessibilityRole="header"
+              accessibilityLevel={3}
+            >
+              Budget Advice
+            </Text>
           </View>
           <Text style={[styles.adviceText, { color: advice.color }]}>{advice.text}</Text>
           <Text style={styles.adviceDetail}>
@@ -156,9 +189,20 @@ export default function InsightsScreen() {
 
         {/* Simple Actions */}
         <View style={styles.actionsContainer}>
-          <Text style={styles.actionsTitle}>Quick Actions</Text>
+          <Text 
+            style={styles.actionsTitle}
+            accessibilityRole="header"
+            accessibilityLevel={2}
+          >
+            Quick Actions
+          </Text>
           
-          <Pressable style={styles.actionButton}>
+          <Pressable 
+            style={styles.actionButton}
+            accessibilityRole="button"
+            accessibilityLabel="See where your money goes - Category breakdown"
+            accessibilityHint="View detailed spending breakdown by category"
+          >
             <Text style={styles.actionEmoji}>📊</Text>
             <View style={styles.actionContent}>
               <Text style={styles.actionTitle}>See where your money goes</Text>
@@ -167,7 +211,12 @@ export default function InsightsScreen() {
             <IconSymbol name="chevron.right" size={16} color="#8E8E93" />
           </Pressable>
 
-          <Pressable style={styles.actionButton}>
+          <Pressable 
+            style={styles.actionButton}
+            accessibilityRole="button"
+            accessibilityLabel="Set a monthly budget - Stay on track"
+            accessibilityHint="Create and manage your monthly spending budget"
+          >
             <Text style={styles.actionEmoji}>🎯</Text>
             <View style={styles.actionContent}>
               <Text style={styles.actionTitle}>Set a monthly budget</Text>
@@ -176,7 +225,12 @@ export default function InsightsScreen() {
             <IconSymbol name="chevron.right" size={16} color="#8E8E93" />
           </Pressable>
 
-          <Pressable style={styles.actionButton}>
+          <Pressable 
+            style={styles.actionButton}
+            accessibilityRole="button"
+            accessibilityLabel="Get saving tips - Personalized advice"
+            accessibilityHint="View personalized tips to save money based on your spending patterns"
+          >
             <Text style={styles.actionEmoji}>💡</Text>
             <View style={styles.actionContent}>
               <Text style={styles.actionTitle}>Get saving tips</Text>

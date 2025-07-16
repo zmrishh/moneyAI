@@ -4,7 +4,7 @@
  */
 
 import React, { ReactNode } from 'react';
-import { View, ViewStyle, StyleSheet } from 'react-native';
+import { View, ViewStyle } from 'react-native';
 import { useResponsive, useResponsiveSpacing, useResponsiveValue } from '@/hooks/useResponsive';
 
 interface GridProps {
@@ -155,7 +155,3 @@ export function Flex({
 
   return <View style={flexStyle}>{children}</View>;
 }
-
-const styles = StyleSheet.create({
-  // Add any additional styles here if needed
-});

@@ -7,6 +7,7 @@ import {
   Animated,
 } from 'react-native';
 import { format, subDays, startOfDay } from 'date-fns';
+import { createChartDataA11yProps } from '@/utils/accessibility';
 
 interface ChartDataPoint {
   day: string;
@@ -68,11 +69,14 @@ export default function InteractiveChart({ data, onBarPress }: InteractiveChartP
           const isSelected = selectedIndex === index;
           const isToday = format(dataPoint.date, 'yyyy-MM-dd') === format(new Date(), 'yyyy-MM-dd');
           
+          const a11yProps = createChartDataA11yProps(dataPoint.day, dataPoint.amount, dataPoint.transactions);
+          
           return (
             <Pressable
               key={index}
               style={styles.barContainer}
               onPress={() => handleBarPress(dataPoint, index)}
+              {...a11yProps}
             >
               <View style={styles.barWrapper}>
                 {/* Amount label on hover/selection */}
@@ -99,7 +103,7 @@ export default function InteractiveChart({ data, onBarPress }: InteractiveChartP
                       backgroundColor: isSelected 
                         ? '#007AFF' 
                         : isToday 
-                        ? '#30D158' 
+                        ? '#48484A' 
                         : '#2C2C2E',
                       transform: [{
                         scaleY: isSelected ? 1.05 : 1,
