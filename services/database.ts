@@ -6,7 +6,7 @@ class DatabaseService {
 
   async initialize() {
     if (this.db) return;
-    
+
     this.db = await SQLite.openDatabaseAsync('moneyai.db');
     await this.createTables();
     await this.insertDefaultCategories();
@@ -392,14 +392,14 @@ class DatabaseService {
 
     // Delete milestones first (foreign key constraint)
     await this.db.runAsync('DELETE FROM milestones WHERE goal_id = ?', [goalId]);
-    
+
     // Delete goal
     await this.db.runAsync('DELETE FROM goals WHERE id = ?', [goalId]);
   }
 
   async deleteTransaction(transactionId: string): Promise<void> {
     if (!this.db) throw new Error('Database not initialized');
-    
+
     await this.db.runAsync('DELETE FROM transactions WHERE id = ?', [transactionId]);
   }
 
