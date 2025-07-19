@@ -185,7 +185,11 @@ export default function HomeScreen() {
         {/* Quick Access Section */}
         <View style={styles.quickAccessSection}>
           <Text style={styles.quickAccessTitle}>Quick Access</Text>
-          <View style={styles.quickAccessGrid}>
+          <ScrollView 
+            horizontal 
+            showsHorizontalScrollIndicator={false}
+            contentContainerStyle={styles.quickAccessGrid}
+          >
             <Pressable 
               style={styles.quickAccessCard}
               onPress={() => router.push('/bills')}
@@ -227,7 +231,23 @@ export default function HomeScreen() {
               <Text style={styles.quickAccessLabel}>Subs</Text>
               <Text style={styles.quickAccessSubtext}>Auto-renewing</Text>
             </Pressable>
-          </View>
+
+            <Pressable 
+              style={styles.quickAccessCard}
+              onPress={() => router.push('/start-aa-journey')}
+              accessibilityRole="button"
+              accessibilityLabel="Account Aggregator - Secure financial data sharing"
+              accessibilityHint="Start Account Aggregator journey"
+            >
+              <View style={[styles.quickAccessIcon, { backgroundColor: '#32D74B' }]}>
+                <IconSymbol name="link.circle.fill" size={24} color="#fff" />
+              </View>
+              <Text style={styles.quickAccessLabel}>AA</Text>
+              <Text style={styles.quickAccessSubtext}>Link accounts</Text>
+            </Pressable>
+
+
+          </ScrollView>
         </View>
 
         {/* Spending Chart */}
@@ -466,9 +486,10 @@ const styles = StyleSheet.create({
   quickAccessGrid: {
     flexDirection: 'row',
     gap: 12,
+    paddingRight: 24,
   },
   quickAccessCard: {
-    flex: 1,
+    width: 100,
     backgroundColor: '#1C1C1E',
     borderRadius: 16,
     padding: 16,
