@@ -27,6 +27,33 @@ export default function OnboardingScreen() {
     new Animated.Value(0),
   ]);
 
+  const startAnimations = () => {
+    // Main content animation
+    Animated.parallel([
+      Animated.timing(fadeAnim, {
+        toValue: 1,
+        duration: 800,
+        useNativeDriver: true,
+      }),
+      Animated.timing(slideAnim, {
+        toValue: 0,
+        duration: 600,
+        delay: 200,
+        useNativeDriver: true,
+      }),
+    ]).start();
+
+    // Staggered icon animations
+    iconAnimations.forEach((anim, index) => {
+      Animated.timing(anim, {
+        toValue: 1,
+        duration: 600,
+        delay: 400 + index * 100,
+        useNativeDriver: true,
+      }).start();
+    });
+  };
+
   useEffect(() => {
     // Show splash for 2 seconds, then show onboarding
     const splashTimer = setTimeout(() => {
@@ -72,33 +99,6 @@ export default function OnboardingScreen() {
       </View>
     );
   }
-
-  const startAnimations = () => {
-    // Main content animation
-    Animated.parallel([
-      Animated.timing(fadeAnim, {
-        toValue: 1,
-        duration: 800,
-        useNativeDriver: true,
-      }),
-      Animated.timing(slideAnim, {
-        toValue: 0,
-        duration: 600,
-        delay: 200,
-        useNativeDriver: true,
-      }),
-    ]).start();
-
-    // Staggered icon animations
-    iconAnimations.forEach((anim, index) => {
-      Animated.timing(anim, {
-        toValue: 1,
-        duration: 600,
-        delay: 400 + index * 100,
-        useNativeDriver: true,
-      }).start();
-    });
-  };
 
   const handleGetStarted = async () => {
     try {

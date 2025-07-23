@@ -10,7 +10,9 @@
     "web": "expo start --web",
     "lint": "expo lint",
     "test": "jest",
-    "test:watch": "jest --watch"
+    "test:watch": "jest --watch",
+    "reset-onboarding": "node reset-onboarding.js",
+    "test-onboarding": "node test-onboarding-flow.js"
   },
   "dependencies": {
     "@expo/vector-icons": "^14.1.0",
