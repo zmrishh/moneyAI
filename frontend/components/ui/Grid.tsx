@@ -3,9 +3,9 @@
  * Provides flexible grid layout with responsive breakpoints
  */
 
+import { useResponsive, useResponsiveSpacing, useResponsiveValue } from '@/frontend/hooks/useResponsive';
 import React, { ReactNode } from 'react';
 import { View, ViewStyle } from 'react-native';
-import { useResponsive, useResponsiveSpacing, useResponsiveValue } from '@/hooks/useResponsive';
 
 interface GridProps {
   children: ReactNode;

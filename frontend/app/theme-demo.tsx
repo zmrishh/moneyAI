@@ -3,20 +3,19 @@
  * Demonstrates the comprehensive theme system and responsive design
  */
 
-import React from 'react';
-import { Stack } from 'expo-router';
-import { 
-  ThemedScrollView, 
-  ThemedView, 
-  ThemedText, 
-  ThemedButton, 
-  ThemedCard,
-  ThemedTextInput 
+import { Container, Flex, Grid } from '@/components/ui/Grid';
+import {
+    ThemedButton,
+    ThemedCard,
+    ThemedScrollView,
+    ThemedText,
+    ThemedTextInput,
+    ThemedView
 } from '@/components/ui/ThemedComponents';
 import { ThemeToggle, ThemeToggleIcon } from '@/components/ui/ThemeToggle';
-import { Grid, Container, Flex } from '@/components/ui/Grid';
 import { useTheme } from '@/contexts/ThemeContext';
-import { useResponsive } from '@/hooks/useResponsive';
+import { useResponsive } from '@/frontend/hooks/useResponsive';
+import { Stack } from 'expo-router';
 
 export default function ThemeDemoScreen() {
   const { theme, themeMode, isDark } = useTheme();

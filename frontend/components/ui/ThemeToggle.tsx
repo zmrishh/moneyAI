@@ -3,11 +3,10 @@
  * Allows users to switch between light, dark, and auto themes
  */
 
-import React from 'react';
-import { View, TouchableOpacity, StyleSheet } from 'react-native';
 import { useTheme } from '@/contexts/ThemeContext';
+import { useResponsiveSpacing } from '@/frontend/hooks/useResponsive';
+import { TouchableOpacity, View } from 'react-native';
 import { ThemedText } from './ThemedComponents';
-import { useResponsiveSpacing } from '@/hooks/useResponsive';
 
 interface ThemeToggleProps {
   showLabels?: boolean;

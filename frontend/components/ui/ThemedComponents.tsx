@@ -3,25 +3,25 @@
  * Uses the comprehensive theme system with responsive design
  */
 
-import React, { ReactNode } from 'react';
-import { 
-  Text, 
-  View, 
-  TouchableOpacity, 
-  TextInput,
-  ScrollView,
-  SafeAreaView,
-  type TextProps, 
-  type ViewProps,
-  type TouchableOpacityProps,
-  type TextInputProps,
-  type ScrollViewProps,
-  type SafeAreaViewProps,
-  ViewStyle,
-  TextStyle,
+import { useThemeColors } from '@/contexts/ThemeContext';
+import { useResponsiveSpacing, useResponsiveTypography } from '@/frontend/hooks/useResponsive';
+import { ReactNode } from 'react';
+import {
+    SafeAreaView,
+    type SafeAreaViewProps,
+    ScrollView,
+    type ScrollViewProps,
+    Text,
+    TextInput,
+    type TextInputProps,
+    type TextProps,
+    TextStyle,
+    TouchableOpacity,
+    type TouchableOpacityProps,
+    View,
+    type ViewProps,
+    ViewStyle,
 } from 'react-native';
-import { useTheme, useThemeColors, useThemeTypography } from '@/contexts/ThemeContext';
-import { useResponsiveTypography, useResponsiveSpacing } from '@/hooks/useResponsive';
 
 // Enhanced ThemedText with responsive typography
 export interface ThemedTextProps extends TextProps {

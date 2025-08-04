@@ -2,15 +2,13 @@
  * Tests for Theme System and Responsive Design
  */
 
-import React from 'react';
-import { render, fireEvent, waitFor } from '@testing-library/react-native';
-import { Dimensions } from 'react-native';
-import AsyncStorage from '@react-native-async-storage/async-storage';
 import { ThemeProvider, useTheme } from '@/contexts/ThemeContext';
-import { useResponsive, useResponsiveValue } from '@/hooks/useResponsive';
-import { ThemedText, ThemedView, ThemedButton } from '../ThemedComponents';
+import { useResponsive, useResponsiveValue } from '@/frontend/hooks/useResponsive';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import { fireEvent, render, waitFor } from '@testing-library/react-native';
+import { Container, Flex, Grid } from '../Grid';
+import { ThemedButton, ThemedText, ThemedView } from '../ThemedComponents';
 import { ThemeToggle, ThemeToggleIcon } from '../ThemeToggle';
-import { Grid, Container, Flex } from '../Grid';
 
 // Mocks are already set up in jest-setup.js
 
