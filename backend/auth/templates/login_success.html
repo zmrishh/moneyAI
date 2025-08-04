@@ -1,0 +1,104 @@
+{% extends "base.html" %}
+
+{% block title %}Login Successful - Agent-Cofounder{% endblock %}
+
+{% block content %}
+<div class="success-container">
+    <div class="success-icon">🎉</div>
+    <h1 class="success-title">Login Successful!</h1>
+    <p class="success-message">
+        Welcome to Agent-Cofounder, <strong>{{ user_name }}</strong>! 
+        Your authentication was successful.
+    </p>
+    
+    <div class="success-details">
+        <div class="detail-item">
+            <span class="detail-icon">📧</span>
+            <span class="detail-text">{{ user_email }}</span>
+        </div>
+        {% if login_method == 'google' %}
+        <div class="detail-item">
+            <span class="detail-icon">🔐</span>
+            <span class="detail-text">Authenticated with Google</span>
+        </div>
+        {% endif %}
+    </div>
+    
+    <div class="success-actions">
+        <a href="/auth/profile" class="btn btn-primary">
+            Go to Profile
+        </a>
+        <a href="/auth/logout" class="btn btn-secondary" style="margin-left: 1rem;">
+            Logout
+        </a>
+    </div>
+    
+    <div class="success-note">
+        <p>🎉 You have successfully authenticated with Agent-Cofounder!</p>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+// Function to close the window/tab
+function closeWindow() {
+    // Try to close the window (works if opened via window.open)
+    window.close();
+    
+    // If window.close() doesn't work, show alternative
+    setTimeout(() => {
+        if (!window.closed) {
+            alert('Authentication successful! You can now close this tab.');
+        }
+    }, 100);
+}
+
+// Add welcome animation
+document.addEventListener('DOMContentLoaded', () => {
+    const container = document.querySelector('.success-container');
+    container.style.opacity = '0';
+    container.style.transform = 'translateY(20px)';
+    
+    setTimeout(() => {
+        container.style.transition = 'all 0.6s ease';
+        container.style.opacity = '1';
+        container.style.transform = 'translateY(0)';
+    }, 100);
+    
+    // Add success animation to icon
+    setTimeout(() => {
+        const icon = document.querySelector('.success-icon');
+        if (icon) {
+            icon.style.animation = 'bounce 0.6s ease-in-out';
+        }
+    }, 300);
+    
+    // Optional: Auto-redirect to profile after 10 seconds (but let user click button first)
+    setTimeout(() => {
+        const button = document.querySelector('a[href="/auth/profile"]');
+        if (button) {
+            button.style.animation = 'pulse 1s infinite';
+            button.style.boxShadow = '0 0 10px rgba(79, 70, 229, 0.5)';
+        }
+    }, 5000);
+});
+
+// Add CSS animations
+const style = document.createElement('style');
+style.textContent = `
+    @keyframes pulse {
+        0% { transform: scale(1); }
+        50% { transform: scale(1.05); }
+        100% { transform: scale(1); }
+    }
+    
+    @keyframes bounce {
+        0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+        40% { transform: translateY(-10px); }
+        60% { transform: translateY(-5px); }
+    }
+`;
+document.head.appendChild(style);
+</script>
+{% endblock %}

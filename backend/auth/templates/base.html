@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Agent-Cofounder Authentication{% endblock %}</title>
+    <link rel="stylesheet" href="/auth/static/css/auth.css">
+    <meta name="description" content="Secure authentication for Agent-Cofounder AI startup platform">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+</head>
+<body>
+    <div class="auth-container">
+        <div class="auth-card">
+            {% block content %}{% endblock %}
+        </div>
+    </div>
+    
+    <script src="/auth/static/js/auth.js"></script>
+    {% block scripts %}{% endblock %}
+</body>
+</html>

@@ -1,0 +1,35 @@
+{
+  
+  "sess_f37465e3b24dab09bf09d53ca703c08f": {
+    "session_id": "sess_f37465e3b24dab09bf09d53ca703c08f",
+    "user_id": "user-1cdd6f269a49476a",
+    "user_email": "kenesislabs@gmail.com",
+    "user_name": "Kenesis",
+    "company_name": null,
+    "startup_stage": null,
+    "avatar_url": "https://lh3.googleusercontent.com/a/ACg8ocLPU9vEjfmWFmEGUW9GqDXc_Yp8Baz4NEPaV4uiGTycHJeUEl8=s96-c",
+    "created_at": "2025-07-12T22:45:55.346444",
+    "expires_at": "2025-07-13T22:45:55.346444",
+    "last_accessed": "2025-07-12T22:45:55.346444",
+    "ip_address": "127.0.0.1",
+    "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36",
+    "active": true,
+    "login_method": "google"
+  },
+  "sess_347827aad8f527c2d8a608164c79711e": {
+    "session_id": "sess_347827aad8f527c2d8a608164c79711e",
+    "user_id": "user-413b014b3ad741bc",
+    "user_email": "danieldaskomarapu@gmail.com",
+    "user_name": "Daniel",
+    "company_name": null,
+    "startup_stage": null,
+    "avatar_url": "https://lh3.googleusercontent.com/a/ACg8ocKa0-NeF2vDjEo4VBNUdUnLHWD9AlAVvHf3ULRsLA6feNS0ZA=s96-c",
+    "created_at": "2025-07-12T22:50:26.950191",
+    "expires_at": "2025-07-13T22:50:26.950191",
+    "last_accessed": "2025-07-12T22:50:26.950191",
+    "ip_address": "127.0.0.1",
+    "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36",
+    "active": true,
+    "login_method": "google"
+  }
+}

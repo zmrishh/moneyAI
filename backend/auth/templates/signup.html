@@ -1,0 +1,169 @@
+{% extends "base.html" %}
+
+{% block title %}Sign Up - Agent-Cofounder{% endblock %}
+
+{% block content %}
+<div class="auth-header">
+    <div class="auth-logo">🤖 Agent-Cofounder</div>
+    <h1 class="auth-title">Join Agent-Cofounder</h1>
+    <p class="auth-subtitle">Get your AI co-founder team in 2 minutes</p>
+</div>
+
+<form class="auth-form" data-form="signup">
+    <div class="form-group">
+        <label for="full_name" class="form-label">Full Name</label>
+        <input 
+            type="text" 
+            id="full_name" 
+            name="full_name" 
+            class="form-input" 
+            placeholder="Enter your full name"
+            required
+        >
+    </div>
+
+    <div class="form-group">
+        <label for="email" class="form-label">Email Address</label>
+        <input 
+            type="email" 
+            id="email" 
+            name="email" 
+            class="form-input" 
+            placeholder="Enter your email"
+            required
+        >
+    </div>
+
+    <div class="form-group">
+        <label for="password" class="form-label">Password</label>
+        <input 
+            type="password" 
+            id="password" 
+            name="password" 
+            class="form-input" 
+            placeholder="Create a secure password"
+            required
+        >
+        <div class="password-requirements">
+            <p>Password must contain:</p>
+            <ul>
+                <li class="length-req requirement-unmet">At least 12 characters</li>
+                <li class="lowercase-req requirement-unmet">At least one lowercase letter</li>
+                <li class="uppercase-req requirement-unmet">At least one uppercase letter</li>
+                <li class="number-req requirement-unmet">At least one number</li>
+                <li class="special-req requirement-unmet">At least one special character (!@#$%^&*)</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="company_name" class="form-label">Company Name (Optional)</label>
+        <input 
+            type="text" 
+            id="company_name" 
+            name="company_name" 
+            class="form-input" 
+            placeholder="Your startup or company name"
+        >
+    </div>
+
+    <div class="form-group">
+        <label for="startup_stage" class="form-label">Startup Stage</label>
+        <select id="startup_stage" name="startup_stage" class="form-select">
+            <option value="">Select your current stage</option>
+            <option value="idea">💡 Idea Stage</option>
+            <option value="validation">🔍 Validation Stage</option>
+            <option value="mvp">⚡ MVP Development</option>
+            <option value="early_traction">📈 Early Traction</option>
+            <option value="growth">🚀 Growth Stage</option>
+            <option value="scaling">📊 Scaling</option>
+            <option value="mature">🏢 Mature Business</option>
+        </select>
+    </div>
+
+    <div class="checkbox-group">
+        <input type="checkbox" id="terms" name="terms" class="checkbox" required>
+        <label for="terms" class="checkbox-label">
+            I agree to the <a href="/terms" class="auth-link">Terms of Service</a> and 
+            <a href="/privacy" class="auth-link">Privacy Policy</a>
+        </label>
+    </div>
+
+    <div class="checkbox-group">
+        <input type="checkbox" id="newsletter" name="newsletter" class="checkbox">
+        <label for="newsletter" class="checkbox-label">
+            Send me startup tips and product updates
+        </label>
+    </div>
+
+    <button type="submit" class="btn btn-primary">
+        Create My Account
+    </button>
+</form>
+
+<div class="oauth-section">
+    <div class="divider">
+        <span>or sign up with</span>
+    </div>
+    
+    <a href="/auth/google" class="btn btn-google">
+        <svg width="18" height="18" viewBox="0 0 18 18" class="google-icon">
+            <path fill="#4285f4" d="m18 9.25c0-.69-.06-1.36-.17-2h-8.83v3.78h5.05c-.22 1.17-.88 2.16-1.86 2.83v2.33h3.01c1.76-1.62 2.8-4.01 2.8-6.94z"/>
+            <path fill="#34a853" d="m9 18c2.43 0 4.47-.8 5.96-2.18l-3.01-2.33c-.8.54-1.84.86-2.95.86-2.27 0-4.19-1.53-4.88-3.59h-3.11v2.41c1.5 2.98 4.58 5.83 8.99 5.83z"/>
+            <path fill="#fbbc04" d="m4.12 10.76c-.17-.54-.27-1.11-.27-1.76s.1-1.22.27-1.76v-2.41h-3.11c-.57 1.08-.89 2.3-.89 3.59s.32 2.51.89 3.59l3.11-2.25z"/>
+            <path fill="#ea4335" d="m9 3.58c1.28 0 2.43.44 3.33 1.3l2.5-2.5c-1.51-1.41-3.48-2.27-5.83-2.27-4.41 0-7.49 2.85-8.99 5.83l3.11 2.41c.69-2.06 2.61-3.59 4.88-3.59z"/>
+        </svg>
+        Sign up with Google
+    </a>
+</div>
+
+<div class="auth-footer">
+    <p>
+        Already have an account? 
+        <a href="/auth/login" class="auth-link">Sign in here</a>
+    </p>
+</div>
+
+<div class="auth-preview">
+    <h3>🎯 What You'll Get</h3>
+    <p>
+        ✅ AI Market Analysis Agent<br>
+        ✅ Product Strategy Expert<br>
+        ✅ Financial Planning Assistant<br>
+        ✅ Content Generation Tools<br>
+        ✅ Investor Database Access
+    </p>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+// Auto-focus name field
+document.addEventListener('DOMContentLoaded', () => {
+    document.getElementById('full_name').focus();
+});
+
+// Show benefits based on startup stage
+document.getElementById('startup_stage').addEventListener('change', function() {
+    const stage = this.value;
+    const preview = document.querySelector('.auth-preview p');
+    
+    const stageBenefits = {
+        'idea': '💡 Idea validation, market research, competitive analysis',
+        'validation': '🔍 Customer interviews, market sizing, MVP planning',
+        'mvp': '⚡ Product roadmap, feature prioritization, user testing',
+        'early_traction': '📈 Growth strategies, metrics tracking, funding prep',
+        'growth': '🚀 Scaling tactics, team building, investor outreach',
+        'scaling': '📊 Operations optimization, advanced analytics, partnerships',
+        'mature': '🏢 Innovation strategies, market expansion, exit planning'
+    };
+    
+    if (stage && stageBenefits[stage]) {
+        preview.innerHTML = `
+            <strong>Perfect for ${stage} stage:</strong><br>
+            ${stageBenefits[stage]}
+        `;
+    }
+});
+</script>
+{% endblock %}

@@ -1,0 +1,264 @@
+{% extends "base.html" %}
+
+{% block title %}Profile - Agent-Cofounder{% endblock %}
+
+{% block content %}
+<div class="profile-container">
+    <div class="profile-header">
+        <div class="profile-info">
+            <div class="profile-avatar">
+                {% if current_user.avatar_url %}
+                    <img src="{{ current_user.avatar_url }}" alt="{{ current_user.full_name }}" class="avatar-image" 
+                         onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <span class="avatar-icon" style="display: none;">👤</span>
+                {% else %}
+                    <span class="avatar-icon">👤</span>
+                {% endif %}
+            </div>
+            <div class="profile-details">
+                <h1 class="profile-name">{{ current_user.full_name }}</h1>
+                <p class="profile-email">{{ current_user.email }}</p>
+                {% if current_user.company_name %}
+                <p class="profile-company">{{ current_user.company_name }}</p>
+                {% endif %}
+            </div>
+        </div>
+        
+        <div class="profile-actions">
+            <button class="btn btn-primary" onclick="toggleEditMode()">Edit Profile</button>
+            <a href="/auth/logout" class="btn btn-secondary">Logout</a>
+        </div>
+    </div>
+
+    <div class="profile-content">
+        <!-- View Mode -->
+        <div id="view-mode" class="profile-section">
+            <h2>Account Information</h2>
+            
+            <div class="info-grid">
+                <div class="info-item">
+                    <label class="info-label">Full Name</label>
+                    <p class="info-value">{{ current_user.full_name }}</p>
+                </div>
+                
+                <div class="info-item">
+                    <label class="info-label">Email Address</label>
+                    <p class="info-value">{{ current_user.email }}</p>
+                </div>
+                
+                <div class="info-item">
+                    <label class="info-label">Company Name</label>
+                    <p class="info-value">{{ current_user.company_name or 'Not specified' }}</p>
+                </div>
+                
+                <div class="info-item">
+                    <label class="info-label">Startup Stage</label>
+                    <p class="info-value">
+                        {% if current_user.startup_stage %}
+                            {% set stage_icons = {
+                                'idea': '💡 Idea Stage',
+                                'validation': '🔍 Validation Stage', 
+                                'mvp': '⚡ MVP Development',
+                                'early_traction': '📈 Early Traction',
+                                'growth': '🚀 Growth Stage',
+                                'scaling': '📊 Scaling',
+                                'mature': '🏢 Mature Business'
+                            } %}
+                            {{ stage_icons.get(current_user.startup_stage, current_user.startup_stage) }}
+                        {% else %}
+                            Not specified
+                        {% endif %}
+                    </p>
+                </div>
+                
+                <div class="info-item">
+                    <label class="info-label">Member Since</label>
+                    <p class="info-value">{{ current_user.created_at.strftime('%B %d, %Y') }}</p>
+                </div>
+                
+                <div class="info-item">
+                    <label class="info-label">Last Sign In</label>
+                    <p class="info-value">
+                        {% if current_user.last_sign_in_at %}
+                            {{ current_user.last_sign_in_at.strftime('%B %d, %Y at %I:%M %p') }}
+                        {% else %}
+                            Never
+                        {% endif %}
+                    </p>
+                </div>
+                
+                {% if current_user.avatar_url %}
+                <div class="info-item">
+                    <label class="info-label">Profile Picture</label>
+                    <p class="info-value">
+                        <img src="{{ current_user.avatar_url }}" alt="Profile Picture" class="profile-picture-preview"
+                             onerror="this.style.display='none'; this.nextElementSibling.textContent='Profile photo not available';">
+                        <span class="profile-picture-source">From Google Account</span>
+                    </p>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+
+        <!-- Edit Mode -->
+        <div id="edit-mode" class="profile-section" style="display: none;">
+            <h2>Edit Profile</h2>
+            
+            <form id="profile-form" class="profile-form">
+                <div class="form-group">
+                    <label for="full_name" class="form-label">Full Name</label>
+                    <input 
+                        type="text" 
+                        id="full_name" 
+                        name="full_name" 
+                        class="form-input"
+                        value="{{ current_user.full_name }}"
+                        required
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="company_name" class="form-label">Company Name</label>
+                    <input 
+                        type="text" 
+                        id="company_name" 
+                        name="company_name" 
+                        class="form-input"
+                        value="{{ current_user.company_name or '' }}"
+                        placeholder="Your startup or company name"
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="startup_stage" class="form-label">Startup Stage</label>
+                    <select id="startup_stage" name="startup_stage" class="form-select">
+                        <option value="">Select your current stage</option>
+                        <option value="idea" {{ 'selected' if current_user.startup_stage == 'idea' }}>💡 Idea Stage</option>
+                        <option value="validation" {{ 'selected' if current_user.startup_stage == 'validation' }}>🔍 Validation Stage</option>
+                        <option value="mvp" {{ 'selected' if current_user.startup_stage == 'mvp' }}>⚡ MVP Development</option>
+                        <option value="early_traction" {{ 'selected' if current_user.startup_stage == 'early_traction' }}>📈 Early Traction</option>
+                        <option value="growth" {{ 'selected' if current_user.startup_stage == 'growth' }}>🚀 Growth Stage</option>
+                        <option value="scaling" {{ 'selected' if current_user.startup_stage == 'scaling' }}>📊 Scaling</option>
+                        <option value="mature" {{ 'selected' if current_user.startup_stage == 'mature' }}>🏢 Mature Business</option>
+                    </select>
+                </div>
+
+                <div class="form-actions">
+                    <button type="submit" class="btn btn-primary">Save Changes</button>
+                    <button type="button" class="btn btn-secondary" onclick="toggleEditMode()">Cancel</button>
+                </div>
+            </form>
+        </div>
+
+        <!-- Account Actions -->
+        <div class="profile-section">
+            <h2>Account Actions</h2>
+            
+            <div class="action-grid">
+                <div class="action-item">
+                    <h3>🔑 Reset Password</h3>
+                    <p>Send a password reset link to your email to change your password</p>
+                    <a href="/auth/reset-password" class="btn btn-outline">Reset Password</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+function toggleEditMode() {
+    const viewMode = document.getElementById('view-mode');
+    const editMode = document.getElementById('edit-mode');
+    const editButton = document.querySelector('.profile-actions .btn-primary');
+    
+    if (viewMode.style.display === 'none') {
+        // Switch to view mode
+        viewMode.style.display = 'block';
+        editMode.style.display = 'none';
+        editButton.textContent = 'Edit Profile';
+    } else {
+        // Switch to edit mode
+        viewMode.style.display = 'none';
+        editMode.style.display = 'block';
+        editButton.textContent = 'View Profile';
+    }
+}
+
+document.getElementById('profile-form').addEventListener('submit', async function(e) {
+    e.preventDefault();
+    
+    const formData = new FormData(this);
+    const data = Object.fromEntries(formData.entries());
+    
+    try {
+        const response = await fetch('/auth/profile', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(data)
+        });
+        
+        const result = await response.json();
+        
+        if (result.success) {
+            // Show success message
+            showMessage('Profile updated successfully!', 'success');
+            
+            // Refresh the page to show updated data
+            setTimeout(() => {
+                window.location.reload();
+            }, 1000);
+        } else {
+            showMessage(result.message || 'Failed to update profile', 'error');
+        }
+    } catch (error) {
+        showMessage('An error occurred while updating profile', 'error');
+        console.error('Profile update error:', error);
+    }
+});
+
+function showMessage(message, type) {
+    // Create and show a temporary message
+    const messageDiv = document.createElement('div');
+    messageDiv.className = `message message-${type}`;
+    messageDiv.textContent = message;
+    messageDiv.style.cssText = `
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        padding: 1rem 1.5rem;
+        border-radius: 4px;
+        color: white;
+        font-weight: 500;
+        z-index: 1000;
+        background: ${type === 'success' ? '#10b981' : '#ef4444'};
+        animation: slideIn 0.3s ease;
+    `;
+    
+    document.body.appendChild(messageDiv);
+    
+    setTimeout(() => {
+        messageDiv.remove();
+    }, 3000);
+}
+
+// Add slideIn animation
+const style = document.createElement('style');
+style.textContent = `
+    @keyframes slideIn {
+        from {
+            transform: translateX(100%);
+            opacity: 0;
+        }
+        to {
+            transform: translateX(0);
+            opacity: 1;
+        }
+    }
+`;
+document.head.appendChild(style);
+</script>
+{% endblock %}
