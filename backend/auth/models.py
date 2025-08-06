@@ -11,27 +11,15 @@ import re
 class UserSignupRequest(BaseModel):
     """User signup request model"""
     email: EmailStr = Field(..., description="User email address")
-    password: str = Field(..., min_length=12, description="User password (min 12 characters)")
+    password: str = Field(..., min_length=6, description="User password (min 6 characters)")
     full_name: str = Field(..., min_length=2, max_length=100, description="User full name")
     company_name: Optional[str] = Field(None, max_length=100, description="Company name (optional)")
     startup_stage: Optional[str] = Field(None, description="Startup stage (idea, mvp, growth, etc.)")
     
     @validator('password')
     def validate_password(cls, v):
-        if len(v) < 12:
-            raise ValueError('Password must be at least 12 characters long')
-        if not re.search(r'[a-z]', v):
-            raise ValueError('Password must contain at least one lowercase letter')
-        if not re.search(r'[A-Z]', v):
-            raise ValueError('Password must contain at least one uppercase letter')
-        if not re.search(r'[0-9]', v):
-            raise ValueError('Password must contain at least one number')
-        if not re.search(r'[!@#$%^&*(),.?":{}|<>]', v):
-            raise ValueError('Password must contain at least one special character (!@#$%^&*(),.?":{}|<>)')
-        # Check for common weak passwords
-        weak_patterns = ['password', '123456', 'qwerty', 'abc123', 'admin']
-        if any(pattern in v.lower() for pattern in weak_patterns):
-            raise ValueError('Password contains common weak patterns')
+        if len(v) < 6:
+            raise ValueError('Password must be at least 6 characters long')
         return v
     
     @validator('full_name')

@@ -23,7 +23,7 @@ class ProductionSessionStore:
                  cleanup_interval: timedelta = timedelta(hours=1)):
         self.session_duration = session_duration
         self.cleanup_interval = cleanup_interval
-        self.store_file = Path("auth/sessions.json")
+        self.store_file = Path(__file__).parent / "sessions.json"
         self.store_file.parent.mkdir(exist_ok=True)
         
         # Thread safety

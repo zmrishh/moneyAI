@@ -60,23 +60,30 @@ def create_auth_app(app: Flask = None) -> Flask:
     print(f"🔧 Session cookie secure: {app.config['SESSION_COOKIE_SECURE']}")
     print(f"🔧 Secret key length: {len(app.config['SECRET_KEY'])} characters")
     
-    # Security headers
+    # Security headers with CORS for mobile apps
     @app.after_request
     def add_security_headers(response):
+        # CORS headers for mobile apps - Allow all origins in development
+        if not is_production:
+            response.headers['Access-Control-Allow-Origin'] = '*'
+        else:
+            # In production, be more restrictive
+            origin = request.headers.get('Origin')
+            allowed_origins = ['exp://', 'http://localhost', 'https://localhost']
+            if origin and any(origin.startswith(allowed) for allowed in allowed_origins):
+                response.headers['Access-Control-Allow-Origin'] = origin
+        
+        response.headers['Access-Control-Allow-Methods'] = 'GET, POST, PUT, DELETE, OPTIONS'
+        response.headers['Access-Control-Allow-Headers'] = 'Content-Type, Authorization, X-Requested-With'
+        response.headers['Access-Control-Max-Age'] = '3600'
+        
         response.headers['X-Content-Type-Options'] = 'nosniff'
-        response.headers['X-Frame-Options'] = 'DENY'
         response.headers['X-XSS-Protection'] = '1; mode=block'
         response.headers['Referrer-Policy'] = 'strict-origin-when-cross-origin'
         
         # Only add HSTS in production
         if is_production:
             response.headers['Strict-Transport-Security'] = 'max-age=31536000; includeSubDomains'
-        
-        # Ensure session cookies work properly in development
-        if not is_production:
-            response.headers['Cache-Control'] = 'no-cache, no-store, must-revalidate'
-            response.headers['Pragma'] = 'no-cache'
-            response.headers['Expires'] = '0'
         
         return response
     
@@ -87,8 +94,14 @@ def create_auth_app(app: Flask = None) -> Flask:
         'is_authenticated': getattr(g, 'is_authenticated', False)
     })
     
+    # Add OPTIONS method support for CORS preflight
+    @app.route('/auth/<path:path>', methods=['OPTIONS'])
+    def handle_preflight(path):
+        """Handle CORS preflight requests"""
+        return '', 200
+    
     # Routes
-    @app.route('/auth/signup', methods=['GET', 'POST'])
+    @app.route('/auth/signup', methods=['GET', 'POST', 'OPTIONS'])
     @anonymous_required
     @rate_limit_check()
     @async_route
@@ -107,19 +120,21 @@ def create_auth_app(app: Flask = None) -> Flask:
             # Process signup
             response = await auth_service.signup(signup_request)
             
+            if response.success and response.access_token:
+                # Auto-login after successful signup for both JSON and form requests
+                request_info = {
+                    'login_method': 'signup',
+                    'ip_address': request.remote_addr,
+                    'user_agent': request.user_agent.string
+                }
+                login_user_session(response.user, remember=False, request_info=request_info)
+            
             if request.is_json:
                 return jsonify(response.model_dump())
             
             if response.success:
                 flash(response.message, 'success')
                 if response.access_token:
-                    # Auto-login after successful signup
-                    request_info = {
-                        'login_method': 'signup',
-                        'ip_address': request.remote_addr,
-                        'user_agent': request.user_agent.string
-                    }
-                    login_user_session(response.user, remember=False, request_info=request_info)
                     # Store signup success data
                     session['login_success'] = {
                         'user_name': response.user.full_name or 'User',
@@ -161,13 +176,19 @@ def create_auth_app(app: Flask = None) -> Flask:
             flash(generic_msg, 'error')
             return render_template('signup.html')
     
-    @app.route('/auth/login', methods=['GET', 'POST'])
+    @app.route('/auth/login', methods=['GET', 'POST', 'OPTIONS'])
     @anonymous_required
     @rate_limit_check()
     @async_route
     async def login():
         """User login page and handler"""
         if request.method == 'GET':
+            # Check if this is a password reset confirmation
+            if request.args.get('type') == 'recovery':
+                flash('Password reset successful! You can now login with your new password.', 'success')
+            elif request.args.get('message'):
+                flash('Password reset successful! Please login with your new password.', 'success')
+            
             return render_template('login.html')
         
         try:
@@ -180,11 +201,8 @@ def create_auth_app(app: Flask = None) -> Flask:
             # Process login
             response = await auth_service.login(login_request)
             
-            if request.is_json:
-                return jsonify(response.model_dump())
-            
             if response.success:
-                # Create session with request info
+                # Create session with request info for both JSON and form requests
                 remember = data.get('remember', False)
                 request_info = {
                     'login_method': 'email',
@@ -192,6 +210,11 @@ def create_auth_app(app: Flask = None) -> Flask:
                     'user_agent': request.user_agent.string
                 }
                 login_user_session(response.user, remember=remember, request_info=request_info)
+            
+            if request.is_json:
+                return jsonify(response.model_dump())
+            
+            if response.success:
                 
                 # Store login success data in session for success page
                 session['login_success'] = {
@@ -227,7 +250,7 @@ def create_auth_app(app: Flask = None) -> Flask:
             flash(generic_msg, 'error')
             return render_template('login.html')
     
-    @app.route('/auth/logout', methods=['GET', 'POST'])
+    @app.route('/auth/logout', methods=['GET', 'POST', 'OPTIONS'])
     @async_route
     async def logout():
         """User logout handler"""
@@ -451,7 +474,7 @@ def create_auth_app(app: Flask = None) -> Flask:
                              user_email=success_data.get('user_email', ''),
                              login_method=success_data.get('login_method', 'email'))
     
-    @app.route('/auth/reset-password', methods=['GET', 'POST'])
+    @app.route('/auth/reset-password', methods=['GET', 'POST', 'OPTIONS'])
     @anonymous_required
     @rate_limit_check()
     @async_route
@@ -489,7 +512,129 @@ def create_auth_app(app: Flask = None) -> Flask:
             flash(error_msg, 'error')
             return render_template('reset_password.html')
     
-    @app.route('/auth/profile', methods=['GET', 'POST'])
+    @app.route('/auth/reset-confirm', methods=['GET', 'POST'])
+    def reset_confirm():
+        """Handle password reset confirmation from Supabase"""
+        if request.method == 'GET':
+            # This route handles the redirect from Supabase after password reset
+            access_token = request.args.get('access_token')
+            refresh_token = request.args.get('refresh_token')
+            token_type = request.args.get('token_type')
+            
+            print(f"Reset confirm - Access token: {bool(access_token)}")
+            print(f"Reset confirm - Query params: {dict(request.args)}")
+            
+            if access_token:
+                # Store tokens in session for password update
+                session['reset_access_token'] = access_token
+                session['reset_refresh_token'] = refresh_token
+                return render_template('set_password.html')
+            else:
+                flash('Password reset link may have expired. Please request a new one.', 'error')
+                return redirect('/auth/login')
+        
+        elif request.method == 'POST':
+            # Handle password update
+            try:
+                # Handle both JSON and form data
+                if request.is_json:
+                    data = request.get_json()
+                else:
+                    data = request.form.to_dict()
+                
+                password = data.get('password')
+                confirm_password = data.get('confirm_password')
+                
+                if not password or not confirm_password:
+                    error_msg = 'Please fill in all fields.'
+                    if request.is_json:
+                        return jsonify({'success': False, 'message': error_msg})
+                    else:
+                        flash(error_msg, 'error')
+                        return render_template('set_password.html')
+                
+                if password != confirm_password:
+                    error_msg = 'Passwords do not match.'
+                    if request.is_json:
+                        return jsonify({'success': False, 'message': error_msg})
+                    else:
+                        flash(error_msg, 'error')
+                        return render_template('set_password.html')
+                
+                if len(password) < 6:
+                    error_msg = 'Password must be at least 6 characters long.'
+                    if request.is_json:
+                        return jsonify({'success': False, 'message': error_msg})
+                    else:
+                        flash(error_msg, 'error')
+                        return render_template('set_password.html')
+                
+                # Get reset token from session
+                access_token = session.get('reset_access_token')
+                if not access_token:
+                    error_msg = 'Reset session expired. Please request a new password reset.'
+                    if request.is_json:
+                        return jsonify({'success': False, 'message': error_msg})
+                    else:
+                        flash(error_msg, 'error')
+                        return redirect('/auth/reset-password')
+                
+                # Update password using Supabase
+                try:
+                    print(f"🔑 Attempting password update with token: {access_token[:20]}...")
+                    
+                    # Set the session with the recovery token
+                    auth_service.supabase.auth.set_session(access_token, session.get('reset_refresh_token', ''))
+                    
+                    # Update the password
+                    response = auth_service.supabase.auth.update_user({
+                        "password": password
+                    })
+                    
+                    print(f"🔑 Update response: {response}")
+                    print(f"🔑 Response user: {response.user if hasattr(response, 'user') else 'No user attr'}")
+                    
+                    if response and hasattr(response, 'user') and response.user:
+                        print(f"✅ Password updated successfully for user: {response.user.email}")
+                        
+                        # Clear reset tokens
+                        session.pop('reset_access_token', None)
+                        session.pop('reset_refresh_token', None)
+                        
+                        if request.is_json:
+                            return jsonify({'success': True, 'message': 'Password updated successfully!'})
+                        else:
+                            flash('Password updated successfully! Please login with your new password.', 'success')
+                            return redirect('/auth/login')
+                    else:
+                        print(f"❌ Password update failed - no user in response")
+                        if request.is_json:
+                            return jsonify({'success': False, 'message': 'Failed to update password. Invalid response from server.'})
+                        else:
+                            flash('Failed to update password. Invalid response from server.', 'error')
+                            return render_template('set_password.html')
+                        
+                except Exception as e:
+                    print(f"❌ Password update error: {e}")
+                    print(f"❌ Error type: {type(e)}")
+                    import traceback
+                    print(f"❌ Full traceback: {traceback.format_exc()}")
+                    
+                    if request.is_json:
+                        return jsonify({'success': False, 'message': f'Failed to update password: {str(e)}'})
+                    else:
+                        flash(f'Failed to update password: {str(e)}', 'error')
+                        return render_template('set_password.html')
+                
+            except Exception as e:
+                print(f"Password reset error: {e}")
+                if request.is_json:
+                    return jsonify({'success': False, 'message': 'An error occurred. Please try again.'})
+                else:
+                    flash('An error occurred. Please try again.', 'error')
+                    return render_template('set_password.html')
+    
+    @app.route('/auth/profile', methods=['GET', 'POST', 'OPTIONS'])
     @login_required
     def profile():
         """User profile page and update handler"""
@@ -555,7 +700,7 @@ def create_auth_app(app: Flask = None) -> Flask:
             flash(generic_msg, 'error')
             return redirect('/auth/profile')
     
-    @app.route('/auth/validate', methods=['GET'])
+    @app.route('/auth/validate', methods=['GET', 'OPTIONS'])
     @async_route
     async def validate_token():
         """Validate current authentication token"""
@@ -573,6 +718,50 @@ def create_auth_app(app: Flask = None) -> Flask:
                 'message': 'Token is invalid or expired'
             }), 401
     
+    @app.route('/auth/refresh', methods=['POST', 'OPTIONS'])
+    @async_route
+    async def refresh_token():
+        """Refresh access token using refresh token"""
+        try:
+            data = request.get_json()
+            if not data or 'refresh_token' not in data:
+                return jsonify({
+                    'success': False,
+                    'message': 'Refresh token is required'
+                }), 400
+            
+            refresh_token = data['refresh_token']
+            
+            # Use Supabase to refresh the token
+            try:
+                response = auth_service.supabase.auth.refresh_session(refresh_token)
+                
+                if response.session and response.user:
+                    return jsonify({
+                        'success': True,
+                        'message': 'Token refreshed successfully',
+                        'access_token': response.session.access_token,
+                        'refresh_token': response.session.refresh_token,
+                        'expires_in': 3600  # 1 hour
+                    })
+                else:
+                    return jsonify({
+                        'success': False,
+                        'message': 'Invalid refresh token'
+                    }), 401
+                    
+            except Exception as e:
+                return jsonify({
+                    'success': False,
+                    'message': 'Failed to refresh token'
+                }), 401
+                
+        except Exception as e:
+            return jsonify({
+                'success': False,
+                'message': 'Invalid request'
+            }), 400
+    
     @app.route('/auth/debug', methods=['POST'])
     def debug_signup():
         """Debug endpoint to check signup data"""
@@ -589,6 +778,7 @@ def create_auth_app(app: Flask = None) -> Flask:
         except Exception as e:
             print(f"Debug error: {e}")
             return jsonify({'success': False, 'error': str(e)})
+    
     
     @app.route('/auth/debug-session', methods=['GET'])
     def debug_session():
@@ -620,6 +810,45 @@ def create_auth_app(app: Flask = None) -> Flask:
             'host': request.host,
             'url': request.url
         })
+    
+    @app.route('/auth/debug-token', methods=['POST'])
+    @async_route
+    async def debug_get_token():
+        """Debug endpoint to get a valid Supabase access token for testing"""
+        try:
+            data = request.get_json()
+            if not data or 'email' not in data or 'password' not in data:
+                return jsonify({
+                    'success': False,
+                    'message': 'Email and password required'
+                }), 400
+            
+            # Direct Supabase authentication to get real tokens
+            auth_response = auth_service.supabase.auth.sign_in_with_password({
+                "email": data['email'],
+                "password": data['password']
+            })
+            
+            if auth_response.user and auth_response.session:
+                return jsonify({
+                    'success': True,
+                    'access_token': auth_response.session.access_token,
+                    'refresh_token': auth_response.session.refresh_token,
+                    'user_id': auth_response.user.id,
+                    'email': auth_response.user.email,
+                    'expires_in': 3600
+                })
+            else:
+                return jsonify({
+                    'success': False,
+                    'message': 'Authentication failed'
+                }), 401
+                
+        except Exception as e:
+            return jsonify({
+                'success': False,
+                'message': f'Debug token error: {str(e)}'
+            }), 500
 
     @app.route('/auth/health', methods=['GET'])
     def health_check():

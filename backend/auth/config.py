@@ -8,8 +8,8 @@ from typing import Optional
 from supabase import create_client, Client
 from dotenv import load_dotenv
 
-# Load environment variables
-load_dotenv()
+# Load environment variables from parent directory
+load_dotenv(dotenv_path=os.path.join(os.path.dirname(os.path.dirname(__file__)), '.env'))
 
 class SupabaseConfig:
     """Supabase configuration and client management"""
@@ -52,8 +52,8 @@ class SupabaseConfig:
     def health_check(self) -> dict:
         """Check if Supabase connection is working"""
         try:
-            # Simple test query to check connection
-            result = self.client.table('auth.users').select('id').limit(1).execute()
+            # Simple test query to check connection - test auth instead of table query
+            self.client.auth.get_user()
             return {
                 "status": "healthy",
                 "url": self.supabase_url,

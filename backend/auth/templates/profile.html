@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 
-{% block title %}Profile - Agent-Cofounder{% endblock %}
+{% block title %}Profile{% endblock %}
 
 {% block content %}
 <div class="profile-container">
@@ -55,16 +55,16 @@
                     <label class="info-label">Startup Stage</label>
                     <p class="info-value">
                         {% if current_user.startup_stage %}
-                            {% set stage_icons = {
-                                'idea': '💡 Idea Stage',
-                                'validation': '🔍 Validation Stage', 
-                                'mvp': '⚡ MVP Development',
-                                'early_traction': '📈 Early Traction',
-                                'growth': '🚀 Growth Stage',
-                                'scaling': '📊 Scaling',
-                                'mature': '🏢 Mature Business'
+                            {% set stage_names = {
+                                'idea': 'Idea Stage',
+                                'validation': 'Validation Stage', 
+                                'mvp': 'MVP Development',
+                                'early_traction': 'Early Traction',
+                                'growth': 'Growth Stage',
+                                'scaling': 'Scaling',
+                                'mature': 'Mature Business'
                             } %}
-                            {{ stage_icons.get(current_user.startup_stage, current_user.startup_stage) }}
+                            {{ stage_names.get(current_user.startup_stage, current_user.startup_stage) }}
                         {% else %}
                             Not specified
                         {% endif %}
@@ -133,13 +133,13 @@
                     <label for="startup_stage" class="form-label">Startup Stage</label>
                     <select id="startup_stage" name="startup_stage" class="form-select">
                         <option value="">Select your current stage</option>
-                        <option value="idea" {{ 'selected' if current_user.startup_stage == 'idea' }}>💡 Idea Stage</option>
-                        <option value="validation" {{ 'selected' if current_user.startup_stage == 'validation' }}>🔍 Validation Stage</option>
-                        <option value="mvp" {{ 'selected' if current_user.startup_stage == 'mvp' }}>⚡ MVP Development</option>
-                        <option value="early_traction" {{ 'selected' if current_user.startup_stage == 'early_traction' }}>📈 Early Traction</option>
-                        <option value="growth" {{ 'selected' if current_user.startup_stage == 'growth' }}>🚀 Growth Stage</option>
-                        <option value="scaling" {{ 'selected' if current_user.startup_stage == 'scaling' }}>📊 Scaling</option>
-                        <option value="mature" {{ 'selected' if current_user.startup_stage == 'mature' }}>🏢 Mature Business</option>
+                        <option value="idea" {{ 'selected' if current_user.startup_stage == 'idea' }}>Idea Stage</option>
+                        <option value="validation" {{ 'selected' if current_user.startup_stage == 'validation' }}>Validation Stage</option>
+                        <option value="mvp" {{ 'selected' if current_user.startup_stage == 'mvp' }}>MVP Development</option>
+                        <option value="early_traction" {{ 'selected' if current_user.startup_stage == 'early_traction' }}>Early Traction</option>
+                        <option value="growth" {{ 'selected' if current_user.startup_stage == 'growth' }}>Growth Stage</option>
+                        <option value="scaling" {{ 'selected' if current_user.startup_stage == 'scaling' }}>Scaling</option>
+                        <option value="mature" {{ 'selected' if current_user.startup_stage == 'mature' }}>Mature Business</option>
                     </select>
                 </div>
 
@@ -156,7 +156,7 @@
             
             <div class="action-grid">
                 <div class="action-item">
-                    <h3>🔑 Reset Password</h3>
+                    <h3>Reset Password</h3>
                     <p>Send a password reset link to your email to change your password</p>
                     <a href="/auth/reset-password" class="btn btn-outline">Reset Password</a>
                 </div>

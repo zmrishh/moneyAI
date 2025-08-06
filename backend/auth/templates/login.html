@@ -1,12 +1,10 @@
 {% extends "base.html" %}
 
-{% block title %}Login - Agent-Cofounder{% endblock %}
+{% block title %}Login{% endblock %}
 
 {% block content %}
 <div class="auth-header">
-    <div class="auth-logo">🤖 Agent-Cofounder</div>
-    <h1 class="auth-title">Welcome Back</h1>
-    <p class="auth-subtitle">Sign in to access Agent-Cofounder</p>
+    <h1 class="auth-title">Login</h1>
 </div>
 
 <form class="auth-form" data-form="login">
@@ -14,7 +12,7 @@
         <label for="email" class="form-label">Email Address</label>
         <input 
             type="email" 
-            id="email" 
+            id="email"             
             name="email" 
             class="form-input" 
             placeholder="Enter your email"
@@ -67,13 +65,8 @@
     
     <p>
         Don't have an account? 
-        <a href="/auth/signup" class="auth-link">Sign up for free</a>
+        <a href="/auth/signup" class="auth-link">Sign up</a>
     </p>
-</div>
-
-<div class="auth-preview">
-    <h3>🚀 Your AI Co-founder Awaits</h3>
-    <p>Access your personalized startup guidance, content generation, and investor outreach tools</p>
 </div>
 {% endblock %}
 
@@ -81,13 +74,25 @@
 <script>
 // Auto-focus email field
 document.addEventListener('DOMContentLoaded', () => {
+    // Check for password reset tokens in URL hash
+    const hash = window.location.hash;
+    if (hash.includes('access_token=') && hash.includes('type=recovery')) {
+        // Extract tokens from hash
+        const params = new URLSearchParams(hash.substring(1));
+        const accessToken = params.get('access_token');
+        const refreshToken = params.get('refresh_token');
+        const tokenType = params.get('token_type');
+        
+        if (accessToken) {
+            // Redirect to reset-confirm with tokens as query parameters
+            const redirectUrl = `/auth/reset-confirm?access_token=${accessToken}&refresh_token=${refreshToken}&token_type=${tokenType}&type=recovery`;
+            window.location.replace(redirectUrl);
+            return;
+        }
+    }
+    
     document.getElementById('email').focus();
 });
 
-// Handle demo login (if needed)
-function demoLogin() {
-    document.getElementById('email').value = 'demo@agentcofounder.com';
-    document.getElementById('password').value = 'demo123';
-}
 </script>
 {% endblock %}

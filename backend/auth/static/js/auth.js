@@ -190,12 +190,7 @@ class AuthManager {
         if (formType === 'signup') {
             // Convert checkbox values to booleans
             data.terms = data.terms === 'on' || data.terms === true;
-            data.newsletter = data.newsletter === 'on' || data.newsletter === true;
             data.remember = data.remember === 'on' || data.remember === true;
-            
-            // Remove empty optional fields
-            if (!data.company_name) delete data.company_name;
-            if (!data.startup_stage) delete data.startup_stage;
         }
         
         if (formType === 'login') {
@@ -214,6 +209,9 @@ class AuthManager {
                 break;
             case 'reset':
                 endpoint = '/auth/reset-password';
+                break;
+            case 'set-password':
+                endpoint = '/auth/reset-confirm';
                 break;
             case 'update-password':
                 endpoint = '/auth/update-password';
@@ -242,12 +240,17 @@ class AuthManager {
                     this.storeTokens(response.access_token, response.refresh_token);
                 }
                 
-                // Redirect to dashboard after successful login/signup
+                // Redirect to login success page after successful login/signup
                 setTimeout(() => {
-                    window.location.href = '/dashboard';
+                    window.location.href = '/auth/login-success';
                 }, 1500);
             } else if (formType === 'reset') {
                 // Stay on page, show success message
+            } else if (formType === 'set-password') {
+                // Redirect to login after password reset
+                setTimeout(() => {
+                    window.location.href = '/auth/login';
+                }, 1500);
             } else if (formType === 'update-password') {
                 // Redirect to login
                 setTimeout(() => {

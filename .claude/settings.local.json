@@ -6,7 +6,8 @@
       "Bash(npm run lint)",
       "Bash(npx expo lint:*)",
       "Bash(npm cache clean:*)",
-      "Bash(rm:*)"
+      "Bash(rm:*)",
+      "Bash(curl:*)"
     ],
     "deny": []
   }

@@ -46,9 +46,7 @@ class AuthenticationService:
                 "password": clean_data["password"],
                 "options": {
                     "data": {
-                        "full_name": clean_data["full_name"],
-                        "company_name": clean_data.get("company_name"),
-                        "startup_stage": clean_data.get("startup_stage")
+                        "full_name": clean_data["full_name"]
                     }
                 }
             })
@@ -63,8 +61,6 @@ class AuthenticationService:
                     "supabase_id": auth_response.user.id,  # Store Supabase ID for reference
                     "email": auth_response.user.email,
                     "full_name": clean_data["full_name"],
-                    "company_name": clean_data.get("company_name"),
-                    "startup_stage": clean_data.get("startup_stage"),
                     "created_at": datetime.utcnow().isoformat(),
                     "last_sign_in_at": datetime.utcnow().isoformat()
                 }
@@ -79,7 +75,7 @@ class AuthenticationService:
                 
                 # Create session
                 session_id = self._generate_session_id()
-                session_data = self._create_session_data(auth_response.user, session_id, clean_data)
+                session_data = self._create_session_data(auth_response.user, session_id, {"full_name": clean_data["full_name"]})
                 
                 # Safely parse datetime fields
                 try:
@@ -96,8 +92,8 @@ class AuthenticationService:
                     id=custom_user_id,  # Use our custom user ID
                     email=auth_response.user.email,
                     full_name=clean_data["full_name"],
-                    company_name=clean_data.get("company_name"),
-                    startup_stage=clean_data.get("startup_stage"),
+                    company_name=None,
+                    startup_stage=None,
                     avatar_url=None,  # No avatar for email signup
                     created_at=created_at,
                     last_sign_in_at=datetime.utcnow(),
@@ -492,29 +488,34 @@ class AuthenticationService:
         Get current user from access token
         """
         try:
-            # Set the session
-            self.supabase.auth.set_session(access_token, "")
+            # Get user directly with access token
+            user_response = self.supabase.auth.get_user(access_token)
             
-            # Get user
-            user = self.supabase.auth.get_user()
-            
-            if user.user:
-                # Get profile data
-                profile_response = self.supabase.table("user_profiles").select("*").eq("id", user.user.id).execute()
+            if user_response and user_response.user:
+                user = user_response.user
                 
+                # Get profile data - try to find by custom user_id first, then by supabase_id
                 profile_data = {}
-                if profile_response.data:
-                    profile_data = profile_response.data[0]
+                try:
+                    profile_response = self.supabase.table("user_profiles").select("*").eq("supabase_id", user.id).execute()
+                    if profile_response.data:
+                        profile_data = profile_response.data[0]
+                except Exception:
+                    pass  # Table may not exist or no profile found
+                
+                # Use custom user ID if available, otherwise generate one
+                custom_user_id = profile_data.get("id") or self._generate_user_id()
                 
                 return UserResponse(
-                    id=user.user.id,
-                    email=user.user.email,
-                    full_name=profile_data.get("full_name", ""),
+                    id=custom_user_id,
+                    email=user.email,
+                    full_name=profile_data.get("full_name", user.user_metadata.get("full_name", "") if user.user_metadata else ""),
                     company_name=profile_data.get("company_name"),
                     startup_stage=profile_data.get("startup_stage"),
-                    created_at=datetime.fromisoformat(user.user.created_at.replace('Z', '+00:00')),
-                    last_sign_in_at=datetime.fromisoformat(profile_data.get("last_sign_in_at", user.user.created_at).replace('Z', '+00:00')),
-                    email_confirmed_at=datetime.fromisoformat(user.user.email_confirmed_at.replace('Z', '+00:00')) if user.user.email_confirmed_at else None
+                    avatar_url=profile_data.get("avatar_url"),
+                    created_at=datetime.fromisoformat(user.created_at.replace('Z', '+00:00')),
+                    last_sign_in_at=datetime.fromisoformat(profile_data.get("last_sign_in_at", user.created_at).replace('Z', '+00:00')),
+                    email_confirmed_at=datetime.fromisoformat(user.email_confirmed_at.replace('Z', '+00:00')) if user.email_confirmed_at else None
                 )
             
             return None

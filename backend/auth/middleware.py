@@ -68,20 +68,51 @@ class AuthMiddleware:
             '/auth/google',
             '/auth/callback',
             '/auth/debug',
+            '/auth/debug-token',  # Add debug token endpoint
             '/auth/test',
             '/auth/health',
-            '/auth/static/',  # Fix: Add auth prefix
+            '/auth/refresh',  # Add refresh endpoint
+            '/auth/static/',
             '/static/',
             '/favicon.ico'
         ]
         
         # Don't skip auth middleware for login-success and profile pages
+        # But add debug-session to skip list for easier debugging
+        skip_paths.append('/auth/debug-session')
+        skip_paths.append('/auth/check-session')
         return any(request.path.startswith(path) for path in skip_paths)
     
     def _get_current_user(self) -> Optional[UserResponse]:
-        """Get current user from production session store"""
+        """Get current user from session store or Bearer token"""
         
-        # Get session ID from Flask session
+        print(f"🔍 _get_current_user called for path: {request.path}")
+        
+        # First, try Bearer token authentication
+        auth_header = request.headers.get('Authorization')
+        print(f"🔍 Authorization header: {auth_header}")
+        
+        if auth_header and auth_header.startswith('Bearer '):
+            access_token = auth_header.split(' ')[1]
+            print(f"🔍 Bearer token found: {access_token[:20]}..., validating...")
+            
+            try:
+                # Use auth service to validate token and get user
+                import asyncio
+                loop = asyncio.new_event_loop()
+                asyncio.set_event_loop(loop)
+                user = loop.run_until_complete(auth_service.get_current_user(access_token))
+                loop.close()
+                
+                if user:
+                    print(f"✅ Bearer token valid for user: {user.email}")
+                    return user
+                else:
+                    print(f"❌ Bearer token invalid")
+            except Exception as e:
+                print(f"❌ Bearer token validation error: {e}")
+        
+        # Fallback to session-based authentication
         session_id = session.get('session_id')
         
         print(f"🔍 Session check - Session ID: {session_id} | Flask Session Keys: {list(session.keys())}")
