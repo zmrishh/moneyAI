@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   StyleSheet,
   View,
@@ -15,60 +15,94 @@ import {
 } from 'react-native';
 import Svg, { Circle } from 'react-native-svg';
 import { IconSymbol } from '@/components/ui/IconSymbol';
+import { apiService } from '@/services/api';
+import { authService } from '@/services/auth';
+import { router } from 'expo-router';
 
 const { height: screenHeight } = Dimensions.get('window');
 
 export default function BudgetsScreen() {
   // Dynamic budget state
-  const [budgetCategories, setBudgetCategories] = useState([
-    { 
-      name: 'Food', 
-      budget: 500, 
-      spent: 11, 
-      icon: '🍔', 
-      color: '#FF6B35',
-      percentSpent: 2,
-      remaining: 489,
-      daysLeft: 4
-    },
-    { 
-      name: 'Groceries', 
-      budget: 320, 
-      spent: 115, 
-      icon: '🛒', 
-      color: '#C77DFF',
-      percentSpent: 36,
-      remaining: 320,
-      daysLeft: 4
-    },
-    { 
-      name: 'Subscriptions', 
-      budget: 140, 
-      spent: 10, 
-      icon: '🔄', 
-      color: '#FF69B4',
-      percentSpent: 7,
-      remaining: 140,
-      daysLeft: 4
-    },
-  ]);
+  const [budgetCategories, setBudgetCategories] = useState([]);
+  const [loading, setLoading] = useState(true);
   
   // Budget creation state
   const [showAddBudgetModal, setShowAddBudgetModal] = useState(false);
   const [formData, setFormData] = useState({
     name: '',
     amount: '',
-    currency: 'USD',
-    category: 'Food',
+    currency: 'INR',
+    category: 'Food & Dining',
     period: 'monthly',
     color: '#FF6B35',
-    icon: '🍔',
+    icon: '🍽️',
   });
   
   // Animation for sliding drawer
   const slideAnim = useState(new Animated.Value(screenHeight))[0];
   const [drawerHeight, setDrawerHeight] = useState(screenHeight * 0.6);
   
+  // Load budget data on component mount
+  useEffect(() => {
+    loadBudgetData();
+  }, []);
+
+  const loadBudgetData = async () => {
+    try {
+      setLoading(true);
+      
+      // Check authentication
+      if (!authService.isAuthenticated()) {
+        console.log('User not authenticated, redirecting to walkthrough');
+        router.replace('/walkthrough');
+        return;
+      }
+
+      // Load budgets from backend
+      const budgets = await apiService.getBudgets();
+      
+      // Transform backend budget format to match component interface
+      const mappedBudgets = budgets.map((budget: any) => {
+        const categoryInfo = getCategoryInfo(budget.category_name || budget.name);
+        return {
+          id: budget.id,
+          name: budget.category_name || budget.name || 'Other',
+          budget: budget.amount,
+          spent: budget.spent_amount || 0,
+          icon: categoryInfo.icon,
+          color: categoryInfo.color,
+          percentSpent: budget.percentage_spent || 0,
+          remaining: budget.remaining_amount || budget.amount,
+          daysLeft: budget.days_remaining || 0,
+          period: budget.period
+        };
+      });
+      
+      setBudgetCategories(mappedBudgets);
+    } catch (error) {
+      console.error('Error loading budget data:', error);
+      setBudgetCategories([]);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const getCategoryInfo = (categoryName: string) => {
+    const categoryOptions = {
+      'Food & Dining': { icon: '🍽️', color: '#FF6B35' },
+      'Food': { icon: '🍔', color: '#FF6B35' },
+      'Groceries': { icon: '🛒', color: '#C77DFF' },
+      'Transportation': { icon: '🚗', color: '#4ECDC4' },
+      'Entertainment': { icon: '🎬', color: '#45B7D1' },
+      'Shopping': { icon: '🛍️', color: '#96CEB4' },
+      'Bills & Utilities': { icon: '⚡', color: '#FFEAA7' },
+      'Healthcare': { icon: '🏥', color: '#DDA0DD' },
+      'Subscriptions': { icon: '🔄', color: '#FF69B4' },
+      'Other': { icon: '💰', color: '#A0A0A0' },
+    };
+    return categoryOptions[categoryName] || categoryOptions['Other'];
+  };
+
   // Pan responder for pull-to-resize
   const panResponder = PanResponder.create({
     onStartShouldSetPanResponder: () => true,
@@ -147,7 +181,7 @@ export default function BudgetsScreen() {
     setDrawerHeight(screenHeight * 0.6);
   };
 
-  const handleSubmitBudget = () => {
+  const handleSubmitBudget = async () => {
     if (!formData.name.trim() || !formData.amount.trim()) {
       Alert.alert('Error', 'Please fill in budget name and amount');
       return;
@@ -159,46 +193,73 @@ export default function BudgetsScreen() {
       return;
     }
 
-    // Create budget object
-    const newBudget = {
-      name: formData.name.trim(),
-      budget: amount,
-      spent: 0,
-      icon: formData.icon,
-      color: formData.color,
-      percentSpent: 0,
-      remaining: amount,
-      daysLeft: 30, // Default to 30 days
-      period: formData.period,
-    };
+    try {
+      // Create budget via API
+      const budgetData = {
+        name: formData.name.trim(),
+        amount: amount,
+        period: formData.period,
+        category_name: formData.category,
+        start_date: new Date().toISOString().split('T')[0],
+        end_date: getEndDateForPeriod(formData.period)
+      };
 
-    // Add the new budget to the existing budgets list
-    setBudgetCategories([...budgetCategories, newBudget]);
+      await apiService.createBudget(budgetData);
+      
+      // Reload budget data to show the new budget
+      await loadBudgetData();
+      
+      closeAddBudgetModal();
+      Alert.alert('Success', 'Budget created successfully!');
+    } catch (error) {
+      console.error('Error creating budget:', error);
+      Alert.alert('Error', 'Failed to create budget. Please try again.');
+    }
+  };
+
+  const getEndDateForPeriod = (period: string) => {
+    const startDate = new Date();
+    let endDate = new Date(startDate);
     
-    console.log('New budget created:', newBudget);
-    closeAddBudgetModal();
-    Alert.alert('Success', 'Budget created successfully!');
+    switch (period) {
+      case 'weekly':
+        endDate.setDate(startDate.getDate() + 7);
+        break;
+      case 'monthly':
+        endDate.setMonth(startDate.getMonth() + 1);
+        break;
+      case 'quarterly':
+        endDate.setMonth(startDate.getMonth() + 3);
+        break;
+      case 'yearly':
+        endDate.setFullYear(startDate.getFullYear() + 1);
+        break;
+      default:
+        endDate.setMonth(startDate.getMonth() + 1);
+    }
+    
+    return endDate.toISOString().split('T')[0];
   };
 
   // Budget categories and colors
   const budgetCategories_options = [
+    { name: 'Food & Dining', icon: '🍽️', color: '#FF6B35' },
     { name: 'Food', icon: '🍔', color: '#FF6B35' },
     { name: 'Groceries', icon: '🛒', color: '#C77DFF' },
     { name: 'Transportation', icon: '🚗', color: '#4ECDC4' },
     { name: 'Entertainment', icon: '🎬', color: '#45B7D1' },
     { name: 'Shopping', icon: '🛍️', color: '#96CEB4' },
-    { name: 'Health', icon: '🏥', color: '#FFEAA7' },
-    { name: 'Education', icon: '📚', color: '#DDA0DD' },
-    { name: 'Travel', icon: '✈️', color: '#74B9FF' },
+    { name: 'Bills & Utilities', icon: '⚡', color: '#FFEAA7' },
+    { name: 'Healthcare', icon: '🏥', color: '#DDA0DD' },
     { name: 'Subscriptions', icon: '🔄', color: '#FF69B4' },
     { name: 'Other', icon: '💰', color: '#A0A0A0' },
   ];
 
   const currencies = [
+    { code: 'INR', symbol: '₹', name: 'Indian Rupee' },
     { code: 'USD', symbol: '$', name: 'US Dollar' },
     { code: 'EUR', symbol: '€', name: 'Euro' },
     { code: 'GBP', symbol: '£', name: 'British Pound' },
-    { code: 'INR', symbol: '₹', name: 'Indian Rupee' },
     { code: 'JPY', symbol: '¥', name: 'Japanese Yen' },
   ];
 
@@ -245,13 +306,13 @@ export default function BudgetsScreen() {
         </Svg>
         {/* Center content */}
         <View style={styles.semiCircleCenter}>
-          <Text style={styles.remainingAmount}>${remaining.toLocaleString()}</Text>
+          <Text style={styles.remainingAmount}>₹{remaining.toLocaleString()}</Text>
           <Text style={styles.remainingLabel}>left this month</Text>
         </View>
         {/* Budget range values positioned at arc ends */}
         <View style={styles.budgetRangePositioned}>
-          <Text style={styles.budgetRangeTextLeft}>{totalSpent.toLocaleString()}</Text>
-          <Text style={styles.budgetRangeTextRight}>{totalBudget.toLocaleString()}</Text>
+          <Text style={styles.budgetRangeTextLeft}>₹{totalSpent.toLocaleString()}</Text>
+          <Text style={styles.budgetRangeTextRight}>₹{totalBudget.toLocaleString()}</Text>
         </View>
       </View>
     );
@@ -270,14 +331,20 @@ export default function BudgetsScreen() {
       </View>
 
       <ScrollView style={styles.content} showsVerticalScrollIndicator={false}>
-        {/* Semi-Circular Progress */}
-        <View style={styles.circularProgressContainer}>
-          <Text style={styles.overallSpentLabel}>OVERALL SPENT: {overallProgress}%</Text>
-          <SemiCircularProgress percentage={overallProgress} />
-        </View>
+        {loading ? (
+          <View style={styles.loadingContainer}>
+            <Text style={styles.loadingText}>Loading budgets...</Text>
+          </View>
+        ) : (
+          <>
+            {/* Semi-Circular Progress */}
+            <View style={styles.circularProgressContainer}>
+              <Text style={styles.overallSpentLabel}>OVERALL SPENT: {overallProgress}%</Text>
+              <SemiCircularProgress percentage={overallProgress} />
+            </View>
 
-        {/* Budget Categories - Fixed 2-Column Layout */}
-        <View style={styles.categoriesContainer}>
+            {/* Budget Categories - Fixed 2-Column Layout */}
+            <View style={styles.categoriesContainer}>
           {(() => {
             const rows = [];
             for (let i = 0; i < budgetCategories.length; i += 2) {
@@ -306,7 +373,7 @@ export default function BudgetsScreen() {
                       {firstCategory.budget > 0 ? Math.round((firstCategory.spent / firstCategory.budget) * 100) : 0}% SPENT
                     </Text>
                     <Text style={styles.categoryAmount}>
-                      ${(firstCategory.budget - firstCategory.spent).toLocaleString()}
+                      ₹{(firstCategory.budget - firstCategory.spent).toLocaleString()}
                     </Text>
                     <Text style={styles.categorySubtext}>left this month</Text>
                     <View style={styles.progressBarContainer}>
@@ -339,7 +406,7 @@ export default function BudgetsScreen() {
                         {secondCategory.budget > 0 ? Math.round((secondCategory.spent / secondCategory.budget) * 100) : 0}% SPENT
                       </Text>
                       <Text style={styles.categoryAmount}>
-                        ${(secondCategory.budget - secondCategory.spent).toLocaleString()}
+                        ₹{(secondCategory.budget - secondCategory.spent).toLocaleString()}
                       </Text>
                       <Text style={styles.categorySubtext}>left this month</Text>
                       <View style={styles.progressBarContainer}>
@@ -360,9 +427,11 @@ export default function BudgetsScreen() {
             }
             return rows;
           })()}
-        </View>
+            </View>
 
-        <View style={styles.bottomSpacer} />
+            <View style={styles.bottomSpacer} />
+          </>
+        )}
       </ScrollView>
 
       {/* Add Budget Modal - Sliding Drawer */}
@@ -721,6 +790,17 @@ const styles = StyleSheet.create({
 
   bottomSpacer: {
     height: 120,
+  },
+  loadingContainer: {
+    padding: 40,
+    alignItems: 'center',
+    justifyContent: 'center',
+    flex: 1,
+  },
+  loadingText: {
+    fontSize: 16,
+    color: '#8E8E93',
+    textAlign: 'center',
   },
 
   // Modal Styles

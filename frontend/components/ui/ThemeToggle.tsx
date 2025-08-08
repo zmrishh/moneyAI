@@ -4,7 +4,7 @@
  */
 
 import { useTheme } from '@/contexts/ThemeContext';
-import { useResponsiveSpacing } from '@/frontend/hooks/useResponsive';
+import { useResponsiveSpacing } from '@/hooks/useResponsive';
 import { TouchableOpacity, View } from 'react-native';
 import { ThemedText } from './ThemedComponents';
 

@@ -10,9 +10,11 @@ import {
 } from 'react-native';
 import { IconSymbol } from '@/components/ui/IconSymbol';
 import InteractiveChart from '@/components/ui/InteractiveChart';
-import { dbService } from '@/services/database';
+import { apiService } from '@/services/api';
+import { authService } from '@/services/auth';
 import { format, subDays, startOfDay } from 'date-fns';
 import { router } from 'expo-router';
+import { useFocusEffect } from '@react-navigation/native';
 
 const { width } = Dimensions.get('window');
 
@@ -27,76 +29,168 @@ export default function HomeScreen() {
   const [totalBalance, setTotalBalance] = useState(0);
   const [todaySpent, setTodaySpent] = useState(0);
   const [chartData, setChartData] = useState<ChartDataPoint[]>([]);
-  const [pendingBills, setPendingBills] = useState(3);
-  const [savingsGoals, setSavingsGoals] = useState(2);
+  const [pendingBills, setPendingBills] = useState(0);
+  const [savingsGoals, setSavingsGoals] = useState(0);
   const [transactions, setTransactions] = useState<any[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [user, setUser] = useState<any>(null);
+  
+  // Enhanced real-time data states
+  const [monthlySpent, setMonthlySpent] = useState(0);
+  const [dailyAverage, setDailyAverage] = useState(0);
+  const [monthlyBudget, setMonthlyBudget] = useState(0);
+  const [budgetLeft, setBudgetLeft] = useState(0);
+  const [transactionsThisWeek, setTransactionsThisWeek] = useState(0);
+  const [topCategory, setTopCategory] = useState({ name: 'Food', amount: 0, percentage: 0 });
+  const [isOfflineMode, setIsOfflineMode] = useState(false);
 
   useEffect(() => {
     loadFinancialData();
   }, []);
 
+  // Refresh data when user navigates to this tab
+  useFocusEffect(
+    React.useCallback(() => {
+      console.log('📱 Home tab focused - refreshing data...');
+      loadFinancialData();
+    }, [])
+  );
+
   const loadFinancialData = async () => {
     try {
-      await dbService.initialize();
-      const balance = await dbService.getTotalBalance();
-      const recentTransactions = await dbService.getTransactions(50);
-
-      setTotalBalance(balance.balance);
-      setTransactions(recentTransactions);
-
-      // Calculate today's spending
-      const today = new Date();
-      const todayTransactions = recentTransactions.filter(t =>
-        t.type === 'expense' &&
-        format(t.date, 'yyyy-MM-dd') === format(today, 'yyyy-MM-dd')
-      );
-      const todayTotal = todayTransactions.reduce((sum, t) => sum + t.amount, 0);
-      setTodaySpent(todayTotal);
-
-      // Load bills data for pending count
-      try {
-        const bills = await dbService.getBills();
-        const unpaidBills = bills.filter(bill => !bill.is_paid);
-        setPendingBills(unpaidBills.length);
-      } catch (billError) {
-        console.log('Bills not loaded yet, using default count');
+      setLoading(true);
+      
+      // Check if user is authenticated
+      if (!authService.isAuthenticated()) {
+        console.log('User not authenticated, redirecting to walkthrough');
+        router.replace('/walkthrough');
+        return;
       }
 
-      // Generate weekly spending data for chart
-      const weekData = generateWeeklyData(recentTransactions);
-      setChartData(weekData);
-    } catch (error) {
-      console.error('Error loading financial data:', error);
-    }
-  };
-
-  const generateWeeklyData = (transactions: any[]): ChartDataPoint[] => {
-    const today = new Date();
-    const weekData: ChartDataPoint[] = [];
-
-    // Generate data for the last 7 days
-    for (let i = 6; i >= 0; i--) {
-      const date = subDays(today, i);
-      const dayStart = startOfDay(date);
-
-      // Filter transactions for this day
-      const dayTransactions = transactions.filter(t =>
-        t.type === 'expense' &&
-        format(t.date, 'yyyy-MM-dd') === format(dayStart, 'yyyy-MM-dd')
-      );
-
-      const dayAmount = dayTransactions.reduce((sum, t) => sum + t.amount, 0);
-
-      weekData.push({
-        day: format(date, 'EEE'),
-        amount: dayAmount || (Math.random() * 300 + 50), // Use real data or fallback to mock
-        date: dayStart,
-        transactions: dayTransactions.length || Math.floor(Math.random() * 5 + 1),
+      console.log('🔄 Loading financial data with timezone-aware calculations...');
+      // Load enhanced dashboard data with real-time calculations
+      const dashboardData = await apiService.getDashboardData();
+      
+      // All data comes from database - no offline fallbacks
+      setIsOfflineMode(false);
+      
+      // Log timezone information if available
+      if (dashboardData.timezone_info) {
+        console.log('🕒 Timezone info:', {
+          timezone: dashboardData.timezone_info.timezone,
+          localTime: dashboardData.timezone_info.current_time,
+          utcTime: dashboardData.timezone_info.utc_time
+        });
+      }
+      
+      // Set real-time financial data
+      setTotalBalance(dashboardData.balance || 0);
+      setTodaySpent(dashboardData.todaySpent || 0);
+      setMonthlySpent(dashboardData.monthlySpent || 0);
+      setDailyAverage(dashboardData.dailyAverage || 0);
+      
+      // Set user info with real full_name from users table
+      setUser(dashboardData.userInfo || { full_name: 'User' });
+      
+      // Set budget data with real calculations
+      setMonthlyBudget(dashboardData.totalBudget || 0);
+      setBudgetLeft(dashboardData.budgetRemaining || 0);
+      
+      // Set top category with proper categorization
+      setTopCategory({
+        name: dashboardData.topCategory?.name || 'Food',
+        amount: dashboardData.topCategory?.amount || 0,
+        percentage: dashboardData.topCategory?.percentage || 0
       });
-    }
+      
+      // Ensure transactions is an array
+      const transactionsList = Array.isArray(dashboardData.transactions) ? dashboardData.transactions : [];
+      setTransactions(transactionsList);
+      
+      // Set counts from real data
+      setPendingBills(dashboardData.pendingBills || 0);
+      setSavingsGoals(dashboardData.savingsGoals || 0);
+      setTransactionsThisWeek(dashboardData.thisWeekTransactions || 0);
 
-    return weekData;
+      // Generate chart data for current week (last 7 days including today)
+      const chartDates = Array.from({ length: 7 }, (_, i) => subDays(new Date(), 6 - i));
+
+      const chartData = chartDates.map(date => {
+        const dayTransactions = transactionsList.filter((t: any) => {
+          if (!t.date && !t.created_at) return false;
+          const transactionDate = new Date(t.date || t.created_at);
+          return transactionDate.toDateString() === date.toDateString();
+        });
+        
+        const expenses = dayTransactions
+          .filter((t: any) => (t.transaction_type || t.type) === 'expense')
+          .reduce((sum: number, t: any) => sum + Math.abs(t.amount || 0), 0);
+
+        return {
+          day: format(date, 'EEE'),
+          amount: expenses,
+          date: date,
+          transactions: dayTransactions.length
+        };
+      });
+
+      setChartData(chartData);
+
+    } catch (error) {
+      console.error('❌ Error loading financial data:', error);
+      // Set offline mode on network errors so user knows there's an issue
+      setIsOfflineMode(true);
+      
+      // Log detailed error for debugging
+      console.error('💥 Full error details:', {
+        message: error instanceof Error ? error.message : 'Unknown error',
+        timestamp: new Date().toISOString()
+      });
+    } finally {
+      setLoading(false);
+    }
   };
+
+
+  const handleRefresh = async () => {
+    console.log('🔄 Force refreshing all financial data...');
+    
+    // Reset all states to ensure clean refresh
+    setLoading(true);
+    setTotalBalance(0);
+    setTodaySpent(0);
+    setMonthlySpent(0);
+    setDailyAverage(0);
+    setMonthlyBudget(0);
+    setBudgetLeft(0);
+    setTransactionsThisWeek(0);
+    setIsOfflineMode(false);
+    
+    // Force reload all data
+    await loadFinancialData();
+  };
+
+  const handleConnectionTest = async () => {
+    console.log('🔍 Testing connection manually...');
+    const result = await apiService.testConnection();
+    
+    if (result.success) {
+      console.log('✅ Connection test successful');
+      // Try to refresh data
+      await handleRefresh();
+    } else {
+      console.error('❌ Connection test failed:', result.message);
+      console.error('🔧 Troubleshooting steps:', result.troubleshooting);
+    }
+  };
+
+  if (loading) {
+    return (
+      <View style={[styles.container, { justifyContent: 'center', alignItems: 'center' }]}>
+        <Text style={styles.loadingText}>Loading your financial data...</Text>
+      </View>
+    );
+  }
 
   const formatCurrency = (amount: number) => {
     return new Intl.NumberFormat('en-IN', {
@@ -137,22 +231,42 @@ export default function HomeScreen() {
             >
               MoneyAI
             </Text>
-            <Text 
-              style={styles.currentDate}
-              accessibilityLabel={`Today is ${getCurrentDate()}`}
-            >
-              {getCurrentDate()}
-            </Text>
+            <Pressable onPress={handleRefresh} style={styles.refreshButton}>
+              <Text style={styles.currentDate}>
+                {getCurrentDate()}
+              </Text>
+              <IconSymbol name="arrow.clockwise" size={16} color="#8E8E93" />
+            </Pressable>
           </View>
         </View>
+
+        {/* Offline Mode Banner */}
+        {isOfflineMode && (
+          <View style={styles.offlineBanner}>
+            <IconSymbol name="wifi.slash" size={16} color="#FF9F40" />
+            <Text style={styles.offlineText}>
+              Server disconnected. Check network connection.
+            </Text>
+            <View style={styles.bannerButtons}>
+              <Pressable onPress={handleConnectionTest} style={styles.testButton}>
+                <Text style={styles.testText}>Test</Text>
+              </Pressable>
+              <Pressable onPress={handleRefresh} style={styles.retryButton}>
+                <Text style={styles.retryText}>Retry</Text>
+              </Pressable>
+            </View>
+          </View>
+        )}
 
         {/* Greeting Section */}
         <View 
           style={styles.greetingSection}
           accessibilityRole="summary"
-          accessibilityLabel={`${getGreeting()}, You have ${pendingBills} bills and ${savingsGoals} goals left today`}
+          accessibilityLabel={`${getGreeting()}, ${user?.full_name || 'You have'} ${pendingBills} bills and ${savingsGoals} goals left today`}
         >
-          <Text style={styles.greetingText}>{getGreeting()},</Text>
+          <Text style={styles.greetingText}>
+            {getGreeting()}, {user?.full_name ? user.full_name.split(' ')[0] : 'User'}
+          </Text>
           <Text style={styles.summaryText}>
             You have <Text style={styles.highlightNumber}>💳 {pendingBills} bills</Text>
           </Text>
@@ -297,27 +411,29 @@ export default function HomeScreen() {
               <View 
                 style={styles.summaryCard}
                 accessibilityRole="text"
-                accessibilityLabel="Total Spent: ₹12,450, average ₹2,100"
+                accessibilityLabel={`This Month: ${formatCurrency(monthlySpent)}`}
               >
-                <Text style={styles.cardLabel}>Total Spent</Text>
+                <Text style={styles.cardLabel}>This Month</Text>
                 <View style={styles.cardValueContainer}>
                   <IconSymbol name="arrow.up" size={16} color="#fff" />
-                  <Text style={styles.cardValue}>₹12,450</Text>
+                  <Text style={styles.cardValue}>{formatCurrency(monthlySpent)}</Text>
                 </View>
-                <Text style={styles.cardSubtext}>₹2,100 avg</Text>
+                <Text style={styles.cardSubtext}>
+                  {formatCurrency(dailyAverage)} daily avg
+                </Text>
               </View>
 
               <View 
                 style={[styles.summaryCard, styles.highlightCard]}
                 accessibilityRole="text"
-                accessibilityLabel="Monthly Budget: ₹25,000, ₹12,550 left"
+                accessibilityLabel={`Monthly Budget: ${formatCurrency(monthlyBudget)}, ${formatCurrency(budgetLeft)} left`}
               >
                 <Text style={styles.cardLabelWhite}>Monthly Budget</Text>
                 <View style={styles.cardValueContainer}>
                   <IconSymbol name="arrow.up" size={16} color="#fff" />
-                  <Text style={styles.cardValueWhite}>₹25,000</Text>
+                  <Text style={styles.cardValueWhite}>{formatCurrency(monthlyBudget)}</Text>
                 </View>
-                <Text style={styles.cardSubtextWhite}>₹12,550 left</Text>
+                <Text style={styles.cardSubtextWhite}>{formatCurrency(budgetLeft)} left</Text>
               </View>
             </View>
 
@@ -326,27 +442,27 @@ export default function HomeScreen() {
               <View 
                 style={styles.summaryCard}
                 accessibilityRole="text"
-                accessibilityLabel="Transactions: 47 total, 12 this week"
+                accessibilityLabel={`Transactions: ${transactions.length} total, ${transactionsThisWeek} this week`}
               >
                 <Text style={styles.cardLabel}>Transactions</Text>
                 <View style={styles.cardValueContainer}>
                   <IconSymbol name="arrow.up" size={16} color="#fff" />
-                  <Text style={styles.cardValue}>47</Text>
+                  <Text style={styles.cardValue}>{transactions.length}</Text>
                 </View>
-                <Text style={styles.cardSubtext}>12 this week</Text>
+                <Text style={styles.cardSubtext}>{transactionsThisWeek} this week</Text>
               </View>
 
               <View 
                 style={styles.summaryCard}
                 accessibilityRole="text"
-                accessibilityLabel="Top Category: Food, ₹4,200 spent"
+                accessibilityLabel={`Top Category: ${topCategory.name}, ${formatCurrency(topCategory.amount)} spent`}
               >
                 <Text style={styles.cardLabel}>Top Category</Text>
                 <View style={styles.cardValueContainer}>
                   <IconSymbol name="arrow.up" size={16} color="#fff" />
-                  <Text style={styles.cardValue}>Food</Text>
+                  <Text style={styles.cardValue}>{topCategory.name}</Text>
                 </View>
-                <Text style={styles.cardSubtext}>₹4,200</Text>
+                <Text style={styles.cardSubtext}>{formatCurrency(topCategory.amount)}</Text>
               </View>
             </View>
           </View>
@@ -373,9 +489,11 @@ export default function HomeScreen() {
 
           {transactions.slice(0, 3).map((transaction, index) => {
             const formattedAmount = formatCurrency(Math.abs(transaction.amount));
-            const formattedDate = format(transaction.date, 'MMM dd');
-            const transactionType = transaction.type === 'income' ? 'Income' : 'Expense';
-            const accessibilityLabel = `${transactionType}: ${transaction.description}, ${formattedAmount}, ${transaction.category}, ${formattedDate}`;
+            const transactionDate = new Date(transaction.date || transaction.created_at);
+            const formattedDate = format(transactionDate, 'MMM dd');
+            const transactionType = (transaction.transaction_type || transaction.type) === 'income' ? 'Income' : 'Expense';
+            const category = transaction.category_name || transaction.category || 'Other';
+            const accessibilityLabel = `${transactionType}: ${transaction.description}, ${formattedAmount}, ${category}, ${formattedDate}`;
             
             return (
               <Pressable 
@@ -391,22 +509,27 @@ export default function HomeScreen() {
                   accessibilityLabel={`${transaction.category} category icon`}
                 >
                   <Text style={styles.activityEmoji}>
-                    {transaction.category === 'Food & Dining' ? '🍕' :
-                      transaction.category === 'Transportation' ? '🚗' :
-                        transaction.category === 'Shopping' ? '🛍️' : '💰'}
+                    {category === 'Food & Dining' ? '🍕' :
+                      category === 'Transportation' ? '🚗' :
+                        category === 'Shopping' ? '🛍️' :
+                        category === 'Entertainment' ? '🎬' :
+                        category === 'Bills & Utilities' ? '⚡' :
+                        category === 'Healthcare' ? '🏥' :
+                        category === 'Subscriptions' ? '📱' :
+                        category === 'Income' ? '💰' : '💰'}
                   </Text>
                 </View>
                 <View style={styles.activityContent}>
                   <Text style={styles.activityTitle}>{transaction.description}</Text>
                   <Text style={styles.activityDate}>
-                    {formattedDate} • {transaction.category}
+                    {formattedDate} • {category}
                   </Text>
                 </View>
                 <Text style={[
                   styles.activityAmount,
-                  { color: transaction.type === 'income' ? '#34C759' : '#FF3B30' }
+                  { color: (transaction.transaction_type || transaction.type) === 'income' ? '#34C759' : '#FF3B30' }
                 ]}>
-                  {transaction.type === 'income' ? '+' : '-'}
+                  {(transaction.transaction_type || transaction.type) === 'income' ? '+' : '-'}
                   {formattedAmount}
                 </Text>
               </Pressable>
@@ -449,6 +572,58 @@ const styles = StyleSheet.create({
     fontSize: 16,
     color: '#8E8E93',
     fontWeight: '500',
+  },
+  refreshButton: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 8,
+  },
+
+  // Offline Banner
+  offlineBanner: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    backgroundColor: '#2C1810',
+    borderColor: '#FF9F40',
+    borderWidth: 1,
+    borderRadius: 8,
+    paddingHorizontal: 16,
+    paddingVertical: 12,
+    marginHorizontal: 24,
+    marginBottom: 16,
+    gap: 12,
+  },
+  offlineText: {
+    flex: 1,
+    fontSize: 14,
+    color: '#FF9F40',
+    fontWeight: '500',
+  },
+  bannerButtons: {
+    flexDirection: 'row',
+    gap: 8,
+  },
+  testButton: {
+    backgroundColor: '#444',
+    paddingHorizontal: 12,
+    paddingVertical: 6,
+    borderRadius: 6,
+  },
+  testText: {
+    fontSize: 12,
+    color: '#FF9F40',
+    fontWeight: '600',
+  },
+  retryButton: {
+    backgroundColor: '#FF9F40',
+    paddingHorizontal: 12,
+    paddingVertical: 6,
+    borderRadius: 6,
+  },
+  retryText: {
+    fontSize: 12,
+    color: '#1A1A1A',
+    fontWeight: '600',
   },
 
   // Greeting
@@ -750,5 +925,12 @@ const styles = StyleSheet.create({
 
   bottomSpacer: {
     height: 120,
+  },
+  
+  // Loading
+  loadingText: {
+    fontSize: 16,
+    color: '#8E8E93',
+    textAlign: 'center',
   },
 });

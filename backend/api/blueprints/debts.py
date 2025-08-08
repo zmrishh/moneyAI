@@ -136,10 +136,11 @@ def add_payment(debt_id):
         if payment_amount > current_amount:
             return error_response(f"Payment amount cannot exceed remaining debt amount of ₹{current_amount}", 400)
         
-        # Create payment record
+        # Create payment record with user_id for proper data isolation
         payment_data = {
             'id': str(uuid.uuid4()),
             'debt_id': debt_id,
+            'user_id': user['id'],  # Add user_id for proper data isolation
             'amount': payment_amount,
             'date': data.get('date', datetime.utcnow().isoformat()),
             'note': data.get('note'),
@@ -221,6 +222,7 @@ def settle_debt(debt_id):
             final_payment_data = {
                 'id': str(uuid.uuid4()),
                 'debt_id': debt_id,
+                'user_id': user['id'],  # Add user_id for proper data isolation
                 'amount': remaining_amount,
                 'date': datetime.utcnow().isoformat(),
                 'note': data.get('note', 'Final settlement'),
@@ -239,10 +241,33 @@ def settle_debt(debt_id):
         
         supabase_client.table('debts').update(update_data).eq('id', debt_id).execute()
         
+        # Create transaction record for settlement if there was remaining amount
+        create_transaction = data.get('create_transaction', True)
+        if create_transaction and remaining_amount > 0:
+            transaction_type = 'expense' if debt['debt_type'] == 'owe' else 'income'
+            transaction_description = f"Final debt settlement to {debt['person_name']}" if debt['debt_type'] == 'owe' else f"Final debt collection from {debt['person_name']}"
+            
+            transaction_data = {
+                'id': str(uuid.uuid4()),
+                'user_id': user['id'],
+                'amount': remaining_amount,
+                'description': transaction_description,
+                'category_name': 'Debt Settlement',
+                'transaction_type': transaction_type,
+                'source': 'manual',
+                'date': datetime.utcnow().isoformat(),
+                'notes': f"Final settlement for: {debt['description']}",
+                'created_at': datetime.utcnow().isoformat(),
+                'updated_at': datetime.utcnow().isoformat()
+            }
+            
+            supabase_client.table('transactions').insert(transaction_data).execute()
+        
         return success_response({
             'debt_id': debt_id,
             'final_payment_amount': remaining_amount,
-            'settled_date': update_data['settled_date']
+            'settled_date': update_data['settled_date'],
+            'transaction_created': create_transaction and remaining_amount > 0
         }, "Debt settled successfully")
         
     except Exception as e:

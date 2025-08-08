@@ -1,0 +1,740 @@
+ * Serving Flask app 'api'
+ * Debug mode: on
+WARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5090
+ * Running on http://192.168.29.189:5090
+Press CTRL+C to quit
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 372-553-095
+127.0.0.1 - - [08/Aug/2025 04:17:18] "POST /api/auth/create-oauth-user HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 04:17:32] "POST /api/auth/login HTTP/1.1" 401 -
+192.168.29.131 - - [08/Aug/2025 04:17:35] "GET / HTTP/1.1" 404 -
+127.0.0.1 - - [08/Aug/2025 04:17:39] "GET /api/analytics/balance HTTP/1.1" 401 -
+127.0.0.1 - - [08/Aug/2025 04:17:46] "POST /api/auth/signup HTTP/1.1" 201 -
+192.168.29.131 - - [08/Aug/2025 04:17:49] "POST /api/auth/create-oauth-user HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 04:17:52] "GET /api/goals?_t=1754606871389 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 04:17:52] "GET /api/bills?_t=1754606871391 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 04:17:52] "GET /api/transactions?limit=10&_t=1754606871386 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 04:17:52] "GET /api/debts?_t=1754606871392 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 04:17:52] "GET /api/analytics/balance?_t=1754606871384 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 04:17:52] "GET /api/goals?_t=1754606871401 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 04:17:52] "GET /api/subscriptions?_t=1754606871394 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 04:17:52] "GET /api/transactions?limit=10&_t=1754606871398 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 04:17:53] "GET /api/analytics/balance?_t=1754606871397 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 04:17:53] "GET /api/budgets?_t=1754606871388 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 04:17:53] "GET /api/bills?_t=1754606871402 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 04:17:53] "GET /api/subscriptions?_t=1754606871405 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 04:17:53] "GET /api/budgets?_t=1754606871399 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 04:17:53] "GET /api/debts?_t=1754606871404 HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 04:17:53] "POST /api/auth/login HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 04:18:01] "GET /api/transactions?limit=100&_t=1754606881225 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 04:18:04] "GET /api/budgets?_t=1754606883561 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 04:18:07] "GET /api/analytics/insights?_t=1754606886819 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 04:18:09] "GET /api/goals?_t=1754606888751 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 04:18:09] "GET /api/bills?_t=1754606888753 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 04:18:09] "GET /api/transactions?limit=10&_t=1754606888747 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 04:18:09] "GET /api/debts?_t=1754606888754 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 04:18:09] "GET /api/analytics/balance?_t=1754606888744 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 04:18:09] "GET /api/subscriptions?_t=1754606888756 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 04:18:09] "GET /api/budgets?_t=1754606888749 HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 04:18:23] "GET /api/analytics/balance HTTP/1.1" 401 -
+192.168.29.131 - - [08/Aug/2025 04:19:41] "GET /api/bills?_t=1754606981074 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 04:19:41] "GET /api/transactions?limit=10&_t=1754606981068 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 04:19:41] "GET /api/goals?_t=1754606981072 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 04:19:42] "GET /api/debts?_t=1754606981076 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 04:19:42] "GET /api/analytics/balance?_t=1754606981066 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 04:19:42] "GET /api/subscriptions?_t=1754606981077 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 04:19:42] "GET /api/budgets?_t=1754606981070 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 04:21:57] "GET /api/debts?_t=1754607116751 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 04:22:11] "POST /api/debts?_t=1754607131595 HTTP/1.1" 201 -
+192.168.29.131 - - [08/Aug/2025 04:22:12] "GET /api/debts?_t=1754607132124 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 04:22:19] "POST /api/debts/ed220af9-fb3e-4813-9325-be7685fc3402/payments?_t=1754607139018 HTTP/1.1" 500 -
+192.168.29.131 - - [08/Aug/2025 04:22:20] "POST /api/debts/ed220af9-fb3e-4813-9325-be7685fc3402/payments?_t=1754607139018 HTTP/1.1" 500 -
+ * Detected change in '/Users/danieldas/Documents/moneyAI/backend/api/blueprints/debts.py', reloading
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 372-553-095
+ * Detected change in '/Users/danieldas/Documents/moneyAI/backend/api/blueprints/debts.py', reloading
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 372-553-095
+ * Detected change in '/Users/danieldas/Documents/moneyAI/backend/api/blueprints/analytics.py', reloading
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 372-553-095
+ * Detected change in '/Users/danieldas/Documents/moneyAI/backend/api/blueprints/analytics.py', reloading
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 372-553-095
+ * Detected change in '/Users/danieldas/Documents/moneyAI/backend/api/blueprints/analytics.py', reloading
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 372-553-095
+ * Detected change in '/Users/danieldas/Documents/moneyAI/backend/api/blueprints/analytics.py', reloading
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 372-553-095
+ * Detected change in '/Users/danieldas/Documents/moneyAI/backend/api/blueprints/analytics.py', reloading
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 372-553-095
+ * Detected change in '/Users/danieldas/Documents/moneyAI/backend/api/blueprints/transactions.py', reloading
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 372-553-095
+ * Detected change in '/Users/danieldas/Documents/moneyAI/backend/api/blueprints/goals.py', reloading
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 372-553-095
+ * Detected change in '/Users/danieldas/Documents/moneyAI/backend/api/blueprints/goals.py', reloading
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 372-553-095
+ * Detected change in '/Users/danieldas/Documents/moneyAI/backend/api/blueprints/goals.py', reloading
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 372-553-095
+ * Detected change in '/Users/danieldas/Documents/moneyAI/backend/api/blueprints/subscriptions.py', reloading
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 372-553-095
+ * Detected change in '/Users/danieldas/Documents/moneyAI/backend/api/blueprints/subscriptions.py', reloading
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 372-553-095
+127.0.0.1 - - [08/Aug/2025 04:30:05] "POST /api/auth/login HTTP/1.1" 401 -
+ * Detected change in '/Users/danieldas/Documents/moneyAI/backend/api/blueprints/auth.py', reloading
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 372-553-095
+127.0.0.1 - - [08/Aug/2025 12:30:36] "GET /api/analytics/balance HTTP/1.1" 401 -
+192.168.29.131 - - [08/Aug/2025 12:32:28] "GET / HTTP/1.1" 404 -
+192.168.29.131 - - [08/Aug/2025 12:32:48] "POST /api/auth/create-oauth-user HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 12:32:52] "GET /api/goals?_t=1754636570956 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 12:32:52] "GET /api/bills?_t=1754636570958 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 12:32:52] "GET /api/transactions?limit=10&_t=1754636570953 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 12:32:52] "GET /api/debts?_t=1754636570959 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 12:32:52] "GET /api/analytics/balance?_t=1754636570951 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 12:32:53] "GET /api/subscriptions?_t=1754636570961 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 12:32:53] "GET /api/goals?_t=1754636570968 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 12:32:53] "GET /api/transactions?limit=10&_t=1754636570965 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 12:32:53] "GET /api/analytics/balance?_t=1754636570964 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 12:32:53] "GET /api/bills?_t=1754636570969 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 12:32:53] "GET /api/budgets?_t=1754636570955 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 12:32:54] "GET /api/subscriptions?_t=1754636570972 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 12:32:54] "GET /api/debts?_t=1754636570971 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 12:32:54] "GET /api/budgets?_t=1754636570966 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 12:33:08] "GET /api/transactions?limit=100&_t=1754636587906 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 12:33:13] "GET /api/budgets?_t=1754636592507 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 12:33:28] "GET /api/analytics/insights?_t=1754636607689 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 12:34:15] "GET /api/goals?_t=1754636653936 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 12:34:15] "GET /api/bills?_t=1754636653938 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 12:34:15] "GET /api/transactions?limit=10&_t=1754636653932 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 12:34:15] "GET /api/debts?_t=1754636653940 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 12:34:15] "GET /api/subscriptions?_t=1754636653942 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 12:34:15] "GET /api/analytics/balance?_t=1754636653930 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 12:34:16] "GET /api/budgets?_t=1754636653934 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 12:34:19] "GET /api/bills?_t=1754636659473 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 12:34:25] "GET /api/bills?_t=1754636665201 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 12:34:26] "GET /api/transactions?limit=10&_t=1754636665196 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 12:34:26] "GET /api/goals?_t=1754636665199 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 12:34:26] "GET /api/subscriptions?_t=1754636665204 HTTP/1.1" 500 -
+192.168.29.131 - - [08/Aug/2025 12:34:26] "GET /api/debts?_t=1754636665203 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 12:34:26] "GET /api/budgets?_t=1754636665198 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 12:34:26] "GET /api/analytics/balance?_t=1754636665194 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 12:34:28] "GET /api/subscriptions?_t=1754636665204 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 12:34:31] "GET /api/debts?_t=1754636670578 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 12:34:35] "POST /api/debts/ed220af9-fb3e-4813-9325-be7685fc3402/settle?_t=1754636674915 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 12:34:36] "GET /api/debts?_t=1754636675613 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 12:34:38] "GET /api/goals?_t=1754636677966 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 12:34:38] "GET /api/bills?_t=1754636677968 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 12:34:38] "GET /api/transactions?limit=10&_t=1754636677960 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 12:34:39] "GET /api/debts?_t=1754636677969 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 12:34:39] "GET /api/analytics/balance?_t=1754636677958 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 12:34:39] "GET /api/subscriptions?_t=1754636677971 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 12:34:39] "GET /api/budgets?_t=1754636677962 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 12:34:51] "GET /api/bills?_t=1754636691283 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 12:35:10] "POST /api/bills?_t=1754636709925 HTTP/1.1" 201 -
+192.168.29.131 - - [08/Aug/2025 12:35:10] "GET /api/bills?_t=1754636710637 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 12:35:13] "GET /api/bills?_t=1754636712678 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 12:35:13] "GET /api/goals?_t=1754636712676 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 12:35:13] "GET /api/transactions?limit=10&_t=1754636712673 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 12:35:13] "GET /api/debts?_t=1754636712679 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 12:35:13] "GET /api/analytics/balance?_t=1754636712671 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 12:35:13] "GET /api/subscriptions?_t=1754636712681 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 12:35:13] "GET /api/budgets?_t=1754636712675 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 12:37:08] "GET /api/goals?_t=1754636827280 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 12:37:08] "GET /api/bills?_t=1754636827282 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 12:37:08] "GET /api/transactions?limit=10&_t=1754636827276 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 12:37:08] "GET /api/analytics/balance?_t=1754636827274 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 12:37:08] "GET /api/debts?_t=1754636827284 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 12:37:08] "GET /api/subscriptions?_t=1754636827286 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 12:37:08] "GET /api/budgets?_t=1754636827278 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 12:37:10] "GET /api/bills?_t=1754636830104 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 12:37:20] "POST /api/bills/6dcf206b-dee1-4032-b176-5dfb84ca0367/pay?_t=1754636840200 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 12:37:21] "GET /api/bills?_t=1754636840862 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 12:37:23] "GET /api/goals?_t=1754636843064 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 12:37:23] "GET /api/bills?_t=1754636843066 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 12:37:23] "GET /api/transactions?limit=10&_t=1754636843061 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 12:37:23] "GET /api/analytics/balance?_t=1754636843059 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 12:37:23] "GET /api/debts?_t=1754636843068 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 12:37:24] "GET /api/subscriptions?_t=1754636843069 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 12:37:24] "GET /api/budgets?_t=1754636843062 HTTP/1.1" 200 -
+ * Detected change in '/Users/danieldas/Documents/moneyAI/backend/api/blueprints/analytics.py', reloading
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 372-553-095
+ * Detected change in '/Users/danieldas/Documents/moneyAI/backend/api/blueprints/budgets.py', reloading
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 372-553-095
+ * Detected change in '/Users/danieldas/Documents/moneyAI/backend/api/__init__.py', reloading
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 372-553-095
+127.0.0.1 - - [08/Aug/2025 12:40:51] "GET /api/realtime/quick-stats HTTP/1.1" 401 -
+ * Detected change in '/Users/danieldas/Documents/moneyAI/backend/api/blueprints/debts.py', reloading
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 372-553-095
+192.168.29.131 - - [08/Aug/2025 12:47:57] "GET /api/goals?_t=1754637475909 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 12:47:57] "GET /api/bills?_t=1754637475910 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 12:47:57] "GET /api/transactions?limit=10&_t=1754637475905 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 12:47:57] "GET /api/subscriptions?_t=1754637475913 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 12:47:57] "GET /api/analytics/balance?_t=1754637475903 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 12:47:58] "GET /api/debts?_t=1754637475912 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 12:47:58] "GET /api/budgets?_t=1754637475907 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 12:48:01] "GET / HTTP/1.1" 404 -
+192.168.29.131 - - [08/Aug/2025 12:48:16] "POST /api/auth/create-oauth-user HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 12:48:18] "GET /api/goals?_t=1754637498212 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 12:48:18] "GET /api/bills?_t=1754637498213 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 12:48:18] "GET /api/transactions?limit=10&_t=1754637498209 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 12:48:19] "GET /api/debts?_t=1754637498215 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 12:48:19] "GET /api/analytics/balance?_t=1754637498206 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 12:48:19] "GET /api/transactions?limit=10&_t=1754637498220 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 12:48:19] "GET /api/subscriptions?_t=1754637498216 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 12:48:19] "GET /api/budgets?_t=1754637498210 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 12:48:19] "GET /api/goals?_t=1754637498223 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 12:48:19] "GET /api/bills?_t=1754637498224 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 12:48:19] "GET /api/analytics/balance?_t=1754637498219 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 12:48:20] "GET /api/subscriptions?_t=1754637498227 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 12:48:20] "GET /api/budgets?_t=1754637498222 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 12:48:20] "GET /api/debts?_t=1754637498226 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 12:48:23] "GET /api/transactions?limit=100&_t=1754637503175 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 12:48:26] "GET /api/budgets?_t=1754637505573 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 12:48:28] "GET /api/analytics/insights?_t=1754637507818 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 12:48:29] "GET /api/goals?_t=1754637509360 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 12:48:29] "GET /api/bills?_t=1754637509362 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 12:48:29] "GET /api/transactions?limit=10&_t=1754637509356 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 12:48:30] "GET /api/debts?_t=1754637509364 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 12:48:30] "GET /api/analytics/balance?_t=1754637509354 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 12:48:30] "GET /api/subscriptions?_t=1754637509366 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 12:48:30] "GET /api/budgets?_t=1754637509358 HTTP/1.1" 200 -
+ * Detected change in '/Users/danieldas/Documents/moneyAI/backend/api/blueprints/budgets.py', reloading
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 372-553-095
+ * Detected change in '/Users/danieldas/Documents/moneyAI/backend/api/blueprints/budgets.py', reloading
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 372-553-095
+ * Detected change in '/Users/danieldas/Documents/moneyAI/backend/api/blueprints/budgets.py', reloading
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 372-553-095
+ * Detected change in '/Users/danieldas/Documents/moneyAI/backend/api/blueprints/budgets.py', reloading
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 372-553-095
+ * Detected change in '/Users/danieldas/Documents/moneyAI/backend/api/blueprints/budgets.py', reloading
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 372-553-095
+ * Detected change in '/Users/danieldas/Documents/moneyAI/backend/api/blueprints/budgets.py', reloading
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 372-553-095
+ * Detected change in '/Users/danieldas/Documents/moneyAI/backend/api/blueprints/budgets.py', reloading
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 372-553-095
+ * Detected change in '/Users/danieldas/Documents/moneyAI/backend/api/blueprints/budgets.py', reloading
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 372-553-095
+ * Detected change in '/Users/danieldas/Documents/moneyAI/backend/api/blueprints/budgets.py', reloading
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 372-553-095
+192.168.29.131 - - [08/Aug/2025 12:55:47] "GET / HTTP/1.1" 404 -
+ * Detected change in '/Users/danieldas/Documents/moneyAI/backend/api/blueprints/budgets.py', reloading
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 372-553-095
+ * Detected change in '/Users/danieldas/Documents/moneyAI/backend/api/blueprints/budgets.py', reloading
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 372-553-095
+ * Detected change in '/Users/danieldas/Documents/moneyAI/backend/api/blueprints/budgets.py', reloading
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 372-553-095
+ * Detected change in '/Users/danieldas/Documents/moneyAI/backend/api/blueprints/budgets.py', reloading
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 372-553-095
+ * Detected change in '/Users/danieldas/Documents/moneyAI/backend/api/blueprints/budgets.py', reloading
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 372-553-095
+ * Detected change in '/Users/danieldas/Documents/moneyAI/backend/api/blueprints/budgets.py', reloading
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 372-553-095
+ * Detected change in '/Users/danieldas/Documents/moneyAI/backend/api/blueprints/budgets.py', reloading
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 372-553-095
+192.168.29.131 - - [08/Aug/2025 12:58:32] "GET / HTTP/1.1" 404 -
+192.168.29.131 - - [08/Aug/2025 12:58:47] "POST /api/auth/create-oauth-user HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 12:58:50] "GET /api/goals?_t=1754638129525 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 12:58:50] "GET /api/bills?_t=1754638129526 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 12:58:50] "GET /api/transactions?limit=10&_t=1754638129522 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 12:58:51] "GET /api/debts?_t=1754638129528 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 12:58:51] "GET /api/subscriptions?_t=1754638129529 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 12:58:51] "GET /api/budgets?_t=1754638129523 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 12:58:51] "GET /api/transactions?limit=10&_t=1754638129534 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 12:58:51] "GET /api/analytics/balance?_t=1754638129520 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 12:58:51] "GET /api/analytics/balance?_t=1754638129532 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 12:58:51] "GET /api/bills?_t=1754638129538 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 12:58:51] "GET /api/goals?_t=1754638129536 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 12:58:51] "GET /api/subscriptions?_t=1754638129540 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 12:58:52] "GET /api/debts?_t=1754638129539 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 12:58:52] "GET /api/budgets?_t=1754638129535 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 12:59:00] "GET /api/transactions?limit=100&_t=1754638140439 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 12:59:06] "GET /api/budgets?_t=1754638145495 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 12:59:13] "GET /api/analytics/insights?_t=1754638153300 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 12:59:21] "GET /api/debts?_t=1754638161330 HTTP/1.1" 500 -
+192.168.29.131 - - [08/Aug/2025 12:59:21] "GET /api/goals?_t=1754638161326 HTTP/1.1" 401 -
+192.168.29.131 - - [08/Aug/2025 12:59:21] "GET /api/transactions?limit=10&_t=1754638161323 HTTP/1.1" 500 -
+192.168.29.131 - - [08/Aug/2025 12:59:22] "GET /api/bills?_t=1754638161328 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 12:59:22] "GET /api/subscriptions?_t=1754638161331 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 12:59:22] "GET /api/analytics/balance?_t=1754638161321 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 12:59:22] "GET /api/budgets?_t=1754638161325 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 12:59:23] "GET /api/transactions?limit=10&_t=1754638161323 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 12:59:23] "GET /api/debts?_t=1754638161330 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 12:59:26] "GET /api/bills?_t=1754638166351 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 12:59:32] "POST /api/bills/a88906be-f376-48a7-9815-c628dfef530d/pay?_t=1754638171596 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 12:59:33] "GET /api/bills?_t=1754638172734 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 12:59:37] "GET /api/bills?_t=1754638177322 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 12:59:37] "GET /api/goals?_t=1754638177321 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 12:59:37] "GET /api/analytics/balance?_t=1754638177312 HTTP/1.1" 500 -
+192.168.29.131 - - [08/Aug/2025 12:59:37] "GET /api/transactions?limit=10&_t=1754638177315 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 12:59:38] "GET /api/budgets?_t=1754638177319 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 12:59:38] "GET /api/debts?_t=1754638177324 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 12:59:38] "GET /api/subscriptions?_t=1754638177325 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 12:59:39] "GET /api/analytics/balance?_t=1754638177312 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 12:59:47] "GET /api/goals?_t=1754638187524 HTTP/1.1" 500 -
+192.168.29.131 - - [08/Aug/2025 12:59:47] "GET /api/transactions?limit=10&_t=1754638187520 HTTP/1.1" 401 -
+192.168.29.131 - - [08/Aug/2025 12:59:47] "GET /api/debts?_t=1754638187527 HTTP/1.1" 500 -
+192.168.29.131 - - [08/Aug/2025 12:59:48] "GET /api/bills?_t=1754638187526 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 12:59:48] "GET /api/analytics/balance?_t=1754638187518 HTTP/1.1" 500 -
+192.168.29.131 - - [08/Aug/2025 12:59:48] "GET /api/subscriptions?_t=1754638187529 HTTP/1.1" 500 -
+192.168.29.131 - - [08/Aug/2025 12:59:48] "GET /api/budgets?_t=1754638187522 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 12:59:49] "GET /api/goals?_t=1754638187524 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 12:59:49] "GET /api/debts?_t=1754638187527 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 12:59:50] "GET /api/subscriptions?_t=1754638187529 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 12:59:50] "GET /api/analytics/balance?_t=1754638187518 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 12:59:51] "GET /api/subscriptions?_t=1754638191483 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 12:59:58] "GET /api/goals?_t=1754638197828 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 12:59:58] "GET /api/bills?_t=1754638197830 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 12:59:58] "GET /api/transactions?limit=10&_t=1754638197825 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 12:59:58] "GET /api/analytics/balance?_t=1754638197823 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 12:59:58] "GET /api/subscriptions?_t=1754638197833 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 12:59:58] "GET /api/debts?_t=1754638197831 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 12:59:59] "GET /api/budgets?_t=1754638197827 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 13:00:16] "GET /api/transactions?limit=10&_t=1754638215700 HTTP/1.1" 500 -
+192.168.29.131 - - [08/Aug/2025 13:00:16] "GET /api/goals?_t=1754638215704 HTTP/1.1" 500 -
+192.168.29.131 - - [08/Aug/2025 13:00:16] "GET /api/debts?_t=1754638215707 HTTP/1.1" 500 -
+192.168.29.131 - - [08/Aug/2025 13:00:16] "GET /api/bills?_t=1754638215706 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 13:00:16] "GET /api/analytics/balance?_t=1754638215698 HTTP/1.1" 500 -
+192.168.29.131 - - [08/Aug/2025 13:00:16] "GET /api/subscriptions?_t=1754638215709 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 13:00:16] "GET /api/budgets?_t=1754638215702 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 13:00:17] "GET /api/goals?_t=1754638215704 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 13:00:17] "GET /api/transactions?limit=10&_t=1754638215700 HTTP/1.1" 500 -
+192.168.29.131 - - [08/Aug/2025 13:00:17] "GET /api/analytics/balance?_t=1754638215698 HTTP/1.1" 401 -
+192.168.29.131 - - [08/Aug/2025 13:00:17] "GET /api/debts?_t=1754638215707 HTTP/1.1" 500 -
+192.168.29.131 - - [08/Aug/2025 13:00:21] "GET /api/bills?_t=1754638221421 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 13:00:39] "POST /api/bills/7cfcaf32-77e9-475d-b950-27b562f99a2d/pay?_t=1754638238370 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 13:00:39] "GET /api/bills?_t=1754638239259 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 13:02:38] "GET /api/bills?_t=1754638358289 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 13:02:38] "GET /api/goals?_t=1754638358288 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 13:02:38] "GET /api/transactions?limit=10&_t=1754638358284 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 13:02:39] "GET /api/analytics/balance?_t=1754638358282 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 13:02:39] "GET /api/debts?_t=1754638358291 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 13:02:39] "GET /api/budgets?_t=1754638358286 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 13:02:39] "GET /api/subscriptions?_t=1754638358292 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 13:03:07] "GET / HTTP/1.1" 404 -
+192.168.29.131 - - [08/Aug/2025 13:03:25] "POST /api/auth/create-oauth-user HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 13:03:27] "GET /api/goals?_t=1754638406506 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 13:03:27] "GET /api/bills?_t=1754638406507 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 13:03:27] "GET /api/transactions?limit=10&_t=1754638406503 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 13:03:27] "GET /api/debts?_t=1754638406509 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 13:03:27] "GET /api/analytics/balance?_t=1754638406500 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 13:03:27] "GET /api/subscriptions?_t=1754638406510 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 13:03:27] "GET /api/transactions?limit=10&_t=1754638406515 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 13:03:28] "GET /api/budgets?_t=1754638406504 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 13:03:28] "GET /api/analytics/balance?_t=1754638406513 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 13:03:28] "GET /api/goals?_t=1754638406517 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 13:03:28] "GET /api/bills?_t=1754638406519 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 13:03:28] "GET /api/subscriptions?_t=1754638406521 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 13:03:28] "GET /api/debts?_t=1754638406520 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 13:03:28] "GET /api/budgets?_t=1754638406516 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 13:03:37] "GET /api/bills?_t=1754638416676 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 13:03:41] "POST /api/bills/3607c1fe-8720-4c63-9dd4-2e8ed7a883f7/pay?_t=1754638420517 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 13:03:41] "GET /api/bills?_t=1754638421230 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 13:03:44] "GET /api/goals?_t=1754638424397 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 13:03:44] "GET /api/bills?_t=1754638424399 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 13:03:45] "GET /api/transactions?limit=10&_t=1754638424394 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 13:03:45] "GET /api/analytics/balance?_t=1754638424392 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 13:03:45] "GET /api/budgets?_t=1754638424396 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 13:03:45] "GET /api/debts?_t=1754638424401 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 13:03:45] "GET /api/subscriptions?_t=1754638424402 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 13:03:50] "GET /api/transactions?limit=100&_t=1754638429511 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 13:03:57] "GET /api/budgets?_t=1754638436413 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 13:04:01] "GET /api/analytics/insights?_t=1754638441355 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 13:05:20] "GET /api/bills?_t=1754638519525 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 13:05:20] "GET /api/goals?_t=1754638519523 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 13:05:20] "GET /api/transactions?limit=10&_t=1754638519519 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 13:05:20] "GET /api/analytics/balance?_t=1754638519517 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 13:05:20] "GET /api/debts?_t=1754638519526 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 13:05:20] "GET /api/subscriptions?_t=1754638519528 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 13:05:20] "GET /api/budgets?_t=1754638519520 HTTP/1.1" 200 -
+ * Detected change in '/Users/danieldas/Documents/moneyAI/backend/api/blueprints/analytics.py', reloading
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 372-553-095
+ * Detected change in '/Users/danieldas/Documents/moneyAI/backend/api/blueprints/analytics.py', reloading
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 372-553-095
+ * Detected change in '/Users/danieldas/Documents/moneyAI/backend/api/blueprints/analytics.py', reloading
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 372-553-095
+ * Detected change in '/Users/danieldas/Documents/moneyAI/backend/api/blueprints/analytics.py', reloading
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 372-553-095
+ * Detected change in '/Users/danieldas/Documents/moneyAI/backend/api/blueprints/analytics.py', reloading
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 372-553-095
+192.168.29.131 - - [08/Aug/2025 13:08:55] "GET / HTTP/1.1" 404 -
+192.168.29.131 - - [08/Aug/2025 13:09:10] "POST /api/auth/create-oauth-user HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 13:09:12] "GET /api/transactions?limit=10&_t=1754638751848 HTTP/1.1" 500 -
+192.168.29.131 - - [08/Aug/2025 13:09:12] "GET /api/debts?_t=1754638751854 HTTP/1.1" 500 -
+192.168.29.131 - - [08/Aug/2025 13:09:12] "GET /api/goals?_t=1754638751850 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 13:09:12] "GET /api/bills?_t=1754638751852 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 13:09:13] "GET /api/subscriptions?_t=1754638751855 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 13:09:13] "GET /api/analytics/balance?_t=1754638751845 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 13:09:13] "GET /api/transactions?limit=10&_t=1754638751859 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 13:09:13] "GET /api/budgets?_t=1754638751849 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 13:09:13] "GET /api/analytics/balance?_t=1754638751858 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 13:09:13] "GET /api/goals?_t=1754638751862 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 13:09:13] "GET /api/budgets?_t=1754638751861 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 13:09:13] "GET /api/bills?_t=1754638751863 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 13:09:13] "GET /api/subscriptions?_t=1754638751866 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 13:09:13] "GET /api/transactions?limit=10&_t=1754638751848 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 13:09:13] "GET /api/debts?_t=1754638751865 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 13:09:14] "GET /api/debts?_t=1754638751854 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 13:09:37] "GET /api/transactions?limit=100&_t=1754638776736 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 13:09:40] "GET /api/budgets?_t=1754638779322 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 13:09:43] "GET /api/analytics/insights?_t=1754638782602 HTTP/1.1" 500 -
+192.168.29.131 - - [08/Aug/2025 13:09:44] "GET /api/analytics/insights?_t=1754638782602 HTTP/1.1" 500 -
+ * Detected change in '/Users/danieldas/Documents/moneyAI/backend/api/blueprints/analytics.py', reloading
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 372-553-095
+127.0.0.1 - - [08/Aug/2025 13:12:10] "GET /api/analytics/insights HTTP/1.1" 401 -
+192.168.29.131 - - [08/Aug/2025 13:12:40] "GET / HTTP/1.1" 404 -
+192.168.29.131 - - [08/Aug/2025 13:12:57] "POST /api/auth/create-oauth-user HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 13:13:01] "GET /api/bills?_t=1754638978704 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 13:13:01] "GET /api/goals?_t=1754638978703 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 13:13:01] "GET /api/transactions?limit=10&_t=1754638978700 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 13:13:05] "GET /api/analytics/balance?_t=1754638978697 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 13:13:05] "GET /api/transactions?limit=10&_t=1754638978712 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 13:13:06] "GET /api/budgets?_t=1754638978701 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 13:13:06] "GET /api/debts?_t=1754638978706 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 13:13:06] "GET /api/subscriptions?_t=1754638978707 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 13:13:08] "GET /api/goals?_t=1754638978714 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 13:13:08] "GET /api/bills?_t=1754638978716 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 13:13:08] "GET /api/analytics/balance?_t=1754638978710 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 13:13:10] "GET /api/subscriptions?_t=1754638978718 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 13:13:12] "GET /api/budgets?_t=1754638978713 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 13:13:12] "GET /api/debts?_t=1754638978717 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 13:13:12] "GET /api/subscriptions?_t=1754638978718 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 13:13:12] "GET /api/analytics/balance?_t=1754638978710 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 13:13:12] "GET /api/debts?_t=1754638978717 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 13:13:12] "GET /api/budgets?_t=1754638978713 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 13:13:21] "GET /api/transactions?limit=100&_t=1754639000542 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 13:13:24] "GET /api/budgets?_t=1754639004071 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 13:13:27] "GET /api/analytics/insights?_t=1754639007313 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 13:13:30] "GET /api/goals?_t=1754639010107 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 13:13:30] "GET /api/bills?_t=1754639010109 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 13:13:30] "GET /api/transactions?limit=10&_t=1754639010103 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 13:13:30] "GET /api/analytics/balance?_t=1754639010101 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 13:13:30] "GET /api/budgets?_t=1754639010105 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 13:13:30] "GET /api/subscriptions?_t=1754639010113 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 13:13:30] "GET /api/debts?_t=1754639010111 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 13:13:42] "GET /api/goals?_t=1754639022351 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 13:13:42] "GET /api/bills?_t=1754639022353 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 13:13:43] "GET /api/transactions?limit=10&_t=1754639022347 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 13:13:43] "GET /api/debts?_t=1754639022354 HTTP/1.1" 500 -
+192.168.29.131 - - [08/Aug/2025 13:13:43] "GET /api/subscriptions?_t=1754639022356 HTTP/1.1" 500 -
+192.168.29.131 - - [08/Aug/2025 13:13:43] "GET /api/analytics/balance?_t=1754639022345 HTTP/1.1" 500 -
+192.168.29.131 - - [08/Aug/2025 13:13:43] "GET /api/budgets?_t=1754639022349 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 13:13:44] "GET /api/analytics/balance?_t=1754639022345 HTTP/1.1" 500 -
+192.168.29.131 - - [08/Aug/2025 13:13:44] "GET /api/subscriptions?_t=1754639022356 HTTP/1.1" 500 -
+192.168.29.131 - - [08/Aug/2025 13:13:45] "GET /api/debts?_t=1754639022354 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 13:16:01] "GET / HTTP/1.1" 404 -
+192.168.29.131 - - [08/Aug/2025 13:16:16] "POST /api/auth/create-oauth-user HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 13:16:19] "GET /api/bills?_t=1754639178683 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 13:16:19] "GET /api/goals?_t=1754639178681 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 13:16:19] "GET /api/transactions?limit=10&_t=1754639178678 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 13:16:19] "GET /api/analytics/balance?_t=1754639178676 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 13:16:20] "GET /api/transactions?limit=10&_t=1754639178690 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 13:16:20] "GET /api/budgets?_t=1754639178680 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 13:16:20] "GET /api/debts?_t=1754639178685 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 13:16:20] "GET /api/subscriptions?_t=1754639178686 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 13:16:20] "GET /api/goals?_t=1754639178693 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 13:16:20] "GET /api/bills?_t=1754639178694 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 13:16:20] "GET /api/analytics/balance?_t=1754639178689 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 13:16:20] "GET /api/subscriptions?_t=1754639178697 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 13:16:20] "GET /api/debts?_t=1754639178696 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 13:16:20] "GET /api/budgets?_t=1754639178692 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 13:16:33] "GET /api/transactions?limit=100&_t=1754639192477 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 13:16:35] "GET /api/budgets?_t=1754639194988 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 13:16:37] "GET /api/analytics/insights?_t=1754639197067 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 13:16:39] "GET /api/bills?_t=1754639198735 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 13:16:39] "GET /api/transactions?limit=10&_t=1754639198728 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 13:16:39] "GET /api/goals?_t=1754639198733 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 13:16:39] "GET /api/analytics/balance?_t=1754639198726 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 13:16:39] "GET /api/budgets?_t=1754639198730 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 13:16:39] "GET /api/debts?_t=1754639198737 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 13:16:39] "GET /api/subscriptions?_t=1754639198738 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 13:16:41] "GET /api/bills?_t=1754639200683 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 13:16:42] "GET /api/goals?_t=1754639202446 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 13:16:42] "GET /api/bills?_t=1754639202448 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 13:16:42] "GET /api/transactions?limit=10&_t=1754639202442 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 13:16:43] "GET /api/debts?_t=1754639202450 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 13:16:43] "GET /api/analytics/balance?_t=1754639202440 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 13:16:43] "GET /api/budgets?_t=1754639202444 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 13:16:43] "GET /api/subscriptions?_t=1754639202451 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 13:16:44] "GET /api/debts?_t=1754639204227 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 13:16:47] "GET /api/goals?_t=1754639207194 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 13:16:47] "GET /api/bills?_t=1754639207195 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 13:16:47] "GET /api/transactions?limit=10&_t=1754639207190 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 13:16:48] "GET /api/debts?_t=1754639207197 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 13:16:48] "GET /api/analytics/balance?_t=1754639207188 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 13:16:48] "GET /api/subscriptions?_t=1754639207199 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 13:16:48] "GET /api/budgets?_t=1754639207192 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 13:16:49] "GET /api/subscriptions?_t=1754639208822 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 13:16:50] "GET /api/bills?_t=1754639209974 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 13:16:50] "GET /api/goals?_t=1754639209973 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 13:16:50] "GET /api/transactions?limit=10&_t=1754639209970 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 13:16:50] "GET /api/analytics/balance?_t=1754639209968 HTTP/1.1" 500 -
+192.168.29.131 - - [08/Aug/2025 13:16:50] "GET /api/subscriptions?_t=1754639209978 HTTP/1.1" 500 -
+192.168.29.131 - - [08/Aug/2025 13:16:50] "GET /api/debts?_t=1754639209976 HTTP/1.1" 500 -
+192.168.29.131 - - [08/Aug/2025 13:16:50] "GET /api/budgets?_t=1754639209971 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 13:16:51] "GET /api/analytics/balance?_t=1754639209968 HTTP/1.1" 500 -
+192.168.29.131 - - [08/Aug/2025 13:16:51] "GET /api/subscriptions?_t=1754639209978 HTTP/1.1" 500 -
+192.168.29.131 - - [08/Aug/2025 13:16:52] "GET /api/debts?_t=1754639209976 HTTP/1.1" 200 -
+ * Detected change in '/Users/danieldas/Documents/moneyAI/backend/config.py', reloading
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 372-553-095
+ * Detected change in '/Users/danieldas/Documents/moneyAI/backend/config.py', reloading
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 372-553-095
+192.168.29.131 - - [08/Aug/2025 13:19:10] "GET / HTTP/1.1" 404 -
+192.168.29.131 - - [08/Aug/2025 13:19:25] "POST /api/auth/create-oauth-user HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 13:19:27] "GET /api/analytics/balance?_t=1754639367062 HTTP/1.1" 401 -
+192.168.29.131 - - [08/Aug/2025 13:19:27] "GET /api/budgets?_t=1754639367065 HTTP/1.1" 401 -
+192.168.29.131 - - [08/Aug/2025 13:19:27] "GET /api/transactions?limit=10&_t=1754639367064 HTTP/1.1" 401 -
+192.168.29.131 - - [08/Aug/2025 13:19:27] "GET /api/goals?_t=1754639367067 HTTP/1.1" 401 -
+192.168.29.131 - - [08/Aug/2025 13:19:27] "GET /api/bills?_t=1754639367069 HTTP/1.1" 401 -
+192.168.29.131 - - [08/Aug/2025 13:19:27] "GET /api/debts?_t=1754639367070 HTTP/1.1" 401 -
+192.168.29.131 - - [08/Aug/2025 13:19:27] "GET /api/subscriptions?_t=1754639367072 HTTP/1.1" 401 -
+192.168.29.131 - - [08/Aug/2025 13:19:27] "GET /api/analytics/balance?_t=1754639367075 HTTP/1.1" 401 -
+192.168.29.131 - - [08/Aug/2025 13:19:27] "GET /api/transactions?limit=10&_t=1754639367076 HTTP/1.1" 401 -
+192.168.29.131 - - [08/Aug/2025 13:19:27] "GET /api/budgets?_t=1754639367077 HTTP/1.1" 401 -
+192.168.29.131 - - [08/Aug/2025 13:19:27] "GET /api/goals?_t=1754639367079 HTTP/1.1" 401 -
+192.168.29.131 - - [08/Aug/2025 13:19:27] "GET /api/bills?_t=1754639367080 HTTP/1.1" 401 -
+192.168.29.131 - - [08/Aug/2025 13:19:27] "GET /api/debts?_t=1754639367081 HTTP/1.1" 401 -
+192.168.29.131 - - [08/Aug/2025 13:19:27] "GET /api/subscriptions?_t=1754639367083 HTTP/1.1" 401 -
+192.168.29.131 - - [08/Aug/2025 13:19:34] "GET /api/analytics/balance?_t=1754639374852 HTTP/1.1" 401 -
+192.168.29.131 - - [08/Aug/2025 13:19:34] "GET /api/transactions?limit=10&_t=1754639374854 HTTP/1.1" 401 -
+192.168.29.131 - - [08/Aug/2025 13:19:34] "GET /api/budgets?_t=1754639374856 HTTP/1.1" 401 -
+192.168.29.131 - - [08/Aug/2025 13:19:34] "GET /api/goals?_t=1754639374858 HTTP/1.1" 401 -
+192.168.29.131 - - [08/Aug/2025 13:19:34] "GET /api/bills?_t=1754639374859 HTTP/1.1" 401 -
+192.168.29.131 - - [08/Aug/2025 13:19:34] "GET /api/debts?_t=1754639374861 HTTP/1.1" 401 -
+192.168.29.131 - - [08/Aug/2025 13:19:34] "GET /api/subscriptions?_t=1754639374863 HTTP/1.1" 401 -
+192.168.29.131 - - [08/Aug/2025 13:19:36] "GET /api/analytics/balance?_t=1754639376200 HTTP/1.1" 401 -
+192.168.29.131 - - [08/Aug/2025 13:19:36] "GET /api/transactions?limit=10&_t=1754639376202 HTTP/1.1" 401 -
+192.168.29.131 - - [08/Aug/2025 13:19:36] "GET /api/budgets?_t=1754639376205 HTTP/1.1" 401 -
+192.168.29.131 - - [08/Aug/2025 13:19:36] "GET /api/bills?_t=1754639376210 HTTP/1.1" 401 -
+192.168.29.131 - - [08/Aug/2025 13:19:36] "GET /api/debts?_t=1754639376211 HTTP/1.1" 401 -
+192.168.29.131 - - [08/Aug/2025 13:19:36] "GET /api/goals?_t=1754639376206 HTTP/1.1" 401 -
+192.168.29.131 - - [08/Aug/2025 13:19:36] "GET /api/subscriptions?_t=1754639376213 HTTP/1.1" 401 -
+ * Detected change in '/Users/danieldas/Documents/moneyAI/backend/config.py', reloading
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 372-553-095
+192.168.29.131 - - [08/Aug/2025 13:22:04] "GET / HTTP/1.1" 404 -
+192.168.29.131 - - [08/Aug/2025 13:22:19] "POST /api/auth/create-oauth-user HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 13:22:22] "GET /api/bills?_t=1754639541590 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 13:22:22] "GET /api/goals?_t=1754639541588 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 13:22:22] "GET /api/transactions?limit=10&_t=1754639541585 HTTP/1.1" 500 -
+192.168.29.131 - - [08/Aug/2025 13:22:22] "GET /api/debts?_t=1754639541592 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 13:22:22] "GET /api/transactions?limit=10&_t=1754639541597 HTTP/1.1" 500 -
+192.168.29.131 - - [08/Aug/2025 13:22:22] "GET /api/analytics/balance?_t=1754639541583 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 13:22:23] "GET /api/subscriptions?_t=1754639541593 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 13:22:23] "GET /api/goals?_t=1754639541600 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 13:22:23] "GET /api/bills?_t=1754639541601 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 13:22:23] "GET /api/debts?_t=1754639541603 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 13:22:23] "GET /api/subscriptions?_t=1754639541604 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 13:22:23] "GET /api/transactions?limit=10&_t=1754639541585 HTTP/1.1" 500 -
+192.168.29.131 - - [08/Aug/2025 13:22:24] "GET /api/budgets?_t=1754639541587 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 13:22:24] "GET /api/transactions?limit=10&_t=1754639541597 HTTP/1.1" 500 -
+192.168.29.131 - - [08/Aug/2025 13:22:24] "GET /api/analytics/balance?_t=1754639541596 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 13:22:24] "GET /api/budgets?_t=1754639541599 HTTP/1.1" 200 -
+ * Detected change in '/Users/danieldas/Documents/moneyAI/backend/config.py', reloading
+Connection error (attempt 1), retrying in 1s: <ConnectionTerminated error_code:1, last_stream_id:65, additional_data:None>
+Connection error (attempt 1), retrying in 1s: <ConnectionTerminated error_code:1, last_stream_id:65, additional_data:None>
+Connection error (attempt 1), retrying in 1s: <ConnectionTerminated error_code:1, last_stream_id:65, additional_data:None>
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 372-553-095
+ * Detected change in '/Users/danieldas/Documents/moneyAI/backend/config.py', reloading
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 372-553-095
+127.0.0.1 - - [08/Aug/2025 13:26:29] "POST /api/auth/login HTTP/1.1" 401 -
+127.0.0.1 - - [08/Aug/2025 13:26:29] "GET /api/transactions?limit=1 HTTP/1.1" 401 -
+127.0.0.1 - - [08/Aug/2025 13:26:35] "POST /api/auth/login HTTP/1.1" 401 -
+192.168.29.131 - - [08/Aug/2025 13:26:47] "GET / HTTP/1.1" 404 -
+127.0.0.1 - - [08/Aug/2025 13:26:47] "GET /api/users HTTP/1.1" 404 -
+192.168.29.131 - - [08/Aug/2025 13:27:01] "POST /api/auth/create-oauth-user HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 13:27:04] "GET /api/goals?_t=1754639823391 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 13:27:04] "GET /api/bills?_t=1754639823393 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 13:27:04] "GET /api/transactions?limit=10&_t=1754639823388 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 13:27:05] "GET /api/budgets?_t=1754639823390 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 13:27:05] "GET /api/debts?_t=1754639823394 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 13:27:05] "GET /api/analytics/balance?_t=1754639823386 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 13:27:05] "GET /api/transactions?limit=10&_t=1754639823400 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 13:27:05] "GET /api/subscriptions?_t=1754639823396 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 13:27:05] "GET /api/analytics/balance?_t=1754639823399 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 13:27:05] "GET /api/bills?_t=1754639823404 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 13:27:05] "GET /api/goals?_t=1754639823403 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 13:27:05] "GET /api/subscriptions?_t=1754639823407 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 13:27:06] "GET /api/debts?_t=1754639823405 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 13:27:06] "GET /api/budgets?_t=1754639823401 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 13:27:15] "GET /api/transactions?limit=100&_t=1754639834787 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 13:27:17] "GET /api/goals?_t=1754639837586 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 13:27:17] "GET /api/bills?_t=1754639837588 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 13:27:18] "GET /api/transactions?limit=10&_t=1754639837582 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 13:27:18] "GET /api/analytics/balance?_t=1754639837579 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 13:27:18] "GET /api/debts?_t=1754639837589 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 13:27:18] "GET /api/budgets?_t=1754639837584 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 13:27:18] "GET /api/subscriptions?_t=1754639837591 HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 13:27:23] "GET /api/transactions?limit=5 HTTP/1.1" 401 -
+192.168.29.131 - - [08/Aug/2025 13:27:28] "GET /api/budgets?_t=1754639847640 HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 13:27:29] "GET /health HTTP/1.1" 404 -
+192.168.29.131 - - [08/Aug/2025 13:27:31] "GET /api/analytics/insights?_t=1754639851156 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 13:27:35] "GET /api/goals?_t=1754639855196 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 13:27:35] "GET /api/bills?_t=1754639855198 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 13:27:35] "GET /api/transactions?limit=10&_t=1754639855192 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 13:27:35] "GET /api/analytics/balance?_t=1754639855190 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 13:27:35] "GET /api/budgets?_t=1754639855194 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 13:27:36] "GET /api/debts?_t=1754639855200 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 13:27:36] "GET /api/subscriptions?_t=1754639855201 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 13:27:37] "GET /api/bills?_t=1754639857450 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 13:27:43] "POST /api/bills/df4b7f94-2d40-44d6-8d91-f66310de84b4/pay?_t=1754639862665 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 13:27:43] "GET /api/bills?_t=1754639863521 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 13:27:47] "GET /api/bills?_t=1754639867090 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 13:27:47] "GET /api/goals?_t=1754639867089 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 13:27:47] "GET /api/transactions?limit=10&_t=1754639867085 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 13:27:47] "GET /api/debts?_t=1754639867092 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 13:27:47] "GET /api/subscriptions?_t=1754639867094 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 13:27:47] "GET /api/analytics/balance?_t=1754639867083 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 13:27:47] "GET /api/budgets?_t=1754639867087 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 13:27:55] "GET /api/bills?_t=1754639875342 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 13:27:55] "GET /api/goals?_t=1754639875340 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 13:27:56] "GET /api/transactions?limit=10&_t=1754639875337 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 13:27:56] "GET /api/debts?_t=1754639875344 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 13:27:56] "GET /api/analytics/balance?_t=1754639875334 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 13:27:56] "GET /api/subscriptions?_t=1754639875345 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 13:27:56] "GET /api/budgets?_t=1754639875338 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 13:27:58] "GET /api/debts?_t=1754639877627 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 13:28:06] "GET /api/goals?_t=1754639884488 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 13:28:06] "GET /api/bills?_t=1754639884490 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 13:28:06] "GET /api/transactions?limit=10&_t=1754639884485 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 13:28:06] "GET /api/debts?_t=1754639884492 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 13:28:07] "GET /api/analytics/balance?_t=1754639884483 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 13:28:07] "GET /api/budgets?_t=1754639884487 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 13:28:07] "GET /api/subscriptions?_t=1754639884493 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 13:28:08] "GET /api/subscriptions?_t=1754639888119 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 13:28:10] "GET /api/goals?_t=1754639890031 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 13:28:10] "GET /api/bills?_t=1754639890033 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 13:28:10] "GET /api/transactions?limit=10&_t=1754639890028 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 13:28:10] "GET /api/debts?_t=1754639890034 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 13:28:10] "GET /api/analytics/balance?_t=1754639890026 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 13:28:11] "GET /api/subscriptions?_t=1754639890036 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 13:28:11] "GET /api/budgets?_t=1754639890030 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 13:28:16] "GET /api/subscriptions?_t=1754639895940 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 13:28:24] "GET /api/bills?_t=1754639903656 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 13:28:24] "GET /api/goals?_t=1754639903654 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 13:28:24] "GET /api/transactions?limit=10&_t=1754639903651 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 13:28:26] "GET /api/analytics/balance?_t=1754639903649 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 13:28:26] "GET /api/budgets?_t=1754639903652 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 13:28:26] "GET /api/debts?_t=1754639903657 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 13:28:26] "GET /api/subscriptions?_t=1754639903658 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 13:29:25] "GET /api/bills?_t=1754639964483 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 13:29:25] "GET /api/goals?_t=1754639964482 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 13:29:25] "GET /api/transactions?limit=10&_t=1754639964478 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 13:29:25] "GET /api/debts?_t=1754639964485 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 13:29:25] "GET /api/analytics/balance?_t=1754639964476 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 13:29:25] "GET /api/budgets?_t=1754639964480 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 13:29:25] "GET /api/subscriptions?_t=1754639964487 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 13:29:42] "GET /api/bills?_t=1754639981718 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 13:29:50] "POST /api/bills/91d4a556-f78a-484d-9c8e-de8473700257/pay?_t=1754639990231 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 13:29:51] "GET /api/bills?_t=1754639991002 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 13:29:58] "GET /api/goals?_t=1754639997687 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 13:29:58] "GET /api/bills?_t=1754639997688 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 13:29:58] "GET /api/transactions?limit=10&_t=1754639997683 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 13:29:58] "GET /api/debts?_t=1754639997690 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 13:29:58] "GET /api/analytics/balance?_t=1754639997681 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 13:29:58] "GET /api/budgets?_t=1754639997685 HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 13:29:58] "GET /api/subscriptions?_t=1754639997691 HTTP/1.1" 200 -
+ * Detected change in '/Users/danieldas/Documents/moneyAI/backend/api/utils/auth_helpers.py', reloading
+Connection error (attempt 1), retrying in 1s: Server disconnected
+Connection error (attempt 1), retrying in 1s: Server disconnected
+Connection error (attempt 1), retrying in 1s: Server disconnected
+Connection error (attempt 1), retrying in 1s: Server disconnected
+Connection error (attempt 1), retrying in 1s: Server disconnected
+Connection error (attempt 1), retrying in 1s: Server disconnected
+Connection error (attempt 1), retrying in 1s: Server disconnected
+Connection error (attempt 1), retrying in 1s: Server disconnected
+Connection error (attempt 1), retrying in 1s: Server disconnected
+Connection error (attempt 1), retrying in 1s: Server disconnected
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 372-553-095
+ * Detected change in '/Users/danieldas/Documents/moneyAI/backend/api/blueprints/bills.py', reloading
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 372-553-095

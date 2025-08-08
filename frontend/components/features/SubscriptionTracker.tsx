@@ -6,6 +6,8 @@ import {
   ScrollView,
   Pressable,
   Alert,
+  Modal,
+  TextInput,
 } from 'react-native';
 import { IconSymbol } from '@/components/ui/IconSymbol';
 import { Subscription } from '@/types';
@@ -13,7 +15,7 @@ import { format, addDays, differenceInDays } from 'date-fns';
 
 interface SubscriptionTrackerProps {
   subscriptions: Subscription[];
-  onAddSubscription: () => void;
+  onAddSubscription: (subscription: any) => void;
   onCancelSubscription: (id: string) => void;
   onMarkPaid: (id: string) => void;
 }
@@ -26,6 +28,16 @@ export default function SubscriptionTracker({
 }: SubscriptionTrackerProps) {
   const [upcomingRenewals, setUpcomingRenewals] = useState<Subscription[]>([]);
   const [totalMonthlySpend, setTotalMonthlySpend] = useState(0);
+  
+  // Add subscription modal state
+  const [showAddModal, setShowAddModal] = useState(false);
+  const [formData, setFormData] = useState({
+    name: '',
+    amount: '',
+    billing_cycle: 'monthly',
+    next_billing_date: '',
+    category: 'Entertainment',
+  });
 
   useEffect(() => {
     calculateUpcomingRenewals();
@@ -61,6 +73,28 @@ export default function SubscriptionTracker({
       }, 0);
     
     setTotalMonthlySpend(monthly);
+  };
+
+  const handleSubmit = () => {
+    if (!formData.name || !formData.amount || !formData.next_billing_date) {
+      Alert.alert('Error', 'Please fill in all required fields');
+      return;
+    }
+
+    onAddSubscription({
+      ...formData,
+      amount: parseFloat(formData.amount),
+    });
+
+    // Reset form and close modal
+    setFormData({
+      name: '',
+      amount: '',
+      billing_cycle: 'monthly',
+      next_billing_date: '',
+      category: 'Entertainment',
+    });
+    setShowAddModal(false);
   };
 
   const formatCurrency = (amount: number) => {
@@ -114,7 +148,7 @@ export default function SubscriptionTracker({
             {formatCurrency(totalMonthlySpend)}/month • {subscriptions.filter(s => s.is_active).length} active
           </Text>
         </View>
-        <Pressable style={styles.addButton} onPress={onAddSubscription}>
+        <Pressable style={styles.addButton} onPress={() => setShowAddModal(true)}>
           <IconSymbol name="plus" size={20} color="#007AFF" />
         </Pressable>
       </View>
@@ -141,7 +175,7 @@ export default function SubscriptionTracker({
             <Text style={styles.emptySubtitle}>
               Track your recurring payments like Netflix, Spotify, and more
             </Text>
-            <Pressable style={styles.emptyButton} onPress={onAddSubscription}>
+            <Pressable style={styles.emptyButton} onPress={() => setShowAddModal(true)}>
               <Text style={styles.emptyButtonText}>Add First Subscription</Text>
             </Pressable>
           </View>
@@ -202,6 +236,112 @@ export default function SubscriptionTracker({
           ))
         )}
       </ScrollView>
+
+      {/* Add Subscription Modal */}
+      <Modal
+        visible={showAddModal}
+        animationType="slide"
+        presentationStyle="pageSheet"
+        onRequestClose={() => setShowAddModal(false)}
+      >
+        <View style={styles.modalContainer}>
+          <View style={styles.modalHeader}>
+            <Pressable onPress={() => setShowAddModal(false)}>
+              <Text style={styles.cancelText}>Cancel</Text>
+            </Pressable>
+            <Text style={styles.modalTitle}>Add Subscription</Text>
+            <Pressable onPress={handleSubmit}>
+              <Text style={styles.saveText}>Save</Text>
+            </Pressable>
+          </View>
+
+          <ScrollView style={styles.modalContent}>
+            <View style={styles.formGroup}>
+              <Text style={styles.label}>Name</Text>
+              <TextInput
+                style={styles.input}
+                value={formData.name}
+                onChangeText={(text) => setFormData(prev => ({ ...prev, name: text }))}
+                placeholder="e.g., Netflix"
+                placeholderTextColor="#8E8E93"
+              />
+            </View>
+
+            <View style={styles.formGroup}>
+              <Text style={styles.label}>Amount (₹)</Text>
+              <TextInput
+                style={styles.input}
+                value={formData.amount}
+                onChangeText={(text) => setFormData(prev => ({ ...prev, amount: text }))}
+                placeholder="799"
+                placeholderTextColor="#8E8E93"
+                keyboardType="numeric"
+              />
+            </View>
+
+            <View style={styles.formGroup}>
+              <Text style={styles.label}>Billing Cycle</Text>
+              <View style={styles.pickerContainer}>
+                {['weekly', 'monthly', 'quarterly', 'yearly'].map((cycle) => (
+                  <Pressable
+                    key={cycle}
+                    style={[
+                      styles.pickerOption,
+                      formData.billing_cycle === cycle && styles.pickerOptionSelected,
+                    ]}
+                    onPress={() => setFormData(prev => ({ ...prev, billing_cycle: cycle }))}
+                  >
+                    <Text
+                      style={[
+                        styles.pickerOptionText,
+                        formData.billing_cycle === cycle && styles.pickerOptionTextSelected,
+                      ]}
+                    >
+                      {cycle.charAt(0).toUpperCase() + cycle.slice(1)}
+                    </Text>
+                  </Pressable>
+                ))}
+              </View>
+            </View>
+
+            <View style={styles.formGroup}>
+              <Text style={styles.label}>Next Billing Date</Text>
+              <TextInput
+                style={styles.input}
+                value={formData.next_billing_date}
+                onChangeText={(text) => setFormData(prev => ({ ...prev, next_billing_date: text }))}
+                placeholder="YYYY-MM-DD"
+                placeholderTextColor="#8E8E93"
+              />
+            </View>
+
+            <View style={styles.formGroup}>
+              <Text style={styles.label}>Category</Text>
+              <View style={styles.pickerContainer}>
+                {['Entertainment', 'Software', 'Music', 'News', 'Other'].map((category) => (
+                  <Pressable
+                    key={category}
+                    style={[
+                      styles.pickerOption,
+                      formData.category === category && styles.pickerOptionSelected,
+                    ]}
+                    onPress={() => setFormData(prev => ({ ...prev, category }))}
+                  >
+                    <Text
+                      style={[
+                        styles.pickerOptionText,
+                        formData.category === category && styles.pickerOptionTextSelected,
+                      ]}
+                    >
+                      {category}
+                    </Text>
+                  </Pressable>
+                ))}
+              </View>
+            </View>
+          </ScrollView>
+        </View>
+      </Modal>
     </View>
   );
 }
@@ -399,5 +539,77 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: '600',
     color: '#8E8E93',
+  },
+  
+  // Modal styles
+  modalContainer: {
+    flex: 1,
+    backgroundColor: '#1A1A1A',
+  },
+  modalHeader: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    paddingTop: 60,
+    paddingHorizontal: 20,
+    paddingBottom: 20,
+    borderBottomWidth: 1,
+    borderBottomColor: '#2C2C2E',
+  },
+  modalTitle: {
+    fontSize: 18,
+    fontWeight: '600',
+    color: '#fff',
+  },
+  cancelText: {
+    fontSize: 16,
+    color: '#8E8E93',
+  },
+  saveText: {
+    fontSize: 16,
+    color: '#007AFF',
+    fontWeight: '600',
+  },
+  modalContent: {
+    flex: 1,
+    paddingHorizontal: 20,
+  },
+  formGroup: {
+    marginBottom: 24,
+  },
+  label: {
+    fontSize: 16,
+    fontWeight: '600',
+    color: '#fff',
+    marginBottom: 8,
+  },
+  input: {
+    backgroundColor: '#2C2C2E',
+    borderRadius: 12,
+    paddingHorizontal: 16,
+    paddingVertical: 12,
+    fontSize: 16,
+    color: '#fff',
+  },
+  pickerContainer: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    gap: 8,
+  },
+  pickerOption: {
+    backgroundColor: '#2C2C2E',
+    borderRadius: 8,
+    paddingHorizontal: 16,
+    paddingVertical: 8,
+  },
+  pickerOptionSelected: {
+    backgroundColor: '#007AFF',
+  },
+  pickerOptionText: {
+    fontSize: 14,
+    color: '#8E8E93',
+  },
+  pickerOptionTextSelected: {
+    color: '#fff',
   },
 });

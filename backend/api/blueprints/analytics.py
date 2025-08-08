@@ -5,20 +5,71 @@ from config import supabase_client
 from datetime import datetime, date, timedelta
 from collections import defaultdict
 import calendar
+import pytz
 
 analytics_bp = Blueprint('analytics', __name__)
+
+def get_day_boundaries(target_date: date, timezone_str: str = 'Asia/Kolkata'):
+    """
+    Get precise day boundaries (12:00 AM to 11:59 PM) for a specific date in timezone
+    Returns UTC timestamps for database querying
+    """
+    tz = pytz.timezone(timezone_str)
+    
+    # Start of day: 12:00 AM (00:00:00) in local timezone
+    start_of_day = tz.localize(datetime.combine(target_date, datetime.min.time()))
+    
+    # End of day: 11:59:59.999999 PM in local timezone  
+    end_of_day = tz.localize(datetime.combine(target_date, datetime.max.time()))
+    
+    # Convert to UTC for database queries
+    return start_of_day.astimezone(pytz.UTC), end_of_day.astimezone(pytz.UTC)
+
+def get_week_boundaries(target_date: date, timezone_str: str = 'Asia/Kolkata'):
+    """Get week boundaries from Monday 12:00 AM to Sunday 11:59 PM"""
+    # Calculate Monday of the week
+    monday = target_date - timedelta(days=target_date.weekday())
+    # Calculate Sunday of the week
+    sunday = monday + timedelta(days=6)
+    
+    start_utc, _ = get_day_boundaries(monday, timezone_str)
+    _, end_utc = get_day_boundaries(sunday, timezone_str)
+    
+    return start_utc, end_utc
+
+def get_month_boundaries(target_date: date, timezone_str: str = 'Asia/Kolkata'):
+    """Get month boundaries from 1st 12:00 AM to last day 11:59 PM"""
+    first_day = target_date.replace(day=1)
+    last_day = date(target_date.year, target_date.month, calendar.monthrange(target_date.year, target_date.month)[1])
+    
+    start_utc, _ = get_day_boundaries(first_day, timezone_str)
+    _, end_utc = get_day_boundaries(last_day, timezone_str)
+    
+    return start_utc, end_utc
 
 @analytics_bp.route('/balance', methods=['GET'])
 @require_auth
 def get_current_balance():
-    """Get current balance, today's and weekly spending with summary"""
+    """Get current balance, today's and weekly spending with comprehensive user info and timezone-aware calculations"""
     try:
         user = get_current_user()
-        today = date.today()
         
-        # Calculate week start (Monday) and month start
-        week_start = today - timedelta(days=today.weekday())
-        month_start = today.replace(day=1)
+        # Get user timezone from profile or default to Asia/Kolkata
+        user_timezone = user.get('timezone', 'Asia/Kolkata')
+        
+        # Get current date in user's timezone
+        tz = pytz.timezone(user_timezone)
+        now_local = datetime.now(tz)
+        today_local = now_local.date()
+        
+        # Get precise day boundaries for today
+        today_start_utc, today_end_utc = get_day_boundaries(today_local, user_timezone)
+        
+        # Get week boundaries (Monday to Sunday)
+        week_start_utc, week_end_utc = get_week_boundaries(today_local, user_timezone)
+        
+        # Get month boundaries 
+        month_start_utc, month_end_utc = get_month_boundaries(today_local, user_timezone)
         
         # Get all transactions to calculate overall balance
         all_transactions = supabase_client.table('transactions').select('amount, transaction_type').eq('user_id', user['id']).execute()
@@ -28,17 +79,17 @@ def get_current_balance():
         total_expense = sum(float(t['amount']) for t in all_transactions.data if t['transaction_type'] == 'expense')
         current_balance = total_income - total_expense
         
-        # Get today's transactions
-        today_transactions = supabase_client.table('transactions').select('amount, transaction_type').eq('user_id', user['id'])
-        today_transactions = today_transactions.gte('date', today.isoformat()).lte('date', today.isoformat()).execute()
+        # Get today's transactions with timezone-aware boundaries
+        today_transactions = supabase_client.table('transactions').select('amount, transaction_type, created_at').eq('user_id', user['id'])
+        today_transactions = today_transactions.gte('created_at', today_start_utc.isoformat()).lte('created_at', today_end_utc.isoformat()).execute()
         
         # Calculate today's spending and income
         today_income = sum(float(t['amount']) for t in today_transactions.data if t['transaction_type'] == 'income')
         today_expense = sum(float(t['amount']) for t in today_transactions.data if t['transaction_type'] == 'expense')
         
-        # Get this week's transactions
+        # Get this week's transactions with timezone-aware boundaries
         week_transactions = supabase_client.table('transactions').select('*').eq('user_id', user['id'])
-        week_transactions = week_transactions.gte('date', week_start.isoformat()).lte('date', today.isoformat()).execute()
+        week_transactions = week_transactions.gte('created_at', week_start_utc.isoformat()).lte('created_at', week_end_utc.isoformat()).execute()
         
         # Calculate weekly spending and income
         week_income = sum(float(t['amount']) for t in week_transactions.data if t['transaction_type'] == 'income')
@@ -52,57 +103,220 @@ def get_current_balance():
         
         top_category = max(category_spending.items(), key=lambda x: x[1]) if category_spending else ('None', 0)
         
-        # Get current month budget total
-        month_budgets = supabase_client.table('budgets').select('amount').eq('user_id', user['id']).eq('is_active', True)
-        month_budgets = month_budgets.gte('start_date', month_start.isoformat()).lte('end_date', today.isoformat()).execute()
+        # Get current month budget total with timezone-aware boundaries
+        month_budgets = supabase_client.table('budgets').select('amount').eq('user_id', user['id']).eq('is_active', True).execute()
         
         total_monthly_budget = sum(float(b['amount']) for b in month_budgets.data)
         
-        # Get current month spending
+        # Get current month spending with timezone-aware boundaries
         month_transactions = supabase_client.table('transactions').select('amount, transaction_type').eq('user_id', user['id'])
-        month_transactions = month_transactions.gte('date', month_start.isoformat()).lte('date', today.isoformat()).execute()
+        month_transactions = month_transactions.gte('created_at', month_start_utc.isoformat()).lte('created_at', month_end_utc.isoformat()).execute()
         
         month_expense = sum(float(t['amount']) for t in month_transactions.data if t['transaction_type'] == 'expense')
+        month_income = sum(float(t['amount']) for t in month_transactions.data if t['transaction_type'] == 'income')
+        
+        # Calculate daily average spending for this month
+        days_in_month = (today_local - today_local.replace(day=1)).days + 1
+        daily_average_spending = month_expense / days_in_month if days_in_month > 0 else 0
         
         balance_data = {
             'current_balance': current_balance,
+            'user': {
+                'id': user['id'], 
+                'full_name': user.get('full_name', 'User'),
+                'email': user.get('email', ''),
+                'avatar_url': user.get('avatar_url'),
+                'timezone': user_timezone,
+                'currency': user.get('currency', '₹')
+            },
             'today': {
                 'spent': today_expense,
                 'earned': today_income,
                 'net': today_income - today_expense,
-                'transaction_count': len(today_transactions.data)
+                'transaction_count': len(today_transactions.data),
+                'date': today_local.isoformat()
             },
             'this_week': {
                 'spent': week_expense,
                 'earned': week_income,
                 'net': week_income - week_expense,
                 'transaction_count': len(week_transactions.data),
-                'week_start': week_start.isoformat(),
-                'week_end': today.isoformat()
+                'daily_average_spending': week_expense / 7 if week_expense > 0 else 0,
+                'week_start': (today_local - timedelta(days=today_local.weekday())).isoformat(),
+                'week_end': today_local.isoformat()
             },
-            'summary': {
-                'total_spent_this_month': month_expense,
-                'monthly_budget': total_monthly_budget,
-                'budget_remaining': total_monthly_budget - month_expense,
+            'this_month': {
+                'spent': month_expense,
+                'earned': month_income,
+                'net': month_income - month_expense,
+                'transaction_count': len(month_transactions.data),
+                'daily_average_spending': daily_average_spending,
+                'month_start': today_local.replace(day=1).isoformat(),
+                'month_end': today_local.isoformat(),
+                'days_elapsed': days_in_month
+            },
+            'budgets': {
+                'total_budget': total_monthly_budget,
+                'spent_amount': month_expense,
+                'remaining_amount': total_monthly_budget - month_expense,
                 'budget_used_percentage': (month_expense / total_monthly_budget * 100) if total_monthly_budget > 0 else 0,
+                'is_over_budget': month_expense > total_monthly_budget
+            },
+            'insights': {
                 'transactions_this_week': len(week_expense_transactions),
-                'top_category_this_week': {
+                'top_category': {
                     'name': top_category[0],
                     'amount': top_category[1]
-                }
+                },
+                'spending_trend': 'increasing' if week_expense > (month_expense / 4) else 'stable'
             },
             'overall': {
                 'total_income': total_income,
                 'total_expense': total_expense,
-                'transaction_count': len(all_transactions.data)
+                'transaction_count': len(all_transactions.data),
+                'net_worth': total_income - total_expense
             },
-            'date': today.isoformat()
+            'timezone_info': {
+                'user_timezone': user_timezone,
+                'local_time': now_local.isoformat(),
+                'utc_time': datetime.utcnow().isoformat()
+            },
+            'date': today_local.isoformat()
         }
         
         return success_response(balance_data, "Balance data retrieved successfully")
         
     except Exception as e:
         return error_response(f"Failed to retrieve balance data: {str(e)}", 500)
+
+@analytics_bp.route('/realtime-summary', methods=['GET'])
+@require_auth
+def get_realtime_summary():
+    """Get comprehensive real-time summary for all tabs with change tracking"""
+    try:
+        user = get_current_user()
+        
+        # Get user timezone
+        user_timezone = user.get('timezone', 'Asia/Kolkata')
+        tz = pytz.timezone(user_timezone)
+        now_local = datetime.now(tz)
+        today_local = now_local.date()
+        
+        # Get precise day boundaries
+        today_start_utc, today_end_utc = get_day_boundaries(today_local, user_timezone)
+        week_start_utc, week_end_utc = get_week_boundaries(today_local, user_timezone)
+        month_start_utc, month_end_utc = get_month_boundaries(today_local, user_timezone)
+        
+        # Get ALL data for all tabs in parallel
+        all_transactions = supabase_client.table('transactions').select('*').eq('user_id', user['id']).execute()
+        all_budgets = supabase_client.table('budgets').select('*').eq('user_id', user['id']).execute()
+        all_goals = supabase_client.table('goals').select('*').eq('user_id', user['id']).execute()
+        all_bills = supabase_client.table('bills').select('*').eq('user_id', user['id']).execute()
+        all_debts = supabase_client.table('debts').select('*').eq('user_id', user['id']).execute()
+        all_subscriptions = supabase_client.table('subscriptions').select('*').eq('user_id', user['id']).execute()
+        
+        # Calculate today's transactions
+        today_transactions = [t for t in all_transactions.data 
+                            if today_start_utc.isoformat() <= t['created_at'] <= today_end_utc.isoformat()]
+        
+        # Calculate totals
+        total_income = sum(float(t['amount']) for t in all_transactions.data if t['transaction_type'] == 'income')
+        total_expense = sum(float(t['amount']) for t in all_transactions.data if t['transaction_type'] == 'expense')
+        current_balance = total_income - total_expense
+        
+        # Today's totals
+        today_income = sum(float(t['amount']) for t in today_transactions if t['transaction_type'] == 'income')
+        today_expense = sum(float(t['amount']) for t in today_transactions if t['transaction_type'] == 'expense')
+        
+        # Active budgets
+        active_budgets = [b for b in all_budgets.data if b.get('is_active', True)]
+        total_budget = sum(float(b['amount']) for b in active_budgets)
+        
+        # Active goals
+        active_goals = [g for g in all_goals.data if not g.get('is_completed', False)]
+        
+        # Pending bills
+        pending_bills = [b for b in all_bills.data if not b.get('is_paid', False)]
+        
+        # Active debts
+        active_debts = [d for d in all_debts.data if not d.get('is_settled', False)]
+        
+        # Active subscriptions
+        active_subscriptions = [s for s in all_subscriptions.data if s.get('is_active', True)]
+        
+        # Month spending for budget comparison
+        month_transactions = [t for t in all_transactions.data 
+                            if month_start_utc.isoformat() <= t['created_at'] <= month_end_utc.isoformat()]
+        month_expense = sum(float(t['amount']) for t in month_transactions if t['transaction_type'] == 'expense')
+        
+        realtime_summary = {
+            'user': {
+                'id': user['id'],
+                'full_name': user.get('full_name', 'User'),
+                'email': user.get('email', ''),
+                'currency': user.get('currency', '₹')
+            },
+            'financial_overview': {
+                'current_balance': current_balance,
+                'total_income': total_income,
+                'total_expenses': total_expense,
+                'today_spent': today_expense,
+                'today_earned': today_income
+            },
+            'budgets_summary': {
+                'total_budget': total_budget,
+                'month_spent': month_expense,
+                'remaining_budget': total_budget - month_expense,
+                'budget_used_percentage': (month_expense / total_budget * 100) if total_budget > 0 else 0,
+                'is_over_budget': month_expense > total_budget,
+                'active_budgets_count': len(active_budgets)
+            },
+            'goals_summary': {
+                'active_goals_count': len(active_goals),
+                'total_target_amount': sum(float(g['target_amount']) for g in active_goals),
+                'total_saved_amount': sum(float(g['current_amount']) for g in active_goals),
+                'goals_completion_percentage': (sum(float(g['current_amount']) for g in active_goals) / 
+                                              sum(float(g['target_amount']) for g in active_goals) * 100) if active_goals else 0
+            },
+            'bills_summary': {
+                'pending_bills_count': len(pending_bills),
+                'total_pending_amount': sum(float(b['amount']) for b in pending_bills),
+                'upcoming_bills': len([b for b in pending_bills 
+                                     if datetime.fromisoformat(b['due_date']).date() <= (today_local + timedelta(days=7))])
+            },
+            'debts_summary': {
+                'active_debts_count': len(active_debts),
+                'total_debt_amount': sum(float(d['amount']) for d in active_debts),
+                'owe_amount': sum(float(d['amount']) for d in active_debts if d['debt_type'] == 'owe'),
+                'owed_amount': sum(float(d['amount']) for d in active_debts if d['debt_type'] == 'owed')
+            },
+            'subscriptions_summary': {
+                'active_subscriptions_count': len(active_subscriptions),
+                'monthly_subscription_cost': sum(
+                    float(s['amount']) if s['billing_cycle'] == 'monthly' else
+                    float(s['amount']) * 4 if s['billing_cycle'] == 'weekly' else
+                    float(s['amount']) / 12 if s['billing_cycle'] == 'yearly' else
+                    float(s['amount']) / 3 if s['billing_cycle'] == 'quarterly' else 0
+                    for s in active_subscriptions
+                )
+            },
+            'recent_activity': {
+                'today_transactions_count': len(today_transactions),
+                'recent_transactions': sorted(all_transactions.data, 
+                                            key=lambda x: x['created_at'], reverse=True)[:5]
+            },
+            'meta': {
+                'last_updated': now_local.isoformat(),
+                'timezone': user_timezone,
+                'date': today_local.isoformat(),
+                'timestamp': now_local.timestamp()
+            }
+        }
+        
+        return success_response(realtime_summary, "Real-time summary retrieved successfully")
+        
+    except Exception as e:
+        return error_response(f"Failed to retrieve real-time summary: {str(e)}", 500)
 
 @analytics_bp.route('/recent-activity', methods=['GET'])
 @require_auth
@@ -1151,37 +1365,34 @@ def get_money_insights():
     """Get money insights with spending analysis and budget advice matching frontend design"""
     try:
         user = get_current_user()
-        today = date.today()
         
-        # Get current month date range
-        month_start = today.replace(day=1)
-        if today.month == 12:
-            month_end = today.replace(year=today.year + 1, month=1, day=1) - timedelta(days=1)
+        # Get user timezone
+        user_timezone = user.get('timezone', 'Asia/Kolkata')
+        tz = pytz.timezone(user_timezone)
+        now_local = datetime.now(tz)
+        today_local = now_local.date()
+        
+        # Get timezone-aware month boundaries
+        month_start_utc, month_end_utc = get_month_boundaries(today_local, user_timezone)
+        
+        # Get last month boundaries
+        if today_local.month == 1:
+            last_month_date = today_local.replace(year=today_local.year - 1, month=12)
         else:
-            month_end = today.replace(month=today.month + 1, day=1) - timedelta(days=1)
+            last_month_date = today_local.replace(month=today_local.month - 1)
         
-        # Get last month for comparison
-        if today.month == 1:
-            last_month_start = today.replace(year=today.year - 1, month=12, day=1)
-            last_month_end = today.replace(day=1) - timedelta(days=1)
-        else:
-            last_month_start = today.replace(month=today.month - 1, day=1)
-            if today.month - 1 == 2:
-                # Handle February
-                last_month_end = today.replace(month=today.month - 1, day=28)
-            else:
-                last_month_end = today.replace(month=today.month, day=1) - timedelta(days=1)
+        last_month_start_utc, last_month_end_utc = get_month_boundaries(last_month_date, user_timezone)
         
-        # Get current month transactions
+        # Get current month transactions (timezone-aware)
         current_month_transactions = supabase_client.table('transactions').select('*').eq('user_id', user['id'])
         current_month_transactions = current_month_transactions.eq('transaction_type', 'expense')
-        current_month_transactions = current_month_transactions.gte('date', month_start.isoformat()).lte('date', today.isoformat())
+        current_month_transactions = current_month_transactions.gte('created_at', month_start_utc.isoformat()).lte('created_at', month_end_utc.isoformat())
         current_transactions = current_month_transactions.execute()
         
-        # Get last month transactions for comparison
+        # Get last month transactions for comparison (timezone-aware)
         last_month_transactions = supabase_client.table('transactions').select('*').eq('user_id', user['id'])
         last_month_transactions = last_month_transactions.eq('transaction_type', 'expense')
-        last_month_transactions = last_month_transactions.gte('date', last_month_start.isoformat()).lte('date', last_month_end.isoformat())
+        last_month_transactions = last_month_transactions.gte('created_at', last_month_start_utc.isoformat()).lte('created_at', last_month_end_utc.isoformat())
         last_transactions = last_month_transactions.execute()
         
         # Calculate spending totals
@@ -1205,8 +1416,9 @@ def get_money_insights():
             comparison_text = f"{abs(spending_change_percentage):.0f}% less than last month"
             comparison_icon = "📉"
         
-        # Calculate daily average (current month)
-        days_elapsed = today.day
+        # Calculate daily average (current month) - more accurate calculation
+        month_start_date = month_start_utc.astimezone(tz).date()
+        days_elapsed = (today_local - month_start_date).days + 1
         daily_average = current_month_spending / days_elapsed if days_elapsed > 0 else 0
         
         # Find top spending category
@@ -1222,17 +1434,18 @@ def get_money_insights():
             top_category_name = "Food"
             top_category_amount = 0
         
-        # Get active budgets for advice
+        # Get active budgets for advice (budgets that are active and cover current date)
         active_budgets = supabase_client.table('budgets').select('*').eq('user_id', user['id']).eq('is_active', True)
-        active_budgets = active_budgets.lte('start_date', today.isoformat()).gte('end_date', today.isoformat())
+        active_budgets = active_budgets.lte('start_date', today_local.isoformat()).gte('end_date', today_local.isoformat())
         budgets_result = active_budgets.execute()
         
         # Calculate budget advice
         total_budget = sum(float(b['amount']) for b in budgets_result.data)
         budget_used_percentage = (current_month_spending / total_budget * 100) if total_budget > 0 else 0
         
-        # Days left in month
-        days_left = (month_end - today).days + 1
+        # Days left in month (timezone-aware)
+        month_end_date = month_end_utc.astimezone(tz).date()
+        days_left = (month_end_date - today_local).days + 1
         
         # Calculate spending advice
         if total_budget > 0:
@@ -1362,12 +1575,12 @@ def get_money_insights():
             'budget_advice': budget_advice,
             'quick_actions': quick_actions,
             'month_info': {
-                'current_month': today.strftime('%B %Y'),
+                'current_month': today_local.strftime('%B %Y'),
                 'days_elapsed': days_elapsed,
                 'days_left': days_left,
-                'total_days': (month_end - month_start).days + 1
+                'total_days': (month_end_date - month_start_date).days + 1
             },
-            'date': today.isoformat()
+            'date': today_local.isoformat()
         }
         
         return success_response(insights_data, "Money insights retrieved successfully")

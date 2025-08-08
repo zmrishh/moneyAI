@@ -700,6 +700,33 @@ def create_auth_app(app: Flask = None) -> Flask:
             flash(generic_msg, 'error')
             return redirect('/auth/profile')
     
+    @app.route('/auth/create-oauth-user', methods=['POST', 'OPTIONS'])
+    @async_route
+    async def create_oauth_user():
+        """Create or get OAuth user profile (for Google OAuth)"""
+        try:
+            data = request.get_json()
+            if not data:
+                return jsonify({'success': False, 'message': 'No data provided'}), 400
+            
+            # Simple response - just acknowledge the user exists
+            return jsonify({
+                'success': True,
+                'message': 'OAuth user processed',
+                'data': {
+                    'status': 'processed',
+                    'user_id': data.get('auth_id', 'oauth-user'),
+                    'email': data.get('email', ''),
+                    'provider': data.get('provider', 'google')
+                }
+            })
+            
+        except Exception as e:
+            return jsonify({
+                'success': False,
+                'message': f'OAuth user creation error: {str(e)}'
+            }), 500
+
     @app.route('/auth/validate', methods=['GET', 'OPTIONS'])
     @async_route
     async def validate_token():

@@ -18,6 +18,7 @@ import { useRouter } from 'expo-router';
 import { Ionicons } from '@expo/vector-icons';
 import { CountrySelector } from '@/components/ui/CountrySelector';
 import { Country, getCountryByCode } from '@/constants/CountryCodes';
+import { authService } from '@/services/auth';
 
 const { width, height } = Dimensions.get('window');
 
@@ -139,6 +140,9 @@ export function SignupModal({ visible, onClose }: SignupModalProps) {
 
   const handleEmailSignup = () => {
     setAuthMode('email');
+    // Clear form fields when switching to email signup
+    setEmail('');
+    setPassword('');
     // Animation handled by useEffect
   };
 
@@ -155,12 +159,34 @@ export function SignupModal({ visible, onClose }: SignupModalProps) {
     }, 1000);
   };
 
-  const handleGoogleSignup = () => {
-    console.log('Google signup initiated');
-    // Simulate successful Google signup
-    setTimeout(() => {
-      navigateToApp();
-    }, 1000);
+  const handleGoogleSignup = async () => {
+    console.log('Google signup initiated - in-app OAuth with backend integration');
+    setIsLoading(true);
+    
+    try {
+      // Use in-app Google OAuth that integrates with your backend
+      const result = await authService.handleGoogleOAuth();
+      
+      if (result.success) {
+        Alert.alert(
+          'Success!',
+          `Welcome! Your account has been created with Google.`,
+          [
+            {
+              text: 'Continue',
+              onPress: navigateToApp
+            }
+          ]
+        );
+      } else {
+        Alert.alert('Authentication Failed', result.error || result.message || 'Could not sign in with Google');
+      }
+    } catch (error) {
+      console.error('Google auth error:', error);
+      Alert.alert('Error', 'Failed to authenticate with Google. Please try again.');
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   const handleCountrySelect = (country: Country) => {
@@ -174,21 +200,35 @@ export function SignupModal({ visible, onClose }: SignupModalProps) {
     }
 
     setIsLoading(true);
-    // Simulate API call
-    setTimeout(() => {
+    
+    try {
+      const response = await authService.phoneAuth({
+        phone: phoneNumber.trim(),
+        country_code: selectedCountry.code
+      });
+
+      if (response.success) {
+        // For now, simulate successful phone verification (skip OTP for demo)
+        // In a real implementation, you'd show an OTP input screen here
+        Alert.alert(
+          'Success', 
+          `Account created with ${selectedCountry.dialCode} ${phoneNumber}`,
+          [
+            {
+              text: 'Continue',
+              onPress: navigateToApp
+            }
+          ]
+        );
+      } else {
+        Alert.alert('Error', response.message || response.error || 'Phone authentication failed');
+      }
+    } catch (error) {
+      console.error('Phone auth error:', error);
+      Alert.alert('Error', 'Failed to authenticate with phone number. Please try again.');
+    } finally {
       setIsLoading(false);
-      // Simulate successful phone verification (skip OTP for demo)
-      Alert.alert(
-        'Success', 
-        `Account created with ${selectedCountry.dialCode} ${phoneNumber}`,
-        [
-          {
-            text: 'Continue',
-            onPress: navigateToApp
-          }
-        ]
-      );
-    }, 2000);
+    }
   };
 
   const handleEmailSubmit = async () => {
@@ -197,21 +237,40 @@ export function SignupModal({ visible, onClose }: SignupModalProps) {
       return;
     }
 
+    if (!password.trim() || password.length < 6) {
+      Alert.alert('Error', 'Password must be at least 6 characters long');
+      return;
+    }
+
     setIsLoading(true);
-    // Simulate API call
-    setTimeout(() => {
+    
+    try {
+      const response = await authService.signup({
+        email: email.trim(),
+        password: password,
+        full_name: email.split('@')[0] // Use email prefix as default name
+      });
+
+      if (response.success) {
+        Alert.alert(
+          'Success', 
+          'Account created successfully!',
+          [
+            {
+              text: 'Continue',
+              onPress: navigateToApp
+            }
+          ]
+        );
+      } else {
+        Alert.alert('Error', response.message || response.error || 'Failed to create account');
+      }
+    } catch (error) {
+      console.error('Email signup error:', error);
+      Alert.alert('Error', 'Failed to create account. Please try again.');
+    } finally {
       setIsLoading(false);
-      Alert.alert(
-        'Success', 
-        'Account created successfully!',
-        [
-          {
-            text: 'Continue',
-            onPress: navigateToApp
-          }
-        ]
-      );
-    }, 2000);
+    }
   };
 
   const handleLoginSubmit = async () => {
@@ -221,20 +280,33 @@ export function SignupModal({ visible, onClose }: SignupModalProps) {
     }
 
     setIsLoading(true);
-    // Simulate API call
-    setTimeout(() => {
+    
+    try {
+      const response = await authService.login({
+        email: email.trim(),
+        password: password
+      });
+
+      if (response.success) {
+        Alert.alert(
+          'Success', 
+          'Logged in successfully!',
+          [
+            {
+              text: 'Continue',
+              onPress: navigateToApp
+            }
+          ]
+        );
+      } else {
+        Alert.alert('Error', response.message || response.error || 'Login failed');
+      }
+    } catch (error) {
+      console.error('Login error:', error);
+      Alert.alert('Error', 'Failed to login. Please check your credentials and try again.');
+    } finally {
       setIsLoading(false);
-      Alert.alert(
-        'Success', 
-        'Logged in successfully!',
-        [
-          {
-            text: 'Continue',
-            onPress: navigateToApp
-          }
-        ]
-      );
-    }, 2000);
+    }
   };
 
   const renderInitialView = () => (
@@ -299,7 +371,11 @@ export function SignupModal({ visible, onClose }: SignupModalProps) {
       </View>
 
       {/* Login link */}
-      <Pressable onPress={() => setAuthMode('login')} style={styles.loginLink}>
+      <Pressable onPress={() => {
+        setAuthMode('login');
+        setEmail('');
+        setPassword('');
+      }} style={styles.loginLink}>
         <Text style={styles.loginLinkText}>Already have an account? Sign in</Text>
       </Pressable>
 
@@ -390,7 +466,7 @@ export function SignupModal({ visible, onClose }: SignupModalProps) {
 
       {/* Description */}
       <Text style={styles.formDescription}>
-        We'll create your account and send you a confirmation email
+        Create your account with email and password
       </Text>
 
       {/* Email input */}
@@ -406,14 +482,26 @@ export function SignupModal({ visible, onClose }: SignupModalProps) {
         autoFocus
       />
 
+      {/* Password input */}
+      <TextInput
+        style={styles.emailInput}
+        placeholder="Password (min 6 characters)"
+        placeholderTextColor="#8E8E93"
+        value={password}
+        onChangeText={setPassword}
+        secureTextEntry
+        autoCapitalize="none"
+        autoCorrect={false}
+      />
+
       {/* Continue button */}
       <Pressable
-        style={[styles.continueButton, { opacity: email.length > 0 ? 1 : 0.5 }]}
+        style={[styles.continueButton, { opacity: email.length > 0 && password.length >= 6 ? 1 : 0.5 }]}
         onPress={handleEmailSubmit}
-        disabled={isLoading || email.length === 0}
+        disabled={isLoading || email.length === 0 || password.length < 6}
       >
         <Text style={styles.continueButtonText}>
-          {isLoading ? 'Creating Account...' : 'Continue'}
+          {isLoading ? 'Creating Account...' : 'Create Account'}
         </Text>
       </Pressable>
 

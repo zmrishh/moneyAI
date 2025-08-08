@@ -31,8 +31,8 @@ def get_subscriptions():
         today = date.today()
         
         for subscription in result.data:
-            # Get price changes
-            price_changes_result = supabase_client.table('price_changes').select('*').eq('subscription_id', subscription['id']).order('change_date', desc=True).execute()
+            # Get price changes with user_id filter
+            price_changes_result = supabase_client.table('price_changes').select('*').eq('subscription_id', subscription['id']).eq('user_id', user['id']).order('change_date', desc=True).execute()
             
             next_billing_date = datetime.fromisoformat(subscription['next_billing_date']).date()
             days_until_billing = (next_billing_date - today).days
@@ -233,10 +233,11 @@ def update_subscription_price(subscription_id):
         if old_amount == new_amount:
             return error_response("New amount is the same as current amount", 400)
         
-        # Record price change
+        # Record price change with user_id for proper data isolation
         price_change_data = {
             'id': str(uuid.uuid4()),
             'subscription_id': subscription_id,
+            'user_id': user['id'],  # Add user_id for proper data isolation
             'old_amount': old_amount,
             'new_amount': new_amount,
             'change_date': date.today().isoformat(),

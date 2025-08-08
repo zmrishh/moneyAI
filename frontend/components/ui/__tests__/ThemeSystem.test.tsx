@@ -3,7 +3,7 @@
  */
 
 import { ThemeProvider, useTheme } from '@/contexts/ThemeContext';
-import { useResponsive, useResponsiveValue } from '@/frontend/hooks/useResponsive';
+import { useResponsive, useResponsiveValue } from '@/hooks/useResponsive';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { fireEvent, render, waitFor } from '@testing-library/react-native';
 import { Container, Flex, Grid } from '../Grid';

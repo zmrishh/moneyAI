@@ -14,7 +14,7 @@ import {
 } from '@/components/ui/ThemedComponents';
 import { ThemeToggle, ThemeToggleIcon } from '@/components/ui/ThemeToggle';
 import { useTheme } from '@/contexts/ThemeContext';
-import { useResponsive } from '@/frontend/hooks/useResponsive';
+import { useResponsive } from '@/hooks/useResponsive';
 import { Stack } from 'expo-router';
 
 export default function ThemeDemoScreen() {

@@ -4,7 +4,7 @@ import { Stack } from 'expo-router';
 import { IconSymbol } from '@/components/ui/IconSymbol';
 import { router } from 'expo-router';
 import SubscriptionTracker from '@/components/features/SubscriptionTracker';
-import { dbService } from '@/services/database';
+import { apiService } from '@/services/api';
 import { Subscription } from '@/types';
 
 export default function SubscriptionsScreen() {
@@ -18,8 +18,7 @@ export default function SubscriptionsScreen() {
   const loadSubscriptions = async () => {
     try {
       setLoading(true);
-      await dbService.initialize();
-      const subscriptionsData = await dbService.getSubscriptions();
+      const subscriptionsData = await apiService.getSubscriptions();
       setSubscriptions(subscriptionsData);
     } catch (error) {
       console.error('Error loading subscriptions:', error);
@@ -29,20 +28,19 @@ export default function SubscriptionsScreen() {
     }
   };
 
-  const handleAddSubscription = () => {
-    // For now, add a sample subscription
-    const sampleSubscription: Omit<Subscription, 'id' | 'price_changes'> = {
-      name: 'Netflix',
-      amount: 799,
-      billing_cycle: 'monthly',
-      next_billing_date: new Date(Date.now() + 15 * 24 * 60 * 60 * 1000), // 15 days from now
-      category: 'Entertainment',
+  const handleAddSubscription = (subscriptionData: any) => {
+    // Format the data for the API
+    const subscription = {
+      name: subscriptionData.name,
+      amount: parseFloat(subscriptionData.amount),
+      billing_cycle: subscriptionData.billing_cycle,
+      next_billing_date: subscriptionData.next_billing_date,
+      category: subscriptionData.category,
       is_active: true,
       auto_renew: true,
-      created_at: new Date(),
     };
 
-    dbService.addSubscription(sampleSubscription)
+    apiService.createSubscription(subscription)
       .then(() => {
         loadSubscriptions();
         Alert.alert('Success', 'Subscription added successfully');
@@ -55,7 +53,7 @@ export default function SubscriptionsScreen() {
 
   const handleCancelSubscription = async (id: string) => {
     try {
-      await dbService.cancelSubscription(id);
+      await apiService.cancelSubscription(id);
       loadSubscriptions();
       Alert.alert('Success', 'Subscription cancelled successfully');
     } catch (error) {
@@ -66,7 +64,7 @@ export default function SubscriptionsScreen() {
 
   const handleMarkPaid = async (id: string) => {
     try {
-      await dbService.markSubscriptionPaid(id);
+      await apiService.renewSubscription(id);
       loadSubscriptions();
       Alert.alert('Success', 'Subscription payment recorded');
     } catch (error) {

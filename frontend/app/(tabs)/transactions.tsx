@@ -14,6 +14,9 @@ import { DateRangeSelector, DateRange } from '@/components/ui/DateRangeSelector'
 import { DateRangeProvider, useDateRange } from '@/contexts/DateRangeContext';
 import { Transaction } from '@/types';
 import { format, isToday, isYesterday, startOfDay, isAfter, isBefore } from 'date-fns';
+import { apiService } from '@/services/api';
+import { authService } from '@/services/auth';
+import { router } from 'expo-router';
 
 interface GroupedTransactions {
   [date: string]: Transaction[];
@@ -43,27 +46,32 @@ const TransactionsScreenContent: React.FC = () => {
     try {
       setLoading(true);
       
-      // Generate dummy data
-      const dummyTransactions: Transaction[] = [
-        { id: '1', amount: 11.45, type: 'expense', category: 'Food', description: 'BLAKE', date: new Date(), userId: '1' },
-        { id: '2', amount: 1600, type: 'income', category: 'Income', description: 'Salary', date: new Date(), userId: '1' },
-        { id: '3', amount: 9.99, type: 'expense', category: 'Subscriptions', description: 'Netflix', date: new Date(Date.now() - 24 * 60 * 60 * 1000), userId: '1' },
-        { id: '4', amount: 45.20, type: 'expense', category: 'Groceries', description: 'Whole Foods', date: new Date(Date.now() - 24 * 60 * 60 * 1000), userId: '1' },
-        { id: '5', amount: 500.00, type: 'expense', category: 'Gifts', description: 'Birthday Gift', date: new Date(Date.now() - 2 * 24 * 60 * 60 * 1000), userId: '1' },
-        { id: '6', amount: 23.50, type: 'expense', category: 'Food', description: 'Starbucks', date: new Date(Date.now() - 2 * 24 * 60 * 60 * 1000), userId: '1' },
-        { id: '7', amount: 85.30, type: 'expense', category: 'Food', description: 'Dinner Out', date: new Date(Date.now() - 3 * 24 * 60 * 60 * 1000), userId: '1' },
-        { id: '8', amount: 12.99, type: 'expense', category: 'Subscriptions', description: 'Spotify', date: new Date(Date.now() - 3 * 24 * 60 * 60 * 1000), userId: '1' },
-        { id: '9', amount: 2059, type: 'income', category: 'Income', description: 'Freelance Work', date: new Date(Date.now() - 4 * 24 * 60 * 60 * 1000), userId: '1' },
-        { id: '10', amount: 67.80, type: 'expense', category: 'Transportation', description: 'Uber', date: new Date(Date.now() - 4 * 24 * 60 * 60 * 1000), userId: '1' },
-        { id: '11', amount: 156.45, type: 'expense', category: 'Shopping', description: 'Amazon', date: new Date(Date.now() - 5 * 24 * 60 * 60 * 1000), userId: '1' },
-        { id: '12', amount: 34.20, type: 'expense', category: 'Food', description: 'Lunch', date: new Date(Date.now() - 5 * 24 * 60 * 60 * 1000), userId: '1' },
-        { id: '13', amount: 89.99, type: 'expense', category: 'Entertainment', description: 'Movie Tickets', date: new Date(Date.now() - 6 * 24 * 60 * 60 * 1000), userId: '1' },
-        { id: '14', amount: 126.00, type: 'expense', category: 'Groceries', description: 'Weekly Groceries', date: new Date(Date.now() - 6 * 24 * 60 * 60 * 1000), userId: '1' },
-      ];
+      // Check authentication
+      if (!authService.isAuthenticated()) {
+        console.log('User not authenticated, redirecting to walkthrough');
+        router.replace('/walkthrough');
+        return;
+      }
+
+      // Load real transactions from backend
+      const backendTransactions = await apiService.getTransactions(100); // Get more transactions for the list
       
-      setTransactions(dummyTransactions);
+      // Transform backend transaction format to match the Transaction interface
+      const mappedTransactions: Transaction[] = backendTransactions.map((t: any) => ({
+        id: t.id,
+        amount: Math.abs(t.amount), // Use absolute value for display
+        type: t.transaction_type as 'income' | 'expense',
+        category: t.category_name || 'Other',
+        description: t.description || t.merchant || 'Transaction',
+        date: new Date(t.created_at || t.date),
+        userId: t.user_id
+      }));
+      
+      setTransactions(mappedTransactions);
     } catch (error) {
       console.error('Error loading transactions:', error);
+      // Show empty state instead of crashing
+      setTransactions([]);
     } finally {
       setLoading(false);
     }
@@ -96,17 +104,21 @@ const TransactionsScreenContent: React.FC = () => {
 
   const getCategoryIcon = (category: string) => {
     const icons: { [key: string]: { emoji: string; color: string } } = {
+      'Food & Dining': { emoji: '🍽️', color: '#FF6B35' },
       'Food': { emoji: '🍔', color: '#FF6B35' },
       'Transportation': { emoji: '🚗', color: '#007AFF' },
       'Shopping': { emoji: '🛍️', color: '#AF52DE' },
       'Entertainment': { emoji: '🎬', color: '#FF2D92' },
       'Income': { emoji: '💰', color: '#34C759' },
+      'Salary': { emoji: '💰', color: '#34C759' },
       'Subscriptions': { emoji: '🔄', color: '#FF69B4' },
       'Gifts': { emoji: '🎁', color: '#FFB800' },
       'Groceries': { emoji: '🛒', color: '#FF69B4' },
-      'BLAKE': { emoji: '🍔', color: '#FF6B35' },
+      'Bills & Utilities': { emoji: '⚡', color: '#FFB800' },
+      'Healthcare': { emoji: '🏥', color: '#DDA0DD' },
+      'Other': { emoji: '💳', color: '#8E8E93' },
     };
-    return icons[category] || { emoji: '💰', color: '#8E8E93' };
+    return icons[category] || { emoji: '💳', color: '#8E8E93' };
   };
 
   // Unified callbacks for DateRangeSelector
@@ -195,7 +207,7 @@ const TransactionsScreenContent: React.FC = () => {
             <Text style={styles.percentageText}>+426%</Text>
           </View>
           <Text style={styles.mainAmount}>
-            ${Math.abs(periodNet).toLocaleString()}
+            ₹{Math.abs(periodNet).toLocaleString()}
           </Text>
         </View>
 
@@ -206,7 +218,7 @@ const TransactionsScreenContent: React.FC = () => {
               <Text style={styles.cardLabel}>Income</Text>
             </View>
             <Text style={styles.cardAmount}>
-              ${periodIncome.toLocaleString()}
+              ₹{periodIncome.toLocaleString()}
             </Text>
           </View>
           
@@ -216,7 +228,7 @@ const TransactionsScreenContent: React.FC = () => {
               <Text style={styles.cardLabel}>Expenses</Text>
             </View>
             <Text style={styles.cardAmount}>
-              ${periodExpenses.toLocaleString()}
+              ₹{periodExpenses.toLocaleString()}
             </Text>
           </View>
         </View>
@@ -243,13 +255,13 @@ const TransactionsScreenContent: React.FC = () => {
                 <View style={styles.dateSection}>
                   <Text style={styles.dateLabel}>{getDateLabel(dateString)}</Text>
                   <Text style={styles.dateTotal}>
-                    {dayNet >= 0 ? '' : '-'}${Math.abs(dayNet).toFixed(2)}
+                    {dayNet >= 0 ? '' : '-'}₹{Math.abs(dayNet).toFixed(2)}
                   </Text>
                 </View>
 
                 {dayTransactions.map((transaction) => {
                   const categoryInfo = getCategoryIcon(transaction.category);
-                  const formattedAmount = `${transaction.amount.toFixed(2)}`;
+                  const formattedAmount = `₹${transaction.amount.toFixed(2)}`;
                   const formattedTime = format(transaction.date, 'h:mm a');
                   
                   return (

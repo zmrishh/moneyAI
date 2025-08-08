@@ -19,8 +19,8 @@ def get_goals():
         
         enriched_goals = []
         for goal in goals_result.data:
-            # Get milestones for this goal
-            milestones_result = supabase_client.table('milestones').select('*').eq('goal_id', goal['id']).order('percentage').execute()
+            # Get milestones for this goal with user_id filter
+            milestones_result = supabase_client.table('milestones').select('*').eq('goal_id', goal['id']).eq('user_id', user['id']).order('percentage').execute()
             
             # Calculate progress
             current_amount = float(goal['current_amount'])
@@ -96,6 +96,7 @@ def create_goal():
             milestone_data = {
                 'id': str(uuid.uuid4()),
                 'goal_id': goal_id,
+                'user_id': user['id'],  # Add user_id for proper data isolation
                 'percentage': milestone['percentage'],
                 'amount': milestone['amount'],
                 'achieved': False,
@@ -158,8 +159,8 @@ def contribute_to_goal(goal_id):
         
         supabase_client.table('goals').update(update_data).eq('id', goal_id).execute()
         
-        # Update milestones
-        milestones_result = supabase_client.table('milestones').select('*').eq('goal_id', goal_id).eq('achieved', False).execute()
+        # Update milestones with user_id filter
+        milestones_result = supabase_client.table('milestones').select('*').eq('goal_id', goal_id).eq('user_id', user['id']).eq('achieved', False).execute()
         
         for milestone in milestones_result.data:
             if new_amount >= float(milestone['amount']):

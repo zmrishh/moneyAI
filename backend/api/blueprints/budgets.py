@@ -16,7 +16,7 @@ def get_budgets():
     Query parameters:
     - period: Filter by budget period (weekly, monthly, quarterly, yearly)
     - active: Filter by active status (true/false)
-    - category_id: Filter by category ID
+    - name: Filter by budget name
     """
     try:
         user = get_current_user()
@@ -31,8 +31,8 @@ def get_budgets():
             is_active = request.args.get('active').lower() == 'true'
             query = query.eq('is_active', is_active)
         
-        if request.args.get('category_id'):
-            query = query.eq('category_id', request.args.get('category_id'))
+        if request.args.get('name'):
+            query = query.eq('name', request.args.get('name'))
         
         result = query.order('created_at', desc=True).execute()
         
@@ -53,7 +53,7 @@ def create_budget():
     """
     Create a new budget
     Required fields: name, amount, period, start_date, end_date
-    Optional fields: category_id, alert_threshold, color, icon
+    Optional fields: category_name, alert_threshold, color, icon
     """
     try:
         user = get_current_user()
@@ -81,6 +81,11 @@ def create_budget():
         except ValueError:
             return error_response("Invalid date format. Use YYYY-MM-DD", 400)
         
+        # Check for duplicate budget name (prevent multiple budgets with same name)
+        existing_budget = supabase_client.table('budgets').select('id').eq('user_id', user['id']).eq('name', data['name']).eq('is_active', True).execute()
+        if existing_budget.data:
+            return error_response(f"Budget with name '{data['name']}' already exists. You can only have one active budget per category name.", 400)
+        
         # Prepare budget data
         budget_data = {
             'id': str(uuid.uuid4()),
@@ -106,6 +111,15 @@ def create_budget():
         if result.data:
             # Calculate spending for the new budget
             enriched_budget = calculate_budget_spending(result.data[0], user['id'])
+            
+            # Add real-time change notification metadata
+            enriched_budget['_change_event'] = {
+                'type': 'budget_created',
+                'timestamp': datetime.utcnow().timestamp(),
+                'affects_summary': True,
+                'refresh_tabs': ['today', 'budgets', 'analytics']
+            }
+            
             return success_response(enriched_budget, "Budget created successfully", 201)
         else:
             return error_response("Failed to create budget", 500)
@@ -163,6 +177,12 @@ def update_budget(budget_id):
                         update_data[field] = date_value.isoformat()
                     except ValueError:
                         return error_response(f"Invalid date format for {field}. Use YYYY-MM-DD", 400)
+                elif field == 'name' and data[field]:
+                    # Check for duplicate budget name (exclude current budget)
+                    existing_budget = supabase_client.table('budgets').select('id').eq('user_id', user['id']).eq('name', data['name']).eq('is_active', True).neq('id', budget_id).execute()
+                    if existing_budget.data:
+                        return error_response(f"Budget with name '{data['name']}' already exists. You can only have one active budget per category name.", 400)
+                    update_data[field] = data[field]
                 else:
                     update_data[field] = data[field]
         
@@ -292,9 +312,8 @@ def calculate_budget_spending(budget, user_id, include_transactions=False):
         # Add date filters
         query = query.gte('date', budget['start_date']).lte('date', budget['end_date'])
         
-        # Add category filter if budget has category
-        if budget.get('category_id'):
-            query = query.eq('category_id', budget['category_id'])
+        # Match transactions by budget name to category_name
+        query = query.eq('category_name', budget['name'])
         
         transactions_result = query.execute()
         

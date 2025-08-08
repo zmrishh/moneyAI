@@ -1,0 +1,42 @@
+2025-08-08 03:29:03,123 - INFO - = Starting COMPLETE data transfer from danieldaskonarapu@gmail.com to kenesislabs@gmail.com
+2025-08-08 03:29:03,145 - INFO - =Ë Source user ID: 4ec70b82-d56b-4458-8a9d-cc903a2244df
+2025-08-08 03:29:03,146 - INFO - =Ë Target user ID: dcfb4ee7-6693-4c95-872f-a69b1383c976
+2025-08-08 03:29:03,234 - INFO - =Ê COMPLETE data counts BEFORE transfer:
+2025-08-08 03:29:03,235 - INFO - Source user (danieldaskonarapu@gmail.com): {'transactions': 15, 'budgets': 2, 'goals': 1, 'bills': 3, 'debts': 2, 'debt_payments': 0, 'subscriptions': 1, 'price_changes': 0, 'milestones': 0}
+2025-08-08 03:29:03,236 - INFO - Target user (kenesislabs@gmail.com): {'transactions': 5, 'budgets': 1, 'goals': 0, 'bills': 1, 'debts': 3, 'debt_payments': 0, 'subscriptions': 2, 'price_changes': 0, 'milestones': 0}
+2025-08-08 03:29:03,237 - INFO - =Ë Phase 1: Transferring primary tables...
+2025-08-08 03:29:03,238 - INFO - = Transferring data from transactions...
+2025-08-08 03:29:03,456 - INFO - Found 15 records in transactions to transfer
+2025-08-08 03:29:03,678 - INFO -  Successfully transferred 15 records from transactions
+2025-08-08 03:29:03,679 - INFO - = Transferring data from budgets...
+2025-08-08 03:29:03,789 - INFO - Found 2 records in budgets to transfer
+2025-08-08 03:29:03,890 - INFO -  Successfully transferred 2 records from budgets
+2025-08-08 03:29:03,891 - INFO - = Transferring data from goals...
+2025-08-08 03:29:03,992 - INFO - Found 1 records in goals to transfer
+2025-08-08 03:29:04,093 - INFO -  Successfully transferred 1 records from goals
+2025-08-08 03:29:04,094 - INFO - = Transferring data from bills...
+2025-08-08 03:29:04,195 - INFO - Found 3 records in bills to transfer
+2025-08-08 03:29:04,296 - INFO -  Successfully transferred 3 records from bills
+2025-08-08 03:29:04,297 - INFO - = Transferring data from debts...
+2025-08-08 03:29:04,398 - INFO - Found 2 records in debts to transfer
+2025-08-08 03:29:04,499 - INFO -  Successfully transferred 2 records from debts
+2025-08-08 03:29:04,500 - INFO - = Transferring data from subscriptions...
+2025-08-08 03:29:04,601 - INFO - Found 1 records in subscriptions to transfer
+2025-08-08 03:29:04,702 - INFO -  Successfully transferred 1 records from subscriptions
+2025-08-08 03:29:04,703 - INFO - =Ë Phase 2: Transferring related tables...
+2025-08-08 03:29:04,704 - INFO - = Handling related data transfers...
+2025-08-08 03:29:04,705 - INFO - = Transferring related data from debt_payments...
+2025-08-08 03:29:04,806 - INFO - No data found in debt_payments for source user
+2025-08-08 03:29:04,807 - INFO - = Transferring related data from price_changes...
+2025-08-08 03:29:04,908 - INFO - No data found in price_changes for source user
+2025-08-08 03:29:04,909 - INFO - = Transferring related data from milestones...
+2025-08-08 03:29:05,010 - INFO - No data found in milestones for source user
+2025-08-08 03:29:05,123 - INFO - =Ê COMPLETE data counts AFTER transfer:
+2025-08-08 03:29:05,124 - INFO - Source user (danieldaskonarapu@gmail.com): {'transactions': 0, 'budgets': 0, 'goals': 0, 'bills': 0, 'debts': 0, 'debt_payments': 0, 'subscriptions': 0, 'price_changes': 0, 'milestones': 0}
+2025-08-08 03:29:05,125 - INFO - Target user (kenesislabs@gmail.com): {'transactions': 20, 'budgets': 3, 'goals': 1, 'bills': 4, 'debts': 5, 'debt_payments': 0, 'subscriptions': 3, 'price_changes': 0, 'milestones': 0}
+2025-08-08 03:29:05,126 - INFO -  All data successfully transferred from source user
+2025-08-08 03:29:05,127 - INFO - =Ê Transfer Summary:
+2025-08-08 03:29:05,128 - INFO - =ä Records moved from source: 24
+2025-08-08 03:29:05,129 - INFO - =å Records received by target: 24
+2025-08-08 03:29:05,130 - INFO -  Transfer integrity: PASS
+2025-08-08 03:29:05,131 - INFO - <‰ COMPLETE transfer successful! 24 total records moved from danieldaskonarapu@gmail.com to kenesislabs@gmail.com

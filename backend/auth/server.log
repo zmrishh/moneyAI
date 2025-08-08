@@ -33,43 +33,17 @@ Press CTRL+C to quit
  * Restarting with stat
  * Debugger is active!
  * Debugger PIN: 372-553-095
-ERROR:root:Login error: 415 Unsupported Media Type: Did not attempt to load JSON data because the request Content-Type was not 'application/json'.
-127.0.0.1 - - [04/Aug/2025 21:32:41] "OPTIONS /auth/login HTTP/1.1" 200 -
-INFO:werkzeug:127.0.0.1 - - [04/Aug/2025 21:32:41] "OPTIONS /auth/login HTTP/1.1" 200 -
-/Users/danieldas/Documents/moneyAI/backend/auth/app.py:704: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
-  'timestamp': datetime.utcnow().isoformat()
-127.0.0.1 - - [04/Aug/2025 21:32:47] "GET /auth/health HTTP/1.1" 200 -
-INFO:werkzeug:127.0.0.1 - - [04/Aug/2025 21:32:47] "GET /auth/health HTTP/1.1" 200 -
-127.0.0.1 - - [04/Aug/2025 21:33:24] "POST /auth/signup HTTP/1.1" 200 -
-INFO:werkzeug:127.0.0.1 - - [04/Aug/2025 21:33:24] "POST /auth/signup HTTP/1.1" 200 -
-127.0.0.1 - - [04/Aug/2025 21:33:49] "POST /auth/login HTTP/1.1" 200 -
-INFO:werkzeug:127.0.0.1 - - [04/Aug/2025 21:33:49] "POST /auth/login HTTP/1.1" 200 -
-127.0.0.1 - - [04/Aug/2025 21:34:08] "GET /auth/validate HTTP/1.1" 401 -
-INFO:werkzeug:127.0.0.1 - - [04/Aug/2025 21:34:08] "[31m[1mGET /auth/validate HTTP/1.1[0m" 401 -
-127.0.0.1 - - [04/Aug/2025 21:39:18] "POST /auth/refresh HTTP/1.1" 401 -
-INFO:werkzeug:127.0.0.1 - - [04/Aug/2025 21:39:18] "[31m[1mPOST /auth/refresh HTTP/1.1[0m" 401 -
-127.0.0.1 - - [04/Aug/2025 21:39:40] "POST /auth/login HTTP/1.1" 200 -
-INFO:werkzeug:127.0.0.1 - - [04/Aug/2025 21:39:40] "POST /auth/login HTTP/1.1" 200 -
-127.0.0.1 - - [04/Aug/2025 21:39:46] "GET /auth/profile HTTP/1.1" 302 -
-INFO:werkzeug:127.0.0.1 - - [04/Aug/2025 21:39:46] "[32mGET /auth/profile HTTP/1.1[0m" 302 -
-127.0.0.1 - - [04/Aug/2025 21:39:52] "POST /auth/signup HTTP/1.1" 200 -
-INFO:werkzeug:127.0.0.1 - - [04/Aug/2025 21:39:52] "POST /auth/signup HTTP/1.1" 200 -
-127.0.0.1 - - [04/Aug/2025 21:40:04] "POST /auth/reset-password HTTP/1.1" 200 -
-INFO:werkzeug:127.0.0.1 - - [04/Aug/2025 21:40:04] "POST /auth/reset-password HTTP/1.1" 200 -
-127.0.0.1 - - [04/Aug/2025 21:40:12] "POST /auth/signup HTTP/1.1" 200 -
-INFO:werkzeug:127.0.0.1 - - [04/Aug/2025 21:40:12] "POST /auth/signup HTTP/1.1" 200 -
-127.0.0.1 - - [04/Aug/2025 21:40:17] "POST /auth/logout HTTP/1.1" 200 -
-INFO:werkzeug:127.0.0.1 - - [04/Aug/2025 21:40:17] "POST /auth/logout HTTP/1.1" 200 -
-127.0.0.1 - - [04/Aug/2025 21:40:19] "POST /auth/login HTTP/1.1" 200 -
-INFO:werkzeug:127.0.0.1 - - [04/Aug/2025 21:40:19] "POST /auth/login HTTP/1.1" 200 -
-127.0.0.1 - - [04/Aug/2025 21:40:34] "POST /auth/login HTTP/1.1" 200 -
-INFO:werkzeug:127.0.0.1 - - [04/Aug/2025 21:40:34] "POST /auth/login HTTP/1.1" 200 -
-127.0.0.1 - - [04/Aug/2025 21:40:46] "GET /auth/validate HTTP/1.1" 401 -
-INFO:werkzeug:127.0.0.1 - - [04/Aug/2025 21:40:46] "[31m[1mGET /auth/validate HTTP/1.1[0m" 401 -
-127.0.0.1 - - [04/Aug/2025 21:41:09] "GET /auth/check-session HTTP/1.1" 200 -
-INFO:werkzeug:127.0.0.1 - - [04/Aug/2025 21:41:09] "GET /auth/check-session HTTP/1.1" 200 -
- * Detected change in '/Users/danieldas/Documents/moneyAI/backend/auth/app.py', reloading
-INFO:werkzeug: * Detected change in '/Users/danieldas/Documents/moneyAI/backend/auth/app.py', reloading
+192.168.29.189 - - [08/Aug/2025 04:14:43] "POST /api/auth/create-oauth-user HTTP/1.1" 404 -
+192.168.29.189 - - [08/Aug/2025 04:14:50] "POST /api/auth/login HTTP/1.1" 404 -
+192.168.29.131 - - [08/Aug/2025 04:14:54] "GET / HTTP/1.1" 302 -
+192.168.29.131 - - [08/Aug/2025 04:14:54] "GET / HTTP/1.1" 302 -
+192.168.29.131 - - [08/Aug/2025 04:14:54] "GET / HTTP/1.1" 302 -
+192.168.29.131 - - [08/Aug/2025 04:14:54] "GET / HTTP/1.1" 302 -
+192.168.29.131 - - [08/Aug/2025 04:14:54] "GET / HTTP/1.1" 302 -
+192.168.29.131 - - [08/Aug/2025 04:14:54] "GET /auth/login HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 04:14:54] "GET /auth/login HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 04:14:54] "GET /auth/login HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 04:14:54] "GET /auth/login HTTP/1.1" 200 -
 🔧 Flask app configured with session lifetime: 604800 seconds
 🔧 Session cookie secure: False
 🔧 Secret key length: 20 characters
@@ -95,481 +69,857 @@ INFO:werkzeug: * Detected change in '/Users/danieldas/Documents/moneyAI/backend/
 🔑 Google OAuth: Configured with Supabase
 🔗 OAuth Callback: https://immwltgltccqefujsbbs.supabase.co/auth/v1/callback
 
-🔍 Middleware before_request - Path: /auth/login | Method: OPTIONS | IP: 127.0.0.1
-⏭️ Skipping auth middleware for: /auth/login
-🔍 Middleware before_request - Path: /auth/health | Method: GET | IP: 127.0.0.1
-⏭️ Skipping auth middleware for: /auth/health
-🔍 Middleware before_request - Path: /auth/signup | Method: POST | IP: 127.0.0.1
-⏭️ Skipping auth middleware for: /auth/signup
-🔍 Middleware before_request - Path: /auth/login | Method: POST | IP: 127.0.0.1
-⏭️ Skipping auth middleware for: /auth/login
-✅ Session created: sess_3903919bf6415a46f238f85c10391e9e for user: user-fee6d0a1a0594c2e | Email: danieldask062@gmail.com | Method: email
-✅ Production session created for user: danieldask062@gmail.com
-📊 User ID: user-fee6d0a1a0594c2e
-🔍 Session ID: sess_3903919bf6415a46f238f85c10391e9e
-⏰ Expires: 2025-08-05T16:03:49.444321
-🔍 Middleware before_request - Path: /auth/validate | Method: GET | IP: 127.0.0.1
-🔄 Running auth middleware for: /auth/validate
-🔍 _get_current_user called for path: /auth/validate
-🔍 Authorization header: Bearer eyJhbGciOiJIUzI1NiIsImtpZCI6Ino2RTdGNTlTV08xTS9hdngiLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiJodHRwczovL2l3a3hsdWRyaHpodW1uaHpqbHlpLnN1cGFiYXNlLmNvL2F1dGgvdjEiLCJzdWIiOiIwNTk3MmVjMS04Y2EwLTRiMTgtOTJhOS1kN2FmZTk5MTdjMjQiLCJhdWQiOiJhdXRoZW50aWNhdGVkIiwiZXhwIjoxNzU0MzI3MDI4LCJpYXQiOjE3NTQzMjM0MjgsImVtYWlsIjoiZGFuaWVsZGFzazA2MkBnbWFpbC5jb20iLCJwaG9uZSI6IiIsImFwcF9tZXRhZGF0YSI6eyJwcm92aWRlciI6ImVtYWlsIiwicHJvdmlkZXJzIjpbImVtYWlsIl19LCJ1c2VyX21ldGFkYXRhIjp7ImVtYWlsIjoiZGFuaWVsZGFzazA2MkBnbWFpbC5jb20iLCJlbWFpbF92ZXJpZmllZCI6dHJ1ZSwiZnVsbF9uYW1lIjoiRGFuaWVsIERhcyBLIiwicGhvbmVfdmVyaWZpZWQiOmZhbHNlLCJzdWIiOiIwNTk3MmVjMS04Y2EwLTRiMTgtOTJhOS1kN2FmZTk5MTdjMjQifSwicm9sZSI6ImF1dGhlbnRpY2F0ZWQiLCJhYWwiOiJhYWwxIiwiYW1yIjpbeyJtZXRob2QiOiJwYXNzd29yZCIsInRpbWVzdGFtcCI6MTc1NDMyMzQyOH1dLCJzZXNzaW9uX2lkIjoiNWYzMzA3MTEtYmU0OS00MTBjLWE5OGItY2MwNTI4YTgzM2EyIiwiaXNfYW5vbnltb3VzIjpmYWxzZX0.FJBkn1LSQOvEOl413VXbMtpL-9BCkzu17Grh0otILFw
-🔍 Bearer token found: eyJhbGciOiJIUzI1NiIs..., validating...
-Error getting current user: 'str' object cannot be interpreted as an integer
-❌ Bearer token invalid
-🔍 Session check - Session ID: None | Flask Session Keys: []
-❌ No session ID found in Flask session
-❌ No user found for path: /auth/validate
-🔍 Middleware before_request - Path: /auth/refresh | Method: POST | IP: 127.0.0.1
-⏭️ Skipping auth middleware for: /auth/refresh
-🔍 Middleware before_request - Path: /auth/login | Method: POST | IP: 127.0.0.1
-⏭️ Skipping auth middleware for: /auth/login
-🔍 Middleware before_request - Path: /auth/profile | Method: GET | IP: 127.0.0.1
-🔄 Running auth middleware for: /auth/profile
-🔍 _get_current_user called for path: /auth/profile
-🔍 Authorization header: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWQiOiJhdXRoZW50aWNhdGVkIiwiZXhwIjoxNzIyODcwNTQ5LCJpYXQiOjE3MjI3ODQxNDksImlzcyI6Imh0dHBzOi8vaXdreGx1ZHJoemh1bW5oemplbHlpLnN1cGFiYXNlLmNvL2F1dGgvdjEiLCJzdWIiOiJ1c2VyLWZlZTZkMGExYTA1OTRjMmUiLCJlbWFpbCI6ImRhbmllbGRhc2swNjJAZ21haWwuY29tIiwicGhvbmUiOiIiLCJhcHBfbWV0YWRhdGEiOnsicHJvdmlkZXIiOiJlbWFpbCIsInByb3ZpZGVycyI6WyJlbWFpbCJdfSwidXNlcl9tZXRhZGF0YSI6e30sInJvbGUiOiJhdXRoZW50aWNhdGVkIiwiYWFsIjoiYWFsMSIsImFtciI6W3sibWV0aG9kIjoicGFzc3dvcmQiLCJ0aW1lc3RhbXAiOjE3MjI3ODQxNDl9XSwic2Vzc2lvbl9pZCI6IjcxZGQ5YzJkLTZjMzMtNGU5MS04MzVhLTYxNzM5NzZlNGZhOCIsImlzX2Fub255bW91cyI6ZmFsc2V9.uXcnk3tR8bMVZGtFf-_j6OKCKqbFfg6iQGHhOlOV5JQ
-🔍 Bearer token found: eyJhbGciOiJIUzI1NiIs..., validating...
-Error getting current user: invalid JWT: unable to parse or verify signature, token signature is invalid: signature is invalid
-❌ Bearer token invalid
-🔍 Session check - Session ID: None | Flask Session Keys: []
-❌ No session ID found in Flask session
-❌ No user found for path: /auth/profile
-🔍 Middleware before_request - Path: /auth/signup | Method: POST | IP: 127.0.0.1
-⏭️ Skipping auth middleware for: /auth/signup
-🔍 Middleware before_request - Path: /auth/reset-password | Method: POST | IP: 127.0.0.1
-⏭️ Skipping auth middleware for: /auth/reset-password
-🔍 Middleware before_request - Path: /auth/signup | Method: POST | IP: 127.0.0.1
-⏭️ Skipping auth middleware for: /auth/signup
-🔍 Middleware before_request - Path: /auth/logout | Method: POST | IP: 127.0.0.1
-🔄 Running auth middleware for: /auth/logout
-🔍 _get_current_user called for path: /auth/logout
-🔍 Authorization header: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWQiOiJhdXRoZW50aWNhdGVkIiwiZXhwIjoxNzIyODcwNTQ5LCJpYXQiOjE3MjI3ODQxNDksImlzcyI6Imh0dHBzOi8vaXdreGx1ZHJoemh1bW5oemplbHlpLnN1cGFiYXNlLmNvL2F1dGgvdjEiLCJzdWIiOiJ1c2VyLWZlZTZkMGExYTA1OTRjMmUiLCJlbWFpbCI6ImRhbmllbGRhc2swNjJAZ21haWwuY29tIiwicGhvbmUiOiIiLCJhcHBfbWV0YWRhdGEiOnsicHJvdmlkZXIiOiJlbWFpbCIsInByb3ZpZGVycyI6WyJlbWFpbCJdfSwidXNlcl9tZXRhZGF0YSI6e30sInJvbGUiOiJhdXRoZW50aWNhdGVkIiwiYWFsIjoiYWFsMSIsImFtciI6W3sibWV0aG9kIjoicGFzc3dvcmQiLCJ0aW1lc3RhbXAiOjE3MjI3ODQxNDl9XSwic2Vzc2lvbl9pZCI6IjcxZGQ5YzJkLTZjMzMtNGU5MS04MzVhLTYxNzM5NzZlNGZhOCIsImlzX2Fub255bW91cyI6ZmFsc2V9.uXcnk3tR8bMVZGtFf-_j6OKCKqbFfg6iQGHhOlOV5JQ
-🔍 Bearer token found: eyJhbGciOiJIUzI1NiIs..., validating...
-Error getting current user: invalid JWT: unable to parse or verify signature, token signature is invalid: signature is invalid
-❌ Bearer token invalid
-🔍 Session check - Session ID: None | Flask Session Keys: []
-❌ No session ID found in Flask session
-❌ No user found for path: /auth/logout
-🚪 Logging out user: None (None) | Session: None
-🔍 Middleware before_request - Path: /auth/login | Method: POST | IP: 127.0.0.1
-⏭️ Skipping auth middleware for: /auth/login
-🔍 Middleware before_request - Path: /auth/login | Method: POST | IP: 127.0.0.1
-⏭️ Skipping auth middleware for: /auth/login
-🔍 Middleware before_request - Path: /auth/validate | Method: GET | IP: 127.0.0.1
-🔄 Running auth middleware for: /auth/validate
-🔍 _get_current_user called for path: /auth/validate
+🔍 Middleware before_request - Path: /api/auth/create-oauth-user | Method: POST | IP: 192.168.29.189
+🔄 Running auth middleware for: /api/auth/create-oauth-user
+🔍 _get_current_user called for path: /api/auth/create-oauth-user
 🔍 Authorization header: None
 🔍 Session check - Session ID: None | Flask Session Keys: []
 ❌ No session ID found in Flask session
-❌ No user found for path: /auth/validate
-🔍 Middleware before_request - Path: /auth/check-session | Method: GET | IP: 127.0.0.1
-⏭️ Skipping auth middleware for: /auth/check-session
- * Restarting with stat
- * Debugger is active!
- * Debugger PIN: 372-553-095
- * Detected change in '/Users/danieldas/Documents/moneyAI/backend/auth/middleware.py', reloading
-🔧 Flask app configured with session lifetime: 604800 seconds
-🔧 Session cookie secure: False
-🔧 Secret key length: 20 characters
-🚀 Agent-Cofounder Authentication System
-⚠️  DEVELOPMENT MODE - Use a production WSGI server for deployment
-🌐 Server starting at: http://localhost:5090
-📝 Available routes:
-   • GET  /auth/login - Login page
-   • POST /auth/login - Login handler
-   • GET  /auth/signup - Signup page
-   • POST /auth/signup - Signup handler
-   • GET  /auth/google - Google OAuth login
-   • GET  /auth/callback - OAuth callback handler
-   • GET  /auth/login-success - Login confirmation page
-   • POST /auth/logout - Logout handler
-   • GET  /auth/reset-password - Password reset page
-   • POST /auth/reset-password - Password reset handler
-   • GET  /auth/profile - Get user profile
-   • POST /auth/profile - Update user profile
-   • GET  /auth/validate - Validate token
-   • GET  /auth/debug-routes - Debug routes
-   • GET  /auth/health - Health check
-🔑 Google OAuth: Configured with Supabase
-🔗 OAuth Callback: https://immwltgltccqefujsbbs.supabase.co/auth/v1/callback
-
- * Restarting with stat
- * Debugger is active!
- * Debugger PIN: 372-553-095
-127.0.0.1 - - [04/Aug/2025 21:41:58] "POST /auth/debug-token HTTP/1.1" 500 -
-127.0.0.1 - - [04/Aug/2025 21:42:05] "POST /auth/debug-token HTTP/1.1" 500 -
-127.0.0.1 - - [04/Aug/2025 21:42:29] "POST /auth/refresh HTTP/1.1" 401 -
-127.0.0.1 - - [04/Aug/2025 21:42:40] "POST /auth/logout HTTP/1.1" 200 -
-127.0.0.1 - - [05/Aug/2025 03:15:09] "GET / HTTP/1.1" 302 -
-127.0.0.1 - - [05/Aug/2025 03:15:09] "GET /auth/login HTTP/1.1" 200 -
-127.0.0.1 - - [05/Aug/2025 03:15:09] "GET /auth/static/css/auth.css HTTP/1.1" 200 -
-127.0.0.1 - - [05/Aug/2025 03:15:09] "GET /auth/static/js/auth.js HTTP/1.1" 200 -
-127.0.0.1 - - [05/Aug/2025 03:15:10] "GET /favicon.ico HTTP/1.1" 404 -
-127.0.0.1 - - [05/Aug/2025 03:15:16] "GET /auth/google HTTP/1.1" 302 -
-127.0.0.1 - - [05/Aug/2025 03:15:23] "GET /auth/callback?code=9b42b5a9-58f6-4b3d-bccc-c1a4bcbf9fa5 HTTP/1.1" 302 -
-🔧 Flask app configured with session lifetime: 604800 seconds
-🔧 Session cookie secure: False
-🔧 Secret key length: 20 characters
-🚀 Agent-Cofounder Authentication System
-⚠️  DEVELOPMENT MODE - Use a production WSGI server for deployment
-🌐 Server starting at: http://localhost:5090
-📝 Available routes:
-   • GET  /auth/login - Login page
-   • POST /auth/login - Login handler
-   • GET  /auth/signup - Signup page
-   • POST /auth/signup - Signup handler
-   • GET  /auth/google - Google OAuth login
-   • GET  /auth/callback - OAuth callback handler
-   • GET  /auth/login-success - Login confirmation page
-   • POST /auth/logout - Logout handler
-   • GET  /auth/reset-password - Password reset page
-   • POST /auth/reset-password - Password reset handler
-   • GET  /auth/profile - Get user profile
-   • POST /auth/profile - Update user profile
-   • GET  /auth/validate - Validate token
-   • GET  /auth/debug-routes - Debug routes
-   • GET  /auth/health - Health check
-🔑 Google OAuth: Configured with Supabase
-🔗 OAuth Callback: https://immwltgltccqefujsbbs.supabase.co/auth/v1/callback
-
-🔍 Middleware before_request - Path: /auth/debug-token | Method: POST | IP: 127.0.0.1
-⏭️ Skipping auth middleware for: /auth/debug-token
-🔍 Middleware before_request - Path: /auth/debug-token | Method: POST | IP: 127.0.0.1
-⏭️ Skipping auth middleware for: /auth/debug-token
-🔍 Middleware before_request - Path: /auth/refresh | Method: POST | IP: 127.0.0.1
-⏭️ Skipping auth middleware for: /auth/refresh
-🔍 Middleware before_request - Path: /auth/logout | Method: POST | IP: 127.0.0.1
-🔄 Running auth middleware for: /auth/logout
-🔍 _get_current_user called for path: /auth/logout
+❌ No user found for path: /api/auth/create-oauth-user
+🔍 Middleware before_request - Path: /api/auth/login | Method: POST | IP: 192.168.29.189
+🔄 Running auth middleware for: /api/auth/login
+🔍 _get_current_user called for path: /api/auth/login
 🔍 Authorization header: None
 🔍 Session check - Session ID: None | Flask Session Keys: []
 ❌ No session ID found in Flask session
-❌ No user found for path: /auth/logout
-🚪 Logging out user: None (None) | Session: None
-🔍 Middleware before_request - Path: / | Method: GET | IP: 127.0.0.1
+❌ No user found for path: /api/auth/login
+🔍 Middleware before_request - Path: / | Method: GET | IP: 192.168.29.131
 🔄 Running auth middleware for: /
 🔍 _get_current_user called for path: /
 🔍 Authorization header: None
 🔍 Session check - Session ID: None | Flask Session Keys: []
 ❌ No session ID found in Flask session
 ❌ No user found for path: /
-🔍 Middleware before_request - Path: /auth/login | Method: GET | IP: 127.0.0.1
-⏭️ Skipping auth middleware for: /auth/login
-🔍 Middleware before_request - Path: /auth/static/css/auth.css | Method: GET | IP: 127.0.0.1
-⏭️ Skipping auth middleware for: /auth/static/css/auth.css
-🔍 Middleware before_request - Path: /auth/static/js/auth.js | Method: GET | IP: 127.0.0.1
-⏭️ Skipping auth middleware for: /auth/static/js/auth.js
-🔍 Middleware before_request - Path: /favicon.ico | Method: GET | IP: 127.0.0.1
-⏭️ Skipping auth middleware for: /favicon.ico
-🔍 Middleware before_request - Path: /auth/google | Method: GET | IP: 127.0.0.1
-⏭️ Skipping auth middleware for: /auth/google
-🔍 Middleware before_request - Path: /auth/callback | Method: GET | IP: 127.0.0.1
-⏭️ Skipping auth middleware for: /auth/callback
-OAuth callback received - access_token: False, code: True, error: None
-🔄 Processing OAuth code: 9b42b5a9-58f6-4b3d-bccc-c1a4bcbf9fa5
-🔄 Exchanging OAuth code: 9b42b5a9-58f6-4b3d-b...
-✅ Successfully exchanged code for user: danieldaskomarapu@gmail.com
-📊 User metadata: {'avatar_url': 'https://lh3.googleusercontent.com/a/ACg8ocKa0-NeF2vDjEo4VBNUdUnLHWD9AlAVvHf3ULRsLA6feNS0ZA=s96-c', 'company_name': 'Test Company', 'email': 'danieldaskomarapu@gmail.com', 'email_verified': True, 'full_name': 'Daniel', 'iss': 'https://accounts.google.com', 'name': 'Daniel', 'phone_verified': False, 'picture': 'https://lh3.googleusercontent.com/a/ACg8ocKa0-NeF2vDjEo4VBNUdUnLHWD9AlAVvHf3ULRsLA6feNS0ZA=s96-c', 'provider_id': '107556162118709183241', 'startup_stage': 'idea', 'sub': '107556162118709183241'}
-👤 Real user data extracted - Name: Daniel, Email: danieldaskomarapu@gmail.com
-⚠️ Could not save to database: {'message': 'JSON could not be generated', 'code': 404, 'hint': 'Refer to full message for details', 'details': "b'{}'"}
-✅ OAuth code exchange successful!
-👤 Real user data: Daniel (danieldaskomarapu@gmail.com)
-✅ Session created: sess_95b037554592dccb0722c249247345bf for user: user-629a85212e0b4ae2 | Email: danieldaskomarapu@gmail.com | Method: google
-✅ Production session created for user: danieldaskomarapu@gmail.com
-📊 User ID: user-629a85212e0b4ae2
-🔍 Session ID: sess_95b037554592dccb0722c249247345bf
-⏰ Expires: 2025-08-05T21:45:23.736077
-✅ Real Google user authenticated: Daniel
-🔍 Middleware before_request - Path: /auth/login-success | Method: GET | IP: 127.0.0.1
-⏭️ Skipping auth middleware for: /auth/login-success
-🔍 Login success route - Session data: {'_permanent': True, 'is_authenticated': True, 'login_success': {'login_method': 'google', 'user_email': 'danieldaskomarapu@gmail.com', 'user_name': 'Daniel'}, 'session_id': 'sess_95b037554592dccb0722c249247345bf', 'user_id': 'user-629a85212e0b4ae2'}
-🔍 Session keys: ['_permanent', 'is_authenticated', 'login_success', 'session_id', 'user_id']
-🔍 Request cookies: {'has_empty_threads_cleared': 'true', 'sb-avgcngmdmseansgsejnp-auth-token': 'base64-eyJhY2Nlc3NfdG9rZW4iOiJleUpoYkdjaU9pSklVekkxTmlJc0ltdHBaQ0k2SWtSbVREZEdNamxVVTA5YVpIZDZPRE1pTENKMGVYQWlPaUpLVjFRaWZRLmV5SnBjM01pT2lKb2RIUndjem92TDJGMloyTnVaMjFrYlhObFlXNXpaM05sYW01d0xuTjFjR0ZpWVhObExtTnZMMkYxZEdndmRqRWlMQ0p6ZFdJaU9pSmhaVGd6T0RGaFlpMW1NemcxTFRSa1pUTXRPVGxqWkMxaU9EQmlaVEkyT0RBeU5EVWlMQ0poZFdRaU9pSmhkWFJvWlc1MGFXTmhkR1ZrSWl3aVpYaHdJam94TnpReE56ZzBNRGczTENKcFlYUWlPakUzTkRFM09EQTBPRGNzSW1WdFlXbHNJam9pWkdGdWFXVnNaR0Z6YTI5dFlYSmhjSFZBWjIxaGFXd3VZMjl0SWl3aWNHaHZibVVpT2lJaUxDSmhjSEJmYldWMFlXUmhkR0VpT25zaWNISnZkbWxrWlhJaU9pSmxiV0ZwYkNJc0luQnliM1pwWkdWeWN5STZXeUpsYldGcGJDSmRmU3dpZFhObGNsOXRaWFJoWkdGMFlTSTZleUpsYldGcGJDSTZJbVJoYm1sbGJHUmhjMnR2YldGeVlYQjFRR2R0WVdsc0xtTnZiU0lzSW1WdFlXbHNYM1psY21sbWFXVmtJanAwY25WbExDSndhRzl1WlY5MlpYSnBabWxsWkNJNlptRnNjMlVzSW5OMVlpSTZJbUZsT0RNNE1XRmlMV1l6T0RVdE5HUmxNeTA1T1dOa0xXSTRNR0psTWpZNE1ESTBOU0o5TENKeWIyeGxJam9pWVhWMGFHVnVkR2xqWVhSbFpDSXNJbUZoYkNJNkltRmhiREVpTENKaGJYSWlPbHQ3SW0xbGRHaHZaQ0k2SW5CaGMzTjNiM0prSWl3aWRHbHRaWE4wWVcxd0lqb3hOelF3TmpNM016TTVmVjBzSW5ObGMzTnBiMjVmYVdRaU9pSm1PVFkwWXpFeE9DMWxPREJrTFRSaE5EZ3RPR1l3T0MxaU5HRmlNVE15Tm1ObU1tSWlMQ0pwYzE5aGJtOXVlVzF2ZFhNaU9tWmhiSE5sZlEuWFR6dThXS0NJdUt4YXhVT3NlM19hTTlfLV9sS0lwTEJ2R2dTeDJTSDFPdyIsInRva2VuX3R5cGUiOiJiZWFyZXIiLCJleHBpcmVzX2luIjozNjAwLCJleHBpcmVzX2F0IjoxNzQxNzg0MDg3LCJyZWZyZXNoX3Rva2VuIjoibG1yc05LWmJFSEdRNGVyUjR5aHJTZyIsInVzZXIiOnsiaWQiOiJhZTgzODFhYi1mMzg1LTRkZTMtOTljZC1iODBiZTI2ODAyNDUiLCJhdWQiOiJhdXRoZW50aWNhdGVkIiwicm9sZSI6ImF1dGhlbnRpY2F0ZWQiLCJlbWFpbCI6ImRhbmllbGRhc2tvbWFyYXB1QGdtYWlsLmNvbSIsImVtYWlsX2NvbmZpcm1lZF9hdCI6IjIwMjUtMDItMjdUMDQ6NDk6MjkuNzgwNzI4WiIsInBob25lIjoiIiwiY29uZmlybWF0aW9uX3NlbnRfYXQiOiIyMDI1LTAyLTI3VDA0OjQ5OjA3LjcyMDM3OVoiLCJjb25maXJtZWRfYXQiOiIyMDI1LTAyLTI3VDA0OjQ5OjI5Ljc4MDcyOFoiLCJsYXN0X3NpZ25faW5fYXQiOiIyMDI1LTAyLTI3VDA2OjIyOjE5LjYxNjg5OFoiLCJhcHBfbWV0YWRhdGEiOnsicHJvdmlkZXIiOiJlbWFpbCIsInByb3ZpZGVycyI6WyJlbWFpbCJdfSwidXNlcl9tZXRhZGF0YSI6eyJlbWFpbCI6ImRhbmllbGRhc2tvbWFyYXB1QGdtYWlsLmNvbSIsImVtYWlsX3ZlcmlmaWVkIjp0cnVlLCJwaG9uZV92ZXJpZmllZCI6ZmFsc2UsInN1YiI6ImFlODM4MWFiLWYzODUtNGRlMy05OWNkLWI4MGJlMjY4MDI0NSJ9LCJpZGVudGl0aWVzIjpbeyJpZGVudGl0eV9pZCI6IjVlNzMwZjM0LTc0YzgtNDcxNy04MmZhLTQxY2JkYzE2YmJkYyIsImlkIjoiYWU4MzgxYWItZjM4NS00ZGUzLTk5Y2QtYjgwYmUyNjgwMjQ1IiwidXNlcl9pZCI6ImFlODM4MWFiLWYzODUtNGRlMy05OWNkLWI4MGJlMjY4MDI0NSIsImlkZW50aXR5X2RhdGEiOnsiZW1haWwiOiJkYW5pZWxkYXNrb21hcmFwdUBnbWFpbC5jb20iLCJlbWFpbF92ZXJpZmllZCI6dHJ1ZSwicGhvbmVfdmVyaWZpZWQiOmZhbHNlLCJzdWIiOiJhZTgzODFhYi1mMzg1LTRkZTMtOTljZC1iODBiZTI2ODAyNDUifSwicHJvdmlkZXIiOiJlbWFpbCIsImxhc3Rfc2lnbl9pbl9hdCI6IjIwMjUtMDItMjdUMDQ6NDk6MDcuNzE0MTM5WiIsImNyZWF0ZWRfYXQiOiIyMDI1LTAyLTI3VDA0OjQ5OjA3LjcxNDIwNVoiLCJ1cGRhdGVkX2F0IjoiMjAyNS0wMi0yN1QwNDo0OTowNy43MTQyMDVaIiwiZW1haWwiOiJkYW5pZWxkYXNrb21hcmFwdUBnbWFpbC5jb20ifV0sImNyZWF0ZWRfYXQiOiIyMDI1LTAyLTI3VDA0OjQ5OjA3LjY5NDgxNFoiLCJ1cGRhdGVkX2F0IjoiMjAyNS0wMy0xMlQxMTo1Mzo0Mi45MDMxNjNaIiwiaXNfYW5vbnltb3VzIjpmYWxzZX19', 'ajs_anonymous_id': 'ada57ead-e4cb-4c6d-b9ca-421eee1072c4', 'auth_session': '.eJw1jcsSgjAMRf8la3QwtCKuXPgfnVAidKQt08eK4d8tjOySc09uVlALB0uOXYJnCpkrMFFRTlMhRlPi4eSzH41TMWvNMcJz_QPLafJFgtH7cWaoIEcOii2ZudCBnOF5oPj1lgIt-TXuyVV7e6qOLBfzfZiwVRDLA-OdMnvtvqhO9nXTSilkh4PWfd0iahQdirYRsv-cVcfFPl3u2NFD4g257gUxwvYDFQpPpg.aJEp8w.vIQ1I1vaxCdxHyi_LKJ8bo0yyd4'}127.0.0.1 - - [05/Aug/2025 03:15:23] "GET /auth/login-success HTTP/1.1" 200 -
-127.0.0.1 - - [05/Aug/2025 03:15:23] "GET /auth/static/css/auth.css HTTP/1.1" 304 -
-127.0.0.1 - - [05/Aug/2025 03:15:23] "GET /auth/static/js/auth.js HTTP/1.1" 304 -
-127.0.0.1 - - [05/Aug/2025 03:15:25] "GET /auth/profile HTTP/1.1" 200 -
-127.0.0.1 - - [05/Aug/2025 03:15:25] "GET /auth/static/css/auth.css HTTP/1.1" 304 -
-127.0.0.1 - - [05/Aug/2025 03:15:25] "GET /auth/static/js/auth.js HTTP/1.1" 304 -
-127.0.0.1 - - [05/Aug/2025 03:20:33] "GET /auth/login-success HTTP/1.1" 200 -
-127.0.0.1 - - [05/Aug/2025 03:20:33] "GET /auth/static/css/auth.css HTTP/1.1" 304 -
-127.0.0.1 - - [05/Aug/2025 03:20:33] "GET /auth/static/js/auth.js HTTP/1.1" 304 -
-
-🔍 Session permanent: True | Modified: False
-🔍 User ID: user-629a85212e0b4ae2
-🔍 Is authenticated: True
-🔍 User email: None
-✅ Showing success page for: danieldaskomarapu@gmail.com
-🔍 Middleware before_request - Path: /auth/static/css/auth.css | Method: GET | IP: 127.0.0.1
-⏭️ Skipping auth middleware for: /auth/static/css/auth.css
-🔍 Middleware before_request - Path: /auth/static/js/auth.js | Method: GET | IP: 127.0.0.1
-⏭️ Skipping auth middleware for: /auth/static/js/auth.js
-🔍 Middleware before_request - Path: /auth/profile | Method: GET | IP: 127.0.0.1
-🔄 Running auth middleware for: /auth/profile
-🔍 _get_current_user called for path: /auth/profile
-🔍 Authorization header: None
-🔍 Session check - Session ID: sess_95b037554592dccb0722c249247345bf | Flask Session Keys: ['_permanent', 'is_authenticated', 'login_success', 'session_id', 'user_id']
-📊 Session accessed: sess_95b037554592dccb0722c249247345bf | User: danieldaskomarapu@gmail.com | Valid until: 2025-08-05T21:45:23.736077
-✅ Valid session found for user: danieldaskomarapu@gmail.com
-✅ User authenticated: danieldaskomarapu@gmail.com
-🔍 Profile route accessed - Method: GET
-👤 Current user: danieldaskomarapu@gmail.com
-🔐 Is authenticated: True
-📋 Flask session: {'_permanent': True, 'is_authenticated': True, 'login_success': {'login_method': 'google', 'user_email': 'danieldaskomarapu@gmail.com', 'user_name': 'Daniel'}, 'session_id': 'sess_95b037554592dccb0722c249247345bf', 'user_id': 'user-629a85212e0b4ae2'}
-🆔 User ID from g.current_user: user-629a85212e0b4ae2
-🔍 Middleware before_request - Path: /auth/static/css/auth.css | Method: GET | IP: 127.0.0.1
-⏭️ Skipping auth middleware for: /auth/static/css/auth.css
-🔍 Middleware before_request - Path: /auth/static/js/auth.js | Method: GET | IP: 127.0.0.1
-⏭️ Skipping auth middleware for: /auth/static/js/auth.js
-🔍 Middleware before_request - Path: /auth/login-success | Method: GET | IP: 127.0.0.1
-⏭️ Skipping auth middleware for: /auth/login-success
-🔍 Login success route - Session data: {'_permanent': True, 'is_authenticated': True, 'login_success': {'login_method': 'google', 'user_email': 'danieldaskomarapu@gmail.com', 'user_name': 'Daniel'}, 'session_id': 'sess_95b037554592dccb0722c249247345bf', 'user_id': 'user-629a85212e0b4ae2'}
-🔍 Session keys: ['_permanent', 'is_authenticated', 'login_success', 'session_id', 'user_id']
-🔍 Request cookies: {'has_empty_threads_cleared': 'true', 'sb-avgcngmdmseansgsejnp-auth-token': 'base64-eyJhY2Nlc3NfdG9rZW4iOiJleUpoYkdjaU9pSklVekkxTmlJc0ltdHBaQ0k2SWtSbVREZEdNamxVVTA5YVpIZDZPRE1pTENKMGVYQWlPaUpLVjFRaWZRLmV5SnBjM01pT2lKb2RIUndjem92TDJGMloyTnVaMjFrYlhObFlXNXpaM05sYW01d0xuTjFjR0ZpWVhObExtTnZMMkYxZEdndmRqRWlMQ0p6ZFdJaU9pSmhaVGd6T0RGaFlpMW1NemcxTFRSa1pUTXRPVGxqWkMxaU9EQmlaVEkyT0RBeU5EVWlMQ0poZFdRaU9pSmhkWFJvWlc1MGFXTmhkR1ZrSWl3aVpYaHdJam94TnpReE56ZzBNRGczTENKcFlYUWlPakUzTkRFM09EQTBPRGNzSW1WdFlXbHNJam9pWkdGdWFXVnNaR0Z6YTI5dFlYSmhjSFZBWjIxaGFXd3VZMjl0SWl3aWNHaHZibVVpT2lJaUxDSmhjSEJmYldWMFlXUmhkR0VpT25zaWNISnZkbWxrWlhJaU9pSmxiV0ZwYkNJc0luQnliM1pwWkdWeWN5STZXeUpsYldGcGJDSmRmU3dpZFhObGNsOXRaWFJoWkdGMFlTSTZleUpsYldGcGJDSTZJbVJoYm1sbGJHUmhjMnR2YldGeVlYQjFRR2R0WVdsc0xtTnZiU0lzSW1WdFlXbHNYM1psY21sbWFXVmtJanAwY25WbExDSndhRzl1WlY5MlpYSnBabWxsWkNJNlptRnNjMlVzSW5OMVlpSTZJbUZsT0RNNE1XRmlMV1l6T0RVdE5HUmxNeTA1T1dOa0xXSTRNR0psTWpZNE1ESTBOU0o5TENKeWIyeGxJam9pWVhWMGFHVnVkR2xqWVhSbFpDSXNJbUZoYkNJNkltRmhiREVpTENKaGJYSWlPbHQ3SW0xbGRHaHZaQ0k2SW5CaGMzTjNiM0prSWl3aWRHbHRaWE4wWVcxd0lqb3hOelF3TmpNM016TTVmVjBzSW5ObGMzTnBiMjVmYVdRaU9pSm1PVFkwWXpFeE9DMWxPREJrTFRSaE5EZ3RPR1l3T0MxaU5HRmlNVE15Tm1ObU1tSWlMQ0pwYzE5aGJtOXVlVzF2ZFhNaU9tWmhiSE5sZlEuWFR6dThXS0NJdUt4YXhVT3NlM19hTTlfLV9sS0lwTEJ2R2dTeDJTSDFPdyIsInRva2VuX3R5cGUiOiJiZWFyZXIiLCJleHBpcmVzX2luIjozNjAwLCJleHBpcmVzX2F0IjoxNzQxNzg0MDg3LCJyZWZyZXNoX3Rva2VuIjoibG1yc05LWmJFSEdRNGVyUjR5aHJTZyIsInVzZXIiOnsiaWQiOiJhZTgzODFhYi1mMzg1LTRkZTMtOTljZC1iODBiZTI2ODAyNDUiLCJhdWQiOiJhdXRoZW50aWNhdGVkIiwicm9sZSI6ImF1dGhlbnRpY2F0ZWQiLCJlbWFpbCI6ImRhbmllbGRhc2tvbWFyYXB1QGdtYWlsLmNvbSIsImVtYWlsX2NvbmZpcm1lZF9hdCI6IjIwMjUtMDItMjdUMDQ6NDk6MjkuNzgwNzI4WiIsInBob25lIjoiIiwiY29uZmlybWF0aW9uX3NlbnRfYXQiOiIyMDI1LTAyLTI3VDA0OjQ5OjA3LjcyMDM3OVoiLCJjb25maXJtZWRfYXQiOiIyMDI1LTAyLTI3VDA0OjQ5OjI5Ljc4MDcyOFoiLCJsYXN0X3NpZ25faW5fYXQiOiIyMDI1LTAyLTI3VDA2OjIyOjE5LjYxNjg5OFoiLCJhcHBfbWV0YWRhdGEiOnsicHJvdmlkZXIiOiJlbWFpbCIsInByb3ZpZGVycyI6WyJlbWFpbCJdfSwidXNlcl9tZXRhZGF0YSI6eyJlbWFpbCI6ImRhbmllbGRhc2tvbWFyYXB1QGdtYWlsLmNvbSIsImVtYWlsX3ZlcmlmaWVkIjp0cnVlLCJwaG9uZV92ZXJpZmllZCI6ZmFsc2UsInN1YiI6ImFlODM4MWFiLWYzODUtNGRlMy05OWNkLWI4MGJlMjY4MDI0NSJ9LCJpZGVudGl0aWVzIjpbeyJpZGVudGl0eV9pZCI6IjVlNzMwZjM0LTc0YzgtNDcxNy04MmZhLTQxY2JkYzE2YmJkYyIsImlkIjoiYWU4MzgxYWItZjM4NS00ZGUzLTk5Y2QtYjgwYmUyNjgwMjQ1IiwidXNlcl9pZCI6ImFlODM4MWFiLWYzODUtNGRlMy05OWNkLWI4MGJlMjY4MDI0NSIsImlkZW50aXR5X2RhdGEiOnsiZW1haWwiOiJkYW5pZWxkYXNrb21hcmFwdUBnbWFpbC5jb20iLCJlbWFpbF92ZXJpZmllZCI6dHJ1ZSwicGhvbmVfdmVyaWZpZWQiOmZhbHNlLCJzdWIiOiJhZTgzODFhYi1mMzg1LTRkZTMtOTljZC1iODBiZTI2ODAyNDUifSwicHJvdmlkZXIiOiJlbWFpbCIsImxhc3Rfc2lnbl9pbl9hdCI6IjIwMjUtMDItMjdUMDQ6NDk6MDcuNzE0MTM5WiIsImNyZWF0ZWRfYXQiOiIyMDI1LTAyLTI3VDA0OjQ5OjA3LjcxNDIwNVoiLCJ1cGRhdGVkX2F0IjoiMjAyNS0wMi0yN1QwNDo0OTowNy43MTQyMDVaIiwiZW1haWwiOiJkYW5pZWxkYXNrb21hcmFwdUBnbWFpbC5jb20ifV0sImNyZWF0ZWRfYXQiOiIyMDI1LTAyLTI3VDA0OjQ5OjA3LjY5NDgxNFoiLCJ1cGRhdGVkX2F0IjoiMjAyNS0wMy0xMlQxMTo1Mzo0Mi45MDMxNjNaIiwiaXNfYW5vbnltb3VzIjpmYWxzZX19', 'ajs_anonymous_id': 'ada57ead-e4cb-4c6d-b9ca-421eee1072c4', 'auth_session': '.eJw1jcsSgjAMRf8la3QwtCKuXPgfnVAidKQt08eK4d8tjOySc09uVlALB0uOXYJnCpkrMFFRTlMhRlPi4eSzH41TMWvNMcJz_QPLafJFgtH7cWaoIEcOii2ZudCBnOF5oPj1lgIt-TXuyVV7e6qOLBfzfZiwVRDLA-OdMnvtvqhO9nXTSilkh4PWfd0iahQdirYRsv-cVcfFPl3u2NFD4g257gUxwvYDFQpPpg.aJEp9Q.rWtpZFtFhLrLqrigOIF4x8e4YnQ'}
-🔍 Session permanent: True | Modified: False
-🔍 User ID: user-629a85212e0b4ae2
-🔍 Is authenticated: True
-🔍 User email: None
-✅ Showing success page for: danieldaskomarapu@gmail.com
-🔍 Middleware before_request - Path: /auth/static/css/auth.css | Method: GET | IP: 127.0.0.1
-⏭️ Skipping auth middleware for: /auth/static/css/auth.css
-🔍 Middleware before_request - Path: /auth/static/js/auth.js | Method: GET | IP: 127.0.0.1
-⏭️ Skipping auth middleware for: /auth/static/js/auth.js
-🔍 Middleware before_request - Path: /auth/login-success | Method: GET | IP: 127.0.0.1
-⏭️ Skipping auth middleware for: /auth/login-success
-🔍 Login success route - Session data: {'_permanent': True, 'is_authenticated': True, 'login_success': {'login_method': 'google', 'user_email': 'danieldaskomarapu@gmail.com', 'user_name': 'Daniel'}, 'session_id': 'sess_95b037554592dccb0722c249247345bf', 'user_id': 'user-629a85212e0b4ae2'}
-🔍 Session keys: ['_permanent', 'is_authenticated', 'login_success', 'session_id', 'user_id']
-🔍 Request cookies: {'has_empty_threads_cleared': 'true', 'sb-avgcngmdmseansgsejnp-auth-token': 'base64-eyJhY2Nlc3NfdG9rZW4iOiJleUpoYkdjaU9pSklVekkxTmlJc0ltdHBaQ0k2SWtSbVREZEdNamxVVTA5YVpIZDZPRE1pTENKMGVYQWlPaUpLVjFRaWZRLmV5SnBjM01pT2lKb2RIUndjem92TDJGMloyTnVaMjFrYlhObFlXNXpaM05sYW01d0xuTjFjR0ZpWVhObExtTnZMMkYxZEdndmRqRWlMQ0p6ZFdJaU9pSmhaVGd6T0RGaFlpMW1NemcxTFRSa1pUTXRPVGxqWkMxaU9EQmlaVEkyT0RBeU5EVWlMQ0poZFdRaU9pSmhkWFJvWlc1MGFXTmhkR1ZrSWl3aVpYaHdJam94TnpReE56ZzBNRGczTENKcFlYUWlPakUzTkRFM09EQTBPRGNzSW1WdFlXbHNJam9pWkdGdWFXVnNaR0Z6YTI5dFlYSmhjSFZBWjIxaGFXd3VZMjl0SWl3aWNHaHZibVVpT2lJaUxDSmhjSEJmYldWMFlXUmhkR0VpT25zaWNISnZkbWxrWlhJaU9pSmxiV0ZwYkNJc0luQnliM1pwWkdWeWN5STZXeUpsYldGcGJDSmRmU3dpZFhObGNsOXRaWFJoWkdGMFlTSTZleUpsYldGcGJDSTZJbVJoYm1sbGJHUmhjMnR2YldGeVlYQjFRR2R0WVdsc0xtTnZiU0lzSW1WdFlXbHNYM1psY21sbWFXVmtJanAwY25WbExDSndhRzl1WlY5MlpYSnBabWxsWkNJNlptRnNjMlVzSW5OMVlpSTZJbUZsT0RNNE1XRmlMV1l6T0RVdE5HUmxNeTA1T1dOa0xXSTRNR0psTWpZNE1ESTBOU0o5TENKeWIyeGxJam9pWVhWMGFHVnVkR2xqWVhSbFpDSXNJbUZoYkNJNkltRmhiREVpTENKaGJYSWlPbHQ3SW0xbGRHaHZaQ0k2SW5CaGMzTjNiM0prSWl3aWRHbHRaWE4wWVcxd0lqb3hOelF3TmpNM016TTVmVjBzSW5ObGMzTnBiMjVmYVdRaU9pSm1PVFkwWXpFeE9DMWxPREJrTFRSaE5EZ3RPR1l3T0MxaU5HRmlNVE15Tm1ObU1tSWlMQ0pwYzE5aGJtOXVlVzF2ZFhNaU9tWmhiSE5sZlEuWFR6dThXS0NJdUt4YXhVT3NlM19hTTlfLV9sS0lwTEJ2R2dTeDJTSDFPdyIsInRva2VuX3R5cGUiOiJiZWFyZXIiLCJleHBpcmVzX2luIjozNjAwLCJleHBpcmVzX2F0IjoxNzQxNzg0MDg3LCJyZWZyZXNoX3Rva2VuIjoibG1yc05LWmJFSEdRNGVyUjR5aHJTZyIsInVzZXIiOnsiaWQiOiJhZTgzODFhYi1mMzg1LTRkZTMtOTljZC1iODBiZTI2ODAyNDUiLCJhdWQiOiJhdXRoZW50aWNhdGVkIiwicm9sZSI6ImF1dGhlbnRpY2F0ZWQiLCJlbWFpbCI6ImRhbmllbGRhc2tvbWFyYXB1QGdtYWlsLmNvbSIsImVtYWlsX2NvbmZpcm1lZF9hdCI6IjIwMjUtMDItMjdUMDQ6NDk6MjkuNzgwNzI4WiIsInBob25lIjoiIiwiY29uZmlybWF0aW9uX3NlbnRfYXQiOiIyMDI1LTAyLTI3VDA0OjQ5OjA3LjcyMDM3OVoiLCJjb25maXJtZWRfYXQiOiIyMDI1LTAyLTI3VDA0OjQ5OjI5Ljc4MDcyOFoiLCJsYXN0X3NpZ25faW5fYXQiOiIyMDI1LTAyLTI3VDA2OjIyOjE5LjYxNjg5OFoiLCJhcHBfbWV0YWRhdGEiOnsicHJvdmlkZXIiOiJlbWFpbCIsInByb3ZpZGVycyI6WyJlbWFpbCJdfSwidXNlcl9tZXRhZGF0YSI6eyJlbWFpbCI6ImRhbmllbGRhc2tvbWFyYXB1QGdtYWlsLmNvbSIsImVtYWlsX3ZlcmlmaWVkIjp0cnVlLCJwaG9uZV92ZXJpZmllZCI6ZmFsc2UsInN1YiI6ImFlODM4MWFiLWYzODUtNGRlMy05OWNkLWI4MGJlMjY4MDI0NSJ9LCJpZGVudGl0aWVzIjpbeyJpZGVudGl0eV9pZCI6IjVlNzMwZjM0LTc0YzgtNDcxNy04MmZhLTQxY2JkYzE2YmJkYyIsImlkIjoiYWU4MzgxYWItZjM4NS00ZGUzLTk5Y2QtYjgwYmUyNjgwMjQ1IiwidXNlcl9pZCI6ImFlODM4MWFiLWYzODUtNGRlMy05OWNkLWI4MGJlMjY4MDI0NSIsImlkZW50aXR5X2RhdGEiOnsiZW1haWwiOiJkYW5pZWxkYXNrb21hcmFwdUBnbWFpbC5jb20iLCJlbWFpbF92ZXJpZmllZCI6dHJ1ZSwicGhvbmVfdmVyaWZpZWQiOmZhbHNlLCJzdWIiOiJhZTgzODFhYi1mMzg1LTRkZTMtOTljZC1iODBiZTI2ODAyNDUifSwicHJvdmlkZXIiOiJlbWFpbCIsImxhc3Rfc2lnbl9pbl9hdCI6IjIwMjUtMDItMjdUMDQ6NDk6MDcuNzE0MTM5WiIsImNyZWF0ZWRfYXQiOiIyMDI1LTAyLTI3VDA0OjQ5OjA3LjcxNDIwNVoiLCJ1cGRhdGVkX2F0IjoiMjAyNS0wMi0yN1QwNDo0OTowNy43MTQyMDVaIiwiZW1haWwiOiJkYW5pZWxkYXNrb21hcmFwdUBnbWFpbC5jb20ifV0sImNyZWF0ZWRfYXQiOiIyMDI1LTAyLTI3VDA0OjQ5OjA3LjY5NDgxNFoiLCJ1cGRhdGVkX2F0IjoiMjAyNS0wMy0xMlQxMTo1Mzo0Mi45MDMxNjNaIiwiaXNfYW5vbnltb3VzIjpmYWxzZX19', 'ajs_anonymous_id': 'ada57ead-e4cb-4c6d-b9ca-421eee1072c4', 'auth_session': '.eJw1jcsSgjAMRf8la3QwtCKuXPgfnVAidKQt08eK4d8tjOySc09uVlALB0uOXYJnCpkrMFFRTlMhRlPi4eSzH41TMWvNMcJz_QPLafJFgtH7cWaoIEcOii2ZudCBnOF5oPj1lgIt-TXuyVV7e6qOLBfzfZiwVRDLA-OdMnvtvqhO9nXTSilkh4PWfd0iahQdirYRsv-cVcfFPl3u2NFD4g257gUxwvYDFQpPpg.aJErKQ.bkK4H7hVvzgUw7Y30H8UIsnxbvY'}127.0.0.1 - - [05/Aug/2025 03:20:38] "GET /auth/login-success HTTP/1.1" 200 -
-127.0.0.1 - - [05/Aug/2025 03:20:38] "GET /auth/static/css/auth.css HTTP/1.1" 304 -
-127.0.0.1 - - [05/Aug/2025 03:21:01] "GET /auth/profile HTTP/1.1" 200 -
-127.0.0.1 - - [05/Aug/2025 03:21:01] "GET /auth/static/css/auth.css HTTP/1.1" 304 -
-127.0.0.1 - - [05/Aug/2025 03:21:01] "GET /auth/static/js/auth.js HTTP/1.1" 304 -
-127.0.0.1 - - [05/Aug/2025 03:21:12] "GET / HTTP/1.1" 302 -
-127.0.0.1 - - [05/Aug/2025 03:21:12] "GET /auth/login HTTP/1.1" 200 -
-127.0.0.1 - - [05/Aug/2025 03:21:12] "GET /auth/static/css/auth.css HTTP/1.1" 304 -
-127.0.0.1 - - [05/Aug/2025 03:21:12] "GET /auth/static/js/auth.js HTTP/1.1" 304 -
-127.0.0.1 - - [05/Aug/2025 03:21:17] "GET /auth/google HTTP/1.1" 302 -
-127.0.0.1 - - [05/Aug/2025 03:21:22] "GET /auth/callback?code=79a8e5dd-3064-4de1-9959-6e594515676f HTTP/1.1" 302 -
-
-🔍 Session permanent: True | Modified: False
-🔍 User ID: user-629a85212e0b4ae2
-🔍 Is authenticated: True
-🔍 User email: None
-✅ Showing success page for: danieldaskomarapu@gmail.com
-🔍 Middleware before_request - Path: /auth/static/css/auth.css | Method: GET | IP: 127.0.0.1
-⏭️ Skipping auth middleware for: /auth/static/css/auth.css
-🔍 Middleware before_request - Path: /auth/profile | Method: GET | IP: 127.0.0.1
-🔄 Running auth middleware for: /auth/profile
-🔍 _get_current_user called for path: /auth/profile
-🔍 Authorization header: None
-🔍 Session check - Session ID: sess_95b037554592dccb0722c249247345bf | Flask Session Keys: ['_permanent', 'is_authenticated', 'login_success', 'session_id', 'user_id']
-📊 Session accessed: sess_95b037554592dccb0722c249247345bf | User: danieldaskomarapu@gmail.com | Valid until: 2025-08-05T21:45:23.736077
-✅ Valid session found for user: danieldaskomarapu@gmail.com
-✅ User authenticated: danieldaskomarapu@gmail.com
-🔍 Profile route accessed - Method: GET
-👤 Current user: danieldaskomarapu@gmail.com
-🔐 Is authenticated: True
-📋 Flask session: {'_permanent': True, 'is_authenticated': True, 'login_success': {'login_method': 'google', 'user_email': 'danieldaskomarapu@gmail.com', 'user_name': 'Daniel'}, 'session_id': 'sess_95b037554592dccb0722c249247345bf', 'user_id': 'user-629a85212e0b4ae2'}
-🆔 User ID from g.current_user: user-629a85212e0b4ae2
-🔍 Middleware before_request - Path: /auth/static/css/auth.css | Method: GET | IP: 127.0.0.1
-⏭️ Skipping auth middleware for: /auth/static/css/auth.css
-🔍 Middleware before_request - Path: /auth/static/js/auth.js | Method: GET | IP: 127.0.0.1
-⏭️ Skipping auth middleware for: /auth/static/js/auth.js
-🔍 Middleware before_request - Path: / | Method: GET | IP: 127.0.0.1
+🔍 Middleware before_request - Path: / | Method: GET | IP: 192.168.29.131
 🔄 Running auth middleware for: /
 🔍 _get_current_user called for path: /
 🔍 Authorization header: None
-🔍 Session check - Session ID: sess_95b037554592dccb0722c249247345bf | Flask Session Keys: ['_permanent', 'is_authenticated', 'login_success', 'session_id', 'user_id']
-📊 Session accessed: sess_95b037554592dccb0722c249247345bf | User: danieldaskomarapu@gmail.com | Valid until: 2025-08-05T21:45:23.736077
-✅ Valid session found for user: danieldaskomarapu@gmail.com
-✅ User authenticated: danieldaskomarapu@gmail.com
-🔍 Middleware before_request - Path: /auth/login | Method: GET | IP: 127.0.0.1
+🔍 Session check - Session ID: None | Flask Session Keys: []
+❌ No session ID found in Flask session
+❌ No user found for path: /
+🔍 Middleware before_request - Path: /auth/login | Method: GET | IP: 192.168.29.131
 ⏭️ Skipping auth middleware for: /auth/login
-🔍 Middleware before_request - Path: /auth/static/css/auth.css | Method: GET | IP: 127.0.0.1
-⏭️ Skipping auth middleware for: /auth/static/css/auth.css
-🔍 Middleware before_request - Path: /auth/static/js/auth.js | Method: GET | IP: 127.0.0.1
-⏭️ Skipping auth middleware for: /auth/static/js/auth.js
-🔍 Middleware before_request - Path: /auth/google | Method: GET | IP: 127.0.0.1
-⏭️ Skipping auth middleware for: /auth/google
-🔍 Middleware before_request - Path: /auth/callback | Method: GET | IP: 127.0.0.1
-⏭️ Skipping auth middleware for: /auth/callback
-OAuth callback received - access_token: False, code: True, error: None
-🔄 Processing OAuth code: 79a8e5dd-3064-4de1-9959-6e594515676f
-🔄 Exchanging OAuth code: 79a8e5dd-3064-4de1-9...
-✅ Successfully exchanged code for user: danieldaskomarapu@gmail.com
-📊 User metadata: {'avatar_url': 'https://lh3.googleusercontent.com/a/ACg8ocKa0-NeF2vDjEo4VBNUdUnLHWD9AlAVvHf3ULRsLA6feNS0ZA=s96-c', 'company_name': 'Test Company', 'email': 'danieldaskomarapu@gmail.com', 'email_verified': True, 'full_name': 'Daniel', 'iss': 'https://accounts.google.com', 'name': 'Daniel', 'phone_verified': False, 'picture': 'https://lh3.googleusercontent.com/a/ACg8ocKa0-NeF2vDjEo4VBNUdUnLHWD9AlAVvHf3ULRsLA6feNS0ZA=s96-c', 'provider_id': '107556162118709183241', 'startup_stage': 'idea', 'sub': '107556162118709183241'}
-👤 Real user data extracted - Name: Daniel, Email: danieldaskomarapu@gmail.com
-⚠️ Could not save to database: {'message': 'JSON could not be generated', 'code': 404, 'hint': 'Refer to full message for details', 'details': "b'{}'"}
-✅ OAuth code exchange successful!
-👤 Real user data: Daniel (danieldaskomarapu@gmail.com)
-✅ Session created: sess_d7c2350da91b60d6089f461066c43212 for user: user-000be2e2c2aa4a9a | Email: danieldaskomarapu@gmail.com | Method: google
-✅ Production session created for user: danieldaskomarapu@gmail.com
-📊 User ID: user-000be2e2c2aa4a9a
-🔍 Session ID: sess_d7c2350da91b60d6089f461066c43212
-⏰ Expires: 2025-08-05T21:51:22.823836
-✅ Real Google user authenticated: Daniel
-🔍 Middleware before_request - Path: /auth/login-success | Method: GET | IP: 127.0.0.1
-⏭️ Skipping auth middleware for: /auth/login-success
-🔍 Login success route - Session data: {'_permanent': True, 'is_authenticated': True, 'login_success': {'login_method': 'google', 'user_email': 'danieldaskomarapu@gmail.com', 'user_name': 'Daniel'}, 'session_id': 'sess_d7c2350da91b60d6089f461066c43212', 'user_id': 'user-000be2e2c2aa4a9a'}
-🔍 Session keys: ['_permanent', 'is_authenticated', 'login_success', 'session_id', 'user_id']
-🔍 Request cookies: {'has_empty_threads_cleared': 'true', 'sb-avgcngmdmseansgsejnp-auth-token': 'base64-eyJhY2Nlc3NfdG9rZW4iOiJleUpoYkdjaU9pSklVekkxTmlJc0ltdHBaQ0k2SWtSbVREZEdNamxVVTA5YVpIZDZPRE1pTENKMGVYQWlPaUpLVjFRaWZRLmV5SnBjM01pT2lKb2RIUndjem92TDJGMloyTnVaMjFrYlhObFlXNXpaM05sYW01d0xuTjFjR0ZpWVhObExtTnZMMkYxZEdndmRqRWlMQ0p6ZFdJaU9pSmhaVGd6T0RGaFlpMW1NemcxTFRSa1pUTXRPVGxqWkMxaU9EQmlaVEkyT0RBeU5EVWlMQ0poZFdRaU9pSmhkWFJvWlc1MGFXTmhkR1ZrSWl3aVpYaHdJam94TnpReE56ZzBNRGczTENKcFlYUWlPakUzTkRFM09EQTBPRGNzSW1WdFlXbHNJam9pWkdGdWFXVnNaR0Z6YTI5dFlYSmhjSFZBWjIxaGFXd3VZMjl0SWl3aWNHaHZibVVpT2lJaUxDSmhjSEJmYldWMFlXUmhkR0VpT25zaWNISnZkbWxrWlhJaU9pSmxiV0ZwYkNJc0luQnliM1pwWkdWeWN5STZXeUpsYldGcGJDSmRmU3dpZFhObGNsOXRaWFJoWkdGMFlTSTZleUpsYldGcGJDSTZJbVJoYm1sbGJHUmhjMnR2YldGeVlYQjFRR2R0WVdsc0xtTnZiU0lzSW1WdFlXbHNYM1psY21sbWFXVmtJanAwY25WbExDSndhRzl1WlY5MlpYSnBabWxsWkNJNlptRnNjMlVzSW5OMVlpSTZJbUZsT0RNNE1XRmlMV1l6T0RVdE5HUmxNeTA1T1dOa0xXSTRNR0psTWpZNE1ESTBOU0o5TENKeWIyeGxJam9pWVhWMGFHVnVkR2xqWVhSbFpDSXNJbUZoYkNJNkltRmhiREVpTENKaGJYSWlPbHQ3SW0xbGRHaHZaQ0k2SW5CaGMzTjNiM0prSWl3aWRHbHRaWE4wWVcxd0lqb3hOelF3TmpNM016TTVmVjBzSW5ObGMzTnBiMjVmYVdRaU9pSm1PVFkwWXpFeE9DMWxPREJrTFRSaE5EZ3RPR1l3T0MxaU5HRmlNVE15Tm1ObU1tSWlMQ0pwYzE5aGJtOXVlVzF2ZFhNaU9tWmhiSE5sZlEuWFR6dThXS0NJdUt4YXhVT3NlM19hTTlfLV9sS0lwTEJ2R2dTeDJTSDFPdyIsInRva2VuX3R5cGUiOiJiZWFyZXIiLCJleHBpcmVzX2luIjozNjAwLCJleHBpcmVzX2F0IjoxNzQxNzg0MDg3LCJyZWZyZXNoX3Rva2VuIjoibG1yc05LWmJFSEdRNGVyUjR5aHJTZyIsInVzZXIiOnsiaWQiOiJhZTgzODFhYi1mMzg1LTRkZTMtOTljZC1iODBiZTI2ODAyNDUiLCJhdWQiOiJhdXRoZW50aWNhdGVkIiwicm9sZSI6ImF1dGhlbnRpY2F0ZWQiLCJlbWFpbCI6ImRhbmllbGRhc2tvbWFyYXB1QGdtYWlsLmNvbSIsImVtYWlsX2NvbmZpcm1lZF9hdCI6IjIwMjUtMDItMjdUMDQ6NDk6MjkuNzgwNzI4WiIsInBob25lIjoiIiwiY29uZmlybWF0aW9uX3NlbnRfYXQiOiIyMDI1LTAyLTI3VDA0OjQ5OjA3LjcyMDM3OVoiLCJjb25maXJtZWRfYXQiOiIyMDI1LTAyLTI3VDA0OjQ5OjI5Ljc4MDcyOFoiLCJsYXN0X3NpZ25faW5fYXQiOiIyMDI1LTAyLTI3VDA2OjIyOjE5LjYxNjg5OFoiLCJhcHBfbWV0YWRhdGEiOnsicHJvdmlkZXIiOiJlbWFpbCIsInByb3ZpZGVycyI6WyJlbWFpbCJdfSwidXNlcl9tZXRhZGF0YSI6eyJlbWFpbCI6ImRhbmllbGRhc2tvbWFyYXB1QGdtYWlsLmNvbSIsImVtYWlsX3ZlcmlmaWVkIjp0cnVlLCJwaG9uZV92ZXJpZmllZCI6ZmFsc2UsInN1YiI6ImFlODM4MWFiLWYzODUtNGRlMy05OWNkLWI4MGJlMjY4MDI0NSJ9LCJpZGVudGl0aWVzIjpbeyJpZGVudGl0eV9pZCI6IjVlNzMwZjM0LTc0YzgtNDcxNy04MmZhLTQxY2JkYzE2YmJkYyIsImlkIjoiYWU4MzgxYWItZjM4NS00ZGUzLTk5Y2QtYjgwYmUyNjgwMjQ1IiwidXNlcl9pZCI6ImFlODM4MWFiLWYzODUtNGRlMy05OWNkLWI4MGJlMjY4MDI0NSIsImlkZW50aXR5X2RhdGEiOnsiZW1haWwiOiJkYW5pZWxkYXNrb21hcmFwdUBnbWFpbC5jb20iLCJlbWFpbF92ZXJpZmllZCI6dHJ1ZSwicGhvbmVfdmVyaWZpZWQiOmZhbHNlLCJzdWIiOiJhZTgzODFhYi1mMzg1LTRkZTMtOTljZC1iODBiZTI2ODAyNDUifSwicHJvdmlkZXIiOiJlbWFpbCIsImxhc3Rfc2lnbl9pbl9hdCI6IjIwMjUtMDItMjdUMDQ6NDk6MDcuNzE0MTM5WiIsImNyZWF0ZWRfYXQiOiIyMDI1LTAyLTI3VDA0OjQ5OjA3LjcxNDIwNVoiLCJ1cGRhdGVkX2F0IjoiMjAyNS0wMi0yN1QwNDo0OTowNy43MTQyMDVaIiwiZW1haWwiOiJkYW5pZWxkYXNrb21hcmFwdUBnbWFpbC5jb20ifV0sImNyZWF0ZWRfYXQiOiIyMDI1LTAyLTI3VDA0OjQ5OjA3LjY5NDgxNFoiLCJ1cGRhdGVkX2F0IjoiMjAyNS0wMy0xMlQxMTo1Mzo0Mi45MDMxNjNaIiwiaXNfYW5vbnltb3VzIjpmYWxzZX19', 'ajs_anonymous_id': 'ada57ead-e4cb-4c6d-b9ca-421eee1072c4', 'auth_session': '.eJw1jcsSgyAMRf8la9tBtLR21UX_g4mQKlMBh8fK8d8LTt0l557cbCBXChYduQTPFDI1YKLEnOZCjMJE-uSLn4yTMStFMcJz-wNLafZFgsn7aSFoIEcKkiyapVCNztCiMX69xYBrfk01uSpvT9WhpWK-DxP2BmJ5YLyTptbWReq74t2NaRzaUTAt2GP49KJlQqi-4y0_q46LOl0YYyNx4ooj9jgg7D8hKlAZ.aJErWg.00dfAgETsYXqLPEGIRM8m2O0V3I'}127.0.0.1 - - [05/Aug/2025 03:21:22] "GET /auth/login-success HTTP/1.1" 200 -
-127.0.0.1 - - [05/Aug/2025 03:21:22] "GET /auth/static/css/auth.css HTTP/1.1" 304 -
-127.0.0.1 - - [05/Aug/2025 03:21:22] "GET /auth/static/js/auth.js HTTP/1.1" 304 -
-127.0.0.1 - - [05/Aug/2025 03:21:25] "GET /auth/profile HTTP/1.1" 200 -
-127.0.0.1 - - [05/Aug/2025 03:21:25] "GET /auth/static/js/auth.js HTTP/1.1" 304 -
-127.0.0.1 - - [05/Aug/2025 03:21:25] "GET /auth/static/css/auth.css HTTP/1.1" 304 -
-127.0.0.1 - - [05/Aug/2025 03:21:28] "GET /auth/reset-password HTTP/1.1" 200 -
-127.0.0.1 - - [05/Aug/2025 03:21:28] "GET /auth/static/css/auth.css HTTP/1.1" 304 -
-127.0.0.1 - - [05/Aug/2025 03:21:28] "GET /auth/static/js/auth.js HTTP/1.1" 304 -
-127.0.0.1 - - [05/Aug/2025 03:21:50] "POST /auth/reset-password HTTP/1.1" 200 -
-127.0.0.1 - - [05/Aug/2025 03:24:58] "POST /auth/reset-password HTTP/1.1" 200 -
-127.0.0.1 - - [05/Aug/2025 03:25:12] "GET / HTTP/1.1" 302 -
-127.0.0.1 - - [05/Aug/2025 03:25:12] "GET /auth/login HTTP/1.1" 200 -
-127.0.0.1 - - [05/Aug/2025 03:25:12] "GET /auth/static/css/auth.css HTTP/1.1" 304 -
-127.0.0.1 - - [05/Aug/2025 03:25:12] "GET /auth/static/js/auth.js HTTP/1.1" 304 -
-127.0.0.1 - - [05/Aug/2025 03:25:48] "POST /auth/login HTTP/1.1" 200 -
-127.0.0.1 - - [05/Aug/2025 03:25:52] "GET /auth/reset-password HTTP/1.1" 200 -
-127.0.0.1 - - [05/Aug/2025 03:25:52] "GET /auth/static/css/auth.css HTTP/1.1" 304 -
-127.0.0.1 - - [05/Aug/2025 03:25:52] "GET /auth/static/js/auth.js HTTP/1.1" 304 -
-127.0.0.1 - - [05/Aug/2025 03:26:08] "POST /auth/reset-password HTTP/1.1" 200 -
-127.0.0.1 - - [05/Aug/2025 03:26:28] "GET / HTTP/1.1" 302 -
-127.0.0.1 - - [05/Aug/2025 03:26:28] "GET /auth/login HTTP/1.1" 200 -
-127.0.0.1 - - [05/Aug/2025 03:26:28] "GET /auth/static/css/auth.css HTTP/1.1" 304 -
-127.0.0.1 - - [05/Aug/2025 03:26:28] "GET /auth/static/js/auth.js HTTP/1.1" 304 -
- * Detected change in '/Users/danieldas/Documents/moneyAI/backend/auth/app.py', reloading
-
-🔍 Session permanent: True | Modified: False
-🔍 User ID: user-000be2e2c2aa4a9a
-🔍 Is authenticated: True
-🔍 User email: None
-✅ Showing success page for: danieldaskomarapu@gmail.com
-🔍 Middleware before_request - Path: /auth/static/css/auth.css | Method: GET | IP: 127.0.0.1
-⏭️ Skipping auth middleware for: /auth/static/css/auth.css
-🔍 Middleware before_request - Path: /auth/static/js/auth.js | Method: GET | IP: 127.0.0.1
-⏭️ Skipping auth middleware for: /auth/static/js/auth.js
-🔍 Middleware before_request - Path: /auth/profile | Method: GET | IP: 127.0.0.1
-🔄 Running auth middleware for: /auth/profile
-🔍 _get_current_user called for path: /auth/profile
-🔍 Authorization header: None
-🔍 Session check - Session ID: sess_d7c2350da91b60d6089f461066c43212 | Flask Session Keys: ['_permanent', 'is_authenticated', 'login_success', 'session_id', 'user_id']
-📊 Session accessed: sess_d7c2350da91b60d6089f461066c43212 | User: danieldaskomarapu@gmail.com | Valid until: 2025-08-05T21:51:22.823836
-✅ Valid session found for user: danieldaskomarapu@gmail.com
-✅ User authenticated: danieldaskomarapu@gmail.com
-🔍 Profile route accessed - Method: GET
-👤 Current user: danieldaskomarapu@gmail.com
-🔐 Is authenticated: True
-📋 Flask session: {'_permanent': True, 'is_authenticated': True, 'login_success': {'login_method': 'google', 'user_email': 'danieldaskomarapu@gmail.com', 'user_name': 'Daniel'}, 'session_id': 'sess_d7c2350da91b60d6089f461066c43212', 'user_id': 'user-000be2e2c2aa4a9a'}
-🆔 User ID from g.current_user: user-000be2e2c2aa4a9a
-🔍 Middleware before_request - Path: /auth/static/js/auth.js | Method: GET | IP: 127.0.0.1
-⏭️ Skipping auth middleware for: /auth/static/js/auth.js
-🔍 Middleware before_request - Path: /auth/static/css/auth.css | Method: GET | IP: 127.0.0.1
-⏭️ Skipping auth middleware for: /auth/static/css/auth.css
-🔍 Middleware before_request - Path: /auth/reset-password | Method: GET | IP: 127.0.0.1
-⏭️ Skipping auth middleware for: /auth/reset-password
-🔍 Middleware before_request - Path: /auth/static/js/auth.js | Method: GET | IP: 127.0.0.1
-⏭️ Skipping auth middleware for: /auth/static/js/auth.js
-🔍 Middleware before_request - Path: /auth/static/css/auth.css | Method: GET | IP: 127.0.0.1
-⏭️ Skipping auth middleware for: /auth/static/css/auth.css
-🔍 Middleware before_request - Path: /auth/reset-password | Method: POST | IP: 127.0.0.1
-⏭️ Skipping auth middleware for: /auth/reset-password
-🔍 Middleware before_request - Path: /auth/reset-password | Method: POST | IP: 127.0.0.1
-⏭️ Skipping auth middleware for: /auth/reset-password
-🔍 Middleware before_request - Path: / | Method: GET | IP: 127.0.0.1
+🔍 Middleware before_request - Path: / | Method: GET | IP: 192.168.29.131
 🔄 Running auth middleware for: /
 🔍 _get_current_user called for path: /
 🔍 Authorization header: None
-🔍 Session check - Session ID: sess_d7c2350da91b60d6089f461066c43212 | Flask Session Keys: ['_permanent', 'is_authenticated', 'login_success', 'session_id', 'user_id']
-📊 Session accessed: sess_d7c2350da91b60d6089f461066c43212 | User: danieldaskomarapu@gmail.com | Valid until: 2025-08-05T21:51:22.823836
-✅ Valid session found for user: danieldaskomarapu@gmail.com
-✅ User authenticated: danieldaskomarapu@gmail.com
-🔍 Middleware before_request - Path: /auth/login | Method: GET | IP: 127.0.0.1
-⏭️ Skipping auth middleware for: /auth/login
-🔍 Middleware before_request - Path: /auth/static/css/auth.css | Method: GET | IP: 127.0.0.1
-⏭️ Skipping auth middleware for: /auth/static/css/auth.css
-🔍 Middleware before_request - Path: /auth/static/js/auth.js | Method: GET | IP: 127.0.0.1
-⏭️ Skipping auth middleware for: /auth/static/js/auth.js
-🔍 Middleware before_request - Path: /auth/login | Method: POST | IP: 127.0.0.1
-⏭️ Skipping auth middleware for: /auth/login
-🔍 Middleware before_request - Path: /auth/reset-password | Method: GET | IP: 127.0.0.1
-⏭️ Skipping auth middleware for: /auth/reset-password
-🔍 Middleware before_request - Path: /auth/static/css/auth.css | Method: GET | IP: 127.0.0.1
-⏭️ Skipping auth middleware for: /auth/static/css/auth.css
-🔍 Middleware before_request - Path: /auth/static/js/auth.js | Method: GET | IP: 127.0.0.1
-⏭️ Skipping auth middleware for: /auth/static/js/auth.js
-🔍 Middleware before_request - Path: /auth/reset-password | Method: POST | IP: 127.0.0.1
-⏭️ Skipping auth middleware for: /auth/reset-password
-🔍 Middleware before_request - Path: / | Method: GET | IP: 127.0.0.1
+🔍 Session check - Session ID: None | Flask Session Keys: []
+❌ No session ID found in Flask session
+❌ No user found for path: /
+🔍 Middleware before_request - Path: / | Method: GET | IP: 192.168.29.131
 🔄 Running auth middleware for: /
 🔍 _get_current_user called for path: /
 🔍 Authorization header: None
-🔍 Session check - Session ID: sess_d7c2350da91b60d6089f461066c43212 | Flask Session Keys: ['_permanent', 'is_authenticated', 'login_success', 'session_id', 'user_id']
-📊 Session accessed: sess_d7c2350da91b60d6089f461066c43212 | User: danieldaskomarapu@gmail.com | Valid until: 2025-08-05T21:51:22.823836
-✅ Valid session found for user: danieldaskomarapu@gmail.com
-✅ User authenticated: danieldaskomarapu@gmail.com
-🔍 Middleware before_request - Path: /auth/login | Method: GET | IP: 127.0.0.1
+🔍 Session check - Session ID: None | Flask Session Keys: []
+❌ No session ID found in Flask session
+❌ No user found for path: /
+🔍 Middleware before_request - Path: /auth/login | Method: GET | IP: 192.168.29.131
 ⏭️ Skipping auth middleware for: /auth/login
-🔍 Middleware before_request - Path: /auth/static/css/auth.css | Method: GET | IP: 127.0.0.1
-⏭️ Skipping auth middleware for: /auth/static/css/auth.css
-🔍 Middleware before_request - Path: /auth/static/js/auth.js | Method: GET | IP: 127.0.0.1
-⏭️ Skipping auth middleware for: /auth/static/js/auth.js
- * Restarting with stat
- * Debugger is active!
- * Debugger PIN: 372-553-095
- * Detected change in '/Users/danieldas/Documents/moneyAI/backend/auth/app.py', reloading
-🔧 Flask app configured with session lifetime: 604800 seconds
-🔧 Session cookie secure: False
-🔧 Secret key length: 20 characters
-🚀 Agent-Cofounder Authentication System
-⚠️  DEVELOPMENT MODE - Use a production WSGI server for deployment
-🌐 Server starting at: http://localhost:5090
-📝 Available routes:
-   • GET  /auth/login - Login page
-   • POST /auth/login - Login handler
-   • GET  /auth/signup - Signup page
-   • POST /auth/signup - Signup handler
-   • GET  /auth/google - Google OAuth login
-   • GET  /auth/callback - OAuth callback handler
-   • GET  /auth/login-success - Login confirmation page
-   • POST /auth/logout - Logout handler
-   • GET  /auth/reset-password - Password reset page
-   • POST /auth/reset-password - Password reset handler
-   • GET  /auth/profile - Get user profile
-   • POST /auth/profile - Update user profile
-   • GET  /auth/validate - Validate token
-   • GET  /auth/debug-routes - Debug routes
-   • GET  /auth/health - Health check
-🔑 Google OAuth: Configured with Supabase
-🔗 OAuth Callback: https://immwltgltccqefujsbbs.supabase.co/auth/v1/callback
+🔍 Middleware before_request - Path: / | Method: GET | IP: 192.168.29.131
+🔄 Running auth middleware for: /
+🔍 _get_current_user called for path: /
+🔍 Authorization header: None
+🔍 Session check - Session ID: None | Flask Session Keys: []
+❌ No session ID found in Flask session
+❌ No user found for path: /
+🔍 Middleware before_request - Path: /api/analytics/balance | Method: GET | IP: 192.168.29.131
+🔄 Running auth middleware for: /api/analytics/balance
+🔍 _get_current_user called for path: /api/analytics/balance
+🔍 Authorization header: Bearer eyJhbGciOiJIUzI1NiIsImtpZCI6Ino2RTdGNTlTV08xTS9hdngiLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiJodHRwczovL2l3a3hsdWRyaHpodW1uaHpqbHlpLnN1cGFiYXNlLmNvL2F1dGgvdjEiLCJzdWIiOiI1MGYwZTM0ZC0yZWVlLTQyNTAtYWYyYS1lMGRjZjdkNjkzN2UiLCJhdWQiOiJhdXRoZW50aWNhdGVkIiwiZXhwIjoxNzU0NjA5NDc2LCJpYXQiOjE3NTQ2MDU4NzYsImVtYWlsIjoia2VuZXNpc2xhYnNAZ21haWwuY29tIiwicGhvbmUiOiIiLCJhcHBfbWV0YWRhdGEiOnsicHJvdmlkZXIiOiJnb29nbGUiLCJwcm92aWRlcnMiOlsiZ29vZ2xlIl19LCJ1c2VyX21ldGFkYXRhIjp7ImF2YXRhcl91cmwiOiJodHRwczovL2xoMy5nb29nbGV1c2VyY29udGVudC5jb20vYS9BQ2c4b2NMUFU5dkVqZm1XRm1FR1VXOUdxRFhjX1lwOEJhejRORVBhVjR1aUdUeWNISmVVRWw4PXM5Ni1jIiwiZW1haWwiOiJrZW5lc2lzbGFic0BnbWFpbC5jb20iLCJlbWFpbF92ZXJpZmllZCI6dHJ1ZSwiZnVsbF9uYW1lIjoiS2VuZXNpcyIsImlzcyI6Imh0dHBzOi8vYWNjb3VudHMuZ29vZ2xlLmNvbSIsIm5hbWUiOiJLZW5lc2lzIiwicGhvbmVfdmVyaWZpZWQiOmZhbHNlLCJwaWN0dXJlIjoiaHR0cHM6Ly9saDMuZ29vZ2xldXNlcmNvbnRlbnQuY29tL2EvQUNnOG9jTFBVOXZFamZtV0ZtRUdVVzlHcURYY19ZcDhCYXo0TkVQYVY0dWlHVHljSEplVUVsOD1zOTYtYyIsInByb3ZpZGVyX2lkIjoiMTEwNjI4NDM3OTY4MDk3NDU1ODcxIiwic3ViIjoiMTEwNjI4NDM3OTY4MDk3NDU1ODcxIn0sInJvbGUiOiJhdXRoZW50aWNhdGVkIiwiYWFsIjoiYWFsMSIsImFtciI6W3sibWV0aG9kIjoib2F1dGgiLCJ0aW1lc3RhbXAiOjE3NTQ2MDU4NzZ9XSwic2Vzc2lvbl9pZCI6IjdhMWQ0ZTA3LTk0MDctNDlmZS05Njg3LTA3ZGE4MWZkZWE5MyIsImlzX2Fub255bW91cyI6ZmFsc2V9.EIXX2aNQY-EUz1Wr2C2djehfhNTe0F5tOC3AkDFGObM
+🔍 Bearer token found: eyJhbGciOiJIUzI1NiIs..., validating...
+🔍 Middleware before_request - Path: /auth/login | Method: GET | IP: 192.168.29.131
+⏭️ Skipping auth middleware for: /auth/login
+🔍 Middleware before_request - Path: /auth/login | Method: GET | IP: 192.168.29.131
+⏭️ Skipping auth middleware for: /auth/login
+🔍 Middleware before_request - Path: /api/transactions | Method: GET | IP: 192.168.29.131
+🔄 Running auth middleware for: /api/transactions
+🔍 _get_current_user called for path: /api/transactions
+🔍 Authorization header: Bearer eyJhbGciOiJIUzI1NiIsImtpZCI6Ino2RTdGNTlTV08xTS9hdngiLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiJodHRwczovL2l3a3hsdWRyaHpodW1uaHpqbHlpLnN1cGFiYXNlLmNvL2F1dGgvdjEiLCJzdWIiOiI1MGYwZTM0ZC0yZWVlLTQyNTAtYWYyYS1lMGRjZjdkNjkzN2UiLCJhdWQiOiJhdXRoZW50aWNhdGVkIiwiZXhwIjoxNzU0NjA5NDc2LCJpYXQiOjE3NTQ2MDU4NzYsImVtYWlsIjoia2VuZXNpc2xhYnNAZ21haWwuY29tIiwicGhvbmUiOiIiLCJhcHBfbWV0YWRhdGEiOnsicHJvdmlkZXIiOiJnb29nbGUiLCJwcm92aWRlcnMiOlsiZ29vZ2xlIl19LCJ1c2VyX21ldGFkYXRhIjp7ImF2YXRhcl91cmwiOiJodHRwczovL2xoMy5nb29nbGV1c2VyY29udGVudC5jb20vYS9BQ2c4b2NMUFU5dkVqZm1XRm1FR1VXOUdxRFhjX1lwOEJhejRORVBhVjR1aUdUeWNISmVVRWw4PXM5Ni1jIiwiZW1haWwiOiJrZW5lc2lzbGFic0BnbWFpbC5jb20iLCJlbWFpbF92ZXJpZmllZCI6dHJ1ZSwiZnVsbF9uYW1lIjoiS2VuZXNpcyIsImlzcyI6Imh0dHBzOi8vYWNjb3VudHMuZ29vZ2xlLmNvbSIsIm5hbWUiOiJLZW5lc2lzIiwicGhvbmVfdmVyaWZpZWQiOmZhbHNlLCJwaWN0dXJlIjoiaHR0cHM6Ly9saDMuZ29vZ2xldXNlcmNvbnRlbnQuY29tL2EvQUNnOG9jTFBVOXZFamZtV0ZtRUdVVzlHcURYY19ZcDhCYXo0TkVQYVY0dWlHVHljSEplVUVsOD1zOTYtYyIsInByb3ZpZGVyX2lkIjoiMTEwNjI4NDM3OTY4MDk3NDU1ODcxIiwic3ViIjoiMTEwNjI4NDM3OTY4MDk3NDU1ODcxIn0sInJvbGUiOiJhdXRoZW50aWNhdGVkIiwiYWFsIjoiYWFsMSIsImFtciI6W3sibWV0aG9kIjoib2F1dGgiLCJ0aW1lc3RhbXAiOjE3NTQ2MDU4NzZ9XSwic2Vzc2lvbl9pZCI6IjdhMWQ0ZTA3LTk0MDctNDlmZS05Njg3LTA3ZGE4MWZkZWE5MyIsImlzX2Fub255bW91cyI6ZmFsc2V9.EIXX2aNQY-EUz1Wr2C2djehfhNTe0F5tOC3AkDFGObM
+🔍 Bearer token found: eyJhbGciOiJIUzI1NiIs..., validating...
+🔍 Middleware before_request - Path: /api/budgets | Method: GET | IP: 192.168.29.131
+🔄 Running auth middleware for: /api/budgets
+🔍 _get_current_user called for path: /api/budgets
+🔍 Authorization header: Bearer eyJhbGciOiJIUzI1NiIsImtpZCI6Ino2RTdGNTlTV08xTS9hdngiLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiJodHRwczovL2l3a3hsdWRyaHpodW1uaHpqbHlpLnN1cGFiYXNlLmNvL2F1dGgvdjEiLCJzdWIiOiI1MGYwZTM0ZC0yZWVlLTQyNTAtYWYyYS1lMGRjZjdkNjkzN2UiLCJhdWQiOiJhdXRoZW50aWNhdGVkIiwiZXhwIjoxNzU0NjA5NDc2LCJpYXQiOjE3NTQ2MDU4NzYsImVtYWlsIjoia2VuZXNpc2xhYnNAZ21haWwuY29tIiwicGhvbmUiOiIiLCJhcHBfbWV0YWRhdGEiOnsicHJvdmlkZXIiOiJnb29nbGUiLCJwcm92aWRlcnMiOlsiZ29vZ2xlIl19LCJ1c2VyX21ldGFkYXRhIjp7ImF2YXRhcl91cmwiOiJodHRwczovL2xoMy5nb29nbGV1c2VyY29udGVudC5jb20vYS9BQ2c4b2NMUFU5dkVqZm1XRm1FR1VXOUdxRFhjX1lwOEJhejRORVBhVjR1aUdUeWNISmVVRWw4PXM5Ni1jIiwiZW1haWwiOiJrZW5lc2lzbGFic0BnbWFpbC5jb20iLCJlbWFpbF92ZXJpZmllZCI6dHJ1ZSwiZnVsbF9uYW1lIjoiS2VuZXNpcyIsImlzcyI6Imh0dHBzOi8vYWNjb3VudHMuZ29vZ2xlLmNvbSIsIm5hbWUiOiJLZW5lc2lzIiwicGhvbmVfdmVyaWZpZWQiOmZhbHNlLCJwaWN0dXJlIjoiaHR0cHM6Ly9saDMuZ29vZ2xldXNlcmNvbnRlbnQuY29tL2EvQUNnOG9jTFBVOXZFamZtV0ZtRUdVVzlHcURYY19ZcDhCYXo0TkVQYVY0dWlHVHljSEplVUVsOD1zOTYtYyIsInByb3ZpZGVyX2lkIjoiMTEwNjI4NDM3OTY4MDk3NDU1ODcxIiwic3ViIjoiMTEwNjI4NDM3OTY4MDk3NDU1ODcxIn0sInJvbGUiOiJhdXRoZW50aWNhdGVkIiwiYWFsIjoiYWFsMSIsImFtciI6W3sibWV0aG9kIjoib2F1dGgiLCJ0aW1lc3RhbXAiOjE3NTQ2MDU4NzZ9XSwic2Vzc2lvbl9pZCI6IjdhMWQ0ZTA3LTk0MDctNDlmZS05Njg3LTA3ZGE4MWZkZWE5MyIsImlzX2Fub255bW91cyI6ZmFsc2V9.EIXX2aNQY-EUz1Wr2C2djehfhNTe0F5tOC3AkDFGObM192.168.29.131 - - [08/Aug/2025 04:14:54] "GET /auth/login HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 04:14:55] "GET /api/budgets?_t=1754606694827 HTTP/1.1" 404 -
+192.168.29.131 - - [08/Aug/2025 04:14:55] "GET /api/debts?_t=1754606694831 HTTP/1.1" 404 -
+192.168.29.131 - - [08/Aug/2025 04:14:55] "GET /api/analytics/balance?_t=1754606694823 HTTP/1.1" 404 -
+192.168.29.131 - - [08/Aug/2025 04:14:55] "GET /api/bills?_t=1754606694830 HTTP/1.1" 404 -
+192.168.29.131 - - [08/Aug/2025 04:14:55] "GET /api/transactions?limit=10&_t=1754606694825 HTTP/1.1" 404 -
+192.168.29.131 - - [08/Aug/2025 04:14:55] "GET /api/goals?_t=1754606694828 HTTP/1.1" 404 -
 
- * Restarting with stat
- * Debugger is active!
- * Debugger PIN: 372-553-095
-127.0.0.1 - - [05/Aug/2025 03:30:03] "GET /auth/reset-password HTTP/1.1" 200 -
-127.0.0.1 - - [05/Aug/2025 03:30:03] "GET /auth/static/css/auth.css HTTP/1.1" 304 -
-127.0.0.1 - - [05/Aug/2025 03:30:03] "GET /auth/static/js/auth.js HTTP/1.1" 304 -
-127.0.0.1 - - [05/Aug/2025 03:30:23] "POST /auth/reset-password HTTP/1.1" 200 -
-127.0.0.1 - - [05/Aug/2025 03:30:40] "GET /auth/reset-confirm HTTP/1.1" 302 -
-127.0.0.1 - - [05/Aug/2025 03:30:40] "GET /auth/login HTTP/1.1" 200 -
-127.0.0.1 - - [05/Aug/2025 03:30:40] "GET /auth/static/css/auth.css HTTP/1.1" 304 -
-127.0.0.1 - - [05/Aug/2025 03:30:40] "GET /auth/static/js/auth.js HTTP/1.1" 304 -
-127.0.0.1 - - [05/Aug/2025 03:32:57] "GET / HTTP/1.1" 302 -
-127.0.0.1 - - [05/Aug/2025 03:32:57] "GET /auth/login HTTP/1.1" 200 -
-127.0.0.1 - - [05/Aug/2025 03:32:57] "GET /auth/static/css/auth.css HTTP/1.1" 304 -
-127.0.0.1 - - [05/Aug/2025 03:32:57] "GET /auth/static/js/auth.js HTTP/1.1" 304 -
-127.0.0.1 - - [05/Aug/2025 03:33:03] "GET /auth/reset-password HTTP/1.1" 200 -
-127.0.0.1 - - [05/Aug/2025 03:33:03] "GET /auth/static/css/auth.css HTTP/1.1" 304 -
-127.0.0.1 - - [05/Aug/2025 03:33:03] "GET /auth/static/js/auth.js HTTP/1.1" 304 -
-127.0.0.1 - - [05/Aug/2025 03:33:22] "POST /auth/reset-password HTTP/1.1" 200 -
-127.0.0.1 - - [05/Aug/2025 03:33:56] "GET /auth/login HTTP/1.1" 200 -
-127.0.0.1 - - [05/Aug/2025 03:33:56] "GET /auth/static/css/auth.css HTTP/1.1" 304 -
-127.0.0.1 - - [05/Aug/2025 03:33:56] "GET /auth/static/js/auth.js HTTP/1.1" 304 -
-127.0.0.1 - - [05/Aug/2025 03:34:02] "GET /auth/reset-password HTTP/1.1" 200 -
-127.0.0.1 - - [05/Aug/2025 03:34:02] "GET /auth/static/js/auth.js HTTP/1.1" 304 -
-127.0.0.1 - - [05/Aug/2025 03:34:02] "GET /auth/static/css/auth.css HTTP/1.1" 304 -
-127.0.0.1 - - [05/Aug/2025 03:34:22] "POST /auth/reset-password HTTP/1.1" 200 -
-127.0.0.1 - - [05/Aug/2025 03:34:38] "GET /auth/login HTTP/1.1" 200 -
-127.0.0.1 - - [05/Aug/2025 03:34:38] "GET /auth/static/css/auth.css HTTP/1.1" 304 -
-127.0.0.1 - - [05/Aug/2025 03:34:38] "GET /auth/static/js/auth.js HTTP/1.1" 304 -
-127.0.0.1 - - [05/Aug/2025 03:35:07] "GET /auth/signup HTTP/1.1" 200 -
-127.0.0.1 - - [05/Aug/2025 03:35:07] "GET /auth/static/css/auth.css HTTP/1.1" 304 -
-127.0.0.1 - - [05/Aug/2025 03:35:07] "GET /auth/static/js/auth.js HTTP/1.1" 304 -
+🔍 Bearer token found: eyJhbGciOiJIUzI1NiIs..., validating...
+🔍 Middleware before_request - Path: /api/goals | Method: GET | IP: 192.168.29.131
+🔄 Running auth middleware for: /api/goals
+🔍 _get_current_user called for path: /api/goals
+🔍 Authorization header: Bearer eyJhbGciOiJIUzI1NiIsImtpZCI6Ino2RTdGNTlTV08xTS9hdngiLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiJodHRwczovL2l3a3hsdWRyaHpodW1uaHpqbHlpLnN1cGFiYXNlLmNvL2F1dGgvdjEiLCJzdWIiOiI1MGYwZTM0ZC0yZWVlLTQyNTAtYWYyYS1lMGRjZjdkNjkzN2UiLCJhdWQiOiJhdXRoZW50aWNhdGVkIiwiZXhwIjoxNzU0NjA5NDc2LCJpYXQiOjE3NTQ2MDU4NzYsImVtYWlsIjoia2VuZXNpc2xhYnNAZ21haWwuY29tIiwicGhvbmUiOiIiLCJhcHBfbWV0YWRhdGEiOnsicHJvdmlkZXIiOiJnb29nbGUiLCJwcm92aWRlcnMiOlsiZ29vZ2xlIl19LCJ1c2VyX21ldGFkYXRhIjp7ImF2YXRhcl91cmwiOiJodHRwczovL2xoMy5nb29nbGV1c2VyY29udGVudC5jb20vYS9BQ2c4b2NMUFU5dkVqZm1XRm1FR1VXOUdxRFhjX1lwOEJhejRORVBhVjR1aUdUeWNISmVVRWw4PXM5Ni1jIiwiZW1haWwiOiJrZW5lc2lzbGFic0BnbWFpbC5jb20iLCJlbWFpbF92ZXJpZmllZCI6dHJ1ZSwiZnVsbF9uYW1lIjoiS2VuZXNpcyIsImlzcyI6Imh0dHBzOi8vYWNjb3VudHMuZ29vZ2xlLmNvbSIsIm5hbWUiOiJLZW5lc2lzIiwicGhvbmVfdmVyaWZpZWQiOmZhbHNlLCJwaWN0dXJlIjoiaHR0cHM6Ly9saDMuZ29vZ2xldXNlcmNvbnRlbnQuY29tL2EvQUNnOG9jTFBVOXZFamZtV0ZtRUdVVzlHcURYY19ZcDhCYXo0TkVQYVY0dWlHVHljSEplVUVsOD1zOTYtYyIsInByb3ZpZGVyX2lkIjoiMTEwNjI4NDM3OTY4MDk3NDU1ODcxIiwic3ViIjoiMTEwNjI4NDM3OTY4MDk3NDU1ODcxIn0sInJvbGUiOiJhdXRoZW50aWNhdGVkIiwiYWFsIjoiYWFsMSIsImFtciI6W3sibWV0aG9kIjoib2F1dGgiLCJ0aW1lc3RhbXAiOjE3NTQ2MDU4NzZ9XSwic2Vzc2lvbl9pZCI6IjdhMWQ0ZTA3LTk0MDctNDlmZS05Njg3LTA3ZGE4MWZkZWE5MyIsImlzX2Fub255bW91cyI6ZmFsc2V9.EIXX2aNQY-EUz1Wr2C2djehfhNTe0F5tOC3AkDFGObM
+🔍 Bearer token found: eyJhbGciOiJIUzI1NiIs..., validating...
+🔍 Middleware before_request - Path: /auth/login | Method: GET | IP: 192.168.29.131
+⏭️ Skipping auth middleware for: /auth/login
+🔍 Middleware before_request - Path: /api/bills | Method: GET | IP: 192.168.29.131
+🔄 Running auth middleware for: /api/bills
+🔍 _get_current_user called for path: /api/bills
+🔍 Authorization header: Bearer eyJhbGciOiJIUzI1NiIsImtpZCI6Ino2RTdGNTlTV08xTS9hdngiLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiJodHRwczovL2l3a3hsdWRyaHpodW1uaHpqbHlpLnN1cGFiYXNlLmNvL2F1dGgvdjEiLCJzdWIiOiI1MGYwZTM0ZC0yZWVlLTQyNTAtYWYyYS1lMGRjZjdkNjkzN2UiLCJhdWQiOiJhdXRoZW50aWNhdGVkIiwiZXhwIjoxNzU0NjA5NDc2LCJpYXQiOjE3NTQ2MDU4NzYsImVtYWlsIjoia2VuZXNpc2xhYnNAZ21haWwuY29tIiwicGhvbmUiOiIiLCJhcHBfbWV0YWRhdGEiOnsicHJvdmlkZXIiOiJnb29nbGUiLCJwcm92aWRlcnMiOlsiZ29vZ2xlIl19LCJ1c2VyX21ldGFkYXRhIjp7ImF2YXRhcl91cmwiOiJodHRwczovL2xoMy5nb29nbGV1c2VyY29udGVudC5jb20vYS9BQ2c4b2NMUFU5dkVqZm1XRm1FR1VXOUdxRFhjX1lwOEJhejRORVBhVjR1aUdUeWNISmVVRWw4PXM5Ni1jIiwiZW1haWwiOiJrZW5lc2lzbGFic0BnbWFpbC5jb20iLCJlbWFpbF92ZXJpZmllZCI6dHJ1ZSwiZnVsbF9uYW1lIjoiS2VuZXNpcyIsImlzcyI6Imh0dHBzOi8vYWNjb3VudHMuZ29vZ2xlLmNvbSIsIm5hbWUiOiJLZW5lc2lzIiwicGhvbmVfdmVyaWZpZWQiOmZhbHNlLCJwaWN0dXJlIjoiaHR0cHM6Ly9saDMuZ29vZ2xldXNlcmNvbnRlbnQuY29tL2EvQUNnOG9jTFBVOXZFamZtV0ZtRUdVVzlHcURYY19ZcDhCYXo0TkVQYVY0dWlHVHljSEplVUVsOD1zOTYtYyIsInByb3ZpZGVyX2lkIjoiMTEwNjI4NDM3OTY4MDk3NDU1ODcxIiwic3ViIjoiMTEwNjI4NDM3OTY4MDk3NDU1ODcxIn0sInJvbGUiOiJhdXRoZW50aWNhdGVkIiwiYWFsIjoiYWFsMSIsImFtciI6W3sibWV0aG9kIjoib2F1dGgiLCJ0aW1lc3RhbXAiOjE3NTQ2MDU4NzZ9XSwic2Vzc2lvbl9pZCI6IjdhMWQ0ZTA3LTk0MDctNDlmZS05Njg3LTA3ZGE4MWZkZWE5MyIsImlzX2Fub255bW91cyI6ZmFsc2V9.EIXX2aNQY-EUz1Wr2C2djehfhNTe0F5tOC3AkDFGObM
+🔍 Bearer token found: eyJhbGciOiJIUzI1NiIs..., validating...
+🔍 Middleware before_request - Path: /api/debts | Method: GET | IP: 192.168.29.131
+🔄 Running auth middleware for: /api/debts
+🔍 _get_current_user called for path: /api/debts
+🔍 Authorization header: Bearer eyJhbGciOiJIUzI1NiIsImtpZCI6Ino2RTdGNTlTV08xTS9hdngiLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiJodHRwczovL2l3a3hsdWRyaHpodW1uaHpqbHlpLnN1cGFiYXNlLmNvL2F1dGgvdjEiLCJzdWIiOiI1MGYwZTM0ZC0yZWVlLTQyNTAtYWYyYS1lMGRjZjdkNjkzN2UiLCJhdWQiOiJhdXRoZW50aWNhdGVkIiwiZXhwIjoxNzU0NjA5NDc2LCJpYXQiOjE3NTQ2MDU4NzYsImVtYWlsIjoia2VuZXNpc2xhYnNAZ21haWwuY29tIiwicGhvbmUiOiIiLCJhcHBfbWV0YWRhdGEiOnsicHJvdmlkZXIiOiJnb29nbGUiLCJwcm92aWRlcnMiOlsiZ29vZ2xlIl19LCJ1c2VyX21ldGFkYXRhIjp7ImF2YXRhcl91cmwiOiJodHRwczovL2xoMy5nb29nbGV1c2VyY29udGVudC5jb20vYS9BQ2c4b2NMUFU5dkVqZm1XRm1FR1VXOUdxRFhjX1lwOEJhejRORVBhVjR1aUdUeWNISmVVRWw4PXM5Ni1jIiwiZW1haWwiOiJrZW5lc2lzbGFic0BnbWFpbC5jb20iLCJlbWFpbF92ZXJpZmllZCI6dHJ1ZSwiZnVsbF9uYW1lIjoiS2VuZXNpcyIsImlzcyI6Imh0dHBzOi8vYWNjb3VudHMuZ29vZ2xlLmNvbSIsIm5hbWUiOiJLZW5lc2lzIiwicGhvbmVfdmVyaWZpZWQiOmZhbHNlLCJwaWN0dXJlIjoiaHR0cHM6Ly9saDMuZ29vZ2xldXNlcmNvbnRlbnQuY29tL2EvQUNnOG9jTFBVOXZFamZtV0ZtRUdVVzlHcURYY19ZcDhCYXo0TkVQYVY0dWlHVHljSEplVUVsOD1zOTYtYyIsInByb3ZpZGVyX2lkIjoiMTEwNjI4NDM3OTY4MDk3NDU1ODcxIiwic3ViIjoiMTEwNjI4NDM3OTY4MDk3NDU1ODcxIn0sInJvbGUiOiJhdXRoZW50aWNhdGVkIiwiYWFsIjoiYWFsMSIsImFtciI6W3sibWV0aG9kIjoib2F1dGgiLCJ0aW1lc3RhbXAiOjE3NTQ2MDU4NzZ9XSwic2Vzc2lvbl9pZCI6IjdhMWQ0ZTA3LTk0MDctNDlmZS05Njg3LTA3ZGE4MWZkZWE5MyIsImlzX2Fub255bW91cyI6ZmFsc2V9.EIXX2aNQY-EUz1Wr2C2djehfhNTe0F5tOC3AkDFGObM
+🔍 Bearer token found: eyJhbGciOiJIUzI1NiIs..., validating...
+Error getting current user: 'str' object cannot be interpreted as an integer
+Error getting current user: 'str' object cannot be interpreted as an integer
+❌ Bearer token invalid
+🔍 Session check - Session ID: None | Flask Session Keys: []
+❌ No session ID found in Flask session
+❌ No user found for path: /api/budgets
+Error getting current user: 'str' object cannot be interpreted as an integer
+Error getting current user: 'str' object cannot be interpreted as an integer
+Error getting current user: 'str' object cannot be interpreted as an integer
+❌ Bearer token invalid
+🔍 Session check - Session ID: None | Flask Session Keys: []
+❌ No session ID found in Flask session
+❌ No user found for path: /api/debts
+❌ Bearer token invalid
+🔍 Session check - Session ID: None | Flask Session Keys: []
+❌ No session ID found in Flask session
+❌ No user found for path: /api/analytics/balance
+❌ Bearer token invalid
+🔍 Session check - Session ID: None | Flask Session Keys: []
+❌ No session ID found in Flask session
+❌ No user found for path: /api/bills
+❌ Bearer token invalid
+🔍 Session check - Session ID: None | Flask Session Keys: []
+❌ No session ID found in Flask session
+❌ No user found for path: /api/transactions
+Error getting current user: 'str' object cannot be interpreted as an integer
+❌ Bearer token invalid
+🔍 Session check - Session ID: None | Flask Session Keys: []
+❌ No session ID found in Flask session
+❌ No user found for path: /api/goals
+🔍 Middleware before_request - Path: /api/analytics/balance | Method: GET | IP: 192.168.29.131
+🔄 Running auth middleware for: /api/analytics/balance
+🔍 _get_current_user called for path: /api/analytics/balance
+🔍 Authorization header: Bearer eyJhbGciOiJIUzI1NiIsImtpZCI6Ino2RTdGNTlTV08xTS9hdngiLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiJodHRwczovL2l3a3hsdWRyaHpodW1uaHpqbHlpLnN1cGFiYXNlLmNvL2F1dGgvdjEiLCJzdWIiOiI1MGYwZTM0ZC0yZWVlLTQyNTAtYWYyYS1lMGRjZjdkNjkzN2UiLCJhdWQiOiJhdXRoZW50aWNhdGVkIiwiZXhwIjoxNzU0NjA5NDc2LCJpYXQiOjE3NTQ2MDU4NzYsImVtYWlsIjoia2VuZXNpc2xhYnNAZ21haWwuY29tIiwicGhvbmUiOiIiLCJhcHBfbWV0YWRhdGEiOnsicHJvdmlkZXIiOiJnb29nbGUiLCJwcm92aWRlcnMiOlsiZ29vZ2xlIl19LCJ1c2VyX21ldGFkYXRhIjp7ImF2YXRhcl91cmwiOiJodHRwczovL2xoMy5nb29nbGV1c2VyY29udGVudC5jb20vYS9BQ2c4b2NMUFU5dkVqZm1XRm1FR1VXOUdxRFhjX1lwOEJhejRORVBhVjR1aUdUeWNISmVVRWw4PXM5Ni1jIiwiZW1haWwiOiJrZW5lc2lzbGFic0BnbWFpbC5jb20iLCJlbWFpbF92ZXJpZmllZCI6dHJ1ZSwiZnVsbF9uYW1lIjoiS2VuZXNpcyIsImlzcyI6Imh0dHBzOi8vYWNjb3VudHMuZ29vZ2xlLmNvbSIsIm5hbWUiOiJLZW5lc2lzIiwicGhvbmVfdmVyaWZpZWQiOmZhbHNlLCJwaWN0dXJlIjoiaHR0cHM6Ly9saDMuZ29vZ2xldXNlcmNvbnRlbnQuY29tL2EvQUNnOG9jTFBVOXZFamZtV0ZtRUdVVzlHcURYY19ZcDhCYXo0TkVQYVY0dWlHVHljSEplVUVsOD1zOTYtYyIsInByb3ZpZGVyX2lkIjoiMTEwNjI4NDM3OTY4MDk3NDU1ODcxIiwic3ViIjoiMTEwNjI4NDM3OTY4MDk3NDU1ODcxIn0sInJvbGUiOiJhdXRoZW50aWNhdGVkIiwiYWFsIjoiYWFsMSIsImFtciI6W3sibWV0aG9kIjoib2F1dGgiLCJ0aW1lc3RhbXAiOjE3NTQ2MDU4NzZ9XSwic2Vzc2lvbl9pZCI6IjdhMWQ0ZTA3LTk0MDctNDlmZS05Njg3LTA3ZGE4MWZkZWE5MyIsImlzX2Fub255bW91cyI6ZmFsc2V9.EIXX2aNQY-EUz1Wr2C2djehfhNTe0F5tOC3AkDFGObM
+🔍 Bearer token found: eyJhbGciOiJIUzI1NiIs..., validating...
+🔍 Middleware before_request - Path: /api/subscriptions | Method: GET | IP: 192.168.29.131
+🔄 Running auth middleware for: /api/subscriptions
+🔍 _get_current_user called for path: /api/subscriptions192.168.29.131 - - [08/Aug/2025 04:14:55] "🔍 Middleware before_request - Path: /api/transactions | Method: GET | IP: 192.168.29.131
+🔄 Running auth middleware for: /api/transactions
+🔍 _get_current_user called for path: /api/transactions
+🔍 Authorization header: Bearer eyJhbGciOiJIUzI1NiIsImtpZCI6Ino2RTdGNTlTV08xTS9hdngiLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiJodHRwczovL2l3a3hsdWRyaHpodW1uaHpqbHlpLnN1cGFiYXNlLmNvL2F1dGgvdjEiLCJzdWIiOiI1MGYwZTM0ZC0yZWVlLTQyNTAtYWYyYS1lMGRjZjdkNjkzN2UiLCJhdWQiOiJhdXRoZW50aWNhdGVkIiwiZXhwIjoxNzU0NjA5NDc2LCJpYXQiOjE3NTQ2MDU4NzYsImVtYWlsIjoia2VuZXNpc2xhYnNAZ21haWwuY29tIiwicGhvbmUiOiIiLCJhcHBfbWV0YWRhdGEiOnsicHJvdmlkZXIiOiJnb29nbGUiLCJwcm92aWRlcnMiOlsiZ29vZ2xlIl19LCJ1c2VyX21ldGFkYXRhIjp7ImF2YXRhcl91cmwiOiJodHRwczovL2xoMy5nb29nbGV1c2VyY29udGVudC5jb20vYS9BQ2c4b2NMUFU5dkVqZm1XRm1FR1VXOUdxRFhjX1lwOEJhejRORVBhVjR1aUdUeWNISmVVRWw4PXM5Ni1jIiwiZW1haWwiOiJrZW5lc2lzbGFic0BnbWFpbC5jb20iLCJlbWFpbF92ZXJpZmllZCI6dHJ1ZSwiZnVsbF9uYW1lIjoiS2VuZXNpcyIsImlzcyI6Imh0dHBzOi8vYWNjb3VudHMuZ29vZ2xlLmNvbSIsIm5hbWUiOiJLZW5lc2lzIiwicGhvbmVfdmVyaWZpZWQiOmZhbHNlLCJwaWN0dXJlIjoiaHR0cHM6Ly9saDMuZ29vZ2xldXNlcmNvbnRlbnQuY29tL2EvQUNnOG9jTFBVOXZFamZtV0ZtRUdVVzlHcURYY19ZcDhCYXo0TkVQYVY0dWlHVHljSEplVUVsOD1zOTYtYyIsInByb3ZpZGVyX2lkIjoiMTEwNjI4NDM3OTY4MDk3NDU1ODcxIiwic3ViIjoiMTEwNjI4NDM3OTY4MDk3NDU1ODcxIn0sInJvbGUiOiJhdXRoZW50aWNhdGVkIiwiYWFsIjoiYWFsMSIsImFtciI6W3sibWV0aG9kIjoib2F1dGgiLCJ0aW1lc3RhbXAiOjE3NTQ2MDU4NzZ9XSwic2Vzc2lvbl9pZCI6IjdhMWQ0ZTA3LTk0MDctNDlmZS05Njg3LTA3ZGE4MWZkZWE5MyIsImlzX2Fub255bW91cyI6ZmFsc2V9.EIXX2aNQY-EUz1Wr2C2djehfhNTe0F5tOC3AkDFGObM
+🔍 Bearer token found: eyJhbGciOiJIUzI1NiIs..., validating...
+🔍 Middleware before_request - Path: /api/budgets | Method: GET | IP: 192.168.29.131
+🔄 Running auth middleware for: /api/budgets
+🔍 _get_current_user called for path: /api/budgets
+🔍 Authorization header: Bearer eyJhbGciOiJIUzI1NiIsImtpZCI6Ino2RTdGNTlTV08xTS9hdngiLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiJodHRwczovL2l3a3hsdWRyaHpodW1uaHpqbHlpLnN1cGFiYXNlLmNvL2F1dGgvdjEiLCJzdWIiOiI1MGYwZTM0ZC0yZWVlLTQyNTAtYWYyYS1lMGRjZjdkNjkzN2UiLCJhdWQiOiJhdXRoZW50aWNhdGVkIiwiZXhwIjoxNzU0NjA5NDc2LCJpYXQiOjE3NTQ2MDU4NzYsImVtYWlsIjoia2VuZXNpc2xhYnNAZ21haWwuY29tIiwicGhvbmUiOiIiLCJhcHBfbWV0YWRhdGEiOnsicHJvdmlkZXIiOiJnb29nbGUiLCJwcm92aWRlcnMiOlsiZ29vZ2xlIl19LCJ1c2VyX21ldGFkYXRhIjp7ImF2YXRhcl91cmwiOiJodHRwczovL2xoMy5nb29nbGV1c2VyY29udGVudC5jb20vYS9BQ2c4b2NMUFU5dkVqZm1XRm1FR1VXOUdxRFhjX1lwOEJhejRORVBhVjR1aUdUeWNISmVVRWw4PXM5Ni1jIiwiZW1haWwiOiJrZW5lc2lzbGFic0BnbWFpbC5jb20iLCJlbWFpbF92ZXJpZmllZCI6dHJ1ZSwiZnVsbF9uYW1lIjoiS2VuZXNpcyIsImlzcyI6Imh0dHBzOi8vYWNjb3VudHMuZ29vZ2xlLmNvbSIsIm5hbWUiOiJLZW5lc2lzIiwicGhvbmVfdmVyaWZpZWQiOmZhbHNlLCJwaWN0dXJlIjoiaHR0cHM6Ly9saDMuZ29vZ2xldXNlcmNvbnRlbnQuY29tL2EvQUNnOG9jTFBVOXZFamZtV0ZtRUdVVzlHcURYY19ZcDhCYXo0TkVQYVY0dWlHVHljSEplVUVsOD1zOTYtYyIsInByb3ZpZGVyX2lkIjoiMTEwNjI4NDM3OTY4MDk3NDU1ODcxIiwic3ViIjoiMTEwNjI4NDM3OTY4MDk3NDU1ODcxIn0sInJvbGUiOiJhdXRoZW50aWNhdGVkIiwiYWFsIjoiYWFsMSIsImFtciI6W3sibWV0aG9kIjoib2F1dGgiLCJ0aW1lc3RhbXAiOjE3NTQ2MDU4NzZ9XSwic2Vzc2lvbl9pZCI6IjdhMWQ0ZTA3LTk0MDctNDlmZS05Njg3LTA3ZGE4MWZkZWE5MyIsImlzX2Fub255bW91cyI6ZmFsc2V9.EIXX2aNQY-EUz1Wr2C2djehfhNTe0F5tOC3AkDFGObM
+🔍 Bearer token found: eyJhbGciOiJIUzI1NiIs..., validating...
+🔍 Middleware before_request - Path: /api/goals | Method: GET | IP: 192.168.29.131
+🔄 Running auth middleware for: /api/goals
+🔍 _get_current_user called for path: /api/goals
+🔍 Authorization header: Bearer eyJhbGciOiJIUzI1NiIsImtpZCI6Ino2RTdGNTlTV08xTS9hdngiLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiJodHRwczovL2l3a3hsdWRyaHpodW1uaHpqbHlpLnN1cGFiYXNlLmNvL2F1dGgvdjEiLCJzdWIiOiI1MGYwZTM0ZC0yZWVlLTQyNTAtYWYyYS1lMGRjZjdkNjkzN2UiLCJhdWQiOiJhdXRoZW50aWNhdGVkIiwiZXhwIjoxNzU0NjA5NDc2LCJpYXQiOjE3NTQ2MDU4NzYsImVtYWlsIjoia2VuZXNpc2xhYnNAZ21haWwuY29tIiwicGhvbmUiOiIiLCJhcHBfbWV0YWRhdGEiOnsicHJvdmlkZXIiOiJnb29nbGUiLCJwcm92aWRlcnMiOlsiZ29vZ2xlIl19LCJ1c2VyX21ldGFkYXRhIjp7ImF2YXRhcl91cmwiOiJodHRwczovL2xoMy5nb29nbGV1c2VyY29udGVudC5jb20vYS9BQ2c4b2NMUFU5dkVqZm1XRm1FR1VXOUdxRFhjX1lwOEJhejRORVBhVjR1aUdUeWNISmVVRWw4PXM5Ni1jIiwiZW1haWwiOiJrZW5lc2lzbGFic0BnbWFpbC5jb20iLCJlbWFpbF92ZXJpZmllZCI6dHJ1ZSwiZnVsbF9uYW1lIjoiS2VuZXNpcyIsImlzcyI6Imh0dHBzOi8vYWNjb3VudHMuZ29vZ2xlLmNvbSIsIm5hbWUiOiJLZW5lc2lzIiwicGhvbmVfdmVyaWZpZWQiOmZhbHNlLCJwaWN0dXJlIjoiaHR0cHM6Ly9saDMuZ29vZ2xldXNlcmNvbnRlbnQuY29tL2EvQUNnOG9jTFBVOXZFamZtV0ZtRUdVVzlHcURYY19ZcDhCYXo0TkVQYVY0dWlHVHljSEplVUVsOD1zOTYtYyIsInByb3ZpZGVyX2lkIjoiMTEwNjI4NDM3OTY4MDk3NDU1ODcxIiwic3ViIjoiMTEwNjI4NDM3OTY4MDk3NDU1ODcxIn0sInJvbGUiOiJhdXRoZW50aWNhdGVkIiwiYWFsIjoiYWFsMSIsImFtciI6W3sibWV0aG9kIjoib2F1dGgiLCJ0aW1lc3RhbXAiOjE3NTQ2MDU4NzZ9XSwic2Vzc2lvbl9pZCI6IjdhMWQ0ZTA3LTk0MDctNDlmZS05Njg3LTA3ZGE4MWZkZWE5MyIsImlzX2Fub255bW91cyI6ZmFsc2V9.EIXX2aNQY-EUz1Wr2C2djehfhNTe0F5tOC3AkDFGObM
+🔍 Bearer token found: eyJhbGciOiJIUzI1NiIs..., validating...
+
+🔍 Authorization header: Bearer eyJhbGciOiJIUzI1NiIsImtpZCI6Ino2RTdGNTlTV08xTS9hdngiLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiJodHRwczovL2l3a3hsdWRyaHpodW1uaHpqbHlpLnN1cGFiYXNlLmNvL2F1dGgvdjEiLCJzdWIiOiI1MGYwZTM0ZC0yZWVlLTQyNTAtYWYyYS1lMGRjZjdkNjkzN2UiLCJhdWQiOiJhdXRoZW50aWNhdGVkIiwiZXhwIjoxNzU0NjA5NDc2LCJpYXQiOjE3NTQ2MDU4NzYsImVtYWlsIjoia2VuZXNpc2xhYnNAZ21haWwuY29tIiwicGhvbmUiOiIiLCJhcHBfbWV0YWRhdGEiOnsicHJvdmlkZXIiOiJnb29nbGUiLCJwcm92aWRlcnMiOlsiZ29vZ2xlIl19LCJ1c2VyX21ldGFkYXRhIjp7ImF2YXRhcl91cmwiOiJodHRwczovL2xoMy5nb29nbGV1c2VyY29udGVudC5jb20vYS9BQ2c4b2NMUFU5dkVqZm1XRm1FR1VXOUdxRFhjX1lwOEJhejRORVBhVjR1aUdUeWNISmVVRWw4PXM5Ni1jIiwiZW1haWwiOiJrZW5lc2lzbGFic0BnbWFpbC5jb20iLCJlbWFpbF92ZXJpZmllZCI6dHJ1ZSwiZnVsbF9uYW1lIjoiS2VuZXNpcyIsImlzcyI6Imh0dHBzOi8vYWNjb3VudHMuZ29vZ2xlLmNvbSIsIm5hbWUiOiJLZW5lc2lzIiwicGhvbmVfdmVyaWZpZWQiOmZhbHNlLCJwaWN0dXJlIjoiaHR0cHM6Ly9saDMuZ29vZ2xldXNlcmNvbnRlbnQuY29tL2EvQUNnOG9jTFBVOXZFamZtV0ZtRUdVVzlHcURYY19ZcDhCYXo0TkVQYVY0dWlHVHljSEplVUVsOD1zOTYtYyIsInByb3ZpZGVyX2lkIjoiMTEwNjI4NDM3OTY4MDk3NDU1ODcxIiwic3ViIjoiMTEwNjI4NDM3OTY4MDk3NDU1ODcxIn0sInJvbGUiOiJhdXRoZW50aWNhdGVkIiwiYWFsIjoiYWFsMSIsImFtciI6W3sibWV0aG9kIjoib2F1dGgiLCJ0aW1lc3RhbXAiOjE3NTQ2MDU4NzZ9XSwic2Vzc2lvbl9pZCI6IjdhMWQ0ZTA3LTk0MDctNDlmZS05Njg3LTA3ZGE4MWZkZWE5MyIsImlzX2Fub255bW91cyI6ZmFsc2V9.EIXX2aNQY-EUz1Wr2C2djehfhNTe0F5tOC3AkDFGObM
+🔍 Bearer token found: eyJhbGciOiJIUzI1NiIs..., validating...
+🔍 Middleware before_request - Path: /api/bills | Method: GET | IP: 192.168.29.131
+🔄 Running auth middleware for: /api/bills
+🔍 _get_current_user called for path: /api/bills
+🔍 Authorization header: Bearer eyJhbGciOiJIUzI1NiIsImtpZCI6Ino2RTdGNTlTV08xTS9hdngiLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiJodHRwczovL2l3a3hsdWRyaHpodW1uaHpqbHlpLnN1cGFiYXNlLmNvL2F1dGgvdjEiLCJzdWIiOiI1MGYwZTM0ZC0yZWVlLTQyNTAtYWYyYS1lMGRjZjdkNjkzN2UiLCJhdWQiOiJhdXRoZW50aWNhdGVkIiwiZXhwIjoxNzU0NjA5NDc2LCJpYXQiOjE3NTQ2MDU4NzYsImVtYWlsIjoia2VuZXNpc2xhYnNAZ21haWwuY29tIiwicGhvbmUiOiIiLCJhcHBfbWV0YWRhdGEiOnsicHJvdmlkZXIiOiJnb29nbGUiLCJwcm92aWRlcnMiOlsiZ29vZ2xlIl19LCJ1c2VyX21ldGFkYXRhIjp7ImF2YXRhcl91cmwiOiJodHRwczovL2xoMy5nb29nbGV1c2VyY29udGVudC5jb20vYS9BQ2c4b2NMUFU5dkVqZm1XRm1FR1VXOUdxRFhjX1lwOEJhejRORVBhVjR1aUdUeWNISmVVRWw4PXM5Ni1jIiwiZW1haWwiOiJrZW5lc2lzbGFic0BnbWFpbC5jb20iLCJlbWFpbF92ZXJpZmllZCI6dHJ1ZSwiZnVsbF9uYW1lIjoiS2VuZXNpcyIsImlzcyI6Imh0dHBzOi8vYWNjb3VudHMuZ29vZ2xlLmNvbSIsIm5hbWUiOiJLZW5lc2lzIiwicGhvbmVfdmVyaWZpZWQiOmZhbHNlLCJwaWN0dXJlIjoiaHR0cHM6Ly9saDMuZ29vZ2xldXNlcmNvbnRlbnQuY29tL2EvQUNnOG9jTFBVOXZFamZtV0ZtRUdVVzlHcURYY19ZcDhCYXo0TkVQYVY0dWlHVHljSEplVUVsOD1zOTYtYyIsInByb3ZpZGVyX2lkIjoiMTEwNjI4NDM3OTY4MDk3NDU1ODcxIiwic3ViIjoiMTEwNjI4NDM3OTY4MDk3NDU1ODcxIn0sInJvbGUiOiJhdXRoZW50aWNhdGVkIiwiYWFsIjoiYWFsMSIsImFtciI6W3sibWV0aG9kIjoib2F1dGgiLCJ0aW1lc3RhbXAiOjE3NTQ2MDU4NzZ9XSwic2Vzc2lvbl9pZCI6IjdhMWQ0ZTA3LTk0MDctNDlmZS05Njg3LTA3ZGE4MWZkZWE5MyIsImlzX2Fub255bW91cyI6ZmFsc2V9.EIXX2aNQY-EUz1Wr2C2djehfhNTe0F5tOC3AkDFGObM
+🔍 Bearer token found: eyJhbGciOiJIUzI1NiIs..., validating...
+Error getting current user: 'str' object cannot be interpreted as an integer
+Error getting current user: 'str' object cannot be interpreted as an integer
+Error getting current user: 'str' object cannot be interpreted as an integer
+❌ Bearer token invalid
+🔍 Session check - Session ID: None | Flask Session Keys: []
+❌ No session ID found in Flask session
+❌ No user found for path: /api/goals
+❌ Bearer token invalid
+🔍 Session check - Session ID: None | Flask Session Keys: []
+❌ No session ID found in Flask sessionGET /api/goals?_t=1754606694840 HTTP/1.1" 404 -
+192.168.29.131 - - [08/Aug/2025 04:14:55] "GET /api/bills?_t=1754606694842 HTTP/1.1" 404 -
+192.168.29.131 - - [08/Aug/2025 04:14:55] "GET /api/analytics/balance?_t=1754606694836 HTTP/1.1" 404 -
+192.168.29.131 - - [08/Aug/2025 04:14:55] "GET /api/budgets?_t=1754606694839 HTTP/1.1" 404 -
+192.168.29.131 - - [08/Aug/2025 04:14:56] "GET /api/subscriptions?_t=1754606694833 HTTP/1.1" 404 -
+192.168.29.131 - - [08/Aug/2025 04:14:56] "GET /api/transactions?limit=10&_t=1754606694837 HTTP/1.1" 404 -
+Error getting current user: 'str' object cannot be interpreted as an integer
+
+❌ No user found for path: /api/bills
+❌ Bearer token invalid
+🔍 Session check - Session ID: None | Flask Session Keys: []
+❌ No session ID found in Flask session
+❌ No user found for path: /api/analytics/balance
+❌ Bearer token invalid
+🔍 Session check - Session ID: None | Flask Session Keys: []
+❌ No session ID found in Flask session
+❌ No user found for path: /api/budgets
+🔍 Middleware before_request - Path: /api/debts | Method: GET | IP: 192.168.29.131
+🔄 Running auth middleware for: /api/debts
+🔍 _get_current_user called for path: /api/debts
+🔍 Authorization header: Bearer eyJhbGciOiJIUzI1NiIsImtpZCI6Ino2RTdGNTlTV08xTS9hdngiLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiJodHRwczovL2l3a3hsdWRyaHpodW1uaHpqbHlpLnN1cGFiYXNlLmNvL2F1dGgvdjEiLCJzdWIiOiI1MGYwZTM0ZC0yZWVlLTQyNTAtYWYyYS1lMGRjZjdkNjkzN2UiLCJhdWQiOiJhdXRoZW50aWNhdGVkIiwiZXhwIjoxNzU0NjA5NDc2LCJpYXQiOjE3NTQ2MDU4NzYsImVtYWlsIjoia2VuZXNpc2xhYnNAZ21haWwuY29tIiwicGhvbmUiOiIiLCJhcHBfbWV0YWRhdGEiOnsicHJvdmlkZXIiOiJnb29nbGUiLCJwcm92aWRlcnMiOlsiZ29vZ2xlIl19LCJ1c2VyX21ldGFkYXRhIjp7ImF2YXRhcl91cmwiOiJodHRwczovL2xoMy5nb29nbGV1c2VyY29udGVudC5jb20vYS9BQ2c4b2NMUFU5dkVqZm1XRm1FR1VXOUdxRFhjX1lwOEJhejRORVBhVjR1aUdUeWNISmVVRWw4PXM5Ni1jIiwiZW1haWwiOiJrZW5lc2lzbGFic0BnbWFpbC5jb20iLCJlbWFpbF92ZXJpZmllZCI6dHJ1ZSwiZnVsbF9uYW1lIjoiS2VuZXNpcyIsImlzcyI6Imh0dHBzOi8vYWNjb3VudHMuZ29vZ2xlLmNvbSIsIm5hbWUiOiJLZW5lc2lzIiwicGhvbmVfdmVyaWZpZWQiOmZhbHNlLCJwaWN0dXJlIjoiaHR0cHM6Ly9saDMuZ29vZ2xldXNlcmNvbnRlbnQuY29tL2EvQUNnOG9jTFBVOXZFamZtV0ZtRUdVVzlHcURYY19ZcDhCYXo0TkVQYVY0dWlHVHljSEplVUVsOD1zOTYtYyIsInByb3ZpZGVyX2lkIjoiMTEwNjI4NDM3OTY4MDk3NDU1ODcxIiwic3ViIjoiMTEwNjI4NDM3OTY4MDk3NDU1ODcxIn0sInJvbGUiOiJhdXRoZW50aWNhdGVkIiwiYWFsIjoiYWFsMSIsImFtciI6W3sibWV0aG9kIjoib2F1dGgiLCJ0aW1lc3RhbXAiOjE3NTQ2MDU4NzZ9XSwic2Vzc2lvbl9pZCI6IjdhMWQ0ZTA3LTk0MDctNDlmZS05Njg3LTA3ZGE4MWZkZWE5MyIsImlzX2Fub255bW91cyI6ZmFsc2V9.EIXX2aNQY-EUz1Wr2C2djehfhNTe0F5tOC3AkDFGObM
+🔍 Bearer token found: eyJhbGciOiJIUzI1NiIs..., validating...
+🔍 Middleware before_request - Path: /api/budgets | Method: GET | IP: 192.168.29.131
+🔄 Running auth middleware for: /api/budgets
+🔍 _get_current_user called for path: /api/budgets
+🔍 Authorization header: Bearer eyJhbGciOiJIUzI1NiIsImtpZCI6Ino2RTdGNTlTV08xTS9hdngiLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiJodHRwczovL2l3a3hsdWRyaHpodW1uaHpqbHlpLnN1cGFiYXNlLmNvL2F1dGgvdjEiLCJzdWIiOiI1MGYwZTM0ZC0yZWVlLTQyNTAtYWYyYS1lMGRjZjdkNjkzN2UiLCJhdWQiOiJhdXRoZW50aWNhdGVkIiwiZXhwIjoxNzU0NjA5NDc2LCJpYXQiOjE3NTQ2MDU4NzYsImVtYWlsIjoia2VuZXNpc2xhYnNAZ21haWwuY29tIiwicGhvbmUiOiIiLCJhcHBfbWV0YWRhdGEiOnsicHJvdmlkZXIiOiJnb29nbGUiLCJwcm92aWRlcnMiOlsiZ29vZ2xlIl19LCJ1c2VyX21ldGFkYXRhIjp7ImF2YXRhcl91cmwiOiJodHRwczovL2xoMy5nb29nbGV1c2VyY29udGVudC5jb20vYS9BQ2c4b2NMUFU5dkVqZm1XRm1FR1VXOUdxRFhjX1lwOEJhejRORVBhVjR1aUdUeWNISmVVRWw4PXM5Ni1jIiwiZW1haWwiOiJrZW5lc2lzbGFic0BnbWFpbC5jb20iLCJlbWFpbF92ZXJpZmllZCI6dHJ1ZSwiZnVsbF9uYW1lIjoiS2VuZXNpcyIsImlzcyI6Imh0dHBzOi8vYWNjb3VudHMuZ29vZ2xlLmNvbSIsIm5hbWUiOiJLZW5lc2lzIiwicGhvbmVfdmVyaWZpZWQiOmZhbHNlLCJwaWN0dXJlIjoiaHR0cHM6Ly9saDMuZ29vZ2xldXNlcmNvbnRlbnQuY29tL2EvQUNnOG9jTFBVOXZFamZtV0ZtRUdVVzlHcURYY19ZcDhCYXo0TkVQYVY0dWlHVHljSEplVUVsOD1zOTYtYyIsInByb3ZpZGVyX2lkIjoiMTEwNjI4NDM3OTY4MDk3NDU1ODcxIiwic3ViIjoiMTEwNjI4NDM3OTY4MDk3NDU1ODcxIn0sInJvbGUiOiJhdXRoZW50aWNhdGVkIiwiYWFsIjoiYWFsMSIsImFtciI6W3sibWV0aG9kIjoib2F1dGgiLCJ0aW1lc3RhbXAiOjE3NTQ2MDU4NzZ9XSwic2Vzc2lvbl9pZCI6IjdhMWQ0ZTA3LTk0MDctNDlmZS05Njg3LTA3ZGE4MWZkZWE5MyIsImlzX2Fub255bW91cyI6ZmFsc2V9.EIXX2aNQY-EUz1Wr2C2djehfhNTe0F5tOC3AkDFGObM
+🔍 Bearer token found: eyJhbGciOiJIUzI1NiIs..., validating...
+🔍 Middleware before_request - Path: /api/subscriptions | Method: GET | IP: 192.168.29.131
+🔄 Running auth middleware for: /api/subscriptions
+🔍 _get_current_user called for path: /api/subscriptions
+🔍 Authorization header: Bearer eyJhbGciOiJIUzI1NiIsImtpZCI6Ino2RTdGNTlTV08xTS9hdngiLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiJodHRwczovL2l3a3hsdWRyaHpodW1uaHpqbHlpLnN1cGFiYXNlLmNvL2F1dGgvdjEiLCJzdWIiOiI1MGYwZTM0ZC0yZWVlLTQyNTAtYWYyYS1lMGRjZjdkNjkzN2UiLCJhdWQiOiJhdXRoZW50aWNhdGVkIiwiZXhwIjoxNzU0NjA5NDc2LCJpYXQiOjE3NTQ2MDU4NzYsImVtYWlsIjoia2VuZXNpc2xhYnNAZ21haWwuY29tIiwicGhvbmUiOiIiLCJhcHBfbWV0YWRhdGEiOnsicHJvdmlkZXIiOiJnb29nbGUiLCJwcm92aWRlcnMiOlsiZ29vZ2xlIl19LCJ1c2VyX21ldGFkYXRhIjp7ImF2YXRhcl91cmwiOiJodHRwczovL2xoMy5nb29nbGV1c2VyY29udGVudC5jb20vYS9BQ2c4b2NMUFU5dkVqZm1XRm1FR1VXOUdxRFhjX1lwOEJhejRORVBhVjR1aUdUeWNISmVVRWw4PXM5Ni1jIiwiZW1haWwiOiJrZW5lc2lzbGFic0BnbWFpbC5jb20iLCJlbWFpbF92ZXJpZmllZCI6dHJ1ZSwiZnVsbF9uYW1lIjoiS2VuZXNpcyIsImlzcyI6Imh0dHBzOi8vYWNjb3VudHMuZ29vZ2xlLmNvbSIsIm5hbWUiOiJLZW5lc2lzIiwicGhvbmVfdmVyaWZpZWQiOmZhbHNlLCJwaWN0dXJlIjoiaHR0cHM6Ly9saDMuZ29vZ2xldXNlcmNvbnRlbnQuY29tL2EvQUNnOG9jTFBVOXZFamZtV0ZtRUdVVzlHcURYY19ZcDhCYXo0TkVQYVY0dWlHVHljSEplVUVsOD1zOTYtYyIsInByb3ZpZGVyX2lkIjoiMTEwNjI4NDM3OTY4MDk3NDU1ODcxIiwic3ViIjoiMTEwNjI4NDM3OTY4MDk3NDU1ODcxIn0sInJvbGUiOiJhdXRoZW50aWNhdGVkIiwiYWFsIjoiYWFsMSIsImFtciI6W3sibWV0aG9kIjoib2F1dGgiLCJ0aW1lc3RhbXAiOjE3NTQ2MDU4NzZ9XSwic2Vzc2lvbl9pZCI6IjdhMWQ0ZTA3LTk0MDctNDlmZS05Njg3LTA3ZGE4MWZkZWE5MyIsImlzX2Fub255bW91cyI6ZmFsc2V9.EIXX2aNQY-EUz1Wr2C2djehfhNTe0F5tOC3AkDFGObM
+🔍 Bearer token found: eyJhbGciOiJIUzI1NiIs..., validating...
+Error getting current user: 'str' object cannot be interpreted as an integer
+Error getting current user: 'str' object cannot be interpreted as an integer
+❌ Bearer token invalid
+🔍 Session check - Session ID: None | Flask Session Keys: []
+❌ No session ID found in Flask session
+❌ No user found for path: /api/subscriptions
+❌ Bearer token invalid
+🔍 Session check - Session ID: None | Flask Session Keys: []
+❌ No session ID found in Flask session
+❌ No user found for path: /api/transactions
+🔍 Middleware before_request - Path: /api/debts | Method: GET | IP: 192.168.29.131
+🔄 Running auth middleware for: /api/debts
+🔍 _get_current_user called for path: /api/debts
+🔍 Authorization header: Bearer eyJhbGciOiJIUzI1NiIsImtpZCI6Ino2RTdGNTlTV08xTS9hdngiLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiJodHRwczovL2l3a3hsdWRyaHpodW1uaHpqbHlpLnN1cGFiYXNlLmNvL2F1dGgvdjEiLCJzdWIiOiI1MGYwZTM0ZC0yZWVlLTQyNTAtYWYyYS1lMGRjZjdkNjkzN2UiLCJhdWQiOiJhdXRoZW50aWNhdGVkIiwiZXhwIjoxNzU0NjA5NDc2LCJpYXQiOjE3NTQ2MDU4NzYsImVtYWlsIjoia2VuZXNpc2xhYnNAZ21haWwuY29tIiwicGhvbmUiOiIiLCJhcHBfbWV0YWRhdGEiOnsicHJvdmlkZXIiOiJnb29nbGUiLCJwcm92aWRlcnMiOlsiZ29vZ2xlIl19LCJ1c2VyX21ldGFkYXRhIjp7ImF2YXRhcl91cmwiOiJodHRwczovL2xoMy5nb29nbGV1c2VyY29udGVudC5jb20vYS9BQ2c4b2NMUFU5dkVqZm1XRm1FR1VXOUdxRFhjX1lwOEJhejRORVBhVjR1aUdUeWNISmVVRWw4PXM5Ni1jIiwiZW1haWwiOiJrZW5lc2lzbGFic0BnbWFpbC5jb20iLCJlbWFpbF92ZXJpZmllZCI6dHJ1ZSwiZnVsbF9uYW1lIjoiS2VuZXNpcyIsImlzcyI6Imh0dHBzOi8vYWNjb3VudHMuZ29vZ2xlLmNvbSIsIm5hbWUiOiJLZW5lc2lzIiwicGhvbmVfdmVyaWZpZWQiOmZhbHNlLCJwaWN0dXJlIjoiaHR0cHM6Ly9saDMuZ29vZ2xldXNlcmNvbnRlbnQuY29tL2EvQUNnOG9jTFBVOXZFamZtV0ZtRUdVVzlHcURYY19ZcDhCYXo0TkVQYVY0dWlHVHljSEplVUVsOD1zOTYtYyIsInByb3ZpZGVyX2lkIjoiMTEwNjI4NDM3OTY4MDk3NDU1ODcxIiwic3ViIjoiMTEwNjI4NDM3OTY4MDk3NDU1ODcxIn0sInJvbGUiOiJhdXRoZW50aWNhdGVkIiwiYWFsIjoiYWFsMSIsImFtciI6W3sibWV0aG9kIjoib2F1dGgiLCJ0aW1lc3RhbXAiOjE3NTQ2MDU4NzZ9XSwic2Vzc2lvbl9pZCI6IjdhMWQ0ZTA3LTk0MDctNDlmZS05Njg3LTA3ZGE4MWZkZWE5MyIsImlzX2Fub255bW91cyI6ZmFsc2V9.EIXX2aNQY-EUz1Wr2C2djehfhNTe0F5tOC3AkDFGObM
+🔍 Bearer token found: eyJhbGciOiJIUzI1NiIs..., validating...
+🔍 Middleware before_request - Path: /api/bills | Method: GET | IP: 192.168.29.131
+🔄 Running auth middleware for: /api/bills
+🔍 _get_current_user called for path: /api/bills
+🔍 Authorization header: Bearer eyJhbGciOiJIUzI1NiIsImtpZCI6Ino2RTdGNTlTV08xTS9hdngiLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiJodHRwczovL2l3a3hsdWRyaHpodW1uaHpqbHlpLnN1cGFiYXNlLmNvL2F1dGgvdjEiLCJzdWIiOiI1MGYwZTM0ZC0yZWVlLTQyNTAtYWYyYS1lMGRjZjdkNjkzN2UiLCJhdWQiOiJhdXRoZW50aWNhdGVkIiwiZXhwIjoxNzU0NjA5NDc2LCJpYXQiOjE3NTQ2MDU4NzYsImVtYWlsIjoia2VuZXNpc2xhYnNAZ21haWwuY29tIiwicGhvbmUiOiIiLCJhcHBfbWV0YWRhdGEiOnsicHJvdmlkZXIiOiJnb29nbGUiLCJwcm92aWRlcnMiOlsiZ29vZ2xlIl19LCJ1c2VyX21ldGFkYXRhIjp7ImF2YXRhcl91cmwiOiJodHRwczovL2xoMy5nb29nbGV1c2VyY29udGVudC5jb20vYS9BQ2c4b2NMUFU5dkVqZm1XRm1FR1VXOUdxRFhjX1lwOEJhejRORVBhVjR1aUdUeWNISmVVRWw4PXM5Ni1jIiwiZW1haWwiOiJrZW5lc2lzbGFic0BnbWFpbC5jb20iLCJlbWFpbF92ZXJpZmllZCI6dHJ1ZSwiZnVsbF9uYW1lIjoiS2VuZXNpcyIsImlzcyI6Imh0dHBzOi8vYWNjb3VudHMuZ29vZ2xlLmNvbSIsIm5hbWUiOiJLZW5lc2lzIiwicGhvbmVfdmVyaWZpZWQiOmZhbHNlLCJwaWN0dXJlIjoiaHR0cHM6Ly9saDMuZ29vZ2xldXNlcmNvbnRlbnQuY29tL2EvQUNnOG9jTFBVOXZFamZtV0ZtRUdVVzlHcURYY19ZcDhCYXo0TkVQYVY0dWlHVHljSEplVUVsOD1zOTYtYyIsInByb3ZpZGVyX2lkIjoiMTEwNjI4NDM3OTY4MDk3NDU1ODcxIiwic3ViIjoiMTEwNjI4NDM3OTY4MDk3NDU1ODcxIn0sInJvbGUiOiJhdXRoZW50aWNhdGVkIiwiYWFsIjoiYWFsMSIsImFtciI6W3sibWV0aG9kIjoib2F1dGgiLCJ0aW1lc3RhbXAiOjE3NTQ2MDU4NzZ9XSwic2Vzc2lvbl9pZCI6IjdhMWQ0ZTA3LTk0MDctNDlmZS05Njg3LTA3ZGE4MWZkZWE5MyIsImlzX2Fub255bW91cyI6ZmFsc2V9.EIXX2aNQY-EUz1Wr2C2djehfhNTe0F5tOC3AkDFGObM192.168.29.131 - - [08/Aug/2025 04:14:56] "GET /api/subscriptions?_t=1754606694844 HTTP/1.1" 404 -
+192.168.29.131 - - [08/Aug/2025 04:14:56] "GET /api/debts?_t=1754606694843 HTTP/1.1" 404 -
+192.168.29.131 - - [08/Aug/2025 04:14:56] "GET /api/budgets?_t=1754606694827 HTTP/1.1" 404 -
+192.168.29.131 - - [08/Aug/2025 04:14:56] "GET /api/bills?_t=1754606694830 HTTP/1.1" 404 -
+192.168.29.131 - - [08/Aug/2025 04:14:56] "GET /api/analytics/balance?_t=1754606694823 HTTP/1.1" 404 -
+192.168.29.131 - - [08/Aug/2025 04:14:56] "GET /api/debts?_t=1754606694831 HTTP/1.1" 404 -
+
+🔍 Bearer token found: eyJhbGciOiJIUzI1NiIs..., validating...
+🔍 Middleware before_request - Path: /api/analytics/balance | Method: GET | IP: 192.168.29.131
+🔄 Running auth middleware for: /api/analytics/balance
+🔍 _get_current_user called for path: /api/analytics/balance
+🔍 Authorization header: Bearer eyJhbGciOiJIUzI1NiIsImtpZCI6Ino2RTdGNTlTV08xTS9hdngiLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiJodHRwczovL2l3a3hsdWRyaHpodW1uaHpqbHlpLnN1cGFiYXNlLmNvL2F1dGgvdjEiLCJzdWIiOiI1MGYwZTM0ZC0yZWVlLTQyNTAtYWYyYS1lMGRjZjdkNjkzN2UiLCJhdWQiOiJhdXRoZW50aWNhdGVkIiwiZXhwIjoxNzU0NjA5NDc2LCJpYXQiOjE3NTQ2MDU4NzYsImVtYWlsIjoia2VuZXNpc2xhYnNAZ21haWwuY29tIiwicGhvbmUiOiIiLCJhcHBfbWV0YWRhdGEiOnsicHJvdmlkZXIiOiJnb29nbGUiLCJwcm92aWRlcnMiOlsiZ29vZ2xlIl19LCJ1c2VyX21ldGFkYXRhIjp7ImF2YXRhcl91cmwiOiJodHRwczovL2xoMy5nb29nbGV1c2VyY29udGVudC5jb20vYS9BQ2c4b2NMUFU5dkVqZm1XRm1FR1VXOUdxRFhjX1lwOEJhejRORVBhVjR1aUdUeWNISmVVRWw4PXM5Ni1jIiwiZW1haWwiOiJrZW5lc2lzbGFic0BnbWFpbC5jb20iLCJlbWFpbF92ZXJpZmllZCI6dHJ1ZSwiZnVsbF9uYW1lIjoiS2VuZXNpcyIsImlzcyI6Imh0dHBzOi8vYWNjb3VudHMuZ29vZ2xlLmNvbSIsIm5hbWUiOiJLZW5lc2lzIiwicGhvbmVfdmVyaWZpZWQiOmZhbHNlLCJwaWN0dXJlIjoiaHR0cHM6Ly9saDMuZ29vZ2xldXNlcmNvbnRlbnQuY29tL2EvQUNnOG9jTFBVOXZFamZtV0ZtRUdVVzlHcURYY19ZcDhCYXo0TkVQYVY0dWlHVHljSEplVUVsOD1zOTYtYyIsInByb3ZpZGVyX2lkIjoiMTEwNjI4NDM3OTY4MDk3NDU1ODcxIiwic3ViIjoiMTEwNjI4NDM3OTY4MDk3NDU1ODcxIn0sInJvbGUiOiJhdXRoZW50aWNhdGVkIiwiYWFsIjoiYWFsMSIsImFtciI6W3sibWV0aG9kIjoib2F1dGgiLCJ0aW1lc3RhbXAiOjE3NTQ2MDU4NzZ9XSwic2Vzc2lvbl9pZCI6IjdhMWQ0ZTA3LTk0MDctNDlmZS05Njg3LTA3ZGE4MWZkZWE5MyIsImlzX2Fub255bW91cyI6ZmFsc2V9.EIXX2aNQY-EUz1Wr2C2djehfhNTe0F5tOC3AkDFGObM
+🔍 Bearer token found: eyJhbGciOiJIUzI1NiIs..., validating...
+Error getting current user: 'str' object cannot be interpreted as an integer
+Error getting current user: 'str' object cannot be interpreted as an integer
+Error getting current user: 'str' object cannot be interpreted as an integer
+❌ Bearer token invalid
+🔍 Session check - Session ID: None | Flask Session Keys: []
+❌ No session ID found in Flask session
+❌ No user found for path: /api/subscriptions
+❌ Bearer token invalid
+🔍 Session check - Session ID: None | Flask Session Keys: []
+❌ No session ID found in Flask session
+❌ No user found for path: /api/debts
+❌ Bearer token invalid
+🔍 Session check - Session ID: None | Flask Session Keys: []
+❌ No session ID found in Flask session
+❌ No user found for path: /api/budgets
+🔍 Middleware before_request - Path: /api/transactions | Method: GET | IP: 192.168.29.131
+🔄 Running auth middleware for: /api/transactions
+🔍 _get_current_user called for path: /api/transactions
+🔍 Authorization header: Bearer eyJhbGciOiJIUzI1NiIsImtpZCI6Ino2RTdGNTlTV08xTS9hdngiLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiJodHRwczovL2l3a3hsdWRyaHpodW1uaHpqbHlpLnN1cGFiYXNlLmNvL2F1dGgvdjEiLCJzdWIiOiI1MGYwZTM0ZC0yZWVlLTQyNTAtYWYyYS1lMGRjZjdkNjkzN2UiLCJhdWQiOiJhdXRoZW50aWNhdGVkIiwiZXhwIjoxNzU0NjA5NDc2LCJpYXQiOjE3NTQ2MDU4NzYsImVtYWlsIjoia2VuZXNpc2xhYnNAZ21haWwuY29tIiwicGhvbmUiOiIiLCJhcHBfbWV0YWRhdGEiOnsicHJvdmlkZXIiOiJnb29nbGUiLCJwcm92aWRlcnMiOlsiZ29vZ2xlIl19LCJ1c2VyX21ldGFkYXRhIjp7ImF2YXRhcl91cmwiOiJodHRwczovL2xoMy5nb29nbGV1c2VyY29udGVudC5jb20vYS9BQ2c4b2NMUFU5dkVqZm1XRm1FR1VXOUdxRFhjX1lwOEJhejRORVBhVjR1aUdUeWNISmVVRWw4PXM5Ni1jIiwiZW1haWwiOiJrZW5lc2lzbGFic0BnbWFpbC5jb20iLCJlbWFpbF92ZXJpZmllZCI6dHJ1ZSwiZnVsbF9uYW1lIjoiS2VuZXNpcyIsImlzcyI6Imh0dHBzOi8vYWNjb3VudHMuZ29vZ2xlLmNvbSIsIm5hbWUiOiJLZW5lc2lzIiwicGhvbmVfdmVyaWZpZWQiOmZhbHNlLCJwaWN0dXJlIjoiaHR0cHM6Ly9saDMuZ29vZ2xldXNlcmNvbnRlbnQuY29tL2EvQUNnOG9jTFBVOXZFamZtV0ZtRUdVVzlHcURYY19ZcDhCYXo0TkVQYVY0dWlHVHljSEplVUVsOD1zOTYtYyIsInByb3ZpZGVyX2lkIjoiMTEwNjI4NDM3OTY4MDk3NDU1ODcxIiwic3ViIjoiMTEwNjI4NDM3OTY4MDk3NDU1ODcxIn0sInJvbGUiOiJhdXRoZW50aWNhdGVkIiwiYWFsIjoiYWFsMSIsImFtciI6W3sibWV0aG9kIjoib2F1dGgiLCJ0aW1lc3RhbXAiOjE3NTQ2MDU4NzZ9XSwic2Vzc2lvbl9pZCI6IjdhMWQ0ZTA3LTk0MDctNDlmZS05Njg3LTA3ZGE4MWZkZWE5MyIsImlzX2Fub255bW91cyI6ZmFsc2V9.EIXX2aNQY-EUz1Wr2C2djehfhNTe0F5tOC3AkDFGObM
+🔍 Bearer token found: eyJhbGciOiJIUzI1NiIs..., validating...
+🔍 Middleware before_request - Path: /api/goals | Method: GET | IP: 192.168.29.131
+🔄 Running auth middleware for: /api/goals
+🔍 _get_current_user called for path: /api/goals
+🔍 Authorization header: Bearer eyJhbGciOiJIUzI1NiIsImtpZCI6Ino2RTdGNTlTV08xTS9hdngiLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiJodHRwczovL2l3a3hsdWRyaHpodW1uaHpqbHlpLnN1cGFiYXNlLmNvL2F1dGgvdjEiLCJzdWIiOiI1MGYwZTM0ZC0yZWVlLTQyNTAtYWYyYS1lMGRjZjdkNjkzN2UiLCJhdWQiOiJhdXRoZW50aWNhdGVkIiwiZXhwIjoxNzU0NjA5NDc2LCJpYXQiOjE3NTQ2MDU4NzYsImVtYWlsIjoia2VuZXNpc2xhYnNAZ21haWwuY29tIiwicGhvbmUiOiIiLCJhcHBfbWV0YWRhdGEiOnsicHJvdmlkZXIiOiJnb29nbGUiLCJwcm92aWRlcnMiOlsiZ29vZ2xlIl19LCJ1c2VyX21ldGFkYXRhIjp7ImF2YXRhcl91cmwiOiJodHRwczovL2xoMy5nb29nbGV1c2VyY29udGVudC5jb20vYS9BQ2c4b2NMUFU5dkVqZm1XRm1FR1VXOUdxRFhjX1lwOEJhejRORVBhVjR1aUdUeWNISmVVRWw4PXM5Ni1jIiwiZW1haWwiOiJrZW5lc2lzbGFic0BnbWFpbC5jb20iLCJlbWFpbF92ZXJpZmllZCI6dHJ1ZSwiZnVsbF9uYW1lIjoiS2VuZXNpcyIsImlzcyI6Imh0dHBzOi8vYWNjb3VudHMuZ29vZ2xlLmNvbSIsIm5hbWUiOiJLZW5lc2lzIiwicGhvbmVfdmVyaWZpZWQiOmZhbHNlLCJwaWN0dXJlIjoiaHR0cHM6Ly9saDMuZ29vZ2xldXNlcmNvbnRlbnQuY29tL2EvQUNnOG9jTFBVOXZFamZtV0ZtRUdVVzlHcURYY19ZcDhCYXo0TkVQYVY0dWlHVHljSEplVUVsOD1zOTYtYyIsInByb3ZpZGVyX2lkIjoiMTEwNjI4NDM3OTY4MDk3NDU1ODcxIiwic3ViIjoiMTEwNjI4NDM3OTY4MDk3NDU1ODcxIn0sInJvbGUiOiJhdXRoZW50aWNhdGVkIiwiYWFsIjoiYWFsMSIsImFtciI6W3sibWV0aG9kIjoib2F1dGgiLCJ0aW1lc3RhbXAiOjE3NTQ2MDU4NzZ9XSwic2Vzc2lvbl9pZCI6IjdhMWQ0ZTA3LTk0MDctNDlmZS05Njg3LTA3ZGE4MWZkZWE5MyIsImlzX2Fub255bW91cyI6ZmFsc2V9.EIXX2aNQY-EUz1Wr2C2djehfhNTe0F5tOC3AkDFGObM
+🔍 Bearer token found: eyJhbGciOiJIUzI1NiIs..., validating...
+🔍 Middleware before_request - Path: /api/goals | Method: GET | IP: 192.168.29.131
+🔄 Running auth middleware for: /api/goals
+🔍 _get_current_user called for path: /api/goals
+🔍 Authorization header: Bearer eyJhbGciOiJIUzI1NiIsImtpZCI6Ino2RTdGNTlTV08xTS9hdngiLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiJodHRwczovL2l3a3hsdWRyaHpodW1uaHpqbHlpLnN1cGFiYXNlLmNvL2F1dGgvdjEiLCJzdWIiOiI1MGYwZTM0ZC0yZWVlLTQyNTAtYWYyYS1lMGRjZjdkNjkzN2UiLCJhdWQiOiJhdXRoZW50aWNhdGVkIiwiZXhwIjoxNzU0NjA5NDc2LCJpYXQiOjE3NTQ2MDU4NzYsImVtYWlsIjoia2VuZXNpc2xhYnNAZ21haWwuY29tIiwicGhvbmUiOiIiLCJhcHBfbWV0YWRhdGEiOnsicHJvdmlkZXIiOiJnb29nbGUiLCJwcm92aWRlcnMiOlsiZ29vZ2xlIl19LCJ1c2VyX21ldGFkYXRhIjp7ImF2YXRhcl91cmwiOiJodHRwczovL2xoMy5nb29nbGV1c2VyY29udGVudC5jb20vYS9BQ2c4b2NMUFU5dkVqZm1XRm1FR1VXOUdxRFhjX1lwOEJhejRORVBhVjR1aUdUeWNISmVVRWw4PXM5Ni1jIiwiZW1haWwiOiJrZW5lc2lzbGFic0BnbWFpbC5jb20iLCJlbWFpbF92ZXJpZmllZCI6dHJ1ZSwiZnVsbF9uYW1lIjoiS2VuZXNpcyIsImlzcyI6Imh0dHBzOi8vYWNjb3VudHMuZ29vZ2xlLmNvbSIsIm5hbWUiOiJLZW5lc2lzIiwicGhvbmVfdmVyaWZpZWQiOmZhbHNlLCJwaWN0dXJlIjoiaHR0cHM6Ly9saDMuZ29vZ2xldXNlcmNvbnRlbnQuY29tL2EvQUNnOG9jTFBVOXZFamZtV0ZtRUdVVzlHcURYY19ZcDhCYXo0TkVQYVY0dWlHVHljSEplVUVsOD1zOTYtYyIsInByb3ZpZGVyX2lkIjoiMTEwNjI4NDM3OTY4MDk3NDU1ODcxIiwic3ViIjoiMTEwNjI4NDM3OTY4MDk3NDU1ODcxIn0sInJvbGUiOiJhdXRoZW50aWNhdGVkIiwiYWFsIjoiYWFsMSIsImFtciI6W3sibWV0aG9kIjoib2F1dGgiLCJ0aW1lc3RhbXAiOjE3NTQ2MDU4NzZ9XSwic2Vzc2lvbl9pZCI6IjdhMWQ0ZTA3LTk0MDctNDlmZS05Njg3LTA3ZGE4MWZkZWE5MyIsImlzX2Fub255bW91cyI6ZmFsc2V9.EIXX2aNQY-EUz1Wr2C2djehfhNTe0F5tOC3AkDFGObM
+🔍 Bearer token found: eyJhbGciOiJIUzI1NiIs..., validating...
+Error getting current user: 'str' object cannot be interpreted as an integer
+❌ Bearer token invalid
+🔍 Session check - Session ID: None | Flask Session Keys: []
+❌ No session ID found in Flask session
+❌ No user found for path: /api/bills
+Error getting current user: 'str' object cannot be interpreted as an integer
+❌ Bearer token invalid
+🔍 Session check - Session ID: None | Flask Session Keys: []
+❌ No session ID found in Flask session
+❌ No user found for path: /api/analytics/balance
+Error getting current user: 'str' object cannot be interpreted as an integer
+❌ Bearer token invalid
+🔍 Session check - Session ID: None | Flask Session Keys: []
+❌ No session ID found in Flask session
+❌ No user found for path: /api/debts
+🔍 Middleware before_request - Path: /api/bills | Method: GET | IP: 192.168.29.131
+🔄 Running auth middleware for: /api/bills
+🔍 _get_current_user called for path: /api/bills
+🔍 Authorization header: Bearer eyJhbGciOiJIUzI1NiIsImtpZCI6Ino2RTdGNTlTV08xTS9hdngiLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiJodHRwczovL2l3a3hsdWRyaHpodW1uaHpqbHlpLnN1cGFiYXNlLmNvL2F1dGgvdjEiLCJzdWIiOiI1MGYwZTM0ZC0yZWVlLTQyNTAtYWYyYS1lMGRjZjdkNjkzN2UiLCJhdWQiOiJhdXRoZW50aWNhdGVkIiwiZXhwIjoxNzU0NjA5NDc2LCJpYXQiOjE3NTQ2MDU4NzYsImVtYWlsIjoia2VuZXNpc2xhYnNAZ21haWwuY29tIiwicGhvbmUiOiIiLCJhcHBfbWV0YWRhdGEiOnsicHJvdmlkZXIiOiJnb29nbGUiLCJwcm92aWRlcnMiOlsiZ29vZ2xlIl19LCJ1c2VyX21ldGFkYXRhIjp7ImF2YXRhcl91cmwiOiJodHRwczovL2xoMy5nb29nbGV1c2VyY29udGVudC5jb20vYS9BQ2c4b2NMUFU5dkVqZm1XRm1FR1VXOUdxRFhjX1lwOEJhejRORVBhVjR1aUdUeWNISmVVRWw4PXM5Ni1jIiwiZW1haWwiOiJrZW5lc2lzbGFic0BnbWFpbC5jb20iLCJlbWFpbF92ZXJpZmllZCI6dHJ1ZSwiZnVsbF9uYW1lIjoiS2VuZXNpcyIsImlzcyI6Imh0dHBzOi8vYWNjb3VudHMuZ29vZ2xlLmNvbSIsIm5hbWUiOiJLZW5lc2lzIiwicGhvbmVfdmVyaWZpZWQiOmZhbHNlLCJwaWN0dXJlIjoiaHR0cHM6Ly9saDMuZ29vZ2xldXNlcmNvbnRlbnQuY29tL2EvQUNnOG9jTFBVOXZFamZtV0ZtRUdVVzlHcURYY19ZcDhCYXo0TkVQYVY0dWlHVHljSEplVUVsOD1zOTYtYyIsInByb3ZpZGVyX2lkIjoiMTEwNjI4NDM3OTY4MDk3NDU1ODcxIiwic3ViIjoiMTEwNjI4NDM3OTY4MDk3NDU1ODcxIn0sInJvbGUiOiJhdXRoZW50aWNhdGVkIiwiYWFsIjoiYWFsMSIsImFtciI6W3sibWV0aG9kIjoib2F1dGgiLCJ0aW1lc3RhbXAiOjE3NTQ2MDU4NzZ9XSwic2Vzc2lvbl9pZCI6IjdhMWQ0ZTA3LTk0MDctNDlmZS05Njg3LTA3ZGE4MWZkZWE5MyIsImlzX2Fub255bW91cyI6ZmFsc2V9.EIXX2aNQY-EUz1Wr2C2djehfhNTe0F5tOC3AkDFGObM192.168.29.131 - - [08/Aug/2025 04:14:56] "GET /api/transactions?limit=10&_t=1754606694825 HTTP/1.1" 404 -
+192.168.29.131 - - [08/Aug/2025 04:14:56] "GET /api/goals?_t=1754606694828 HTTP/1.1" 404 -
+192.168.29.131 - - [08/Aug/2025 04:14:56] "GET /api/bills?_t=1754606694842 HTTP/1.1" 404 -
+192.168.29.131 - - [08/Aug/2025 04:14:56] "GET /api/budgets?_t=1754606694839 HTTP/1.1" 404 -
+
+🔍 Bearer token found: eyJhbGciOiJIUzI1NiIs..., validating...
+🔍 Middleware before_request - Path: /api/analytics/balance | Method: GET | IP: 192.168.29.131
+🔄 Running auth middleware for: /api/analytics/balance
+🔍 _get_current_user called for path: /api/analytics/balance
+🔍 Authorization header: Bearer eyJhbGciOiJIUzI1NiIsImtpZCI6Ino2RTdGNTlTV08xTS9hdngiLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiJodHRwczovL2l3a3hsdWRyaHpodW1uaHpqbHlpLnN1cGFiYXNlLmNvL2F1dGgvdjEiLCJzdWIiOiI1MGYwZTM0ZC0yZWVlLTQyNTAtYWYyYS1lMGRjZjdkNjkzN2UiLCJhdWQiOiJhdXRoZW50aWNhdGVkIiwiZXhwIjoxNzU0NjA5NDc2LCJpYXQiOjE3NTQ2MDU4NzYsImVtYWlsIjoia2VuZXNpc2xhYnNAZ21haWwuY29tIiwicGhvbmUiOiIiLCJhcHBfbWV0YWRhdGEiOnsicHJvdmlkZXIiOiJnb29nbGUiLCJwcm92aWRlcnMiOlsiZ29vZ2xlIl19LCJ1c2VyX21ldGFkYXRhIjp7ImF2YXRhcl91cmwiOiJodHRwczovL2xoMy5nb29nbGV1c2VyY29udGVudC5jb20vYS9BQ2c4b2NMUFU5dkVqZm1XRm1FR1VXOUdxRFhjX1lwOEJhejRORVBhVjR1aUdUeWNISmVVRWw4PXM5Ni1jIiwiZW1haWwiOiJrZW5lc2lzbGFic0BnbWFpbC5jb20iLCJlbWFpbF92ZXJpZmllZCI6dHJ1ZSwiZnVsbF9uYW1lIjoiS2VuZXNpcyIsImlzcyI6Imh0dHBzOi8vYWNjb3VudHMuZ29vZ2xlLmNvbSIsIm5hbWUiOiJLZW5lc2lzIiwicGhvbmVfdmVyaWZpZWQiOmZhbHNlLCJwaWN0dXJlIjoiaHR0cHM6Ly9saDMuZ29vZ2xldXNlcmNvbnRlbnQuY29tL2EvQUNnOG9jTFBVOXZFamZtV0ZtRUdVVzlHcURYY19ZcDhCYXo0TkVQYVY0dWlHVHljSEplVUVsOD1zOTYtYyIsInByb3ZpZGVyX2lkIjoiMTEwNjI4NDM3OTY4MDk3NDU1ODcxIiwic3ViIjoiMTEwNjI4NDM3OTY4MDk3NDU1ODcxIn0sInJvbGUiOiJhdXRoZW50aWNhdGVkIiwiYWFsIjoiYWFsMSIsImFtciI6W3sibWV0aG9kIjoib2F1dGgiLCJ0aW1lc3RhbXAiOjE3NTQ2MDU4NzZ9XSwic2Vzc2lvbl9pZCI6IjdhMWQ0ZTA3LTk0MDctNDlmZS05Njg3LTA3ZGE4MWZkZWE5MyIsImlzX2Fub255bW91cyI6ZmFsc2V9.EIXX2aNQY-EUz1Wr2C2djehfhNTe0F5tOC3AkDFGObM
+🔍 Bearer token found: eyJhbGciOiJIUzI1NiIs..., validating...
+🔍 Middleware before_request - Path: /api/budgets | Method: GET | IP: 192.168.29.131
+🔄 Running auth middleware for: /api/budgets
+🔍 _get_current_user called for path: /api/budgets
+🔍 Authorization header: Bearer eyJhbGciOiJIUzI1NiIsImtpZCI6Ino2RTdGNTlTV08xTS9hdngiLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiJodHRwczovL2l3a3hsdWRyaHpodW1uaHpqbHlpLnN1cGFiYXNlLmNvL2F1dGgvdjEiLCJzdWIiOiI1MGYwZTM0ZC0yZWVlLTQyNTAtYWYyYS1lMGRjZjdkNjkzN2UiLCJhdWQiOiJhdXRoZW50aWNhdGVkIiwiZXhwIjoxNzU0NjA5NDc2LCJpYXQiOjE3NTQ2MDU4NzYsImVtYWlsIjoia2VuZXNpc2xhYnNAZ21haWwuY29tIiwicGhvbmUiOiIiLCJhcHBfbWV0YWRhdGEiOnsicHJvdmlkZXIiOiJnb29nbGUiLCJwcm92aWRlcnMiOlsiZ29vZ2xlIl19LCJ1c2VyX21ldGFkYXRhIjp7ImF2YXRhcl91cmwiOiJodHRwczovL2xoMy5nb29nbGV1c2VyY29udGVudC5jb20vYS9BQ2c4b2NMUFU5dkVqZm1XRm1FR1VXOUdxRFhjX1lwOEJhejRORVBhVjR1aUdUeWNISmVVRWw4PXM5Ni1jIiwiZW1haWwiOiJrZW5lc2lzbGFic0BnbWFpbC5jb20iLCJlbWFpbF92ZXJpZmllZCI6dHJ1ZSwiZnVsbF9uYW1lIjoiS2VuZXNpcyIsImlzcyI6Imh0dHBzOi8vYWNjb3VudHMuZ29vZ2xlLmNvbSIsIm5hbWUiOiJLZW5lc2lzIiwicGhvbmVfdmVyaWZpZWQiOmZhbHNlLCJwaWN0dXJlIjoiaHR0cHM6Ly9saDMuZ29vZ2xldXNlcmNvbnRlbnQuY29tL2EvQUNnOG9jTFBVOXZFamZtV0ZtRUdVVzlHcURYY19ZcDhCYXo0TkVQYVY0dWlHVHljSEplVUVsOD1zOTYtYyIsInByb3ZpZGVyX2lkIjoiMTEwNjI4NDM3OTY4MDk3NDU1ODcxIiwic3ViIjoiMTEwNjI4NDM3OTY4MDk3NDU1ODcxIn0sInJvbGUiOiJhdXRoZW50aWNhdGVkIiwiYWFsIjoiYWFsMSIsImFtciI6W3sibWV0aG9kIjoib2F1dGgiLCJ0aW1lc3RhbXAiOjE3NTQ2MDU4NzZ9XSwic2Vzc2lvbl9pZCI6IjdhMWQ0ZTA3LTk0MDctNDlmZS05Njg3LTA3ZGE4MWZkZWE5MyIsImlzX2Fub255bW91cyI6ZmFsc2V9.EIXX2aNQY-EUz1Wr2C2djehfhNTe0F5tOC3AkDFGObM
+🔍 Bearer token found: eyJhbGciOiJIUzI1NiIs..., validating...
+Error getting current user: 'str' object cannot be interpreted as an integer
+❌ Bearer token invalid
+🔍 Session check - Session ID: None | Flask Session Keys: []
+❌ No session ID found in Flask session
+❌ No user found for path: /api/transactions
+Error getting current user: 'str' object cannot be interpreted as an integer
+❌ Bearer token invalid
+🔍 Session check - Session ID: None | Flask Session Keys: []
+❌ No session ID found in Flask session
+❌ No user found for path: /api/goals
+🔍 Middleware before_request - Path: /api/subscriptions | Method: GET | IP: 192.168.29.131
+🔄 Running auth middleware for: /api/subscriptions
+🔍 _get_current_user called for path: /api/subscriptions
+🔍 Authorization header: Bearer eyJhbGciOiJIUzI1NiIsImtpZCI6Ino2RTdGNTlTV08xTS9hdngiLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiJodHRwczovL2l3a3hsdWRyaHpodW1uaHpqbHlpLnN1cGFiYXNlLmNvL2F1dGgvdjEiLCJzdWIiOiI1MGYwZTM0ZC0yZWVlLTQyNTAtYWYyYS1lMGRjZjdkNjkzN2UiLCJhdWQiOiJhdXRoZW50aWNhdGVkIiwiZXhwIjoxNzU0NjA5NDc2LCJpYXQiOjE3NTQ2MDU4NzYsImVtYWlsIjoia2VuZXNpc2xhYnNAZ21haWwuY29tIiwicGhvbmUiOiIiLCJhcHBfbWV0YWRhdGEiOnsicHJvdmlkZXIiOiJnb29nbGUiLCJwcm92aWRlcnMiOlsiZ29vZ2xlIl19LCJ1c2VyX21ldGFkYXRhIjp7ImF2YXRhcl91cmwiOiJodHRwczovL2xoMy5nb29nbGV1c2VyY29udGVudC5jb20vYS9BQ2c4b2NMUFU5dkVqZm1XRm1FR1VXOUdxRFhjX1lwOEJhejRORVBhVjR1aUdUeWNISmVVRWw4PXM5Ni1jIiwiZW1haWwiOiJrZW5lc2lzbGFic0BnbWFpbC5jb20iLCJlbWFpbF92ZXJpZmllZCI6dHJ1ZSwiZnVsbF9uYW1lIjoiS2VuZXNpcyIsImlzcyI6Imh0dHBzOi8vYWNjb3VudHMuZ29vZ2xlLmNvbSIsIm5hbWUiOiJLZW5lc2lzIiwicGhvbmVfdmVyaWZpZWQiOmZhbHNlLCJwaWN0dXJlIjoiaHR0cHM6Ly9saDMuZ29vZ2xldXNlcmNvbnRlbnQuY29tL2EvQUNnOG9jTFBVOXZFamZtV0ZtRUdVVzlHcURYY19ZcDhCYXo0TkVQYVY0dWlHVHljSEplVUVsOD1zOTYtYyIsInByb3ZpZGVyX2lkIjoiMTEwNjI4NDM3OTY4MDk3NDU1ODcxIiwic3ViIjoiMTEwNjI4NDM3OTY4MDk3NDU1ODcxIn0sInJvbGUiOiJhdXRoZW50aWNhdGVkIiwiYWFsIjoiYWFsMSIsImFtciI6W3sibWV0aG9kIjoib2F1dGgiLCJ0aW1lc3RhbXAiOjE3NTQ2MDU4NzZ9XSwic2Vzc2lvbl9pZCI6IjdhMWQ0ZTA3LTk0MDctNDlmZS05Njg3LTA3ZGE4MWZkZWE5MyIsImlzX2Fub255bW91cyI6ZmFsc2V9.EIXX2aNQY-EUz1Wr2C2djehfhNTe0F5tOC3AkDFGObM
+🔍 Bearer token found: eyJhbGciOiJIUzI1NiIs..., validating...
+🔍 Middleware before_request - Path: /api/transactions | Method: GET | IP: 192.168.29.131
+🔄 Running auth middleware for: /api/transactions
+🔍 _get_current_user called for path: /api/transactions
+🔍 Authorization header: Bearer eyJhbGciOiJIUzI1NiIsImtpZCI6Ino2RTdGNTlTV08xTS9hdngiLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiJodHRwczovL2l3a3hsdWRyaHpodW1uaHpqbHlpLnN1cGFiYXNlLmNvL2F1dGgvdjEiLCJzdWIiOiI1MGYwZTM0ZC0yZWVlLTQyNTAtYWYyYS1lMGRjZjdkNjkzN2UiLCJhdWQiOiJhdXRoZW50aWNhdGVkIiwiZXhwIjoxNzU0NjA5NDc2LCJpYXQiOjE3NTQ2MDU4NzYsImVtYWlsIjoia2VuZXNpc2xhYnNAZ21haWwuY29tIiwicGhvbmUiOiIiLCJhcHBfbWV0YWRhdGEiOnsicHJvdmlkZXIiOiJnb29nbGUiLCJwcm92aWRlcnMiOlsiZ29vZ2xlIl19LCJ1c2VyX21ldGFkYXRhIjp7ImF2YXRhcl91cmwiOiJodHRwczovL2xoMy5nb29nbGV1c2VyY29udGVudC5jb20vYS9BQ2c4b2NMUFU5dkVqZm1XRm1FR1VXOUdxRFhjX1lwOEJhejRORVBhVjR1aUdUeWNISmVVRWw4PXM5Ni1jIiwiZW1haWwiOiJrZW5lc2lzbGFic0BnbWFpbC5jb20iLCJlbWFpbF92ZXJpZmllZCI6dHJ1ZSwiZnVsbF9uYW1lIjoiS2VuZXNpcyIsImlzcyI6Imh0dHBzOi8vYWNjb3VudHMuZ29vZ2xlLmNvbSIsIm5hbWUiOiJLZW5lc2lzIiwicGhvbmVfdmVyaWZpZWQiOmZhbHNlLCJwaWN0dXJlIjoiaHR0cHM6Ly9saDMuZ29vZ2xldXNlcmNvbnRlbnQuY29tL2EvQUNnOG9jTFBVOXZFamZtV0ZtRUdVVzlHcURYY19ZcDhCYXo0TkVQYVY0dWlHVHljSEplVUVsOD1zOTYtYyIsInByb3ZpZGVyX2lkIjoiMTEwNjI4NDM3OTY4MDk3NDU1ODcxIiwic3ViIjoiMTEwNjI4NDM3OTY4MDk3NDU1ODcxIn0sInJvbGUiOiJhdXRoZW50aWNhdGVkIiwiYWFsIjoiYWFsMSIsImFtciI6W3sibWV0aG9kIjoib2F1dGgiLCJ0aW1lc3RhbXAiOjE3NTQ2MDU4NzZ9XSwic2Vzc2lvbl9pZCI6IjdhMWQ0ZTA3LTk0MDctNDlmZS05Njg3LTA3ZGE4MWZkZWE5MyIsImlzX2Fub255bW91cyI6ZmFsc2V9.EIXX2aNQY-EUz1Wr2C2djehfhNTe0F5tOC3AkDFGObM
+🔍 Bearer token found: eyJhbGciOiJIUzI1NiIs..., validating...
+Error getting current user: 'str' object cannot be interpreted as an integer
+Error getting current user: 'str' object cannot be interpreted as an integer
+❌ Bearer token invalid
+🔍 Session check - Session ID: None | Flask Session Keys: []
+❌ No session ID found in Flask session
+❌ No user found for path: /api/bills
+❌ Bearer token invalid
+🔍 Session check - Session ID: None | Flask Session Keys: []
+❌ No session ID found in Flask session
+❌ No user found for path: /api/budgets
+🔍 Middleware before_request - Path: /api/subscriptions | Method: GET | IP: 192.168.29.131
+🔄 Running auth middleware for: /api/subscriptions
+🔍 _get_current_user called for path: /api/subscriptions
+🔍 Authorization header: Bearer eyJhbGciOiJIUzI1NiIsImtpZCI6Ino2RTdGNTlTV08xTS9hdngiLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiJodHRwczovL2l3a3hsdWRyaHpodW1uaHpqbHlpLnN1cGFiYXNlLmNvL2F1dGgvdjEiLCJzdWIiOiI1MGYwZTM0ZC0yZWVlLTQyNTAtYWYyYS1lMGRjZjdkNjkzN2UiLCJhdWQiOiJhdXRoZW50aWNhdGVkIiwiZXhwIjoxNzU0NjA5NDc2LCJpYXQiOjE3NTQ2MDU4NzYsImVtYWlsIjoia2VuZXNpc2xhYnNAZ21haWwuY29tIiwicGhvbmUiOiIiLCJhcHBfbWV0YWRhdGEiOnsicHJvdmlkZXIiOiJnb29nbGUiLCJwcm92aWRlcnMiOlsiZ29vZ2xlIl19LCJ1c2VyX21ldGFkYXRhIjp7ImF2YXRhcl91cmwiOiJodHRwczovL2xoMy5nb29nbGV1c2VyY29udGVudC5jb20vYS9BQ2c4b2NMUFU5dkVqZm1XRm1FR1VXOUdxRFhjX1lwOEJhejRORVBhVjR1aUdUeWNISmVVRWw4PXM5Ni1jIiwiZW1haWwiOiJrZW5lc2lzbGFic0BnbWFpbC5jb20iLCJlbWFpbF92ZXJpZmllZCI6dHJ1ZSwiZnVsbF9uYW1lIjoiS2VuZXNpcyIsImlzcyI6Imh0dHBzOi8vYWNjb3VudHMuZ29vZ2xlLmNvbSIsIm5hbWUiOiJLZW5lc2lzIiwicGhvbmVfdmVyaWZpZWQiOmZhbHNlLCJwaWN0dXJlIjoiaHR0cHM6Ly9saDMuZ29vZ2xldXNlcmNvbnRlbnQuY29tL2EvQUNnOG9jTFBVOXZFamZtV0ZtRUdVVzlHcURYY19ZcDhCYXo0TkVQYVY0dWlHVHljSEplVUVsOD1zOTYtYyIsInByb3ZpZGVyX2lkIjoiMTEwNjI4NDM3OTY4MDk3NDU1ODcxIiwic3ViIjoiMTEwNjI4NDM3OTY4MDk3NDU1ODcxIn0sInJvbGUiOiJhdXRoZW50aWNhdGVkIiwiYWFsIjoiYWFsMSIsImFtciI6W3sibWV0aG9kIjoib2F1dGgiLCJ0aW1lc3RhbXAiOjE3NTQ2MDU4NzZ9XSwic2Vzc2lvbl9pZCI6IjdhMWQ0ZTA3LTk0MDctNDlmZS05Njg3LTA3ZGE4MWZkZWE5MyIsImlzX2Fub255bW91cyI6ZmFsc2V9.EIXX2aNQY-EUz1Wr2C2djehfhNTe0F5tOC3AkDFGObM192.168.29.131 - - [08/Aug/2025 04:14:56] "GET /api/transactions?limit=10&_t=1754606694837 HTTP/1.1" 404 -
+192.168.29.131 - - [08/Aug/2025 04:14:56] "GET /api/analytics/balance?_t=1754606694836 HTTP/1.1" 404 -
+192.168.29.131 - - [08/Aug/2025 04:14:56] "GET /api/goals?_t=1754606694840 HTTP/1.1" 404 -
+192.168.29.131 - - [08/Aug/2025 04:14:56] "GET /api/subscriptions?_t=1754606694833 HTTP/1.1" 404 -
+192.168.29.131 - - [08/Aug/2025 04:14:56] "GET /api/debts?_t=1754606694843 HTTP/1.1" 404 -
+192.168.29.131 - - [08/Aug/2025 04:14:56] "GET /api/subscriptions?_t=1754606694844 HTTP/1.1" 404 -
+🔍 Middleware before_request - Path: /api/debts | Method: GET | IP: 192.168.29.131
+🔄 Running auth middleware for: /api/debts
+🔍 _get_current_user called for path: /api/debts
+🔍 Authorization header: Bearer eyJhbGciOiJIUzI1NiIsImtpZCI6Ino2RTdGNTlTV08xTS9hdngiLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiJodHRwczovL2l3a3hsdWRyaHpodW1uaHpqbHlpLnN1cGFiYXNlLmNvL2F1dGgvdjEiLCJzdWIiOiI1MGYwZTM0ZC0yZWVlLTQyNTAtYWYyYS1lMGRjZjdkNjkzN2UiLCJhdWQiOiJhdXRoZW50aWNhdGVkIiwiZXhwIjoxNzU0NjA5NDc2LCJpYXQiOjE3NTQ2MDU4NzYsImVtYWlsIjoia2VuZXNpc2xhYnNAZ21haWwuY29tIiwicGhvbmUiOiIiLCJhcHBfbWV0YWRhdGEiOnsicHJvdmlkZXIiOiJnb29nbGUiLCJwcm92aWRlcnMiOlsiZ29vZ2xlIl19LCJ1c2VyX21ldGFkYXRhIjp7ImF2YXRhcl91cmwiOiJodHRwczovL2xoMy5nb29nbGV1c2VyY29udGVudC5jb20vYS9BQ2c4b2NMUFU5dkVqZm1XRm1FR1VXOUdxRFhjX1lwOEJhejRORVBhVjR1aUdUeWNISmVVRWw4PXM5Ni1jIiwiZW1haWwiOiJrZW5lc2lzbGFic0BnbWFpbC5jb20iLCJlbWFpbF92ZXJpZmllZCI6dHJ1ZSwiZnVsbF9uYW1lIjoiS2VuZXNpcyIsImlzcyI6Imh0dHBzOi8vYWNjb3VudHMuZ29vZ2xlLmNvbSIsIm5hbWUiOiJLZW5lc2lzIiwicGhvbmVfdmVyaWZpZWQiOmZhbHNlLCJwaWN0dXJlIjoiaHR0cHM6Ly9saDMuZ29vZ2xldXNlcmNvbnRlbnQuY29tL2EvQUNnOG9jTFBVOXZFamZtV0ZtRUdVVzlHcURYY19ZcDhCYXo0TkVQYVY0dWlHVHljSEplVUVsOD1zOTYtYyIsInByb3ZpZGVyX2lkIjoiMTEwNjI4NDM3OTY4MDk3NDU1ODcxIiwic3ViIjoiMTEwNjI4NDM3OTY4MDk3NDU1ODcxIn0sInJvbGUiOiJhdXRoZW50aWNhdGVkIiwiYWFsIjoiYWFsMSIsImFtciI6W3sibWV0aG9kIjoib2F1dGgiLCJ0aW1lc3RhbXAiOjE3NTQ2MDU4NzZ9XSwic2Vzc2lvbl9pZCI6IjdhMWQ0ZTA3LTk0MDctNDlmZS05Njg3LTA3ZGE4MWZkZWE5MyIsImlzX2Fub255bW91cyI6ZmFsc2V9.EIXX2aNQY-EUz1Wr2C2djehfhNTe0F5tOC3AkDFGObM
+🔍 Bearer token found: eyJhbGciOiJIUzI1NiIs..., validating...
+
+🔍 Bearer token found: eyJhbGciOiJIUzI1NiIs..., validating...
+Error getting current user: 'str' object cannot be interpreted as an integer
+Error getting current user: 'str' object cannot be interpreted as an integer
+Error getting current user: 'str' object cannot be interpreted as an integer
+❌ Bearer token invalid
+🔍 Session check - Session ID: None | Flask Session Keys: []
+❌ No session ID found in Flask session
+❌ No user found for path: /api/transactions
+❌ Bearer token invalid
+🔍 Session check - Session ID: None | Flask Session Keys: []
+❌ No session ID found in Flask session
+❌ No user found for path: /api/goals
+❌ Bearer token invalid
+🔍 Session check - Session ID: None | Flask Session Keys: []
+❌ No session ID found in Flask session
+❌ No user found for path: /api/analytics/balance
+Error getting current user: 'str' object cannot be interpreted as an integer
+❌ Bearer token invalid
+🔍 Session check - Session ID: None | Flask Session Keys: []
+❌ No session ID found in Flask session
+❌ No user found for path: /api/subscriptions
+Error getting current user: 'str' object cannot be interpreted as an integer
+❌ Bearer token invalid
+🔍 Session check - Session ID: None | Flask Session Keys: []
+❌ No session ID found in Flask session
+❌ No user found for path: /api/debts
+Error getting current user: 'str' object cannot be interpreted as an integer
+❌ Bearer token invalid
+🔍 Session check - Session ID: None | Flask Session Keys: []
+❌ No session ID found in Flask session
+❌ No user found for path: /api/subscriptions
+🔍 Middleware before_request - Path: /api/analytics/balance | Method: GET | IP: 192.168.29.131
+🔄 Running auth middleware for: /api/analytics/balance
+🔍 _get_current_user called for path: /api/analytics/balance
+🔍 Authorization header: Bearer eyJhbGciOiJIUzI1NiIsImtpZCI6Ino2RTdGNTlTV08xTS9hdngiLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiJodHRwczovL2l3a3hsdWRyaHpodW1uaHpqbHlpLnN1cGFiYXNlLmNvL2F1dGgvdjEiLCJzdWIiOiI1MGYwZTM0ZC0yZWVlLTQyNTAtYWYyYS1lMGRjZjdkNjkzN2UiLCJhdWQiOiJhdXRoZW50aWNhdGVkIiwiZXhwIjoxNzU0NjA5NDc2LCJpYXQiOjE3NTQ2MDU4NzYsImVtYWlsIjoia2VuZXNpc2xhYnNAZ21haWwuY29tIiwicGhvbmUiOiIiLCJhcHBfbWV0YWRhdGEiOnsicHJvdmlkZXIiOiJnb29nbGUiLCJwcm92aWRlcnMiOlsiZ29vZ2xlIl19LCJ1c2VyX21ldGFkYXRhIjp7ImF2YXRhcl91cmwiOiJodHRwczovL2xoMy5nb29nbGV1c2VyY29udGVudC5jb20vYS9BQ2c4b2NMUFU5dkVqZm1XRm1FR1VXOUdxRFhjX1lwOEJhejRORVBhVjR1aUdUeWNISmVVRWw4PXM5Ni1jIiwiZW1haWwiOiJrZW5lc2lzbGFic0BnbWFpbC5jb20iLCJlbWFpbF92ZXJpZmllZCI6dHJ1ZSwiZnVsbF9uYW1lIjoiS2VuZXNpcyIsImlzcyI6Imh0dHBzOi8vYWNjb3VudHMuZ29vZ2xlLmNvbSIsIm5hbWUiOiJLZW5lc2lzIiwicGhvbmVfdmVyaWZpZWQiOmZhbHNlLCJwaWN0dXJlIjoiaHR0cHM6Ly9saDMuZ29vZ2xldXNlcmNvbnRlbnQuY29tL2EvQUNnOG9jTFBVOXZFamZtV0ZtRUdVVzlHcURYY19ZcDhCYXo0TkVQYVY0dWlHVHljSEplVUVsOD1zOTYtYyIsInByb3ZpZGVyX2lkIjoiMTEwNjI4NDM3OTY4MDk3NDU1ODcxIiwic3ViIjoiMTEwNjI4NDM3OTY4MDk3NDU1ODcxIn0sInJvbGUiOiJhdXRoZW50aWNhdGVkIiwiYWFsIjoiYWFsMSIsImFtciI6W3sibWV0aG9kIjoib2F1dGgiLCJ0aW1lc3RhbXAiOjE3NTQ2MDU4NzZ9XSwic2Vzc2lvbl9pZCI6IjdhMWQ0ZTA3LTk0MDctNDlmZS05Njg3LTA3ZGE4MWZkZWE5MyIsImlzX2Fub255bW91cyI6ZmFsc2V9.EIXX2aNQY-EUz1Wr2C2djehfhNTe0F5tOC3AkDFGObM
+🔍 Bearer token found: eyJhbGciOiJIUzI1NiIs..., validating...
+🔍 Middleware before_request - Path: /api/transactions | Method: GET | IP: 192.168.29.131
+🔄 Running auth middleware for: /api/transactions
+🔍 _get_current_user called for path: /api/transactions
+🔍 Authorization header: Bearer eyJhbGciOiJIUzI1NiIsImtpZCI6Ino2RTdGNTlTV08xTS9hdngiLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiJodHRwczovL2l3a3hsdWRyaHpodW1uaHpqbHlpLnN1cGFiYXNlLmNvL2F1dGgvdjEiLCJzdWIiOiI1MGYwZTM0ZC0yZWVlLTQyNTAtYWYyYS1lMGRjZjdkNjkzN2UiLCJhdWQiOiJhdXRoZW50aWNhdGVkIiwiZXhwIjoxNzU0NjA5NDc2LCJpYXQiOjE3NTQ2MDU4NzYsImVtYWlsIjoia2VuZXNpc2xhYnNAZ21haWwuY29tIiwicGhvbmUiOiIiLCJhcHBfbWV0YWRhdGEiOnsicHJvdmlkZXIiOiJnb29nbGUiLCJwcm92aWRlcnMiOlsiZ29vZ2xlIl19LCJ1c2VyX21ldGFkYXRhIjp7ImF2YXRhcl91cmwiOiJodHRwczovL2xoMy5nb29nbGV1c2VyY29udGVudC5jb20vYS9BQ2c4b2NMUFU5dkVqZm1XRm1FR1VXOUdxRFhjX1lwOEJhejRORVBhVjR1aUdUeWNISmVVRWw4PXM5Ni1jIiwiZW1haWwiOiJrZW5lc2lzbGFic0BnbWFpbC5jb20iLCJlbWFpbF92ZXJpZmllZCI6dHJ1ZSwiZnVsbF9uYW1lIjoiS2VuZXNpcyIsImlzcyI6Imh0dHBzOi8vYWNjb3VudHMuZ29vZ2xlLmNvbSIsIm5hbWUiOiJLZW5lc2lzIiwicGhvbmVfdmVyaWZpZWQiOmZhbHNlLCJwaWN0dXJlIjoiaHR0cHM6Ly9saDMuZ29vZ2xldXNlcmNvbnRlbnQuY29tL2EvQUNnOG9jTFBVOXZFamZtV0ZtRUdVVzlHcURYY19ZcDhCYXo0TkVQYVY0dWlHVHljSEplVUVsOD1zOTYtYyIsInByb3ZpZGVyX2lkIjoiMTEwNjI4NDM3OTY4MDk3NDU1ODcxIiwic3ViIjoiMTEwNjI4NDM3OTY4MDk3NDU1ODcxIn0sInJvbGUiOiJhdXRoZW50aWNhdGVkIiwiYWFsIjoiYWFsMSIsImFtciI6W3sibWV0aG9kIjoib2F1dGgiLCJ0aW1lc3RhbXAiOjE3NTQ2MDU4NzZ9XSwic2Vzc2lvbl9pZCI6IjdhMWQ0ZTA3LTk0MDctNDlmZS05Njg3LTA3ZGE4MWZkZWE5MyIsImlzX2Fub255bW91cyI6ZmFsc2V9.EIXX2aNQY-EUz1Wr2C2djehfhNTe0F5tOC3AkDFGObM
+🔍 Bearer token found: eyJhbGciOiJIUzI1NiIs..., validating...
+🔍 Middleware before_request - Path: /api/budgets | Method: GET | IP: 192.168.29.131
+🔄 Running auth middleware for: /api/budgets
+🔍 _get_current_user called for path: /api/budgets
+🔍 Authorization header: Bearer eyJhbGciOiJIUzI1NiIsImtpZCI6Ino2RTdGNTlTV08xTS9hdngiLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiJodHRwczovL2l3a3hsdWRyaHpodW1uaHpqbHlpLnN1cGFiYXNlLmNvL2F1dGgvdjEiLCJzdWIiOiI1MGYwZTM0ZC0yZWVlLTQyNTAtYWYyYS1lMGRjZjdkNjkzN2UiLCJhdWQiOiJhdXRoZW50aWNhdGVkIiwiZXhwIjoxNzU0NjA5NDc2LCJpYXQiOjE3NTQ2MDU4NzYsImVtYWlsIjoia2VuZXNpc2xhYnNAZ21haWwuY29tIiwicGhvbmUiOiIiLCJhcHBfbWV0YWRhdGEiOnsicHJvdmlkZXIiOiJnb29nbGUiLCJwcm92aWRlcnMiOlsiZ29vZ2xlIl19LCJ1c2VyX21ldGFkYXRhIjp7ImF2YXRhcl91cmwiOiJodHRwczovL2xoMy5nb29nbGV1c2VyY29udGVudC5jb20vYS9BQ2c4b2NMUFU5dkVqZm1XRm1FR1VXOUdxRFhjX1lwOEJhejRORVBhVjR1aUdUeWNISmVVRWw4PXM5Ni1jIiwiZW1haWwiOiJrZW5lc2lzbGFic0BnbWFpbC5jb20iLCJlbWFpbF92ZXJpZmllZCI6dHJ1ZSwiZnVsbF9uYW1lIjoiS2VuZXNpcyIsImlzcyI6Imh0dHBzOi8vYWNjb3VudHMuZ29vZ2xlLmNvbSIsIm5hbWUiOiJLZW5lc2lzIiwicGhvbmVfdmVyaWZpZWQiOmZhbHNlLCJwaWN0dXJlIjoiaHR0cHM6Ly9saDMuZ29vZ2xldXNlcmNvbnRlbnQuY29tL2EvQUNnOG9jTFBVOXZFamZtV0ZtRUdVVzlHcURYY19ZcDhCYXo0TkVQYVY0dWlHVHljSEplVUVsOD1zOTYtYyIsInByb3ZpZGVyX2lkIjoiMTEwNjI4NDM3OTY4MDk3NDU1ODcxIiwic3ViIjoiMTEwNjI4NDM3OTY4MDk3NDU1ODcxIn0sInJvbGUiOiJhdXRoZW50aWNhdGVkIiwiYWFsIjoiYWFsMSIsImFtciI6W3sibWV0aG9kIjoib2F1dGgiLCJ0aW1lc3RhbXAiOjE3NTQ2MDU4NzZ9XSwic2Vzc2lvbl9pZCI6IjdhMWQ0ZTA3LTk0MDctNDlmZS05Njg3LTA3ZGE4MWZkZWE5MyIsImlzX2Fub255bW91cyI6ZmFsc2V9.EIXX2aNQY-EUz1Wr2C2djehfhNTe0F5tOC3AkDFGObM
+🔍 Bearer token found: eyJhbGciOiJIUzI1NiIs..., validating...
+🔍 Middleware before_request - Path: /api/goals | Method: GET | IP: 192.168.29.131
+🔄 Running auth middleware for: /api/goals
+🔍 _get_current_user called for path: /api/goals
+🔍 Authorization header: Bearer eyJhbGciOiJIUzI1NiIsImtpZCI6Ino2RTdGNTlTV08xTS9hdngiLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiJodHRwczovL2l3a3hsdWRyaHpodW1uaHpqbHlpLnN1cGFiYXNlLmNvL2F1dGgvdjEiLCJzdWIiOiI1MGYwZTM0ZC0yZWVlLTQyNTAtYWYyYS1lMGRjZjdkNjkzN2UiLCJhdWQiOiJhdXRoZW50aWNhdGVkIiwiZXhwIjoxNzU0NjA5NDc2LCJpYXQiOjE3NTQ2MDU4NzYsImVtYWlsIjoia2VuZXNpc2xhYnNAZ21haWwuY29tIiwicGhvbmUiOiIiLCJhcHBfbWV0YWRhdGEiOnsicHJvdmlkZXIiOiJnb29nbGUiLCJwcm92aWRlcnMiOlsiZ29vZ2xlIl19LCJ1c2VyX21ldGFkYXRhIjp7ImF2YXRhcl91cmwiOiJodHRwczovL2xoMy5nb29nbGV1c2VyY29udGVudC5jb20vYS9BQ2c4b2NMUFU5dkVqZm1XRm1FR1VXOUdxRFhjX1lwOEJhejRORVBhVjR1aUdUeWNISmVVRWw4PXM5Ni1jIiwiZW1haWwiOiJrZW5lc2lzbGFic0BnbWFpbC5jb20iLCJlbWFpbF92ZXJpZmllZCI6dHJ1ZSwiZnVsbF9uYW1lIjoiS2VuZXNpcyIsImlzcyI6Imh0dHBzOi8vYWNjb3VudHMuZ29vZ2xlLmNvbSIsIm5hbWUiOiJLZW5lc2lzIiwicGhvbmVfdmVyaWZpZWQiOmZhbHNlLCJwaWN0dXJlIjoiaHR0cHM6Ly9saDMuZ29vZ2xldXNlcmNvbnRlbnQuY29tL2EvQUNnOG9jTFBVOXZFamZtV0ZtRUdVVzlHcURYY19ZcDhCYXo0TkVQYVY0dWlHVHljSEplVUVsOD1zOTYtYyIsInByb3ZpZGVyX2lkIjoiMTEwNjI4NDM3OTY4MDk3NDU1ODcxIiwic3ViIjoiMTEwNjI4NDM3OTY4MDk3NDU1ODcxIn0sInJvbGUiOiJhdXRoZW50aWNhdGVkIiwiYWFsIjoiYWFsMSIsImFtciI6W3sibWV0aG9kIjoib2F1dGgiLCJ0aW1lc3RhbXAiOjE3NTQ2MDU4NzZ9XSwic2Vzc2lvbl9pZCI6IjdhMWQ0ZTA3LTk0MDctNDlmZS05Njg3LTA3ZGE4MWZkZWE5MyIsImlzX2Fub255bW91cyI6ZmFsc2V9.EIXX2aNQY-EUz1Wr2C2djehfhNTe0F5tOC3AkDFGObM192.168.29.131 - - [08/Aug/2025 04:15:00] "GET /api/budgets?_t=1754606699939 HTTP/1.1" 404 -
+192.168.29.131 - - [08/Aug/2025 04:15:00] "GET /api/goals?_t=1754606699941 HTTP/1.1" 404 -
+192.168.29.131 - - [08/Aug/2025 04:15:00] "GET /api/bills?_t=1754606699942 HTTP/1.1" 404 -
+192.168.29.131 - - [08/Aug/2025 04:15:00] "GET /api/transactions?limit=10&_t=1754606699937 HTTP/1.1" 404 -
+192.168.29.131 - - [08/Aug/2025 04:15:00] "GET /api/analytics/balance?_t=1754606699934 HTTP/1.1" 404 -
+192.168.29.131 - - [08/Aug/2025 04:15:00] "GET /api/debts?_t=1754606699944 HTTP/1.1" 404 -
+
+🔍 Bearer token found: eyJhbGciOiJIUzI1NiIs..., validating...
+🔍 Middleware before_request - Path: /api/bills | Method: GET | IP: 192.168.29.131
+🔄 Running auth middleware for: /api/bills
+🔍 _get_current_user called for path: /api/bills
+🔍 Authorization header: Bearer eyJhbGciOiJIUzI1NiIsImtpZCI6Ino2RTdGNTlTV08xTS9hdngiLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiJodHRwczovL2l3a3hsdWRyaHpodW1uaHpqbHlpLnN1cGFiYXNlLmNvL2F1dGgvdjEiLCJzdWIiOiI1MGYwZTM0ZC0yZWVlLTQyNTAtYWYyYS1lMGRjZjdkNjkzN2UiLCJhdWQiOiJhdXRoZW50aWNhdGVkIiwiZXhwIjoxNzU0NjA5NDc2LCJpYXQiOjE3NTQ2MDU4NzYsImVtYWlsIjoia2VuZXNpc2xhYnNAZ21haWwuY29tIiwicGhvbmUiOiIiLCJhcHBfbWV0YWRhdGEiOnsicHJvdmlkZXIiOiJnb29nbGUiLCJwcm92aWRlcnMiOlsiZ29vZ2xlIl19LCJ1c2VyX21ldGFkYXRhIjp7ImF2YXRhcl91cmwiOiJodHRwczovL2xoMy5nb29nbGV1c2VyY29udGVudC5jb20vYS9BQ2c4b2NMUFU5dkVqZm1XRm1FR1VXOUdxRFhjX1lwOEJhejRORVBhVjR1aUdUeWNISmVVRWw4PXM5Ni1jIiwiZW1haWwiOiJrZW5lc2lzbGFic0BnbWFpbC5jb20iLCJlbWFpbF92ZXJpZmllZCI6dHJ1ZSwiZnVsbF9uYW1lIjoiS2VuZXNpcyIsImlzcyI6Imh0dHBzOi8vYWNjb3VudHMuZ29vZ2xlLmNvbSIsIm5hbWUiOiJLZW5lc2lzIiwicGhvbmVfdmVyaWZpZWQiOmZhbHNlLCJwaWN0dXJlIjoiaHR0cHM6Ly9saDMuZ29vZ2xldXNlcmNvbnRlbnQuY29tL2EvQUNnOG9jTFBVOXZFamZtV0ZtRUdVVzlHcURYY19ZcDhCYXo0TkVQYVY0dWlHVHljSEplVUVsOD1zOTYtYyIsInByb3ZpZGVyX2lkIjoiMTEwNjI4NDM3OTY4MDk3NDU1ODcxIiwic3ViIjoiMTEwNjI4NDM3OTY4MDk3NDU1ODcxIn0sInJvbGUiOiJhdXRoZW50aWNhdGVkIiwiYWFsIjoiYWFsMSIsImFtciI6W3sibWV0aG9kIjoib2F1dGgiLCJ0aW1lc3RhbXAiOjE3NTQ2MDU4NzZ9XSwic2Vzc2lvbl9pZCI6IjdhMWQ0ZTA3LTk0MDctNDlmZS05Njg3LTA3ZGE4MWZkZWE5MyIsImlzX2Fub255bW91cyI6ZmFsc2V9.EIXX2aNQY-EUz1Wr2C2djehfhNTe0F5tOC3AkDFGObM
+🔍 Bearer token found: eyJhbGciOiJIUzI1NiIs..., validating...
+🔍 Middleware before_request - Path: /api/debts | Method: GET | IP: 192.168.29.131
+🔄 Running auth middleware for: /api/debts
+🔍 _get_current_user called for path: /api/debts
+🔍 Authorization header: Bearer eyJhbGciOiJIUzI1NiIsImtpZCI6Ino2RTdGNTlTV08xTS9hdngiLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiJodHRwczovL2l3a3hsdWRyaHpodW1uaHpqbHlpLnN1cGFiYXNlLmNvL2F1dGgvdjEiLCJzdWIiOiI1MGYwZTM0ZC0yZWVlLTQyNTAtYWYyYS1lMGRjZjdkNjkzN2UiLCJhdWQiOiJhdXRoZW50aWNhdGVkIiwiZXhwIjoxNzU0NjA5NDc2LCJpYXQiOjE3NTQ2MDU4NzYsImVtYWlsIjoia2VuZXNpc2xhYnNAZ21haWwuY29tIiwicGhvbmUiOiIiLCJhcHBfbWV0YWRhdGEiOnsicHJvdmlkZXIiOiJnb29nbGUiLCJwcm92aWRlcnMiOlsiZ29vZ2xlIl19LCJ1c2VyX21ldGFkYXRhIjp7ImF2YXRhcl91cmwiOiJodHRwczovL2xoMy5nb29nbGV1c2VyY29udGVudC5jb20vYS9BQ2c4b2NMUFU5dkVqZm1XRm1FR1VXOUdxRFhjX1lwOEJhejRORVBhVjR1aUdUeWNISmVVRWw4PXM5Ni1jIiwiZW1haWwiOiJrZW5lc2lzbGFic0BnbWFpbC5jb20iLCJlbWFpbF92ZXJpZmllZCI6dHJ1ZSwiZnVsbF9uYW1lIjoiS2VuZXNpcyIsImlzcyI6Imh0dHBzOi8vYWNjb3VudHMuZ29vZ2xlLmNvbSIsIm5hbWUiOiJLZW5lc2lzIiwicGhvbmVfdmVyaWZpZWQiOmZhbHNlLCJwaWN0dXJlIjoiaHR0cHM6Ly9saDMuZ29vZ2xldXNlcmNvbnRlbnQuY29tL2EvQUNnOG9jTFBVOXZFamZtV0ZtRUdVVzlHcURYY19ZcDhCYXo0TkVQYVY0dWlHVHljSEplVUVsOD1zOTYtYyIsInByb3ZpZGVyX2lkIjoiMTEwNjI4NDM3OTY4MDk3NDU1ODcxIiwic3ViIjoiMTEwNjI4NDM3OTY4MDk3NDU1ODcxIn0sInJvbGUiOiJhdXRoZW50aWNhdGVkIiwiYWFsIjoiYWFsMSIsImFtciI6W3sibWV0aG9kIjoib2F1dGgiLCJ0aW1lc3RhbXAiOjE3NTQ2MDU4NzZ9XSwic2Vzc2lvbl9pZCI6IjdhMWQ0ZTA3LTk0MDctNDlmZS05Njg3LTA3ZGE4MWZkZWE5MyIsImlzX2Fub255bW91cyI6ZmFsc2V9.EIXX2aNQY-EUz1Wr2C2djehfhNTe0F5tOC3AkDFGObM
+🔍 Bearer token found: eyJhbGciOiJIUzI1NiIs..., validating...
+Error getting current user: 'str' object cannot be interpreted as an integer
+Error getting current user: 'str' object cannot be interpreted as an integer
+Error getting current user: 'str' object cannot be interpreted as an integer
+❌ Bearer token invalid
+🔍 Session check - Session ID: None | Flask Session Keys: []
+❌ No session ID found in Flask session
+❌ No user found for path: /api/budgets
+❌ Bearer token invalid
+🔍 Session check - Session ID: None | Flask Session Keys: []
+❌ No session ID found in Flask session
+❌ No user found for path: /api/goals
+❌ Bearer token invalid
+🔍 Session check - Session ID: None | Flask Session Keys: []
+❌ No session ID found in Flask session
+❌ No user found for path: /api/bills
+Error getting current user: 'str' object cannot be interpreted as an integer
+Error getting current user: 'str' object cannot be interpreted as an integer
+❌ Bearer token invalid
+🔍 Session check - Session ID: None | Flask Session Keys: []
+❌ No session ID found in Flask session
+❌ No user found for path: /api/transactions
+❌ Bearer token invalid
+🔍 Session check - Session ID: None | Flask Session Keys: []
+❌ No session ID found in Flask session
+❌ No user found for path: /api/analytics/balance
+🔍 Middleware before_request - Path: /api/subscriptions | Method: GET | IP: 192.168.29.131
+🔄 Running auth middleware for: /api/subscriptions
+🔍 _get_current_user called for path: /api/subscriptions
+🔍 Authorization header: Bearer eyJhbGciOiJIUzI1NiIsImtpZCI6Ino2RTdGNTlTV08xTS9hdngiLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiJodHRwczovL2l3a3hsdWRyaHpodW1uaHpqbHlpLnN1cGFiYXNlLmNvL2F1dGgvdjEiLCJzdWIiOiI1MGYwZTM0ZC0yZWVlLTQyNTAtYWYyYS1lMGRjZjdkNjkzN2UiLCJhdWQiOiJhdXRoZW50aWNhdGVkIiwiZXhwIjoxNzU0NjA5NDc2LCJpYXQiOjE3NTQ2MDU4NzYsImVtYWlsIjoia2VuZXNpc2xhYnNAZ21haWwuY29tIiwicGhvbmUiOiIiLCJhcHBfbWV0YWRhdGEiOnsicHJvdmlkZXIiOiJnb29nbGUiLCJwcm92aWRlcnMiOlsiZ29vZ2xlIl19LCJ1c2VyX21ldGFkYXRhIjp7ImF2YXRhcl91cmwiOiJodHRwczovL2xoMy5nb29nbGV1c2VyY29udGVudC5jb20vYS9BQ2c4b2NMUFU5dkVqZm1XRm1FR1VXOUdxRFhjX1lwOEJhejRORVBhVjR1aUdUeWNISmVVRWw4PXM5Ni1jIiwiZW1haWwiOiJrZW5lc2lzbGFic0BnbWFpbC5jb20iLCJlbWFpbF92ZXJpZmllZCI6dHJ1ZSwiZnVsbF9uYW1lIjoiS2VuZXNpcyIsImlzcyI6Imh0dHBzOi8vYWNjb3VudHMuZ29vZ2xlLmNvbSIsIm5hbWUiOiJLZW5lc2lzIiwicGhvbmVfdmVyaWZpZWQiOmZhbHNlLCJwaWN0dXJlIjoiaHR0cHM6Ly9saDMuZ29vZ2xldXNlcmNvbnRlbnQuY29tL2EvQUNnOG9jTFBVOXZFamZtV0ZtRUdVVzlHcURYY19ZcDhCYXo0TkVQYVY0dWlHVHljSEplVUVsOD1zOTYtYyIsInByb3ZpZGVyX2lkIjoiMTEwNjI4NDM3OTY4MDk3NDU1ODcxIiwic3ViIjoiMTEwNjI4NDM3OTY4MDk3NDU1ODcxIn0sInJvbGUiOiJhdXRoZW50aWNhdGVkIiwiYWFsIjoiYWFsMSIsImFtciI6W3sibWV0aG9kIjoib2F1dGgiLCJ0aW1lc3RhbXAiOjE3NTQ2MDU4NzZ9XSwic2Vzc2lvbl9pZCI6IjdhMWQ0ZTA3LTk0MDctNDlmZS05Njg3LTA3ZGE4MWZkZWE5MyIsImlzX2Fub255bW91cyI6ZmFsc2V9.EIXX2aNQY-EUz1Wr2C2djehfhNTe0F5tOC3AkDFGObM
+🔍 Bearer token found: eyJhbGciOiJIUzI1NiIs..., validating...
+Error getting current user: 'str' object cannot be interpreted as an integer
+❌ Bearer token invalid
+🔍 Session check - Session ID: None | Flask Session Keys: []
+❌ No session ID found in Flask session
+❌ No user found for path: /api/debts
+🔍 Middleware before_request - Path: /api/budgets | Method: GET | IP: 192.168.29.131
+🔄 Running auth middleware for: /api/budgets
+🔍 _get_current_user called for path: /api/budgets
+🔍 Authorization header: Bearer eyJhbGciOiJIUzI1NiIsImtpZCI6Ino2RTdGNTlTV08xTS9hdngiLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiJodHRwczovL2l3a3hsdWRyaHpodW1uaHpqbHlpLnN1cGFiYXNlLmNvL2F1dGgvdjEiLCJzdWIiOiI1MGYwZTM0ZC0yZWVlLTQyNTAtYWYyYS1lMGRjZjdkNjkzN2UiLCJhdWQiOiJhdXRoZW50aWNhdGVkIiwiZXhwIjoxNzU0NjA5NDc2LCJpYXQiOjE3NTQ2MDU4NzYsImVtYWlsIjoia2VuZXNpc2xhYnNAZ21haWwuY29tIiwicGhvbmUiOiIiLCJhcHBfbWV0YWRhdGEiOnsicHJvdmlkZXIiOiJnb29nbGUiLCJwcm92aWRlcnMiOlsiZ29vZ2xlIl19LCJ1c2VyX21ldGFkYXRhIjp7ImF2YXRhcl91cmwiOiJodHRwczovL2xoMy5nb29nbGV1c2VyY29udGVudC5jb20vYS9BQ2c4b2NMUFU5dkVqZm1XRm1FR1VXOUdxRFhjX1lwOEJhejRORVBhVjR1aUdUeWNISmVVRWw4PXM5Ni1jIiwiZW1haWwiOiJrZW5lc2lzbGFic0BnbWFpbC5jb20iLCJlbWFpbF92ZXJpZmllZCI6dHJ1ZSwiZnVsbF9uYW1lIjoiS2VuZXNpcyIsImlzcyI6Imh0dHBzOi8vYWNjb3VudHMuZ29vZ2xlLmNvbSIsIm5hbWUiOiJLZW5lc2lzIiwicGhvbmVfdmVyaWZpZWQiOmZhbHNlLCJwaWN0dXJlIjoiaHR0cHM6Ly9saDMuZ29vZ2xldXNlcmNvbnRlbnQuY29tL2EvQUNnOG9jTFBVOXZFamZtV0ZtRUdVVzlHcURYY19ZcDhCYXo0TkVQYVY0dWlHVHljSEplVUVsOD1zOTYtYyIsInByb3ZpZGVyX2lkIjoiMTEwNjI4NDM3OTY4MDk3NDU1ODcxIiwic3ViIjoiMTEwNjI4NDM3OTY4MDk3NDU1ODcxIn0sInJvbGUiOiJhdXRoZW50aWNhdGVkIiwiYWFsIjoiYWFsMSIsImFtciI6W3sibWV0aG9kIjoib2F1dGgiLCJ0aW1lc3RhbXAiOjE3NTQ2MDU4NzZ9XSwic2Vzc2lvbl9pZCI6IjdhMWQ0ZTA3LTk0MDctNDlmZS05Njg3LTA3ZGE4MWZkZWE5MyIsImlzX2Fub255bW91cyI6ZmFsc2V9.EIXX2aNQY-EUz1Wr2C2djehfhNTe0F5tOC3AkDFGObM
+🔍 Bearer token found: eyJhbGciOiJIUzI1NiIs..., validating...
+🔍 Middleware before_request - Path: /api/goals | Method: GET | IP: 192.168.29.131
+🔄 Running auth middleware for: /api/goals
+🔍 _get_current_user called for path: /api/goals
+🔍 Authorization header: Bearer eyJhbGciOiJIUzI1NiIsImtpZCI6Ino2RTdGNTlTV08xTS9hdngiLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiJodHRwczovL2l3a3hsdWRyaHpodW1uaHpqbHlpLnN1cGFiYXNlLmNvL2F1dGgvdjEiLCJzdWIiOiI1MGYwZTM0ZC0yZWVlLTQyNTAtYWYyYS1lMGRjZjdkNjkzN2UiLCJhdWQiOiJhdXRoZW50aWNhdGVkIiwiZXhwIjoxNzU0NjA5NDc2LCJpYXQiOjE3NTQ2MDU4NzYsImVtYWlsIjoia2VuZXNpc2xhYnNAZ21haWwuY29tIiwicGhvbmUiOiIiLCJhcHBfbWV0YWRhdGEiOnsicHJvdmlkZXIiOiJnb29nbGUiLCJwcm92aWRlcnMiOlsiZ29vZ2xlIl19LCJ1c2VyX21ldGFkYXRhIjp7ImF2YXRhcl91cmwiOiJodHRwczovL2xoMy5nb29nbGV1c2VyY29udGVudC5jb20vYS9BQ2c4b2NMUFU5dkVqZm1XRm1FR1VXOUdxRFhjX1lwOEJhejRORVBhVjR1aUdUeWNISmVVRWw4PXM5Ni1jIiwiZW1haWwiOiJrZW5lc2lzbGFic0BnbWFpbC5jb20iLCJlbWFpbF92ZXJpZmllZCI6dHJ1ZSwiZnVsbF9uYW1lIjoiS2VuZXNpcyIsImlzcyI6Imh0dHBzOi8vYWNjb3VudHMuZ29vZ2xlLmNvbSIsIm5hbWUiOiJLZW5lc2lzIiwicGhvbmVfdmVyaWZpZWQiOmZhbHNlLCJwaWN0dXJlIjoiaHR0cHM6Ly9saDMuZ29vZ2xldXNlcmNvbnRlbnQuY29tL2EvQUNnOG9jTFBVOXZFamZtV0ZtRUdVVzlHcURYY19ZcDhCYXo0TkVQYVY0dWlHVHljSEplVUVsOD1zOTYtYyIsInByb3ZpZGVyX2lkIjoiMTEwNjI4NDM3OTY4MDk3NDU1ODcxIiwic3ViIjoiMTEwNjI4NDM3OTY4MDk3NDU1ODcxIn0sInJvbGUiOiJhdXRoZW50aWNhdGVkIiwiYWFsIjoiYWFsMSIsImFtciI6W3sibWV0aG9kIjoib2F1dGgiLCJ0aW1lc3RhbXAiOjE3NTQ2MDU4NzZ9XSwic2Vzc2lvbl9pZCI6IjdhMWQ0ZTA3LTk0MDctNDlmZS05Njg3LTA3ZGE4MWZkZWE5MyIsImlzX2Fub255bW91cyI6ZmFsc2V9.EIXX2aNQY-EUz1Wr2C2djehfhNTe0F5tOC3AkDFGObM192.168.29.131 - - [08/Aug/2025 04:15:00] "GET /api/goals?_t=1754606699941 HTTP/1.1" 404 -
+192.168.29.131 - - [08/Aug/2025 04:15:00] "GET /api/budgets?_t=1754606699939 HTTP/1.1" 404 -
+192.168.29.131 - - [08/Aug/2025 04:15:00] "GET /api/transactions?limit=10&_t=1754606699937 HTTP/1.1" 404 -
+192.168.29.131 - - [08/Aug/2025 04:15:00] "GET /api/subscriptions?_t=1754606699945 HTTP/1.1" 404 -
+192.168.29.131 - - [08/Aug/2025 04:15:01] "GET /api/bills?_t=1754606699942 HTTP/1.1" 404 -
+192.168.29.131 - - [08/Aug/2025 04:15:01] "GET /api/analytics/balance?_t=1754606699934 HTTP/1.1" 404 -
+
+🔍 Bearer token found: eyJhbGciOiJIUzI1NiIs..., validating...
+🔍 Middleware before_request - Path: /api/bills | Method: GET | IP: 192.168.29.131
+🔄 Running auth middleware for: /api/bills
+🔍 _get_current_user called for path: /api/bills
+🔍 Authorization header: Bearer eyJhbGciOiJIUzI1NiIsImtpZCI6Ino2RTdGNTlTV08xTS9hdngiLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiJodHRwczovL2l3a3hsdWRyaHpodW1uaHpqbHlpLnN1cGFiYXNlLmNvL2F1dGgvdjEiLCJzdWIiOiI1MGYwZTM0ZC0yZWVlLTQyNTAtYWYyYS1lMGRjZjdkNjkzN2UiLCJhdWQiOiJhdXRoZW50aWNhdGVkIiwiZXhwIjoxNzU0NjA5NDc2LCJpYXQiOjE3NTQ2MDU4NzYsImVtYWlsIjoia2VuZXNpc2xhYnNAZ21haWwuY29tIiwicGhvbmUiOiIiLCJhcHBfbWV0YWRhdGEiOnsicHJvdmlkZXIiOiJnb29nbGUiLCJwcm92aWRlcnMiOlsiZ29vZ2xlIl19LCJ1c2VyX21ldGFkYXRhIjp7ImF2YXRhcl91cmwiOiJodHRwczovL2xoMy5nb29nbGV1c2VyY29udGVudC5jb20vYS9BQ2c4b2NMUFU5dkVqZm1XRm1FR1VXOUdxRFhjX1lwOEJhejRORVBhVjR1aUdUeWNISmVVRWw4PXM5Ni1jIiwiZW1haWwiOiJrZW5lc2lzbGFic0BnbWFpbC5jb20iLCJlbWFpbF92ZXJpZmllZCI6dHJ1ZSwiZnVsbF9uYW1lIjoiS2VuZXNpcyIsImlzcyI6Imh0dHBzOi8vYWNjb3VudHMuZ29vZ2xlLmNvbSIsIm5hbWUiOiJLZW5lc2lzIiwicGhvbmVfdmVyaWZpZWQiOmZhbHNlLCJwaWN0dXJlIjoiaHR0cHM6Ly9saDMuZ29vZ2xldXNlcmNvbnRlbnQuY29tL2EvQUNnOG9jTFBVOXZFamZtV0ZtRUdVVzlHcURYY19ZcDhCYXo0TkVQYVY0dWlHVHljSEplVUVsOD1zOTYtYyIsInByb3ZpZGVyX2lkIjoiMTEwNjI4NDM3OTY4MDk3NDU1ODcxIiwic3ViIjoiMTEwNjI4NDM3OTY4MDk3NDU1ODcxIn0sInJvbGUiOiJhdXRoZW50aWNhdGVkIiwiYWFsIjoiYWFsMSIsImFtciI6W3sibWV0aG9kIjoib2F1dGgiLCJ0aW1lc3RhbXAiOjE3NTQ2MDU4NzZ9XSwic2Vzc2lvbl9pZCI6IjdhMWQ0ZTA3LTk0MDctNDlmZS05Njg3LTA3ZGE4MWZkZWE5MyIsImlzX2Fub255bW91cyI6ZmFsc2V9.EIXX2aNQY-EUz1Wr2C2djehfhNTe0F5tOC3AkDFGObM
+🔍 Bearer token found: eyJhbGciOiJIUzI1NiIs..., validating...
+🔍 Middleware before_request - Path: /api/transactions | Method: GET | IP: 192.168.29.131
+🔄 Running auth middleware for: /api/transactions
+🔍 _get_current_user called for path: /api/transactions
+🔍 Authorization header: Bearer eyJhbGciOiJIUzI1NiIsImtpZCI6Ino2RTdGNTlTV08xTS9hdngiLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiJodHRwczovL2l3a3hsdWRyaHpodW1uaHpqbHlpLnN1cGFiYXNlLmNvL2F1dGgvdjEiLCJzdWIiOiI1MGYwZTM0ZC0yZWVlLTQyNTAtYWYyYS1lMGRjZjdkNjkzN2UiLCJhdWQiOiJhdXRoZW50aWNhdGVkIiwiZXhwIjoxNzU0NjA5NDc2LCJpYXQiOjE3NTQ2MDU4NzYsImVtYWlsIjoia2VuZXNpc2xhYnNAZ21haWwuY29tIiwicGhvbmUiOiIiLCJhcHBfbWV0YWRhdGEiOnsicHJvdmlkZXIiOiJnb29nbGUiLCJwcm92aWRlcnMiOlsiZ29vZ2xlIl19LCJ1c2VyX21ldGFkYXRhIjp7ImF2YXRhcl91cmwiOiJodHRwczovL2xoMy5nb29nbGV1c2VyY29udGVudC5jb20vYS9BQ2c4b2NMUFU5dkVqZm1XRm1FR1VXOUdxRFhjX1lwOEJhejRORVBhVjR1aUdUeWNISmVVRWw4PXM5Ni1jIiwiZW1haWwiOiJrZW5lc2lzbGFic0BnbWFpbC5jb20iLCJlbWFpbF92ZXJpZmllZCI6dHJ1ZSwiZnVsbF9uYW1lIjoiS2VuZXNpcyIsImlzcyI6Imh0dHBzOi8vYWNjb3VudHMuZ29vZ2xlLmNvbSIsIm5hbWUiOiJLZW5lc2lzIiwicGhvbmVfdmVyaWZpZWQiOmZhbHNlLCJwaWN0dXJlIjoiaHR0cHM6Ly9saDMuZ29vZ2xldXNlcmNvbnRlbnQuY29tL2EvQUNnOG9jTFBVOXZFamZtV0ZtRUdVVzlHcURYY19ZcDhCYXo0TkVQYVY0dWlHVHljSEplVUVsOD1zOTYtYyIsInByb3ZpZGVyX2lkIjoiMTEwNjI4NDM3OTY4MDk3NDU1ODcxIiwic3ViIjoiMTEwNjI4NDM3OTY4MDk3NDU1ODcxIn0sInJvbGUiOiJhdXRoZW50aWNhdGVkIiwiYWFsIjoiYWFsMSIsImFtciI6W3sibWV0aG9kIjoib2F1dGgiLCJ0aW1lc3RhbXAiOjE3NTQ2MDU4NzZ9XSwic2Vzc2lvbl9pZCI6IjdhMWQ0ZTA3LTk0MDctNDlmZS05Njg3LTA3ZGE4MWZkZWE5MyIsImlzX2Fub255bW91cyI6ZmFsc2V9.EIXX2aNQY-EUz1Wr2C2djehfhNTe0F5tOC3AkDFGObM
+🔍 Bearer token found: eyJhbGciOiJIUzI1NiIs..., validating...
+🔍 Middleware before_request - Path: /api/analytics/balance | Method: GET | IP: 192.168.29.131
+🔄 Running auth middleware for: /api/analytics/balance
+🔍 _get_current_user called for path: /api/analytics/balance
+🔍 Authorization header: Bearer eyJhbGciOiJIUzI1NiIsImtpZCI6Ino2RTdGNTlTV08xTS9hdngiLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiJodHRwczovL2l3a3hsdWRyaHpodW1uaHpqbHlpLnN1cGFiYXNlLmNvL2F1dGgvdjEiLCJzdWIiOiI1MGYwZTM0ZC0yZWVlLTQyNTAtYWYyYS1lMGRjZjdkNjkzN2UiLCJhdWQiOiJhdXRoZW50aWNhdGVkIiwiZXhwIjoxNzU0NjA5NDc2LCJpYXQiOjE3NTQ2MDU4NzYsImVtYWlsIjoia2VuZXNpc2xhYnNAZ21haWwuY29tIiwicGhvbmUiOiIiLCJhcHBfbWV0YWRhdGEiOnsicHJvdmlkZXIiOiJnb29nbGUiLCJwcm92aWRlcnMiOlsiZ29vZ2xlIl19LCJ1c2VyX21ldGFkYXRhIjp7ImF2YXRhcl91cmwiOiJodHRwczovL2xoMy5nb29nbGV1c2VyY29udGVudC5jb20vYS9BQ2c4b2NMUFU5dkVqZm1XRm1FR1VXOUdxRFhjX1lwOEJhejRORVBhVjR1aUdUeWNISmVVRWw4PXM5Ni1jIiwiZW1haWwiOiJrZW5lc2lzbGFic0BnbWFpbC5jb20iLCJlbWFpbF92ZXJpZmllZCI6dHJ1ZSwiZnVsbF9uYW1lIjoiS2VuZXNpcyIsImlzcyI6Imh0dHBzOi8vYWNjb3VudHMuZ29vZ2xlLmNvbSIsIm5hbWUiOiJLZW5lc2lzIiwicGhvbmVfdmVyaWZpZWQiOmZhbHNlLCJwaWN0dXJlIjoiaHR0cHM6Ly9saDMuZ29vZ2xldXNlcmNvbnRlbnQuY29tL2EvQUNnOG9jTFBVOXZFamZtV0ZtRUdVVzlHcURYY19ZcDhCYXo0TkVQYVY0dWlHVHljSEplVUVsOD1zOTYtYyIsInByb3ZpZGVyX2lkIjoiMTEwNjI4NDM3OTY4MDk3NDU1ODcxIiwic3ViIjoiMTEwNjI4NDM3OTY4MDk3NDU1ODcxIn0sInJvbGUiOiJhdXRoZW50aWNhdGVkIiwiYWFsIjoiYWFsMSIsImFtciI6W3sibWV0aG9kIjoib2F1dGgiLCJ0aW1lc3RhbXAiOjE3NTQ2MDU4NzZ9XSwic2Vzc2lvbl9pZCI6IjdhMWQ0ZTA3LTk0MDctNDlmZS05Njg3LTA3ZGE4MWZkZWE5MyIsImlzX2Fub255bW91cyI6ZmFsc2V9.EIXX2aNQY-EUz1Wr2C2djehfhNTe0F5tOC3AkDFGObM
+🔍 Bearer token found: eyJhbGciOiJIUzI1NiIs..., validating...
+Error getting current user: 'str' object cannot be interpreted as an integer
+❌ Bearer token invalid
+🔍 Session check - Session ID: None | Flask Session Keys: []
+❌ No session ID found in Flask session
+❌ No user found for path: /api/goals
+🔍 Middleware before_request - Path: /api/debts | Method: GET | IP: 192.168.29.131
+🔄 Running auth middleware for: /api/debts
+🔍 _get_current_user called for path: /api/debts
+🔍 Authorization header: Bearer eyJhbGciOiJIUzI1NiIsImtpZCI6Ino2RTdGNTlTV08xTS9hdngiLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiJodHRwczovL2l3a3hsdWRyaHpodW1uaHpqbHlpLnN1cGFiYXNlLmNvL2F1dGgvdjEiLCJzdWIiOiI1MGYwZTM0ZC0yZWVlLTQyNTAtYWYyYS1lMGRjZjdkNjkzN2UiLCJhdWQiOiJhdXRoZW50aWNhdGVkIiwiZXhwIjoxNzU0NjA5NDc2LCJpYXQiOjE3NTQ2MDU4NzYsImVtYWlsIjoia2VuZXNpc2xhYnNAZ21haWwuY29tIiwicGhvbmUiOiIiLCJhcHBfbWV0YWRhdGEiOnsicHJvdmlkZXIiOiJnb29nbGUiLCJwcm92aWRlcnMiOlsiZ29vZ2xlIl19LCJ1c2VyX21ldGFkYXRhIjp7ImF2YXRhcl91cmwiOiJodHRwczovL2xoMy5nb29nbGV1c2VyY29udGVudC5jb20vYS9BQ2c4b2NMUFU5dkVqZm1XRm1FR1VXOUdxRFhjX1lwOEJhejRORVBhVjR1aUdUeWNISmVVRWw4PXM5Ni1jIiwiZW1haWwiOiJrZW5lc2lzbGFic0BnbWFpbC5jb20iLCJlbWFpbF92ZXJpZmllZCI6dHJ1ZSwiZnVsbF9uYW1lIjoiS2VuZXNpcyIsImlzcyI6Imh0dHBzOi8vYWNjb3VudHMuZ29vZ2xlLmNvbSIsIm5hbWUiOiJLZW5lc2lzIiwicGhvbmVfdmVyaWZpZWQiOmZhbHNlLCJwaWN0dXJlIjoiaHR0cHM6Ly9saDMuZ29vZ2xldXNlcmNvbnRlbnQuY29tL2EvQUNnOG9jTFBVOXZFamZtV0ZtRUdVVzlHcURYY19ZcDhCYXo0TkVQYVY0dWlHVHljSEplVUVsOD1zOTYtYyIsInByb3ZpZGVyX2lkIjoiMTEwNjI4NDM3OTY4MDk3NDU1ODcxIiwic3ViIjoiMTEwNjI4NDM3OTY4MDk3NDU1ODcxIn0sInJvbGUiOiJhdXRoZW50aWNhdGVkIiwiYWFsIjoiYWFsMSIsImFtciI6W3sibWV0aG9kIjoib2F1dGgiLCJ0aW1lc3RhbXAiOjE3NTQ2MDU4NzZ9XSwic2Vzc2lvbl9pZCI6IjdhMWQ0ZTA3LTk0MDctNDlmZS05Njg3LTA3ZGE4MWZkZWE5MyIsImlzX2Fub255bW91cyI6ZmFsc2V9.EIXX2aNQY-EUz1Wr2C2djehfhNTe0F5tOC3AkDFGObM
+🔍 Bearer token found: eyJhbGciOiJIUzI1NiIs..., validating...
+Error getting current user: 'str' object cannot be interpreted as an integer
+❌ Bearer token invalid
+🔍 Session check - Session ID: None | Flask Session Keys: []
+❌ No session ID found in Flask session
+❌ No user found for path: /api/budgets
+Error getting current user: 'str' object cannot be interpreted as an integer
+Error getting current user: 'str' object cannot be interpreted as an integer
+❌ Bearer token invalid
+🔍 Session check - Session ID: None | Flask Session Keys: []
+❌ No session ID found in Flask session
+❌ No user found for path: /api/transactions
+❌ Bearer token invalid
+🔍 Session check - Session ID: None | Flask Session Keys: []
+❌ No session ID found in Flask session
+❌ No user found for path: /api/subscriptions
+Error getting current user: 'str' object cannot be interpreted as an integer
+❌ Bearer token invalid
+🔍 Session check - Session ID: None | Flask Session Keys: []
+❌ No session ID found in Flask session
+❌ No user found for path: /api/bills
+Error getting current user: 'str' object cannot be interpreted as an integer
+❌ Bearer token invalid
+🔍 Session check - Session ID: None | Flask Session Keys: []
+❌ No session ID found in Flask session
+❌ No user found for path: /api/analytics/balance
+🔍 Middleware before_request - Path: /api/subscriptions | Method: GET | IP: 192.168.29.131
+🔄 Running auth middleware for: /api/subscriptions
+🔍 _get_current_user called for path: /api/subscriptions
+🔍 Authorization header: Bearer eyJhbGciOiJIUzI1NiIsImtpZCI6Ino2RTdGNTlTV08xTS9hdngiLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiJodHRwczovL2l3a3hsdWRyaHpodW1uaHpqbHlpLnN1cGFiYXNlLmNvL2F1dGgvdjEiLCJzdWIiOiI1MGYwZTM0ZC0yZWVlLTQyNTAtYWYyYS1lMGRjZjdkNjkzN2UiLCJhdWQiOiJhdXRoZW50aWNhdGVkIiwiZXhwIjoxNzU0NjA5NDc2LCJpYXQiOjE3NTQ2MDU4NzYsImVtYWlsIjoia2VuZXNpc2xhYnNAZ21haWwuY29tIiwicGhvbmUiOiIiLCJhcHBfbWV0YWRhdGEiOnsicHJvdmlkZXIiOiJnb29nbGUiLCJwcm92aWRlcnMiOlsiZ29vZ2xlIl19LCJ1c2VyX21ldGFkYXRhIjp7ImF2YXRhcl91cmwiOiJodHRwczovL2xoMy5nb29nbGV1c2VyY29udGVudC5jb20vYS9BQ2c4b2NMUFU5dkVqZm1XRm1FR1VXOUdxRFhjX1lwOEJhejRORVBhVjR1aUdUeWNISmVVRWw4PXM5Ni1jIiwiZW1haWwiOiJrZW5lc2lzbGFic0BnbWFpbC5jb20iLCJlbWFpbF92ZXJpZmllZCI6dHJ1ZSwiZnVsbF9uYW1lIjoiS2VuZXNpcyIsImlzcyI6Imh0dHBzOi8vYWNjb3VudHMuZ29vZ2xlLmNvbSIsIm5hbWUiOiJLZW5lc2lzIiwicGhvbmVfdmVyaWZpZWQiOmZhbHNlLCJwaWN0dXJlIjoiaHR0cHM6Ly9saDMuZ29vZ2xldXNlcmNvbnRlbnQuY29tL2EvQUNnOG9jTFBVOXZFamZtV0ZtRUdVVzlHcURYY19ZcDhCYXo0TkVQYVY0dWlHVHljSEplVUVsOD1zOTYtYyIsInByb3ZpZGVyX2lkIjoiMTEwNjI4NDM3OTY4MDk3NDU1ODcxIiwic3ViIjoiMTEwNjI4NDM3OTY4MDk3NDU1ODcxIn0sInJvbGUiOiJhdXRoZW50aWNhdGVkIiwiYWFsIjoiYWFsMSIsImFtciI6W3sibWV0aG9kIjoib2F1dGgiLCJ0aW1lc3RhbXAiOjE3NTQ2MDU4NzZ9XSwic2Vzc2lvbl9pZCI6IjdhMWQ0ZTA3LTk0MDctNDlmZS05Njg3LTA3ZGE4MWZkZWE5MyIsImlzX2Fub255bW91cyI6ZmFsc2V9.EIXX2aNQY-EUz1Wr2C2djehfhNTe0F5tOC3AkDFGObM192.168.29.131 - - [08/Aug/2025 04:15:01] "GET /api/debts?_t=1754606699944 HTTP/1.1" 404 -
+192.168.29.131 - - [08/Aug/2025 04:15:01] "GET /api/subscriptions?_t=1754606699945 HTTP/1.1" 404 -
+192.168.29.189 - - [08/Aug/2025 04:15:06] "GET /api/analytics/balance HTTP/1.1" 404 -
+192.168.29.131 - - [08/Aug/2025 04:15:40] "GET / HTTP/1.1" 302 -
+192.168.29.131 - - [08/Aug/2025 04:15:40] "GET /auth/login HTTP/1.1" 200 -
+192.168.29.131 - - [08/Aug/2025 04:15:55] "POST /api/auth/create-oauth-user HTTP/1.1" 404 -
+
+🔍 Bearer token found: eyJhbGciOiJIUzI1NiIs..., validating...
+Error getting current user: 'str' object cannot be interpreted as an integer
+❌ Bearer token invalid
+🔍 Session check - Session ID: None | Flask Session Keys: []
+❌ No session ID found in Flask session
+❌ No user found for path: /api/debts
+Error getting current user: 'str' object cannot be interpreted as an integer
+❌ Bearer token invalid
+🔍 Session check - Session ID: None | Flask Session Keys: []
+❌ No session ID found in Flask session
+❌ No user found for path: /api/subscriptions
+🔍 Middleware before_request - Path: /api/analytics/balance | Method: GET | IP: 192.168.29.189
+🔄 Running auth middleware for: /api/analytics/balance
+🔍 _get_current_user called for path: /api/analytics/balance
+🔍 Authorization header: Bearer test
+🔍 Bearer token found: test..., validating...
+Error getting current user: invalid JWT: unable to parse or verify signature, token is malformed: token contains an invalid number of segments
+❌ Bearer token invalid
+🔍 Session check - Session ID: None | Flask Session Keys: []
+❌ No session ID found in Flask session
+❌ No user found for path: /api/analytics/balance
+🔍 Middleware before_request - Path: / | Method: GET | IP: 192.168.29.131
+🔄 Running auth middleware for: /
+🔍 _get_current_user called for path: /
+🔍 Authorization header: None
+🔍 Session check - Session ID: None | Flask Session Keys: []
+❌ No session ID found in Flask session
+❌ No user found for path: /
+🔍 Middleware before_request - Path: /auth/login | Method: GET | IP: 192.168.29.131
+⏭️ Skipping auth middleware for: /auth/login
+🔍 Middleware before_request - Path: /api/auth/create-oauth-user | Method: POST | IP: 192.168.29.131
+🔄 Running auth middleware for: /api/auth/create-oauth-user
+🔍 _get_current_user called for path: /api/auth/create-oauth-user
+🔍 Authorization header: Bearer eyJhbGciOiJIUzI1NiIsImtpZCI6Ino2RTdGNTlTV08xTS9hdngiLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiJodHRwczovL2l3a3hsdWRyaHpodW1uaHpqbHlpLnN1cGFiYXNlLmNvL2F1dGgvdjEiLCJzdWIiOiI1MGYwZTM0ZC0yZWVlLTQyNTAtYWYyYS1lMGRjZjdkNjkzN2UiLCJhdWQiOiJhdXRoZW50aWNhdGVkIiwiZXhwIjoxNzU0NjA5NDc2LCJpYXQiOjE3NTQ2MDU4NzYsImVtYWlsIjoia2VuZXNpc2xhYnNAZ21haWwuY29tIiwicGhvbmUiOiIiLCJhcHBfbWV0YWRhdGEiOnsicHJvdmlkZXIiOiJnb29nbGUiLCJwcm92aWRlcnMiOlsiZ29vZ2xlIl19LCJ1c2VyX21ldGFkYXRhIjp7ImF2YXRhcl91cmwiOiJodHRwczovL2xoMy5nb29nbGV1c2VyY29udGVudC5jb20vYS9BQ2c4b2NMUFU5dkVqZm1XRm1FR1VXOUdxRFhjX1lwOEJhejRORVBhVjR1aUdUeWNISmVVRWw4PXM5Ni1jIiwiZW1haWwiOiJrZW5lc2lzbGFic0BnbWFpbC5jb20iLCJlbWFpbF92ZXJpZmllZCI6dHJ1ZSwiZnVsbF9uYW1lIjoiS2VuZXNpcyIsImlzcyI6Imh0dHBzOi8vYWNjb3VudHMuZ29vZ2xlLmNvbSIsIm5hbWUiOiJLZW5lc2lzIiwicGhvbmVfdmVyaWZpZWQiOmZhbHNlLCJwaWN0dXJlIjoiaHR0cHM6Ly9saDMuZ29vZ2xldXNlcmNvbnRlbnQuY29tL2EvQUNnOG9jTFBVOXZFamZtV0ZtRUdVVzlHcURYY19ZcDhCYXo0TkVQYVY0dWlHVHljSEplVUVsOD1zOTYtYyIsInByb3ZpZGVyX2lkIjoiMTEwNjI4NDM3OTY4MDk3NDU1ODcxIiwic3ViIjoiMTEwNjI4NDM3OTY4MDk3NDU1ODcxIn0sInJvbGUiOiJhdXRoZW50aWNhdGVkIiwiYWFsIjoiYWFsMSIsImFtciI6W3sibWV0aG9kIjoib2F1dGgiLCJ0aW1lc3RhbXAiOjE3NTQ2MDU4NzZ9XSwic2Vzc2lvbl9pZCI6IjdhMWQ0ZTA3LTk0MDctNDlmZS05Njg3LTA3ZGE4MWZkZWE5MyIsImlzX2Fub255bW91cyI6ZmFsc2V9.EIXX2aNQY-EUz1Wr2C2djehfhNTe0F5tOC3AkDFGObM
+🔍 Bearer token found: eyJhbGciOiJIUzI1NiIs..., validating...
+Error getting current user: 'str' object cannot be interpreted as an integer
+❌ Bearer token invalid
+🔍 Session check - Session ID: None | Flask Session Keys: []
+❌ No session ID found in Flask session
+❌ No user found for path: /api/auth/create-oauth-user
+🔍 Middleware before_request - Path: /api/analytics/balance | Method: GET | IP: 192.168.29.131
+🔄 Running auth middleware for: /api/analytics/balance
+🔍 _get_current_user called for path: /api/analytics/balance
+🔍 Authorization header: Bearer eyJhbGciOiJIUzI1NiIsImtpZCI6Ino2RTdGNTlTV08xTS9hdngiLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiJodHRwczovL2l3a3hsdWRyaHpodW1uaHpqbHlpLnN1cGFiYXNlLmNvL2F1dGgvdjEiLCJzdWIiOiI1MGYwZTM0ZC0yZWVlLTQyNTAtYWYyYS1lMGRjZjdkNjkzN2UiLCJhdWQiOiJhdXRoZW50aWNhdGVkIiwiZXhwIjoxNzU0NjEwMzU0LCJpYXQiOjE3NTQ2MDY3NTQsImVtYWlsIjoia2VuZXNpc2xhYnNAZ21haWwuY29tIiwicGhvbmUiOiIiLCJhcHBfbWV0YWRhdGEiOnsicHJvdmlkZXIiOiJnb29nbGUiLCJwcm92aWRlcnMiOlsiZ29vZ2xlIl19LCJ1c2VyX21ldGFkYXRhIjp7ImF2YXRhcl91cmwiOiJodHRwczovL2xoMy5nb29nbGV1c2VyY29udGVudC5jb20vYS9BQ2c4b2NMUFU5dkVqZm1XRm1FR1VXOUdxRFhjX1lwOEJhejRORVBhVjR1aUdUeWNISmVVRWw4PXM5Ni1jIiwiZW1haWwiOiJrZW5lc2lzbGFic0BnbWFpbC5jb20iLCJlbWFpbF92ZXJpZmllZCI6dHJ1ZSwiZnVsbF9uYW1lIjoiS2VuZXNpcyIsImlzcyI6Imh0dHBzOi8vYWNjb3VudHMuZ29vZ2xlLmNvbSIsIm5hbWUiOiJLZW5lc2lzIiwicGhvbmVfdmVyaWZpZWQiOmZhbHNlLCJwaWN0dXJlIjoiaHR0cHM6Ly9saDMuZ29vZ2xldXNlcmNvbnRlbnQuY29tL2EvQUNnOG9jTFBVOXZFamZtV0ZtRUdVVzlHcURYY19ZcDhCYXo0TkVQYVY0dWlHVHljSEplVUVsOD1zOTYtYyIsInByb3ZpZGVyX2lkIjoiMTEwNjI4NDM3OTY4MDk3NDU1ODcxIiwic3ViIjoiMTEwNjI4NDM3OTY4MDk3NDU1ODcxIn0sInJvbGUiOiJhdXRoZW50aWNhdGVkIiwiYWFsIjoiYWFsMSIsImFtciI6W3sibWV0aG9kIjoib2F1dGgiLCJ0aW1lc3RhbXAiOjE3NTQ2MDY3NTR9XSwic2Vzc2lvbl9pZCI6ImY2NjU3ZTk4LWYyNGUtNDBiYy1iZjQwLWFmYzQ4NTIwZTI5MSIsImlzX2Fub255bW91cyI6ZmFsc2V9.OWQWP9XXKSVjP38hMlJiXcJp3QMYP4fCD40PzB41yss
+🔍 Bearer token found: eyJhbGciOiJIUzI1NiIs..., validating...
+🔍 Middleware before_request - Path: /api/transactions | Method: GET | IP: 192.168.29.131
+🔄 Running auth middleware for: /api/transactions
+🔍 _get_current_user called for path: /api/transactions
+🔍 Authorization header: Bearer eyJhbGciOiJIUzI1NiIsImtpZCI6Ino2RTdGNTlTV08xTS9hdngiLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiJodHRwczovL2l3a3hsdWRyaHpodW1uaHpqbHlpLnN1cGFiYXNlLmNvL2F1dGgvdjEiLCJzdWIiOiI1MGYwZTM0ZC0yZWVlLTQyNTAtYWYyYS1lMGRjZjdkNjkzN2UiLCJhdWQiOiJhdXRoZW50aWNhdGVkIiwiZXhwIjoxNzU0NjEwMzU0LCJpYXQiOjE3NTQ2MDY3NTQsImVtYWlsIjoia2VuZXNpc2xhYnNAZ21haWwuY29tIiwicGhvbmUiOiIiLCJhcHBfbWV0YWRhdGEiOnsicHJvdmlkZXIiOiJnb29nbGUiLCJwcm92aWRlcnMiOlsiZ29vZ2xlIl19LCJ1c2VyX21ldGFkYXRhIjp7ImF2YXRhcl91cmwiOiJodHRwczovL2xoMy5nb29nbGV1c2VyY29udGVudC5jb20vYS9BQ2c4b2NMUFU5dkVqZm1XRm1FR1VXOUdxRFhjX1lwOEJhejRORVBhVjR1aUdUeWNISmVVRWw4PXM5Ni1jIiwiZW1haWwiOiJrZW5lc2lzbGFic0BnbWFpbC5jb20iLCJlbWFpbF92ZXJpZmllZCI6dHJ1ZSwiZnVsbF9uYW1lIjoiS2VuZXNpcyIsImlzcyI6Imh0dHBzOi8vYWNjb3VudHMuZ29vZ2xlLmNvbSIsIm5hbWUiOiJLZW5lc2lzIiwicGhvbmVfdmVyaWZpZWQiOmZhbHNlLCJwaWN0dXJlIjoiaHR0cHM6Ly9saDMuZ29vZ2xldXNlcmNvbnRlbnQuY29tL2EvQUNnOG9jTFBVOXZFamZtV0ZtRUdVVzlHcURYY19ZcDhCYXo0TkVQYVY0dWlHVHljSEplVUVsOD1zOTYtYyIsInByb3ZpZGVyX2lkIjoiMTEwNjI4NDM3OTY4MDk3NDU1ODcxIiwic3ViIjoiMTEwNjI4NDM3OTY4MDk3NDU1ODcxIn0sInJvbGUiOiJhdXRoZW50aWNhdGVkIiwiYWFsIjoiYWFsMSIsImFtciI6W3sibWV0aG9kIjoib2F1dGgiLCJ0aW1lc3RhbXAiOjE3NTQ2MDY3NTR9XSwic2Vzc2lvbl9pZCI6ImY2NjU3ZTk4LWYyNGUtNDBiYy1iZjQwLWFmYzQ4NTIwZTI5MSIsImlzX2Fub255bW91cyI6ZmFsc2V9.OWQWP9XXKSVjP38hMlJiXcJp3QMYP4fCD40PzB41yss
+🔍 Bearer token found: eyJhbGciOiJIUzI1NiIs..., validating...
+🔍 Middleware before_request - Path: /api/budgets | Method: GET | IP: 192.168.29.131
+🔄 Running auth middleware for: /api/budgets
+🔍 _get_current_user called for path: /api/budgets
+🔍 Authorization header: Bearer eyJhbGciOiJIUzI1NiIsImtpZCI6Ino2RTdGNTlTV08xTS9hdngiLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiJodHRwczovL2l3a3hsdWRyaHpodW1uaHpqbHlpLnN1cGFiYXNlLmNvL2F1dGgvdjEiLCJzdWIiOiI1MGYwZTM0ZC0yZWVlLTQyNTAtYWYyYS1lMGRjZjdkNjkzN2UiLCJhdWQiOiJhdXRoZW50aWNhdGVkIiwiZXhwIjoxNzU0NjEwMzU0LCJpYXQiOjE3NTQ2MDY3NTQsImVtYWlsIjoia2VuZXNpc2xhYnNAZ21haWwuY29tIiwicGhvbmUiOiIiLCJhcHBfbWV0YWRhdGEiOnsicHJvdmlkZXIiOiJnb29nbGUiLCJwcm92aWRlcnMiOlsiZ29vZ2xlIl19LCJ1c2VyX21ldGFkYXRhIjp7ImF2YXRhcl91cmwiOiJodHRwczovL2xoMy5nb29nbGV1c2VyY29udGVudC5jb20vYS9BQ2c4b2NMUFU5dkVqZm1XRm1FR1VXOUdxRFhjX1lwOEJhejRORVBhVjR1aUdUeWNISmVVRWw4PXM5Ni1jIiwiZW1haWwiOiJrZW5lc2lzbGFic0BnbWFpbC5jb20iLCJlbWFpbF92ZXJpZmllZCI6dHJ1ZSwiZnVsbF9uYW1lIjoiS2VuZXNpcyIsImlzcyI6Imh0dHBzOi8vYWNjb3VudHMuZ29vZ2xlLmNvbSIsIm5hbWUiOiJLZW5lc2lzIiwicGhvbmVfdmVyaWZpZWQiOmZhbHNlLCJwaWN0dXJlIjoiaHR0cHM6Ly9saDMuZ29vZ2xldXNlcmNvbnRlbnQuY29tL2EvQUNnOG9jTFBVOXZFamZtV0ZtRUdVVzlHcURYY19ZcDhCYXo0TkVQYVY0dWlHVHljSEplVUVsOD1zOTYtYyIsInByb3ZpZGVyX2lkIjoiMTEwNjI4NDM3OTY4MDk3NDU1ODcxIiwic3ViIjoiMTEwNjI4NDM3OTY4MDk3NDU1ODcxIn0sInJvbGUiOiJhdXRoZW50aWNhdGVkIiwiYWFsIjoiYWFsMSIsImFtciI6W3sibWV0aG9kIjoib2F1dGgiLCJ0aW1lc3RhbXAiOjE3NTQ2MDY3NTR9XSwic2Vzc2lvbl9pZCI6ImY2NjU3ZTk4LWYyNGUtNDBiYy1iZjQwLWFmYzQ4NTIwZTI5MSIsImlzX2Fub255bW91cyI6ZmFsc2V9.OWQWP9XXKSVjP38hMlJiXcJp3QMYP4fCD40PzB41yss192.168.29.131 - - [08/Aug/2025 04:15:56] "GET /api/transactions?limit=10&_t=1754606756774 HTTP/1.1" 404 -
+192.168.29.131 - - [08/Aug/2025 04:15:56] "GET /api/debts?_t=1754606756780 HTTP/1.1" 404 -
+192.168.29.131 - - [08/Aug/2025 04:15:56] "GET /api/goals?_t=1754606756777 HTTP/1.1" 404 -
+192.168.29.131 - - [08/Aug/2025 04:15:56] "GET /api/budgets?_t=1754606756775 HTTP/1.1" 404 -
+192.168.29.131 - - [08/Aug/2025 04:15:56] "GET /api/bills?_t=1754606756779 HTTP/1.1" 404 -
+192.168.29.131 - - [08/Aug/2025 04:15:56] "GET /api/analytics/balance?_t=1754606756772 HTTP/1.1" 404 -
+
+🔍 Bearer token found: eyJhbGciOiJIUzI1NiIs..., validating...
+🔍 Middleware before_request - Path: /api/goals | Method: GET | IP: 192.168.29.131
+🔄 Running auth middleware for: /api/goals
+🔍 _get_current_user called for path: /api/goals
+🔍 Authorization header: Bearer eyJhbGciOiJIUzI1NiIsImtpZCI6Ino2RTdGNTlTV08xTS9hdngiLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiJodHRwczovL2l3a3hsdWRyaHpodW1uaHpqbHlpLnN1cGFiYXNlLmNvL2F1dGgvdjEiLCJzdWIiOiI1MGYwZTM0ZC0yZWVlLTQyNTAtYWYyYS1lMGRjZjdkNjkzN2UiLCJhdWQiOiJhdXRoZW50aWNhdGVkIiwiZXhwIjoxNzU0NjEwMzU0LCJpYXQiOjE3NTQ2MDY3NTQsImVtYWlsIjoia2VuZXNpc2xhYnNAZ21haWwuY29tIiwicGhvbmUiOiIiLCJhcHBfbWV0YWRhdGEiOnsicHJvdmlkZXIiOiJnb29nbGUiLCJwcm92aWRlcnMiOlsiZ29vZ2xlIl19LCJ1c2VyX21ldGFkYXRhIjp7ImF2YXRhcl91cmwiOiJodHRwczovL2xoMy5nb29nbGV1c2VyY29udGVudC5jb20vYS9BQ2c4b2NMUFU5dkVqZm1XRm1FR1VXOUdxRFhjX1lwOEJhejRORVBhVjR1aUdUeWNISmVVRWw4PXM5Ni1jIiwiZW1haWwiOiJrZW5lc2lzbGFic0BnbWFpbC5jb20iLCJlbWFpbF92ZXJpZmllZCI6dHJ1ZSwiZnVsbF9uYW1lIjoiS2VuZXNpcyIsImlzcyI6Imh0dHBzOi8vYWNjb3VudHMuZ29vZ2xlLmNvbSIsIm5hbWUiOiJLZW5lc2lzIiwicGhvbmVfdmVyaWZpZWQiOmZhbHNlLCJwaWN0dXJlIjoiaHR0cHM6Ly9saDMuZ29vZ2xldXNlcmNvbnRlbnQuY29tL2EvQUNnOG9jTFBVOXZFamZtV0ZtRUdVVzlHcURYY19ZcDhCYXo0TkVQYVY0dWlHVHljSEplVUVsOD1zOTYtYyIsInByb3ZpZGVyX2lkIjoiMTEwNjI4NDM3OTY4MDk3NDU1ODcxIiwic3ViIjoiMTEwNjI4NDM3OTY4MDk3NDU1ODcxIn0sInJvbGUiOiJhdXRoZW50aWNhdGVkIiwiYWFsIjoiYWFsMSIsImFtciI6W3sibWV0aG9kIjoib2F1dGgiLCJ0aW1lc3RhbXAiOjE3NTQ2MDY3NTR9XSwic2Vzc2lvbl9pZCI6ImY2NjU3ZTk4LWYyNGUtNDBiYy1iZjQwLWFmYzQ4NTIwZTI5MSIsImlzX2Fub255bW91cyI6ZmFsc2V9.OWQWP9XXKSVjP38hMlJiXcJp3QMYP4fCD40PzB41yss
+🔍 Bearer token found: eyJhbGciOiJIUzI1NiIs..., validating...
+🔍 Middleware before_request - Path: /api/bills | Method: GET | IP: 192.168.29.131
+🔄 Running auth middleware for: /api/bills
+🔍 _get_current_user called for path: /api/bills
+🔍 Authorization header: Bearer eyJhbGciOiJIUzI1NiIsImtpZCI6Ino2RTdGNTlTV08xTS9hdngiLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiJodHRwczovL2l3a3hsdWRyaHpodW1uaHpqbHlpLnN1cGFiYXNlLmNvL2F1dGgvdjEiLCJzdWIiOiI1MGYwZTM0ZC0yZWVlLTQyNTAtYWYyYS1lMGRjZjdkNjkzN2UiLCJhdWQiOiJhdXRoZW50aWNhdGVkIiwiZXhwIjoxNzU0NjEwMzU0LCJpYXQiOjE3NTQ2MDY3NTQsImVtYWlsIjoia2VuZXNpc2xhYnNAZ21haWwuY29tIiwicGhvbmUiOiIiLCJhcHBfbWV0YWRhdGEiOnsicHJvdmlkZXIiOiJnb29nbGUiLCJwcm92aWRlcnMiOlsiZ29vZ2xlIl19LCJ1c2VyX21ldGFkYXRhIjp7ImF2YXRhcl91cmwiOiJodHRwczovL2xoMy5nb29nbGV1c2VyY29udGVudC5jb20vYS9BQ2c4b2NMUFU5dkVqZm1XRm1FR1VXOUdxRFhjX1lwOEJhejRORVBhVjR1aUdUeWNISmVVRWw4PXM5Ni1jIiwiZW1haWwiOiJrZW5lc2lzbGFic0BnbWFpbC5jb20iLCJlbWFpbF92ZXJpZmllZCI6dHJ1ZSwiZnVsbF9uYW1lIjoiS2VuZXNpcyIsImlzcyI6Imh0dHBzOi8vYWNjb3VudHMuZ29vZ2xlLmNvbSIsIm5hbWUiOiJLZW5lc2lzIiwicGhvbmVfdmVyaWZpZWQiOmZhbHNlLCJwaWN0dXJlIjoiaHR0cHM6Ly9saDMuZ29vZ2xldXNlcmNvbnRlbnQuY29tL2EvQUNnOG9jTFBVOXZFamZtV0ZtRUdVVzlHcURYY19ZcDhCYXo0TkVQYVY0dWlHVHljSEplVUVsOD1zOTYtYyIsInByb3ZpZGVyX2lkIjoiMTEwNjI4NDM3OTY4MDk3NDU1ODcxIiwic3ViIjoiMTEwNjI4NDM3OTY4MDk3NDU1ODcxIn0sInJvbGUiOiJhdXRoZW50aWNhdGVkIiwiYWFsIjoiYWFsMSIsImFtciI6W3sibWV0aG9kIjoib2F1dGgiLCJ0aW1lc3RhbXAiOjE3NTQ2MDY3NTR9XSwic2Vzc2lvbl9pZCI6ImY2NjU3ZTk4LWYyNGUtNDBiYy1iZjQwLWFmYzQ4NTIwZTI5MSIsImlzX2Fub255bW91cyI6ZmFsc2V9.OWQWP9XXKSVjP38hMlJiXcJp3QMYP4fCD40PzB41yss
+🔍 Bearer token found: eyJhbGciOiJIUzI1NiIs..., validating...
+🔍 Middleware before_request - Path: /api/debts | Method: GET | IP: 192.168.29.131
+🔄 Running auth middleware for: /api/debts
+🔍 _get_current_user called for path: /api/debts
+🔍 Authorization header: Bearer eyJhbGciOiJIUzI1NiIsImtpZCI6Ino2RTdGNTlTV08xTS9hdngiLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiJodHRwczovL2l3a3hsdWRyaHpodW1uaHpqbHlpLnN1cGFiYXNlLmNvL2F1dGgvdjEiLCJzdWIiOiI1MGYwZTM0ZC0yZWVlLTQyNTAtYWYyYS1lMGRjZjdkNjkzN2UiLCJhdWQiOiJhdXRoZW50aWNhdGVkIiwiZXhwIjoxNzU0NjEwMzU0LCJpYXQiOjE3NTQ2MDY3NTQsImVtYWlsIjoia2VuZXNpc2xhYnNAZ21haWwuY29tIiwicGhvbmUiOiIiLCJhcHBfbWV0YWRhdGEiOnsicHJvdmlkZXIiOiJnb29nbGUiLCJwcm92aWRlcnMiOlsiZ29vZ2xlIl19LCJ1c2VyX21ldGFkYXRhIjp7ImF2YXRhcl91cmwiOiJodHRwczovL2xoMy5nb29nbGV1c2VyY29udGVudC5jb20vYS9BQ2c4b2NMUFU5dkVqZm1XRm1FR1VXOUdxRFhjX1lwOEJhejRORVBhVjR1aUdUeWNISmVVRWw4PXM5Ni1jIiwiZW1haWwiOiJrZW5lc2lzbGFic0BnbWFpbC5jb20iLCJlbWFpbF92ZXJpZmllZCI6dHJ1ZSwiZnVsbF9uYW1lIjoiS2VuZXNpcyIsImlzcyI6Imh0dHBzOi8vYWNjb3VudHMuZ29vZ2xlLmNvbSIsIm5hbWUiOiJLZW5lc2lzIiwicGhvbmVfdmVyaWZpZWQiOmZhbHNlLCJwaWN0dXJlIjoiaHR0cHM6Ly9saDMuZ29vZ2xldXNlcmNvbnRlbnQuY29tL2EvQUNnOG9jTFBVOXZFamZtV0ZtRUdVVzlHcURYY19ZcDhCYXo0TkVQYVY0dWlHVHljSEplVUVsOD1zOTYtYyIsInByb3ZpZGVyX2lkIjoiMTEwNjI4NDM3OTY4MDk3NDU1ODcxIiwic3ViIjoiMTEwNjI4NDM3OTY4MDk3NDU1ODcxIn0sInJvbGUiOiJhdXRoZW50aWNhdGVkIiwiYWFsIjoiYWFsMSIsImFtciI6W3sibWV0aG9kIjoib2F1dGgiLCJ0aW1lc3RhbXAiOjE3NTQ2MDY3NTR9XSwic2Vzc2lvbl9pZCI6ImY2NjU3ZTk4LWYyNGUtNDBiYy1iZjQwLWFmYzQ4NTIwZTI5MSIsImlzX2Fub255bW91cyI6ZmFsc2V9.OWQWP9XXKSVjP38hMlJiXcJp3QMYP4fCD40PzB41yss
+🔍 Bearer token found: eyJhbGciOiJIUzI1NiIs..., validating...
+Error getting current user: 'str' object cannot be interpreted as an integer
+❌ Bearer token invalid
+🔍 Session check - Session ID: None | Flask Session Keys: []
+❌ No session ID found in Flask session
+❌ No user found for path: /api/transactions
+🔍 Middleware before_request - Path: /api/subscriptions | Method: GET | IP: 192.168.29.131
+🔄 Running auth middleware for: /api/subscriptions
+🔍 _get_current_user called for path: /api/subscriptions
+🔍 Authorization header: Bearer eyJhbGciOiJIUzI1NiIsImtpZCI6Ino2RTdGNTlTV08xTS9hdngiLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiJodHRwczovL2l3a3hsdWRyaHpodW1uaHpqbHlpLnN1cGFiYXNlLmNvL2F1dGgvdjEiLCJzdWIiOiI1MGYwZTM0ZC0yZWVlLTQyNTAtYWYyYS1lMGRjZjdkNjkzN2UiLCJhdWQiOiJhdXRoZW50aWNhdGVkIiwiZXhwIjoxNzU0NjEwMzU0LCJpYXQiOjE3NTQ2MDY3NTQsImVtYWlsIjoia2VuZXNpc2xhYnNAZ21haWwuY29tIiwicGhvbmUiOiIiLCJhcHBfbWV0YWRhdGEiOnsicHJvdmlkZXIiOiJnb29nbGUiLCJwcm92aWRlcnMiOlsiZ29vZ2xlIl19LCJ1c2VyX21ldGFkYXRhIjp7ImF2YXRhcl91cmwiOiJodHRwczovL2xoMy5nb29nbGV1c2VyY29udGVudC5jb20vYS9BQ2c4b2NMUFU5dkVqZm1XRm1FR1VXOUdxRFhjX1lwOEJhejRORVBhVjR1aUdUeWNISmVVRWw4PXM5Ni1jIiwiZW1haWwiOiJrZW5lc2lzbGFic0BnbWFpbC5jb20iLCJlbWFpbF92ZXJpZmllZCI6dHJ1ZSwiZnVsbF9uYW1lIjoiS2VuZXNpcyIsImlzcyI6Imh0dHBzOi8vYWNjb3VudHMuZ29vZ2xlLmNvbSIsIm5hbWUiOiJLZW5lc2lzIiwicGhvbmVfdmVyaWZpZWQiOmZhbHNlLCJwaWN0dXJlIjoiaHR0cHM6Ly9saDMuZ29vZ2xldXNlcmNvbnRlbnQuY29tL2EvQUNnOG9jTFBVOXZFamZtV0ZtRUdVVzlHcURYY19ZcDhCYXo0TkVQYVY0dWlHVHljSEplVUVsOD1zOTYtYyIsInByb3ZpZGVyX2lkIjoiMTEwNjI4NDM3OTY4MDk3NDU1ODcxIiwic3ViIjoiMTEwNjI4NDM3OTY4MDk3NDU1ODcxIn0sInJvbGUiOiJhdXRoZW50aWNhdGVkIiwiYWFsIjoiYWFsMSIsImFtciI6W3sibWV0aG9kIjoib2F1dGgiLCJ0aW1lc3RhbXAiOjE3NTQ2MDY3NTR9XSwic2Vzc2lvbl9pZCI6ImY2NjU3ZTk4LWYyNGUtNDBiYy1iZjQwLWFmYzQ4NTIwZTI5MSIsImlzX2Fub255bW91cyI6ZmFsc2V9.OWQWP9XXKSVjP38hMlJiXcJp3QMYP4fCD40PzB41yss
+🔍 Bearer token found: eyJhbGciOiJIUzI1NiIs..., validating...
+Error getting current user: 'str' object cannot be interpreted as an integer
+Error getting current user: 'str' object cannot be interpreted as an integer
+Error getting current user: 'str' object cannot be interpreted as an integer
+Error getting current user: 'str' object cannot be interpreted as an integer
+❌ Bearer token invalid
+🔍 Session check - Session ID: None | Flask Session Keys: []
+❌ No session ID found in Flask session
+❌ No user found for path: /api/debts
+❌ Bearer token invalid
+🔍 Session check - Session ID: None | Flask Session Keys: []
+❌ No session ID found in Flask session
+❌ No user found for path: /api/goals
+❌ Bearer token invalid
+🔍 Session check - Session ID: None | Flask Session Keys: []
+❌ No session ID found in Flask session
+❌ No user found for path: /api/budgets
+Error getting current user: 'str' object cannot be interpreted as an integer
+❌ Bearer token invalid
+🔍 Session check - Session ID: None | Flask Session Keys: []
+❌ No session ID found in Flask session
+❌ No user found for path: /api/bills
+❌ Bearer token invalid
+🔍 Session check - Session ID: None | Flask Session Keys: []
+❌ No session ID found in Flask session
+❌ No user found for path: /api/analytics/balance
+🔍 Middleware before_request - Path: /api/analytics/balance | Method: GET | IP: 192.168.29.131
+🔄 Running auth middleware for: /api/analytics/balance
+🔍 _get_current_user called for path: /api/analytics/balance
+🔍 Authorization header: Bearer eyJhbGciOiJIUzI1NiIsImtpZCI6Ino2RTdGNTlTV08xTS9hdngiLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiJodHRwczovL2l3a3hsdWRyaHpodW1uaHpqbHlpLnN1cGFiYXNlLmNvL2F1dGgvdjEiLCJzdWIiOiI1MGYwZTM0ZC0yZWVlLTQyNTAtYWYyYS1lMGRjZjdkNjkzN2UiLCJhdWQiOiJhdXRoZW50aWNhdGVkIiwiZXhwIjoxNzU0NjEwMzU0LCJpYXQiOjE3NTQ2MDY3NTQsImVtYWlsIjoia2VuZXNpc2xhYnNAZ21haWwuY29tIiwicGhvbmUiOiIiLCJhcHBfbWV0YWRhdGEiOnsicHJvdmlkZXIiOiJnb29nbGUiLCJwcm92aWRlcnMiOlsiZ29vZ2xlIl19LCJ1c2VyX21ldGFkYXRhIjp7ImF2YXRhcl91cmwiOiJodHRwczovL2xoMy5nb29nbGV1c2VyY29udGVudC5jb20vYS9BQ2c4b2NMUFU5dkVqZm1XRm1FR1VXOUdxRFhjX1lwOEJhejRORVBhVjR1aUdUeWNISmVVRWw4PXM5Ni1jIiwiZW1haWwiOiJrZW5lc2lzbGFic0BnbWFpbC5jb20iLCJlbWFpbF92ZXJpZmllZCI6dHJ1ZSwiZnVsbF9uYW1lIjoiS2VuZXNpcyIsImlzcyI6Imh0dHBzOi8vYWNjb3VudHMuZ29vZ2xlLmNvbSIsIm5hbWUiOiJLZW5lc2lzIiwicGhvbmVfdmVyaWZpZWQiOmZhbHNlLCJwaWN0dXJlIjoiaHR0cHM6Ly9saDMuZ29vZ2xldXNlcmNvbnRlbnQuY29tL2EvQUNnOG9jTFBVOXZFamZtV0ZtRUdVVzlHcURYY19ZcDhCYXo0TkVQYVY0dWlHVHljSEplVUVsOD1zOTYtYyIsInByb3ZpZGVyX2lkIjoiMTEwNjI4NDM3OTY4MDk3NDU1ODcxIiwic3ViIjoiMTEwNjI4NDM3OTY4MDk3NDU1ODcxIn0sInJvbGUiOiJhdXRoZW50aWNhdGVkIiwiYWFsIjoiYWFsMSIsImFtciI6W3sibWV0aG9kIjoib2F1dGgiLCJ0aW1lc3RhbXAiOjE3NTQ2MDY3NTR9XSwic2Vzc2lvbl9pZCI6ImY2NjU3ZTk4LWYyNGUtNDBiYy1iZjQwLWFmYzQ4NTIwZTI5MSIsImlzX2Fub255bW91cyI6ZmFsc2V9.OWQWP9XXKSVjP38hMlJiXcJp3QMYP4fCD40PzB41yss192.168.29.131 - - [08/Aug/2025 04:15:57] "GET /api/subscriptions?_t=1754606756781 HTTP/1.1" 404 -
+192.168.29.131 - - [08/Aug/2025 04:15:57] "GET /api/analytics/balance?_t=1754606756786 HTTP/1.1" 404 -
+
+🔍 Bearer token found: eyJhbGciOiJIUzI1NiIs..., validating...
+🔍 Middleware before_request - Path: /api/transactions | Method: GET | IP: 192.168.29.131
+🔄 Running auth middleware for: /api/transactions
+🔍 _get_current_user called for path: /api/transactions
+🔍 Authorization header: Bearer eyJhbGciOiJIUzI1NiIsImtpZCI6Ino2RTdGNTlTV08xTS9hdngiLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiJodHRwczovL2l3a3hsdWRyaHpodW1uaHpqbHlpLnN1cGFiYXNlLmNvL2F1dGgvdjEiLCJzdWIiOiI1MGYwZTM0ZC0yZWVlLTQyNTAtYWYyYS1lMGRjZjdkNjkzN2UiLCJhdWQiOiJhdXRoZW50aWNhdGVkIiwiZXhwIjoxNzU0NjEwMzU0LCJpYXQiOjE3NTQ2MDY3NTQsImVtYWlsIjoia2VuZXNpc2xhYnNAZ21haWwuY29tIiwicGhvbmUiOiIiLCJhcHBfbWV0YWRhdGEiOnsicHJvdmlkZXIiOiJnb29nbGUiLCJwcm92aWRlcnMiOlsiZ29vZ2xlIl19LCJ1c2VyX21ldGFkYXRhIjp7ImF2YXRhcl91cmwiOiJodHRwczovL2xoMy5nb29nbGV1c2VyY29udGVudC5jb20vYS9BQ2c4b2NMUFU5dkVqZm1XRm1FR1VXOUdxRFhjX1lwOEJhejRORVBhVjR1aUdUeWNISmVVRWw4PXM5Ni1jIiwiZW1haWwiOiJrZW5lc2lzbGFic0BnbWFpbC5jb20iLCJlbWFpbF92ZXJpZmllZCI6dHJ1ZSwiZnVsbF9uYW1lIjoiS2VuZXNpcyIsImlzcyI6Imh0dHBzOi8vYWNjb3VudHMuZ29vZ2xlLmNvbSIsIm5hbWUiOiJLZW5lc2lzIiwicGhvbmVfdmVyaWZpZWQiOmZhbHNlLCJwaWN0dXJlIjoiaHR0cHM6Ly9saDMuZ29vZ2xldXNlcmNvbnRlbnQuY29tL2EvQUNnOG9jTFBVOXZFamZtV0ZtRUdVVzlHcURYY19ZcDhCYXo0TkVQYVY0dWlHVHljSEplVUVsOD1zOTYtYyIsInByb3ZpZGVyX2lkIjoiMTEwNjI4NDM3OTY4MDk3NDU1ODcxIiwic3ViIjoiMTEwNjI4NDM3OTY4MDk3NDU1ODcxIn0sInJvbGUiOiJhdXRoZW50aWNhdGVkIiwiYWFsIjoiYWFsMSIsImFtciI6W3sibWV0aG9kIjoib2F1dGgiLCJ0aW1lc3RhbXAiOjE3NTQ2MDY3NTR9XSwic2Vzc2lvbl9pZCI6ImY2NjU3ZTk4LWYyNGUtNDBiYy1iZjQwLWFmYzQ4NTIwZTI5MSIsImlzX2Fub255bW91cyI6ZmFsc2V9.OWQWP9XXKSVjP38hMlJiXcJp3QMYP4fCD40PzB41yss
+🔍 Bearer token found: eyJhbGciOiJIUzI1NiIs..., validating...
+🔍 Middleware before_request - Path: /api/budgets | Method: GET | IP: 192.168.29.131
+🔄 Running auth middleware for: /api/budgets
+🔍 _get_current_user called for path: /api/budgets
+🔍 Authorization header: Bearer eyJhbGciOiJIUzI1NiIsImtpZCI6Ino2RTdGNTlTV08xTS9hdngiLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiJodHRwczovL2l3a3hsdWRyaHpodW1uaHpqbHlpLnN1cGFiYXNlLmNvL2F1dGgvdjEiLCJzdWIiOiI1MGYwZTM0ZC0yZWVlLTQyNTAtYWYyYS1lMGRjZjdkNjkzN2UiLCJhdWQiOiJhdXRoZW50aWNhdGVkIiwiZXhwIjoxNzU0NjEwMzU0LCJpYXQiOjE3NTQ2MDY3NTQsImVtYWlsIjoia2VuZXNpc2xhYnNAZ21haWwuY29tIiwicGhvbmUiOiIiLCJhcHBfbWV0YWRhdGEiOnsicHJvdmlkZXIiOiJnb29nbGUiLCJwcm92aWRlcnMiOlsiZ29vZ2xlIl19LCJ1c2VyX21ldGFkYXRhIjp7ImF2YXRhcl91cmwiOiJodHRwczovL2xoMy5nb29nbGV1c2VyY29udGVudC5jb20vYS9BQ2c4b2NMUFU5dkVqZm1XRm1FR1VXOUdxRFhjX1lwOEJhejRORVBhVjR1aUdUeWNISmVVRWw4PXM5Ni1jIiwiZW1haWwiOiJrZW5lc2lzbGFic0BnbWFpbC5jb20iLCJlbWFpbF92ZXJpZmllZCI6dHJ1ZSwiZnVsbF9uYW1lIjoiS2VuZXNpcyIsImlzcyI6Imh0dHBzOi8vYWNjb3VudHMuZ29vZ2xlLmNvbSIsIm5hbWUiOiJLZW5lc2lzIiwicGhvbmVfdmVyaWZpZWQiOmZhbHNlLCJwaWN0dXJlIjoiaHR0cHM6Ly9saDMuZ29vZ2xldXNlcmNvbnRlbnQuY29tL2EvQUNnOG9jTFBVOXZFamZtV0ZtRUdVVzlHcURYY19ZcDhCYXo0TkVQYVY0dWlHVHljSEplVUVsOD1zOTYtYyIsInByb3ZpZGVyX2lkIjoiMTEwNjI4NDM3OTY4MDk3NDU1ODcxIiwic3ViIjoiMTEwNjI4NDM3OTY4MDk3NDU1ODcxIn0sInJvbGUiOiJhdXRoZW50aWNhdGVkIiwiYWFsIjoiYWFsMSIsImFtciI6W3sibWV0aG9kIjoib2F1dGgiLCJ0aW1lc3RhbXAiOjE3NTQ2MDY3NTR9XSwic2Vzc2lvbl9pZCI6ImY2NjU3ZTk4LWYyNGUtNDBiYy1iZjQwLWFmYzQ4NTIwZTI5MSIsImlzX2Fub255bW91cyI6ZmFsc2V9.OWQWP9XXKSVjP38hMlJiXcJp3QMYP4fCD40PzB41yss
+🔍 Bearer token found: eyJhbGciOiJIUzI1NiIs..., validating...
+🔍 Middleware before_request - Path: /api/goals | Method: GET | IP: 192.168.29.131
+🔄 Running auth middleware for: /api/goals
+🔍 _get_current_user called for path: /api/goals
+🔍 Authorization header: Bearer eyJhbGciOiJIUzI1NiIsImtpZCI6Ino2RTdGNTlTV08xTS9hdngiLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiJodHRwczovL2l3a3hsdWRyaHpodW1uaHpqbHlpLnN1cGFiYXNlLmNvL2F1dGgvdjEiLCJzdWIiOiI1MGYwZTM0ZC0yZWVlLTQyNTAtYWYyYS1lMGRjZjdkNjkzN2UiLCJhdWQiOiJhdXRoZW50aWNhdGVkIiwiZXhwIjoxNzU0NjEwMzU0LCJpYXQiOjE3NTQ2MDY3NTQsImVtYWlsIjoia2VuZXNpc2xhYnNAZ21haWwuY29tIiwicGhvbmUiOiIiLCJhcHBfbWV0YWRhdGEiOnsicHJvdmlkZXIiOiJnb29nbGUiLCJwcm92aWRlcnMiOlsiZ29vZ2xlIl19LCJ1c2VyX21ldGFkYXRhIjp7ImF2YXRhcl91cmwiOiJodHRwczovL2xoMy5nb29nbGV1c2VyY29udGVudC5jb20vYS9BQ2c4b2NMUFU5dkVqZm1XRm1FR1VXOUdxRFhjX1lwOEJhejRORVBhVjR1aUdUeWNISmVVRWw4PXM5Ni1jIiwiZW1haWwiOiJrZW5lc2lzbGFic0BnbWFpbC5jb20iLCJlbWFpbF92ZXJpZmllZCI6dHJ1ZSwiZnVsbF9uYW1lIjoiS2VuZXNpcyIsImlzcyI6Imh0dHBzOi8vYWNjb3VudHMuZ29vZ2xlLmNvbSIsIm5hbWUiOiJLZW5lc2lzIiwicGhvbmVfdmVyaWZpZWQiOmZhbHNlLCJwaWN0dXJlIjoiaHR0cHM6Ly9saDMuZ29vZ2xldXNlcmNvbnRlbnQuY29tL2EvQUNnOG9jTFBVOXZFamZtV0ZtRUdVVzlHcURYY19ZcDhCYXo0TkVQYVY0dWlHVHljSEplVUVsOD1zOTYtYyIsInByb3ZpZGVyX2lkIjoiMTEwNjI4NDM3OTY4MDk3NDU1ODcxIiwic3ViIjoiMTEwNjI4NDM3OTY4MDk3NDU1ODcxIn0sInJvbGUiOiJhdXRoZW50aWNhdGVkIiwiYWFsIjoiYWFsMSIsImFtciI6W3sibWV0aG9kIjoib2F1dGgiLCJ0aW1lc3RhbXAiOjE3NTQ2MDY3NTR9XSwic2Vzc2lvbl9pZCI6ImY2NjU3ZTk4LWYyNGUtNDBiYy1iZjQwLWFmYzQ4NTIwZTI5MSIsImlzX2Fub255bW91cyI6ZmFsc2V9.OWQWP9XXKSVjP38hMlJiXcJp3QMYP4fCD40PzB41yss
+🔍 Bearer token found: eyJhbGciOiJIUzI1NiIs..., validating...
+🔍 Middleware before_request - Path: /api/bills | Method: GET | IP: 192.168.29.131
+🔄 Running auth middleware for: /api/bills
+🔍 _get_current_user called for path: /api/bills
+🔍 Authorization header: Bearer eyJhbGciOiJIUzI1NiIsImtpZCI6Ino2RTdGNTlTV08xTS9hdngiLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiJodHRwczovL2l3a3hsdWRyaHpodW1uaHpqbHlpLnN1cGFiYXNlLmNvL2F1dGgvdjEiLCJzdWIiOiI1MGYwZTM0ZC0yZWVlLTQyNTAtYWYyYS1lMGRjZjdkNjkzN2UiLCJhdWQiOiJhdXRoZW50aWNhdGVkIiwiZXhwIjoxNzU0NjEwMzU0LCJpYXQiOjE3NTQ2MDY3NTQsImVtYWlsIjoia2VuZXNpc2xhYnNAZ21haWwuY29tIiwicGhvbmUiOiIiLCJhcHBfbWV0YWRhdGEiOnsicHJvdmlkZXIiOiJnb29nbGUiLCJwcm92aWRlcnMiOlsiZ29vZ2xlIl19LCJ1c2VyX21ldGFkYXRhIjp7ImF2YXRhcl91cmwiOiJodHRwczovL2xoMy5nb29nbGV1c2VyY29udGVudC5jb20vYS9BQ2c4b2NMUFU5dkVqZm1XRm1FR1VXOUdxRFhjX1lwOEJhejRORVBhVjR1aUdUeWNISmVVRWw4PXM5Ni1jIiwiZW1haWwiOiJrZW5lc2lzbGFic0BnbWFpbC5jb20iLCJlbWFpbF92ZXJpZmllZCI6dHJ1ZSwiZnVsbF9uYW1lIjoiS2VuZXNpcyIsImlzcyI6Imh0dHBzOi8vYWNjb3VudHMuZ29vZ2xlLmNvbSIsIm5hbWUiOiJLZW5lc2lzIiwicGhvbmVfdmVyaWZpZWQiOmZhbHNlLCJwaWN0dXJlIjoiaHR0cHM6Ly9saDMuZ29vZ2xldXNlcmNvbnRlbnQuY29tL2EvQUNnOG9jTFBVOXZFamZtV0ZtRUdVVzlHcURYY19ZcDhCYXo0TkVQYVY0dWlHVHljSEplVUVsOD1zOTYtYyIsInByb3ZpZGVyX2lkIjoiMTEwNjI4NDM3OTY4MDk3NDU1ODcxIiwic3ViIjoiMTEwNjI4NDM3OTY4MDk3NDU1ODcxIn0sInJvbGUiOiJhdXRoZW50aWNhdGVkIiwiYWFsIjoiYWFsMSIsImFtciI6W3sibWV0aG9kIjoib2F1dGgiLCJ0aW1lc3RhbXAiOjE3NTQ2MDY3NTR9XSwic2Vzc2lvbl9pZCI6ImY2NjU3ZTk4LWYyNGUtNDBiYy1iZjQwLWFmYzQ4NTIwZTI5MSIsImlzX2Fub255bW91cyI6ZmFsc2V9.OWQWP9XXKSVjP38hMlJiXcJp3QMYP4fCD40PzB41yss
+🔍 Bearer token found: eyJhbGciOiJIUzI1NiIs..., validating...
+Error getting current user: 'str' object cannot be interpreted as an integer
+Error getting current user: 'str' object cannot be interpreted as an integer
+❌ Bearer token invalid
+🔍 Session check - Session ID: None | Flask Session Keys: []
+❌ No session ID found in Flask session
+❌ No user found for path: /api/subscriptions
+❌ Bearer token invalid
+🔍 Session check - Session ID: None | Flask Session Keys: []
+❌ No session ID found in Flask session
+❌ No user found for path: /api/analytics/balance
+🔍 Middleware before_request - Path: /api/debts | Method: GET | IP: 192.168.29.131
+🔄 Running auth middleware for: /api/debts
+🔍 _get_current_user called for path: /api/debts
+🔍 Authorization header: Bearer eyJhbGciOiJIUzI1NiIsImtpZCI6Ino2RTdGNTlTV08xTS9hdngiLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiJodHRwczovL2l3a3hsdWRyaHpodW1uaHpqbHlpLnN1cGFiYXNlLmNvL2F1dGgvdjEiLCJzdWIiOiI1MGYwZTM0ZC0yZWVlLTQyNTAtYWYyYS1lMGRjZjdkNjkzN2UiLCJhdWQiOiJhdXRoZW50aWNhdGVkIiwiZXhwIjoxNzU0NjEwMzU0LCJpYXQiOjE3NTQ2MDY3NTQsImVtYWlsIjoia2VuZXNpc2xhYnNAZ21haWwuY29tIiwicGhvbmUiOiIiLCJhcHBfbWV0YWRhdGEiOnsicHJvdmlkZXIiOiJnb29nbGUiLCJwcm92aWRlcnMiOlsiZ29vZ2xlIl19LCJ1c2VyX21ldGFkYXRhIjp7ImF2YXRhcl91cmwiOiJodHRwczovL2xoMy5nb29nbGV1c2VyY29udGVudC5jb20vYS9BQ2c4b2NMUFU5dkVqZm1XRm1FR1VXOUdxRFhjX1lwOEJhejRORVBhVjR1aUdUeWNISmVVRWw4PXM5Ni1jIiwiZW1haWwiOiJrZW5lc2lzbGFic0BnbWFpbC5jb20iLCJlbWFpbF92ZXJpZmllZCI6dHJ1ZSwiZnVsbF9uYW1lIjoiS2VuZXNpcyIsImlzcyI6Imh0dHBzOi8vYWNjb3VudHMuZ29vZ2xlLmNvbSIsIm5hbWUiOiJLZW5lc2lzIiwicGhvbmVfdmVyaWZpZWQiOmZhbHNlLCJwaWN0dXJlIjoiaHR0cHM6Ly9saDMuZ29vZ2xldXNlcmNvbnRlbnQuY29tL2EvQUNnOG9jTFBVOXZFamZtV0ZtRUdVVzlHcURYY19ZcDhCYXo0TkVQYVY0dWlHVHljSEplVUVsOD1zOTYtYyIsInByb3ZpZGVyX2lkIjoiMTEwNjI4NDM3OTY4MDk3NDU1ODcxIiwic3ViIjoiMTEwNjI4NDM3OTY4MDk3NDU1ODcxIn0sInJvbGUiOiJhdXRoZW50aWNhdGVkIiwiYWFsIjoiYWFsMSIsImFtciI6W3sibWV0aG9kIjoib2F1dGgiLCJ0aW1lc3RhbXAiOjE3NTQ2MDY3NTR9XSwic2Vzc2lvbl9pZCI6ImY2NjU3ZTk4LWYyNGUtNDBiYy1iZjQwLWFmYzQ4NTIwZTI5MSIsImlzX2Fub255bW91cyI6ZmFsc2V9.OWQWP9XXKSVjP38hMlJiXcJp3QMYP4fCD40PzB41yss192.168.29.131 - - [08/Aug/2025 04:15:57] "GET /api/debts?_t=1754606756792 HTTP/1.1" 404 -
+192.168.29.131 - - [08/Aug/2025 04:15:57] "GET /api/budgets?_t=1754606756788 HTTP/1.1" 404 -
+192.168.29.131 - - [08/Aug/2025 04:15:57] "GET /api/transactions?limit=10&_t=1754606756787 HTTP/1.1" 404 -
+192.168.29.131 - - [08/Aug/2025 04:15:57] "GET /api/subscriptions?_t=1754606756794 HTTP/1.1" 404 -
+192.168.29.131 - - [08/Aug/2025 04:15:57] "GET /api/bills?_t=1754606756791 HTTP/1.1" 404 -
+192.168.29.131 - - [08/Aug/2025 04:15:57] "GET /api/goals?_t=1754606756789 HTTP/1.1" 404 -
+
+🔍 Bearer token found: eyJhbGciOiJIUzI1NiIs..., validating...
+🔍 Middleware before_request - Path: /api/subscriptions | Method: GET | IP: 192.168.29.131
+🔄 Running auth middleware for: /api/subscriptions
+🔍 _get_current_user called for path: /api/subscriptions
+🔍 Authorization header: Bearer eyJhbGciOiJIUzI1NiIsImtpZCI6Ino2RTdGNTlTV08xTS9hdngiLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiJodHRwczovL2l3a3hsdWRyaHpodW1uaHpqbHlpLnN1cGFiYXNlLmNvL2F1dGgvdjEiLCJzdWIiOiI1MGYwZTM0ZC0yZWVlLTQyNTAtYWYyYS1lMGRjZjdkNjkzN2UiLCJhdWQiOiJhdXRoZW50aWNhdGVkIiwiZXhwIjoxNzU0NjEwMzU0LCJpYXQiOjE3NTQ2MDY3NTQsImVtYWlsIjoia2VuZXNpc2xhYnNAZ21haWwuY29tIiwicGhvbmUiOiIiLCJhcHBfbWV0YWRhdGEiOnsicHJvdmlkZXIiOiJnb29nbGUiLCJwcm92aWRlcnMiOlsiZ29vZ2xlIl19LCJ1c2VyX21ldGFkYXRhIjp7ImF2YXRhcl91cmwiOiJodHRwczovL2xoMy5nb29nbGV1c2VyY29udGVudC5jb20vYS9BQ2c4b2NMUFU5dkVqZm1XRm1FR1VXOUdxRFhjX1lwOEJhejRORVBhVjR1aUdUeWNISmVVRWw4PXM5Ni1jIiwiZW1haWwiOiJrZW5lc2lzbGFic0BnbWFpbC5jb20iLCJlbWFpbF92ZXJpZmllZCI6dHJ1ZSwiZnVsbF9uYW1lIjoiS2VuZXNpcyIsImlzcyI6Imh0dHBzOi8vYWNjb3VudHMuZ29vZ2xlLmNvbSIsIm5hbWUiOiJLZW5lc2lzIiwicGhvbmVfdmVyaWZpZWQiOmZhbHNlLCJwaWN0dXJlIjoiaHR0cHM6Ly9saDMuZ29vZ2xldXNlcmNvbnRlbnQuY29tL2EvQUNnOG9jTFBVOXZFamZtV0ZtRUdVVzlHcURYY19ZcDhCYXo0TkVQYVY0dWlHVHljSEplVUVsOD1zOTYtYyIsInByb3ZpZGVyX2lkIjoiMTEwNjI4NDM3OTY4MDk3NDU1ODcxIiwic3ViIjoiMTEwNjI4NDM3OTY4MDk3NDU1ODcxIn0sInJvbGUiOiJhdXRoZW50aWNhdGVkIiwiYWFsIjoiYWFsMSIsImFtciI6W3sibWV0aG9kIjoib2F1dGgiLCJ0aW1lc3RhbXAiOjE3NTQ2MDY3NTR9XSwic2Vzc2lvbl9pZCI6ImY2NjU3ZTk4LWYyNGUtNDBiYy1iZjQwLWFmYzQ4NTIwZTI5MSIsImlzX2Fub255bW91cyI6ZmFsc2V9.OWQWP9XXKSVjP38hMlJiXcJp3QMYP4fCD40PzB41yss
+🔍 Bearer token found: eyJhbGciOiJIUzI1NiIs..., validating...
+Error getting current user: 'str' object cannot be interpreted as an integer
+Error getting current user: 'str' object cannot be interpreted as an integer
+Error getting current user: 'str' object cannot be interpreted as an integer
+Error getting current user: 'str' object cannot be interpreted as an integer
+❌ Bearer token invalid
+🔍 Session check - Session ID: None | Flask Session Keys: []
+❌ No session ID found in Flask session
+❌ No user found for path: /api/debts
+❌ Bearer token invalid
+🔍 Session check - Session ID: None | Flask Session Keys: []
+❌ No session ID found in Flask session
+❌ No user found for path: /api/budgets
+❌ Bearer token invalid
+🔍 Session check - Session ID: None | Flask Session Keys: []
+❌ No session ID found in Flask session
+❌ No user found for path: /api/transactions
+❌ Bearer token invalid
+🔍 Session check - Session ID: None | Flask Session Keys: []
+❌ No session ID found in Flask session
+❌ No user found for path: /api/subscriptions
+Error getting current user: 'str' object cannot be interpreted as an integer
+❌ Bearer token invalid
+🔍 Session check - Session ID: None | Flask Session Keys: []
+❌ No session ID found in Flask session
+❌ No user found for path: /api/bills
+Error getting current user: 'str' object cannot be interpreted as an integer
+❌ Bearer token invalid
+🔍 Session check - Session ID: None | Flask Session Keys: []
+❌ No session ID found in Flask session
+❌ No user found for path: /api/goals
+🔍 Middleware before_request - Path: /api/transactions | Method: GET | IP: 192.168.29.131
+🔄 Running auth middleware for: /api/transactions
+🔍 _get_current_user called for path: /api/transactions
+🔍 Authorization header: Bearer eyJhbGciOiJIUzI1NiIsImtpZCI6Ino2RTdGNTlTV08xTS9hdngiLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiJodHRwczovL2l3a3hsdWRyaHpodW1uaHpqbHlpLnN1cGFiYXNlLmNvL2F1dGgvdjEiLCJzdWIiOiI1MGYwZTM0ZC0yZWVlLTQyNTAtYWYyYS1lMGRjZjdkNjkzN2UiLCJhdWQiOiJhdXRoZW50aWNhdGVkIiwiZXhwIjoxNzU0NjEwMzU0LCJpYXQiOjE3NTQ2MDY3NTQsImVtYWlsIjoia2VuZXNpc2xhYnNAZ21haWwuY29tIiwicGhvbmUiOiIiLCJhcHBfbWV0YWRhdGEiOnsicHJvdmlkZXIiOiJnb29nbGUiLCJwcm92aWRlcnMiOlsiZ29vZ2xlIl19LCJ1c2VyX21ldGFkYXRhIjp7ImF2YXRhcl91cmwiOiJodHRwczovL2xoMy5nb29nbGV1c2VyY29udGVudC5jb20vYS9BQ2c4b2NMUFU5dkVqZm1XRm1FR1VXOUdxRFhjX1lwOEJhejRORVBhVjR1aUdUeWNISmVVRWw4PXM5Ni1jIiwiZW1haWwiOiJrZW5lc2lzbGFic0BnbWFpbC5jb20iLCJlbWFpbF92ZXJpZmllZCI6dHJ1ZSwiZnVsbF9uYW1lIjoiS2VuZXNpcyIsImlzcyI6Imh0dHBzOi8vYWNjb3VudHMuZ29vZ2xlLmNvbSIsIm5hbWUiOiJLZW5lc2lzIiwicGhvbmVfdmVyaWZpZWQiOmZhbHNlLCJwaWN0dXJlIjoiaHR0cHM6Ly9saDMuZ29vZ2xldXNlcmNvbnRlbnQuY29tL2EvQUNnOG9jTFBVOXZFamZtV0ZtRUdVVzlHcURYY19ZcDhCYXo0TkVQYVY0dWlHVHljSEplVUVsOD1zOTYtYyIsInByb3ZpZGVyX2lkIjoiMTEwNjI4NDM3OTY4MDk3NDU1ODcxIiwic3ViIjoiMTEwNjI4NDM3OTY4MDk3NDU1ODcxIn0sInJvbGUiOiJhdXRoZW50aWNhdGVkIiwiYWFsIjoiYWFsMSIsImFtciI6W3sibWV0aG9kIjoib2F1dGgiLCJ0aW1lc3RhbXAiOjE3NTQ2MDY3NTR9XSwic2Vzc2lvbl9pZCI6ImY2NjU3ZTk4LWYyNGUtNDBiYy1iZjQwLWFmYzQ4NTIwZTI5MSIsImlzX2Fub255bW91cyI6ZmFsc2V9.OWQWP9XXKSVjP38hMlJiXcJp3QMYP4fCD40PzB41yss
+🔍 Bearer token found: eyJhbGciOiJIUzI1NiIs..., validating...
+🔍 Middleware before_request - Path: /api/debts | Method: GET | IP: 192.168.29.131
+🔄 Running auth middleware for: /api/debts
+🔍 _get_current_user called for path: /api/debts
+🔍 Authorization header: Bearer eyJhbGciOiJIUzI1NiIsImtpZCI6Ino2RTdGNTlTV08xTS9hdngiLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiJodHRwczovL2l3a3hsdWRyaHpodW1uaHpqbHlpLnN1cGFiYXNlLmNvL2F1dGgvdjEiLCJzdWIiOiI1MGYwZTM0ZC0yZWVlLTQyNTAtYWYyYS1lMGRjZjdkNjkzN2UiLCJhdWQiOiJhdXRoZW50aWNhdGVkIiwiZXhwIjoxNzU0NjEwMzU0LCJpYXQiOjE3NTQ2MDY3NTQsImVtYWlsIjoia2VuZXNpc2xhYnNAZ21haWwuY29tIiwicGhvbmUiOiIiLCJhcHBfbWV0YWRhdGEiOnsicHJvdmlkZXIiOiJnb29nbGUiLCJwcm92aWRlcnMiOlsiZ29vZ2xlIl19LCJ1c2VyX21ldGFkYXRhIjp7ImF2YXRhcl91cmwiOiJodHRwczovL2xoMy5nb29nbGV1c2VyY29udGVudC5jb20vYS9BQ2c4b2NMUFU5dkVqZm1XRm1FR1VXOUdxRFhjX1lwOEJhejRORVBhVjR1aUdUeWNISmVVRWw4PXM5Ni1jIiwiZW1haWwiOiJrZW5lc2lzbGFic0BnbWFpbC5jb20iLCJlbWFpbF92ZXJpZmllZCI6dHJ1ZSwiZnVsbF9uYW1lIjoiS2VuZXNpcyIsImlzcyI6Imh0dHBzOi8vYWNjb3VudHMuZ29vZ2xlLmNvbSIsIm5hbWUiOiJLZW5lc2lzIiwicGhvbmVfdmVyaWZpZWQiOmZhbHNlLCJwaWN0dXJlIjoiaHR0cHM6Ly9saDMuZ29vZ2xldXNlcmNvbnRlbnQuY29tL2EvQUNnOG9jTFBVOXZFamZtV0ZtRUdVVzlHcURYY19ZcDhCYXo0TkVQYVY0dWlHVHljSEplVUVsOD1zOTYtYyIsInByb3ZpZGVyX2lkIjoiMTEwNjI4NDM3OTY4MDk3NDU1ODcxIiwic3ViIjoiMTEwNjI4NDM3OTY4MDk3NDU1ODcxIn0sInJvbGUiOiJhdXRoZW50aWNhdGVkIiwiYWFsIjoiYWFsMSIsImFtciI6W3sibWV0aG9kIjoib2F1dGgiLCJ0aW1lc3RhbXAiOjE3NTQ2MDY3NTR9XSwic2Vzc2lvbl9pZCI6ImY2NjU3ZTk4LWYyNGUtNDBiYy1iZjQwLWFmYzQ4NTIwZTI5MSIsImlzX2Fub255bW91cyI6ZmFsc2V9.OWQWP9XXKSVjP38hMlJiXcJp3QMYP4fCD40PzB41yss
+🔍 Bearer token found: eyJhbGciOiJIUzI1NiIs..., validating...
+🔍 Middleware before_request - Path: /api/goals | Method: GET | IP: 192.168.29.131
+🔄 Running auth middleware for: /api/goals
+🔍 _get_current_user called for path: /api/goals
+🔍 Authorization header: Bearer eyJhbGciOiJIUzI1NiIsImtpZCI6Ino2RTdGNTlTV08xTS9hdngiLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiJodHRwczovL2l3a3hsdWRyaHpodW1uaHpqbHlpLnN1cGFiYXNlLmNvL2F1dGgvdjEiLCJzdWIiOiI1MGYwZTM0ZC0yZWVlLTQyNTAtYWYyYS1lMGRjZjdkNjkzN2UiLCJhdWQiOiJhdXRoZW50aWNhdGVkIiwiZXhwIjoxNzU0NjEwMzU0LCJpYXQiOjE3NTQ2MDY3NTQsImVtYWlsIjoia2VuZXNpc2xhYnNAZ21haWwuY29tIiwicGhvbmUiOiIiLCJhcHBfbWV0YWRhdGEiOnsicHJvdmlkZXIiOiJnb29nbGUiLCJwcm92aWRlcnMiOlsiZ29vZ2xlIl19LCJ1c2VyX21ldGFkYXRhIjp7ImF2YXRhcl91cmwiOiJodHRwczovL2xoMy5nb29nbGV1c2VyY29udGVudC5jb20vYS9BQ2c4b2NMUFU5dkVqZm1XRm1FR1VXOUdxRFhjX1lwOEJhejRORVBhVjR1aUdUeWNISmVVRWw4PXM5Ni1jIiwiZW1haWwiOiJrZW5lc2lzbGFic0BnbWFpbC5jb20iLCJlbWFpbF92ZXJpZmllZCI6dHJ1ZSwiZnVsbF9uYW1lIjoiS2VuZXNpcyIsImlzcyI6Imh0dHBzOi8vYWNjb3VudHMuZ29vZ2xlLmNvbSIsIm5hbWUiOiJLZW5lc2lzIiwicGhvbmVfdmVyaWZpZWQiOmZhbHNlLCJwaWN0dXJlIjoiaHR0cHM6Ly9saDMuZ29vZ2xldXNlcmNvbnRlbnQuY29tL2EvQUNnOG9jTFBVOXZFamZtV0ZtRUdVVzlHcURYY19ZcDhCYXo0TkVQYVY0dWlHVHljSEplVUVsOD1zOTYtYyIsInByb3ZpZGVyX2lkIjoiMTEwNjI4NDM3OTY4MDk3NDU1ODcxIiwic3ViIjoiMTEwNjI4NDM3OTY4MDk3NDU1ODcxIn0sInJvbGUiOiJhdXRoZW50aWNhdGVkIiwiYWFsIjoiYWFsMSIsImFtciI6W3sibWV0aG9kIjoib2F1dGgiLCJ0aW1lc3RhbXAiOjE3NTQ2MDY3NTR9XSwic2Vzc2lvbl9pZCI6ImY2NjU3ZTk4LWYyNGUtNDBiYy1iZjQwLWFmYzQ4NTIwZTI5MSIsImlzX2Fub255bW91cyI6ZmFsc2V9.OWQWP9XXKSVjP38hMlJiXcJp3QMYP4fCD40PzB41yss
+🔍 Bearer token found: eyJhbGciOiJIUzI1NiIs..., validating...
+🔍 Middleware before_request - Path: /api/budgets | Method: GET | IP: 192.168.29.131
+🔄 Running auth middleware for: /api/budgets
+🔍 _get_current_user called for path: /api/budgets
+🔍 Authorization header: Bearer eyJhbGciOiJIUzI1NiIsImtpZCI6Ino2RTdGNTlTV08xTS9hdngiLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiJodHRwczovL2l3a3hsdWRyaHpodW1uaHpqbHlpLnN1cGFiYXNlLmNvL2F1dGgvdjEiLCJzdWIiOiI1MGYwZTM0ZC0yZWVlLTQyNTAtYWYyYS1lMGRjZjdkNjkzN2UiLCJhdWQiOiJhdXRoZW50aWNhdGVkIiwiZXhwIjoxNzU0NjEwMzU0LCJpYXQiOjE3NTQ2MDY3NTQsImVtYWlsIjoia2VuZXNpc2xhYnNAZ21haWwuY29tIiwicGhvbmUiOiIiLCJhcHBfbWV0YWRhdGEiOnsicHJvdmlkZXIiOiJnb29nbGUiLCJwcm92aWRlcnMiOlsiZ29vZ2xlIl19LCJ1c2VyX21ldGFkYXRhIjp7ImF2YXRhcl91cmwiOiJodHRwczovL2xoMy5nb29nbGV1c2VyY29udGVudC5jb20vYS9BQ2c4b2NMUFU5dkVqZm1XRm1FR1VXOUdxRFhjX1lwOEJhejRORVBhVjR1aUdUeWNISmVVRWw4PXM5Ni1jIiwiZW1haWwiOiJrZW5lc2lzbGFic0BnbWFpbC5jb20iLCJlbWFpbF92ZXJpZmllZCI6dHJ1ZSwiZnVsbF9uYW1lIjoiS2VuZXNpcyIsImlzcyI6Imh0dHBzOi8vYWNjb3VudHMuZ29vZ2xlLmNvbSIsIm5hbWUiOiJLZW5lc2lzIiwicGhvbmVfdmVyaWZpZWQiOmZhbHNlLCJwaWN0dXJlIjoiaHR0cHM6Ly9saDMuZ29vZ2xldXNlcmNvbnRlbnQuY29tL2EvQUNnOG9jTFBVOXZFamZtV0ZtRUdVVzlHcURYY19ZcDhCYXo0TkVQYVY0dWlHVHljSEplVUVsOD1zOTYtYyIsInByb3ZpZGVyX2lkIjoiMTEwNjI4NDM3OTY4MDk3NDU1ODcxIiwic3ViIjoiMTEwNjI4NDM3OTY4MDk3NDU1ODcxIn0sInJvbGUiOiJhdXRoZW50aWNhdGVkIiwiYWFsIjoiYWFsMSIsImFtciI6W3sibWV0aG9kIjoib2F1dGgiLCJ0aW1lc3RhbXAiOjE3NTQ2MDY3NTR9XSwic2Vzc2lvbl9pZCI6ImY2NjU3ZTk4LWYyNGUtNDBiYy1iZjQwLWFmYzQ4NTIwZTI5MSIsImlzX2Fub255bW91cyI6ZmFsc2V9.OWQWP9XXKSVjP38hMlJiXcJp3QMYP4fCD40PzB41yss192.168.29.131 - - [08/Aug/2025 04:15:57] "GET /api/transactions?limit=10&_t=1754606756774 HTTP/1.1" 404 -
+192.168.29.131 - - [08/Aug/2025 04:15:57] "GET /api/budgets?_t=1754606756775 HTTP/1.1" 404 -
+192.168.29.131 - - [08/Aug/2025 04:15:57] "GET /api/analytics/balance?_t=1754606756772 HTTP/1.1" 404 -
+192.168.29.131 - - [08/Aug/2025 04:15:57] "GET /api/debts?_t=1754606756780 HTTP/1.1" 404 -
+192.168.29.131 - - [08/Aug/2025 04:15:57] "GET /api/bills?_t=1754606756779 HTTP/1.1" 404 -
+192.168.29.131 - - [08/Aug/2025 04:15:57] "GET /api/goals?_t=1754606756777 HTTP/1.1" 404 -
+
+🔍 Bearer token found: eyJhbGciOiJIUzI1NiIs..., validating...
+🔍 Middleware before_request - Path: /api/bills | Method: GET | IP: 192.168.29.131
+🔄 Running auth middleware for: /api/bills
+🔍 _get_current_user called for path: /api/bills
+🔍 Authorization header: Bearer eyJhbGciOiJIUzI1NiIsImtpZCI6Ino2RTdGNTlTV08xTS9hdngiLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiJodHRwczovL2l3a3hsdWRyaHpodW1uaHpqbHlpLnN1cGFiYXNlLmNvL2F1dGgvdjEiLCJzdWIiOiI1MGYwZTM0ZC0yZWVlLTQyNTAtYWYyYS1lMGRjZjdkNjkzN2UiLCJhdWQiOiJhdXRoZW50aWNhdGVkIiwiZXhwIjoxNzU0NjEwMzU0LCJpYXQiOjE3NTQ2MDY3NTQsImVtYWlsIjoia2VuZXNpc2xhYnNAZ21haWwuY29tIiwicGhvbmUiOiIiLCJhcHBfbWV0YWRhdGEiOnsicHJvdmlkZXIiOiJnb29nbGUiLCJwcm92aWRlcnMiOlsiZ29vZ2xlIl19LCJ1c2VyX21ldGFkYXRhIjp7ImF2YXRhcl91cmwiOiJodHRwczovL2xoMy5nb29nbGV1c2VyY29udGVudC5jb20vYS9BQ2c4b2NMUFU5dkVqZm1XRm1FR1VXOUdxRFhjX1lwOEJhejRORVBhVjR1aUdUeWNISmVVRWw4PXM5Ni1jIiwiZW1haWwiOiJrZW5lc2lzbGFic0BnbWFpbC5jb20iLCJlbWFpbF92ZXJpZmllZCI6dHJ1ZSwiZnVsbF9uYW1lIjoiS2VuZXNpcyIsImlzcyI6Imh0dHBzOi8vYWNjb3VudHMuZ29vZ2xlLmNvbSIsIm5hbWUiOiJLZW5lc2lzIiwicGhvbmVfdmVyaWZpZWQiOmZhbHNlLCJwaWN0dXJlIjoiaHR0cHM6Ly9saDMuZ29vZ2xldXNlcmNvbnRlbnQuY29tL2EvQUNnOG9jTFBVOXZFamZtV0ZtRUdVVzlHcURYY19ZcDhCYXo0TkVQYVY0dWlHVHljSEplVUVsOD1zOTYtYyIsInByb3ZpZGVyX2lkIjoiMTEwNjI4NDM3OTY4MDk3NDU1ODcxIiwic3ViIjoiMTEwNjI4NDM3OTY4MDk3NDU1ODcxIn0sInJvbGUiOiJhdXRoZW50aWNhdGVkIiwiYWFsIjoiYWFsMSIsImFtciI6W3sibWV0aG9kIjoib2F1dGgiLCJ0aW1lc3RhbXAiOjE3NTQ2MDY3NTR9XSwic2Vzc2lvbl9pZCI6ImY2NjU3ZTk4LWYyNGUtNDBiYy1iZjQwLWFmYzQ4NTIwZTI5MSIsImlzX2Fub255bW91cyI6ZmFsc2V9.OWQWP9XXKSVjP38hMlJiXcJp3QMYP4fCD40PzB41yss
+🔍 Bearer token found: eyJhbGciOiJIUzI1NiIs..., validating...
+🔍 Middleware before_request - Path: /api/analytics/balance | Method: GET | IP: 192.168.29.131
+🔄 Running auth middleware for: /api/analytics/balance
+🔍 _get_current_user called for path: /api/analytics/balance
+🔍 Authorization header: Bearer eyJhbGciOiJIUzI1NiIsImtpZCI6Ino2RTdGNTlTV08xTS9hdngiLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiJodHRwczovL2l3a3hsdWRyaHpodW1uaHpqbHlpLnN1cGFiYXNlLmNvL2F1dGgvdjEiLCJzdWIiOiI1MGYwZTM0ZC0yZWVlLTQyNTAtYWYyYS1lMGRjZjdkNjkzN2UiLCJhdWQiOiJhdXRoZW50aWNhdGVkIiwiZXhwIjoxNzU0NjEwMzU0LCJpYXQiOjE3NTQ2MDY3NTQsImVtYWlsIjoia2VuZXNpc2xhYnNAZ21haWwuY29tIiwicGhvbmUiOiIiLCJhcHBfbWV0YWRhdGEiOnsicHJvdmlkZXIiOiJnb29nbGUiLCJwcm92aWRlcnMiOlsiZ29vZ2xlIl19LCJ1c2VyX21ldGFkYXRhIjp7ImF2YXRhcl91cmwiOiJodHRwczovL2xoMy5nb29nbGV1c2VyY29udGVudC5jb20vYS9BQ2c4b2NMUFU5dkVqZm1XRm1FR1VXOUdxRFhjX1lwOEJhejRORVBhVjR1aUdUeWNISmVVRWw4PXM5Ni1jIiwiZW1haWwiOiJrZW5lc2lzbGFic0BnbWFpbC5jb20iLCJlbWFpbF92ZXJpZmllZCI6dHJ1ZSwiZnVsbF9uYW1lIjoiS2VuZXNpcyIsImlzcyI6Imh0dHBzOi8vYWNjb3VudHMuZ29vZ2xlLmNvbSIsIm5hbWUiOiJLZW5lc2lzIiwicGhvbmVfdmVyaWZpZWQiOmZhbHNlLCJwaWN0dXJlIjoiaHR0cHM6Ly9saDMuZ29vZ2xldXNlcmNvbnRlbnQuY29tL2EvQUNnOG9jTFBVOXZFamZtV0ZtRUdVVzlHcURYY19ZcDhCYXo0TkVQYVY0dWlHVHljSEplVUVsOD1zOTYtYyIsInByb3ZpZGVyX2lkIjoiMTEwNjI4NDM3OTY4MDk3NDU1ODcxIiwic3ViIjoiMTEwNjI4NDM3OTY4MDk3NDU1ODcxIn0sInJvbGUiOiJhdXRoZW50aWNhdGVkIiwiYWFsIjoiYWFsMSIsImFtciI6W3sibWV0aG9kIjoib2F1dGgiLCJ0aW1lc3RhbXAiOjE3NTQ2MDY3NTR9XSwic2Vzc2lvbl9pZCI6ImY2NjU3ZTk4LWYyNGUtNDBiYy1iZjQwLWFmYzQ4NTIwZTI5MSIsImlzX2Fub255bW91cyI6ZmFsc2V9.OWQWP9XXKSVjP38hMlJiXcJp3QMYP4fCD40PzB41yss
+🔍 Bearer token found: eyJhbGciOiJIUzI1NiIs..., validating...
+Error getting current user: 'str' object cannot be interpreted as an integer
+Error getting current user: 'str' object cannot be interpreted as an integer
+❌ Bearer token invalid
+🔍 Session check - Session ID: None | Flask Session Keys: []
+❌ No session ID found in Flask session
+❌ No user found for path: /api/transactions
+❌ Bearer token invalid
+🔍 Session check - Session ID: None | Flask Session Keys: []
+❌ No session ID found in Flask session
+❌ No user found for path: /api/budgets
+Error getting current user: 'str' object cannot be interpreted as an integer
+Error getting current user: 'str' object cannot be interpreted as an integer
+❌ Bearer token invalid
+🔍 Session check - Session ID: None | Flask Session Keys: []
+❌ No session ID found in Flask session
+❌ No user found for path: /api/analytics/balance
+❌ Bearer token invalid
+🔍 Session check - Session ID: None | Flask Session Keys: []
+❌ No session ID found in Flask session
+❌ No user found for path: /api/debts
+Error getting current user: 'str' object cannot be interpreted as an integer
+❌ Bearer token invalid
+🔍 Session check - Session ID: None | Flask Session Keys: []
+❌ No session ID found in Flask session
+❌ No user found for path: /api/bills
+Error getting current user: 'str' object cannot be interpreted as an integer
+❌ Bearer token invalid
+🔍 Session check - Session ID: None | Flask Session Keys: []
+❌ No session ID found in Flask session
+❌ No user found for path: /api/goals
+🔍 Middleware before_request - Path: /api/subscriptions | Method: GET | IP: 192.168.29.131
+🔄 Running auth middleware for: /api/subscriptions
+🔍 _get_current_user called for path: /api/subscriptions
+🔍 Authorization header: Bearer eyJhbGciOiJIUzI1NiIsImtpZCI6Ino2RTdGNTlTV08xTS9hdngiLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiJodHRwczovL2l3a3hsdWRyaHpodW1uaHpqbHlpLnN1cGFiYXNlLmNvL2F1dGgvdjEiLCJzdWIiOiI1MGYwZTM0ZC0yZWVlLTQyNTAtYWYyYS1lMGRjZjdkNjkzN2UiLCJhdWQiOiJhdXRoZW50aWNhdGVkIiwiZXhwIjoxNzU0NjEwMzU0LCJpYXQiOjE3NTQ2MDY3NTQsImVtYWlsIjoia2VuZXNpc2xhYnNAZ21haWwuY29tIiwicGhvbmUiOiIiLCJhcHBfbWV0YWRhdGEiOnsicHJvdmlkZXIiOiJnb29nbGUiLCJwcm92aWRlcnMiOlsiZ29vZ2xlIl19LCJ1c2VyX21ldGFkYXRhIjp7ImF2YXRhcl91cmwiOiJodHRwczovL2xoMy5nb29nbGV1c2VyY29udGVudC5jb20vYS9BQ2c4b2NMUFU5dkVqZm1XRm1FR1VXOUdxRFhjX1lwOEJhejRORVBhVjR1aUdUeWNISmVVRWw4PXM5Ni1jIiwiZW1haWwiOiJrZW5lc2lzbGFic0BnbWFpbC5jb20iLCJlbWFpbF92ZXJpZmllZCI6dHJ1ZSwiZnVsbF9uYW1lIjoiS2VuZXNpcyIsImlzcyI6Imh0dHBzOi8vYWNjb3VudHMuZ29vZ2xlLmNvbSIsIm5hbWUiOiJLZW5lc2lzIiwicGhvbmVfdmVyaWZpZWQiOmZhbHNlLCJwaWN0dXJlIjoiaHR0cHM6Ly9saDMuZ29vZ2xldXNlcmNvbnRlbnQuY29tL2EvQUNnOG9jTFBVOXZFamZtV0ZtRUdVVzlHcURYY19ZcDhCYXo0TkVQYVY0dWlHVHljSEplVUVsOD1zOTYtYyIsInByb3ZpZGVyX2lkIjoiMTEwNjI4NDM3OTY4MDk3NDU1ODcxIiwic3ViIjoiMTEwNjI4NDM3OTY4MDk3NDU1ODcxIn0sInJvbGUiOiJhdXRoZW50aWNhdGVkIiwiYWFsIjoiYWFsMSIsImFtciI6W3sibWV0aG9kIjoib2F1dGgiLCJ0aW1lc3RhbXAiOjE3NTQ2MDY3NTR9XSwic2Vzc2lvbl9pZCI6ImY2NjU3ZTk4LWYyNGUtNDBiYy1iZjQwLWFmYzQ4NTIwZTI5MSIsImlzX2Fub255bW91cyI6ZmFsc2V9.OWQWP9XXKSVjP38hMlJiXcJp3QMYP4fCD40PzB41yss
+🔍 Bearer token found: eyJhbGciOiJIUzI1NiIs..., validating...
+🔍 Middleware before_request - Path: /api/analytics/balance | Method: GET | IP: 192.168.29.131
+🔄 Running auth middleware for: /api/analytics/balance
+🔍 _get_current_user called for path: /api/analytics/balance
+🔍 Authorization header: Bearer eyJhbGciOiJIUzI1NiIsImtpZCI6Ino2RTdGNTlTV08xTS9hdngiLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiJodHRwczovL2l3a3hsdWRyaHpodW1uaHpqbHlpLnN1cGFiYXNlLmNvL2F1dGgvdjEiLCJzdWIiOiI1MGYwZTM0ZC0yZWVlLTQyNTAtYWYyYS1lMGRjZjdkNjkzN2UiLCJhdWQiOiJhdXRoZW50aWNhdGVkIiwiZXhwIjoxNzU0NjEwMzU0LCJpYXQiOjE3NTQ2MDY3NTQsImVtYWlsIjoia2VuZXNpc2xhYnNAZ21haWwuY29tIiwicGhvbmUiOiIiLCJhcHBfbWV0YWRhdGEiOnsicHJvdmlkZXIiOiJnb29nbGUiLCJwcm92aWRlcnMiOlsiZ29vZ2xlIl19LCJ1c2VyX21ldGFkYXRhIjp7ImF2YXRhcl91cmwiOiJodHRwczovL2xoMy5nb29nbGV1c2VyY29udGVudC5jb20vYS9BQ2c4b2NMUFU5dkVqZm1XRm1FR1VXOUdxRFhjX1lwOEJhejRORVBhVjR1aUdUeWNISmVVRWw4PXM5Ni1jIiwiZW1haWwiOiJrZW5lc2lzbGFic0BnbWFpbC5jb20iLCJlbWFpbF92ZXJpZmllZCI6dHJ1ZSwiZnVsbF9uYW1lIjoiS2VuZXNpcyIsImlzcyI6Imh0dHBzOi8vYWNjb3VudHMuZ29vZ2xlLmNvbSIsIm5hbWUiOiJLZW5lc2lzIiwicGhvbmVfdmVyaWZpZWQiOmZhbHNlLCJwaWN0dXJlIjoiaHR0cHM6Ly9saDMuZ29vZ2xldXNlcmNvbnRlbnQuY29tL2EvQUNnOG9jTFBVOXZFamZtV0ZtRUdVVzlHcURYY19ZcDhCYXo0TkVQYVY0dWlHVHljSEplVUVsOD1zOTYtYyIsInByb3ZpZGVyX2lkIjoiMTEwNjI4NDM3OTY4MDk3NDU1ODcxIiwic3ViIjoiMTEwNjI4NDM3OTY4MDk3NDU1ODcxIn0sInJvbGUiOiJhdXRoZW50aWNhdGVkIiwiYWFsIjoiYWFsMSIsImFtciI6W3sibWV0aG9kIjoib2F1dGgiLCJ0aW1lc3RhbXAiOjE3NTQ2MDY3NTR9XSwic2Vzc2lvbl9pZCI6ImY2NjU3ZTk4LWYyNGUtNDBiYy1iZjQwLWFmYzQ4NTIwZTI5MSIsImlzX2Fub255bW91cyI6ZmFsc2V9.OWQWP9XXKSVjP38hMlJiXcJp3QMYP4fCD40PzB41yss
+🔍 Bearer token found: eyJhbGciOiJIUzI1NiIs..., validating...
+🔍 Middleware before_request - Path: /api/debts | Method: GET | IP: 192.168.29.131
+🔄 Running auth middleware for: /api/debts
+🔍 _get_current_user called for path: /api/debts
+🔍 Authorization header: Bearer eyJhbGciOiJIUzI1NiIsImtpZCI6Ino2RTdGNTlTV08xTS9hdngiLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiJodHRwczovL2l3a3hsdWRyaHpodW1uaHpqbHlpLnN1cGFiYXNlLmNvL2F1dGgvdjEiLCJzdWIiOiI1MGYwZTM0ZC0yZWVlLTQyNTAtYWYyYS1lMGRjZjdkNjkzN2UiLCJhdWQiOiJhdXRoZW50aWNhdGVkIiwiZXhwIjoxNzU0NjEwMzU0LCJpYXQiOjE3NTQ2MDY3NTQsImVtYWlsIjoia2VuZXNpc2xhYnNAZ21haWwuY29tIiwicGhvbmUiOiIiLCJhcHBfbWV0YWRhdGEiOnsicHJvdmlkZXIiOiJnb29nbGUiLCJwcm92aWRlcnMiOlsiZ29vZ2xlIl19LCJ1c2VyX21ldGFkYXRhIjp7ImF2YXRhcl91cmwiOiJodHRwczovL2xoMy5nb29nbGV1c2VyY29udGVudC5jb20vYS9BQ2c4b2NMUFU5dkVqZm1XRm1FR1VXOUdxRFhjX1lwOEJhejRORVBhVjR1aUdUeWNISmVVRWw4PXM5Ni1jIiwiZW1haWwiOiJrZW5lc2lzbGFic0BnbWFpbC5jb20iLCJlbWFpbF92ZXJpZmllZCI6dHJ1ZSwiZnVsbF9uYW1lIjoiS2VuZXNpcyIsImlzcyI6Imh0dHBzOi8vYWNjb3VudHMuZ29vZ2xlLmNvbSIsIm5hbWUiOiJLZW5lc2lzIiwicGhvbmVfdmVyaWZpZWQiOmZhbHNlLCJwaWN0dXJlIjoiaHR0cHM6Ly9saDMuZ29vZ2xldXNlcmNvbnRlbnQuY29tL2EvQUNnOG9jTFBVOXZFamZtV0ZtRUdVVzlHcURYY19ZcDhCYXo0TkVQYVY0dWlHVHljSEplVUVsOD1zOTYtYyIsInByb3ZpZGVyX2lkIjoiMTEwNjI4NDM3OTY4MDk3NDU1ODcxIiwic3ViIjoiMTEwNjI4NDM3OTY4MDk3NDU1ODcxIn0sInJvbGUiOiJhdXRoZW50aWNhdGVkIiwiYWFsIjoiYWFsMSIsImFtciI6W3sibWV0aG9kIjoib2F1dGgiLCJ0aW1lc3RhbXAiOjE3NTQ2MDY3NTR9XSwic2Vzc2lvbl9pZCI6ImY2NjU3ZTk4LWYyNGUtNDBiYy1iZjQwLWFmYzQ4NTIwZTI5MSIsImlzX2Fub255bW91cyI6ZmFsc2V9.OWQWP9XXKSVjP38hMlJiXcJp3QMYP4fCD40PzB41yss192.168.29.131 - - [08/Aug/2025 04:15:57] "GET /api/subscriptions?_t=1754606756794 HTTP/1.1" 404 -
+192.168.29.131 - - [08/Aug/2025 04:15:57] "GET /api/analytics/balance?_t=1754606756786 HTTP/1.1" 404 -
+192.168.29.131 - - [08/Aug/2025 04:15:57] "GET /api/budgets?_t=1754606756788 HTTP/1.1" 404 -
+192.168.29.131 - - [08/Aug/2025 04:15:57] "GET /api/subscriptions?_t=1754606756781 HTTP/1.1" 404 -
+192.168.29.131 - - [08/Aug/2025 04:15:57] "GET /api/debts?_t=1754606756792 HTTP/1.1" 404 -
+192.168.29.131 - - [08/Aug/2025 04:15:57] "GET /api/transactions?limit=10&_t=1754606756787 HTTP/1.1" 404 -
+
+🔍 Bearer token found: eyJhbGciOiJIUzI1NiIs..., validating...
+🔍 Middleware before_request - Path: /api/budgets | Method: GET | IP: 192.168.29.131
+🔄 Running auth middleware for: /api/budgets
+🔍 _get_current_user called for path: /api/budgets
+🔍 Authorization header: Bearer eyJhbGciOiJIUzI1NiIsImtpZCI6Ino2RTdGNTlTV08xTS9hdngiLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiJodHRwczovL2l3a3hsdWRyaHpodW1uaHpqbHlpLnN1cGFiYXNlLmNvL2F1dGgvdjEiLCJzdWIiOiI1MGYwZTM0ZC0yZWVlLTQyNTAtYWYyYS1lMGRjZjdkNjkzN2UiLCJhdWQiOiJhdXRoZW50aWNhdGVkIiwiZXhwIjoxNzU0NjEwMzU0LCJpYXQiOjE3NTQ2MDY3NTQsImVtYWlsIjoia2VuZXNpc2xhYnNAZ21haWwuY29tIiwicGhvbmUiOiIiLCJhcHBfbWV0YWRhdGEiOnsicHJvdmlkZXIiOiJnb29nbGUiLCJwcm92aWRlcnMiOlsiZ29vZ2xlIl19LCJ1c2VyX21ldGFkYXRhIjp7ImF2YXRhcl91cmwiOiJodHRwczovL2xoMy5nb29nbGV1c2VyY29udGVudC5jb20vYS9BQ2c4b2NMUFU5dkVqZm1XRm1FR1VXOUdxRFhjX1lwOEJhejRORVBhVjR1aUdUeWNISmVVRWw4PXM5Ni1jIiwiZW1haWwiOiJrZW5lc2lzbGFic0BnbWFpbC5jb20iLCJlbWFpbF92ZXJpZmllZCI6dHJ1ZSwiZnVsbF9uYW1lIjoiS2VuZXNpcyIsImlzcyI6Imh0dHBzOi8vYWNjb3VudHMuZ29vZ2xlLmNvbSIsIm5hbWUiOiJLZW5lc2lzIiwicGhvbmVfdmVyaWZpZWQiOmZhbHNlLCJwaWN0dXJlIjoiaHR0cHM6Ly9saDMuZ29vZ2xldXNlcmNvbnRlbnQuY29tL2EvQUNnOG9jTFBVOXZFamZtV0ZtRUdVVzlHcURYY19ZcDhCYXo0TkVQYVY0dWlHVHljSEplVUVsOD1zOTYtYyIsInByb3ZpZGVyX2lkIjoiMTEwNjI4NDM3OTY4MDk3NDU1ODcxIiwic3ViIjoiMTEwNjI4NDM3OTY4MDk3NDU1ODcxIn0sInJvbGUiOiJhdXRoZW50aWNhdGVkIiwiYWFsIjoiYWFsMSIsImFtciI6W3sibWV0aG9kIjoib2F1dGgiLCJ0aW1lc3RhbXAiOjE3NTQ2MDY3NTR9XSwic2Vzc2lvbl9pZCI6ImY2NjU3ZTk4LWYyNGUtNDBiYy1iZjQwLWFmYzQ4NTIwZTI5MSIsImlzX2Fub255bW91cyI6ZmFsc2V9.OWQWP9XXKSVjP38hMlJiXcJp3QMYP4fCD40PzB41yss
+🔍 Bearer token found: eyJhbGciOiJIUzI1NiIs..., validating...
+🔍 Middleware before_request - Path: /api/transactions | Method: GET | IP: 192.168.29.131
+🔄 Running auth middleware for: /api/transactions
+🔍 _get_current_user called for path: /api/transactions
+🔍 Authorization header: Bearer eyJhbGciOiJIUzI1NiIsImtpZCI6Ino2RTdGNTlTV08xTS9hdngiLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiJodHRwczovL2l3a3hsdWRyaHpodW1uaHpqbHlpLnN1cGFiYXNlLmNvL2F1dGgvdjEiLCJzdWIiOiI1MGYwZTM0ZC0yZWVlLTQyNTAtYWYyYS1lMGRjZjdkNjkzN2UiLCJhdWQiOiJhdXRoZW50aWNhdGVkIiwiZXhwIjoxNzU0NjEwMzU0LCJpYXQiOjE3NTQ2MDY3NTQsImVtYWlsIjoia2VuZXNpc2xhYnNAZ21haWwuY29tIiwicGhvbmUiOiIiLCJhcHBfbWV0YWRhdGEiOnsicHJvdmlkZXIiOiJnb29nbGUiLCJwcm92aWRlcnMiOlsiZ29vZ2xlIl19LCJ1c2VyX21ldGFkYXRhIjp7ImF2YXRhcl91cmwiOiJodHRwczovL2xoMy5nb29nbGV1c2VyY29udGVudC5jb20vYS9BQ2c4b2NMUFU5dkVqZm1XRm1FR1VXOUdxRFhjX1lwOEJhejRORVBhVjR1aUdUeWNISmVVRWw4PXM5Ni1jIiwiZW1haWwiOiJrZW5lc2lzbGFic0BnbWFpbC5jb20iLCJlbWFpbF92ZXJpZmllZCI6dHJ1ZSwiZnVsbF9uYW1lIjoiS2VuZXNpcyIsImlzcyI6Imh0dHBzOi8vYWNjb3VudHMuZ29vZ2xlLmNvbSIsIm5hbWUiOiJLZW5lc2lzIiwicGhvbmVfdmVyaWZpZWQiOmZhbHNlLCJwaWN0dXJlIjoiaHR0cHM6Ly9saDMuZ29vZ2xldXNlcmNvbnRlbnQuY29tL2EvQUNnOG9jTFBVOXZFamZtV0ZtRUdVVzlHcURYY19ZcDhCYXo0TkVQYVY0dWlHVHljSEplVUVsOD1zOTYtYyIsInByb3ZpZGVyX2lkIjoiMTEwNjI4NDM3OTY4MDk3NDU1ODcxIiwic3ViIjoiMTEwNjI4NDM3OTY4MDk3NDU1ODcxIn0sInJvbGUiOiJhdXRoZW50aWNhdGVkIiwiYWFsIjoiYWFsMSIsImFtciI6W3sibWV0aG9kIjoib2F1dGgiLCJ0aW1lc3RhbXAiOjE3NTQ2MDY3NTR9XSwic2Vzc2lvbl9pZCI6ImY2NjU3ZTk4LWYyNGUtNDBiYy1iZjQwLWFmYzQ4NTIwZTI5MSIsImlzX2Fub255bW91cyI6ZmFsc2V9.OWQWP9XXKSVjP38hMlJiXcJp3QMYP4fCD40PzB41yss
+🔍 Bearer token found: eyJhbGciOiJIUzI1NiIs..., validating...
+🔍 Middleware before_request - Path: /api/subscriptions | Method: GET | IP: 192.168.29.131
+🔄 Running auth middleware for: /api/subscriptions
+🔍 _get_current_user called for path: /api/subscriptions
+🔍 Authorization header: Bearer eyJhbGciOiJIUzI1NiIsImtpZCI6Ino2RTdGNTlTV08xTS9hdngiLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiJodHRwczovL2l3a3hsdWRyaHpodW1uaHpqbHlpLnN1cGFiYXNlLmNvL2F1dGgvdjEiLCJzdWIiOiI1MGYwZTM0ZC0yZWVlLTQyNTAtYWYyYS1lMGRjZjdkNjkzN2UiLCJhdWQiOiJhdXRoZW50aWNhdGVkIiwiZXhwIjoxNzU0NjEwMzU0LCJpYXQiOjE3NTQ2MDY3NTQsImVtYWlsIjoia2VuZXNpc2xhYnNAZ21haWwuY29tIiwicGhvbmUiOiIiLCJhcHBfbWV0YWRhdGEiOnsicHJvdmlkZXIiOiJnb29nbGUiLCJwcm92aWRlcnMiOlsiZ29vZ2xlIl19LCJ1c2VyX21ldGFkYXRhIjp7ImF2YXRhcl91cmwiOiJodHRwczovL2xoMy5nb29nbGV1c2VyY29udGVudC5jb20vYS9BQ2c4b2NMUFU5dkVqZm1XRm1FR1VXOUdxRFhjX1lwOEJhejRORVBhVjR1aUdUeWNISmVVRWw4PXM5Ni1jIiwiZW1haWwiOiJrZW5lc2lzbGFic0BnbWFpbC5jb20iLCJlbWFpbF92ZXJpZmllZCI6dHJ1ZSwiZnVsbF9uYW1lIjoiS2VuZXNpcyIsImlzcyI6Imh0dHBzOi8vYWNjb3VudHMuZ29vZ2xlLmNvbSIsIm5hbWUiOiJLZW5lc2lzIiwicGhvbmVfdmVyaWZpZWQiOmZhbHNlLCJwaWN0dXJlIjoiaHR0cHM6Ly9saDMuZ29vZ2xldXNlcmNvbnRlbnQuY29tL2EvQUNnOG9jTFBVOXZFamZtV0ZtRUdVVzlHcURYY19ZcDhCYXo0TkVQYVY0dWlHVHljSEplVUVsOD1zOTYtYyIsInByb3ZpZGVyX2lkIjoiMTEwNjI4NDM3OTY4MDk3NDU1ODcxIiwic3ViIjoiMTEwNjI4NDM3OTY4MDk3NDU1ODcxIn0sInJvbGUiOiJhdXRoZW50aWNhdGVkIiwiYWFsIjoiYWFsMSIsImFtciI6W3sibWV0aG9kIjoib2F1dGgiLCJ0aW1lc3RhbXAiOjE3NTQ2MDY3NTR9XSwic2Vzc2lvbl9pZCI6ImY2NjU3ZTk4LWYyNGUtNDBiYy1iZjQwLWFmYzQ4NTIwZTI5MSIsImlzX2Fub255bW91cyI6ZmFsc2V9.OWQWP9XXKSVjP38hMlJiXcJp3QMYP4fCD40PzB41yss
+🔍 Bearer token found: eyJhbGciOiJIUzI1NiIs..., validating...
+Error getting current user: 'str' object cannot be interpreted as an integer
+Error getting current user: 'str' object cannot be interpreted as an integer
+❌ Bearer token invalid
+🔍 Session check - Session ID: None | Flask Session Keys: []
+❌ No session ID found in Flask session
+❌ No user found for path: /api/subscriptions
+Error getting current user: 'str' object cannot be interpreted as an integer
+❌ Bearer token invalid
+🔍 Session check - Session ID: None | Flask Session Keys: []
+❌ No session ID found in Flask session
+❌ No user found for path: /api/analytics/balance
+❌ Bearer token invalid
+🔍 Session check - Session ID: None | Flask Session Keys: []
+❌ No session ID found in Flask session
+❌ No user found for path: /api/budgets
+Error getting current user: 'str' object cannot be interpreted as an integer
+❌ Bearer token invalid
+🔍 Session check - Session ID: None | Flask Session Keys: []
+❌ No session ID found in Flask session
+❌ No user found for path: /api/subscriptions
+Error getting current user: 'str' object cannot be interpreted as an integer
+Error getting current user: 'str' object cannot be interpreted as an integer
+❌ Bearer token invalid
+🔍 Session check - Session ID: None | Flask Session Keys: []
+❌ No session ID found in Flask session
+❌ No user found for path: /api/debts
+❌ Bearer token invalid
+🔍 Session check - Session ID: None | Flask Session Keys: []
+❌ No session ID found in Flask session
+❌ No user found for path: /api/transactions
+🔍 Middleware before_request - Path: /api/bills | Method: GET | IP: 192.168.29.131
+🔄 Running auth middleware for: /api/bills
+🔍 _get_current_user called for path: /api/bills
+🔍 Authorization header: Bearer eyJhbGciOiJIUzI1NiIsImtpZCI6Ino2RTdGNTlTV08xTS9hdngiLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiJodHRwczovL2l3a3hsdWRyaHpodW1uaHpqbHlpLnN1cGFiYXNlLmNvL2F1dGgvdjEiLCJzdWIiOiI1MGYwZTM0ZC0yZWVlLTQyNTAtYWYyYS1lMGRjZjdkNjkzN2UiLCJhdWQiOiJhdXRoZW50aWNhdGVkIiwiZXhwIjoxNzU0NjEwMzU0LCJpYXQiOjE3NTQ2MDY3NTQsImVtYWlsIjoia2VuZXNpc2xhYnNAZ21haWwuY29tIiwicGhvbmUiOiIiLCJhcHBfbWV0YWRhdGEiOnsicHJvdmlkZXIiOiJnb29nbGUiLCJwcm92aWRlcnMiOlsiZ29vZ2xlIl19LCJ1c2VyX21ldGFkYXRhIjp7ImF2YXRhcl91cmwiOiJodHRwczovL2xoMy5nb29nbGV1c2VyY29udGVudC5jb20vYS9BQ2c4b2NMUFU5dkVqZm1XRm1FR1VXOUdxRFhjX1lwOEJhejRORVBhVjR1aUdUeWNISmVVRWw4PXM5Ni1jIiwiZW1haWwiOiJrZW5lc2lzbGFic0BnbWFpbC5jb20iLCJlbWFpbF92ZXJpZmllZCI6dHJ1ZSwiZnVsbF9uYW1lIjoiS2VuZXNpcyIsImlzcyI6Imh0dHBzOi8vYWNjb3VudHMuZ29vZ2xlLmNvbSIsIm5hbWUiOiJLZW5lc2lzIiwicGhvbmVfdmVyaWZpZWQiOmZhbHNlLCJwaWN0dXJlIjoiaHR0cHM6Ly9saDMuZ29vZ2xldXNlcmNvbnRlbnQuY29tL2EvQUNnOG9jTFBVOXZFamZtV0ZtRUdVVzlHcURYY19ZcDhCYXo0TkVQYVY0dWlHVHljSEplVUVsOD1zOTYtYyIsInByb3ZpZGVyX2lkIjoiMTEwNjI4NDM3OTY4MDk3NDU1ODcxIiwic3ViIjoiMTEwNjI4NDM3OTY4MDk3NDU1ODcxIn0sInJvbGUiOiJhdXRoZW50aWNhdGVkIiwiYWFsIjoiYWFsMSIsImFtciI6W3sibWV0aG9kIjoib2F1dGgiLCJ0aW1lc3RhbXAiOjE3NTQ2MDY3NTR9XSwic2Vzc2lvbl9pZCI6ImY2NjU3ZTk4LWYyNGUtNDBiYy1iZjQwLWFmYzQ4NTIwZTI5MSIsImlzX2Fub255bW91cyI6ZmFsc2V9.OWQWP9XXKSVjP38hMlJiXcJp3QMYP4fCD40PzB41yss
+🔍 Bearer token found: eyJhbGciOiJIUzI1NiIs..., validating...
+🔍 Middleware before_request - Path: /api/goals | Method: GET | IP: 192.168.29.131
+🔄 Running auth middleware for: /api/goals
+🔍 _get_current_user called for path: /api/goals
+🔍 Authorization header: Bearer eyJhbGciOiJIUzI1NiIsImtpZCI6Ino2RTdGNTlTV08xTS9hdngiLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiJodHRwczovL2l3a3hsdWRyaHpodW1uaHpqbHlpLnN1cGFiYXNlLmNvL2F1dGgvdjEiLCJzdWIiOiI1MGYwZTM0ZC0yZWVlLTQyNTAtYWYyYS1lMGRjZjdkNjkzN2UiLCJhdWQiOiJhdXRoZW50aWNhdGVkIiwiZXhwIjoxNzU0NjEwMzU0LCJpYXQiOjE3NTQ2MDY3NTQsImVtYWlsIjoia2VuZXNpc2xhYnNAZ21haWwuY29tIiwicGhvbmUiOiIiLCJhcHBfbWV0YWRhdGEiOnsicHJvdmlkZXIiOiJnb29nbGUiLCJwcm92aWRlcnMiOlsiZ29vZ2xlIl19LCJ1c2VyX21ldGFkYXRhIjp7ImF2YXRhcl91cmwiOiJodHRwczovL2xoMy5nb29nbGV1c2VyY29udGVudC5jb20vYS9BQ2c4b2NMUFU5dkVqZm1XRm1FR1VXOUdxRFhjX1lwOEJhejRORVBhVjR1aUdUeWNISmVVRWw4PXM5Ni1jIiwiZW1haWwiOiJrZW5lc2lzbGFic0BnbWFpbC5jb20iLCJlbWFpbF92ZXJpZmllZCI6dHJ1ZSwiZnVsbF9uYW1lIjoiS2VuZXNpcyIsImlzcyI6Imh0dHBzOi8vYWNjb3VudHMuZ29vZ2xlLmNvbSIsIm5hbWUiOiJLZW5lc2lzIiwicGhvbmVfdmVyaWZpZWQiOmZhbHNlLCJwaWN0dXJlIjoiaHR0cHM6Ly9saDMuZ29vZ2xldXNlcmNvbnRlbnQuY29tL2EvQUNnOG9jTFBVOXZFamZtV0ZtRUdVVzlHcURYY19ZcDhCYXo0TkVQYVY0dWlHVHljSEplVUVsOD1zOTYtYyIsInByb3ZpZGVyX2lkIjoiMTEwNjI4NDM3OTY4MDk3NDU1ODcxIiwic3ViIjoiMTEwNjI4NDM3OTY4MDk3NDU1ODcxIn0sInJvbGUiOiJhdXRoZW50aWNhdGVkIiwiYWFsIjoiYWFsMSIsImFtciI6W3sibWV0aG9kIjoib2F1dGgiLCJ0aW1lc3RhbXAiOjE3NTQ2MDY3NTR9XSwic2Vzc2lvbl9pZCI6ImY2NjU3ZTk4LWYyNGUtNDBiYy1iZjQwLWFmYzQ4NTIwZTI5MSIsImlzX2Fub255bW91cyI6ZmFsc2V9.OWQWP9XXKSVjP38hMlJiXcJp3QMYP4fCD40PzB41yss192.168.29.131 - - [08/Aug/2025 04:15:57] "GET /api/bills?_t=1754606756791 HTTP/1.1" 404 -
+192.168.29.131 - - [08/Aug/2025 04:15:57] "GET /api/goals?_t=1754606756789 HTTP/1.1" 404 -
 /Users/danieldas/miniconda3/lib/python3.12/multiprocessing/resource_tracker.py:254: UserWarning: resource_tracker: There appear to be 1 leaked semaphore objects to clean up at shutdown
   warnings.warn('resource_tracker: There appear to be %d '
 /Users/danieldas/miniconda3/lib/python3.12/multiprocessing/resource_tracker.py:254: UserWarning: resource_tracker: There appear to be 1 leaked semaphore objects to clean up at shutdown

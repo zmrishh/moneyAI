@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import {
   View,
   Text,
@@ -21,9 +21,9 @@ import { format, differenceInDays, isToday, isTomorrow } from 'date-fns';
 
 interface BillTrackerProps {
   bills: Bill[];
-  onAddBill: () => void;
-  onMarkPaid: (billId: string) => void;
-  onToggleAutoPay: (billId: string) => void;
+  onAddBill: (billData: any) => void;
+  onMarkPaid: (billId: string, actualAmount?: number, notes?: string) => void;
+  onToggleAutoPay: (billId: string, autoPay: boolean) => void;
   onRefreshBills: () => void;
 }
 
@@ -59,7 +59,7 @@ export default function BillTracker({
   const [showCurrencyDropdown, setShowCurrencyDropdown] = useState(false);
 
   // Animation for sliding drawer
-  const slideAnim = useState(new Animated.Value(screenHeight))[0];
+  const slideAnim = useRef(new Animated.Value(screenHeight)).current;
   const [drawerHeight, setDrawerHeight] = useState(screenHeight * 0.6);
 
   // Pan responder for pull-to-resize
@@ -112,11 +112,36 @@ export default function BillTracker({
     categorizeAndCalculateBills();
   }, [bills]);
 
+  const getUniqueBills = () => {
+    const uniqueBills = new Map<string, Bill>();
+    
+    bills.forEach(bill => {
+      const billKey = `${bill.name}_${bill.amount}_${bill.category}`;
+      
+      if (bill.is_recurring) {
+        // For recurring bills, prefer the next unpaid bill
+        if (!uniqueBills.has(billKey) || 
+            (!bill.is_paid && uniqueBills.get(billKey)?.is_paid) ||
+            (!bill.is_paid && !uniqueBills.get(billKey)?.is_paid && bill.due_date > uniqueBills.get(billKey)!.due_date)) {
+          uniqueBills.set(billKey, bill);
+        }
+      } else {
+        // For non-recurring bills, show all
+        uniqueBills.set(`${billKey}_${bill.id}`, bill);
+      }
+    });
+    
+    return Array.from(uniqueBills.values());
+  };
+
   const categorizeAndCalculateBills = () => {
     const today = new Date();
     const upcoming: Bill[] = [];
     const overdue: Bill[] = [];
     let monthlyTotal = 0;
+
+    // Group recurring bills by name to avoid counting duplicates
+    const recurringBills = new Map<string, Bill>();
 
     bills.forEach(bill => {
       if (!bill.is_paid) {
@@ -129,19 +154,29 @@ export default function BillTracker({
         }
       }
 
-      // Calculate monthly total for recurring bills
+      // Calculate monthly total for recurring bills (avoid duplicates)
       if (bill.is_recurring) {
-        switch (bill.recurrence_pattern) {
-          case 'monthly':
-            monthlyTotal += bill.amount;
-            break;
-          case 'quarterly':
-            monthlyTotal += bill.amount / 3;
-            break;
-          case 'yearly':
-            monthlyTotal += bill.amount / 12;
-            break;
+        const billKey = `${bill.name}_${bill.amount}_${bill.recurrence_pattern}`;
+        
+        // Only count each recurring bill once (prefer unpaid over paid)
+        if (!recurringBills.has(billKey) || (!bill.is_paid && recurringBills.get(billKey)?.is_paid)) {
+          recurringBills.set(billKey, bill);
         }
+      }
+    });
+
+    // Calculate monthly total from unique recurring bills
+    recurringBills.forEach(bill => {
+      switch (bill.recurrence_pattern) {
+        case 'monthly':
+          monthlyTotal += bill.amount;
+          break;
+        case 'quarterly':
+          monthlyTotal += bill.amount / 3;
+          break;
+        case 'yearly':
+          monthlyTotal += bill.amount / 12;
+          break;
       }
     });
 
@@ -338,34 +373,26 @@ export default function BillTracker({
     }
 
     try {
-      // Create bill object
+      // Create bill object with API-compatible field names
       const newBill = {
         name: formData.name.trim(),
         amount: amount,
         category: formData.category,
-        due_date: formData.dueDate,
+        due_date: formData.dueDate.toISOString().split('T')[0], // Convert to YYYY-MM-DD format
         is_recurring: formData.isRecurring,
-        recurrence_pattern: formData.recurrencePattern,
+        recurrence_pattern: formData.isRecurring ? formData.recurrencePattern : null,
         auto_pay: formData.autoPay,
-        is_paid: false,
-        notes: formData.notes.trim(),
+        notes: formData.notes.trim() || null,
+        reminder_days: 3, // Default reminder days
       };
 
       console.log('New bill to create:', newBill);
 
-      // Import and use the database service
-      const { dbService } = await import('@/services/database');
-      await dbService.initialize();
-      await dbService.addBill(newBill);
+      // Use the onAddBill prop instead of direct database access
+      onAddBill(newBill);
 
       // Close modal first to prevent state update conflicts
       closeAddBillModal();
-
-      // Use setTimeout to prevent useInsertionEffect warning
-      setTimeout(() => {
-        Alert.alert('Success', 'Bill added successfully!');
-        onRefreshBills();
-      }, 100);
 
     } catch (error) {
       console.error('Error adding bill:', error);
@@ -510,8 +537,8 @@ export default function BillTracker({
 
             {/* All Bills */}
             <View style={styles.section}>
-              <Text style={styles.sectionTitle}>All Bills ({bills.length})</Text>
-              {bills
+              <Text style={styles.sectionTitle}>All Bills ({getUniqueBills().length})</Text>
+              {getUniqueBills()
                 .sort((a, b) => a.due_date.getTime() - b.due_date.getTime())
                 .map(renderBillCard)}
             </View>

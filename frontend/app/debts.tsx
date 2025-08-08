@@ -4,7 +4,7 @@ import { Stack } from 'expo-router';
 import { IconSymbol } from '@/components/ui/IconSymbol';
 import { router } from 'expo-router';
 import DebtTracker from '@/components/features/DebtTracker';
-import { dbService } from '@/services/database';
+import { apiService } from '@/services/api';
 import { Debt, DebtPayment } from '@/types';
 
 export default function DebtsScreen() {
@@ -18,8 +18,7 @@ export default function DebtsScreen() {
   const loadDebts = async () => {
     try {
       setLoading(true);
-      await dbService.initialize();
-      const debtsData = await dbService.getDebts();
+      const debtsData = await apiService.getDebts();
       setDebts(debtsData);
     } catch (error) {
       console.error('Error loading debts:', error);
@@ -29,13 +28,19 @@ export default function DebtsScreen() {
     }
   };
 
-  const handleAddDebt = async (debt: Omit<Debt, 'id' | 'payments' | 'created_date'>) => {
+  const handleAddDebt = async (debtData: any) => {
     try {
-      const debtWithDate = {
-        ...debt,
-        created_date: new Date(),
+      const debt = {
+        debt_type: debtData.debt_type,
+        person_name: debtData.person_name,
+        amount: parseFloat(debtData.amount),
+        description: debtData.description,
+        created_date: new Date().toISOString().split('T')[0], // YYYY-MM-DD format
+        due_date: debtData.due_date || null,
+        person_contact: debtData.person_contact || null,
       };
-      await dbService.addDebt(debtWithDate);
+      
+      await apiService.createDebt(debt);
       loadDebts();
       Alert.alert('Success', 'Debt added successfully');
     } catch (error) {
@@ -44,9 +49,15 @@ export default function DebtsScreen() {
     }
   };
 
-  const handleAddPayment = async (debtId: string, payment: Omit<DebtPayment, 'id'>) => {
+  const handleAddPayment = async (debtId: string, paymentData: any) => {
     try {
-      await dbService.addDebtPayment(debtId, payment);
+      const payment = {
+        amount: parseFloat(paymentData.amount),
+        date: paymentData.date || new Date().toISOString(),
+        note: paymentData.note || null,
+      };
+      
+      await apiService.addDebtPayment(debtId, payment);
       loadDebts();
       Alert.alert('Success', 'Payment added successfully');
     } catch (error) {
@@ -55,9 +66,9 @@ export default function DebtsScreen() {
     }
   };
 
-  const handleSettleDebt = async (debtId: string) => {
+  const handleSettleDebt = async (debtId: string, note?: string) => {
     try {
-      await dbService.settleDebt(debtId);
+      await apiService.settleDebt(debtId, note);
       loadDebts();
       Alert.alert('Success', 'Debt settled successfully');
     } catch (error) {

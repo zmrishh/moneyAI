@@ -4,7 +4,7 @@
  */
 
 import { useThemeColors } from '@/contexts/ThemeContext';
-import { useResponsiveSpacing, useResponsiveTypography } from '@/frontend/hooks/useResponsive';
+import { useResponsiveSpacing, useResponsiveTypography } from '@/hooks/useResponsive';
 import { ReactNode } from 'react';
 import {
     SafeAreaView,

@@ -281,6 +281,36 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.3,
     shadowRadius: 8,
     elevation: 8,
+    alignItems: 'center',
+  },
+  logoBackground: {
+    backgroundColor: '#1C1C1E',
+    borderRadius: 20,
+    padding: 20,
+    marginBottom: 16,
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 4,
+    },
+    shadowOpacity: 0.3,
+    shadowRadius: 8,
+    elevation: 8,
+  },
+  logoText: {
+    fontSize: 18,
+    fontWeight: '600',
+    color: '#8E8E93',
+    letterSpacing: 0.5,
+  },
+  textContainer: {
+    alignItems: 'center',
+  },
+  tagline: {
+    fontSize: 16,
+    color: '#8E8E93',
+    fontWeight: '500',
+    marginBottom: 12,
   },
   appName: {
     fontSize: 18,

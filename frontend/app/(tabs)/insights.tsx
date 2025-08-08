@@ -8,7 +8,9 @@ import {
   Pressable,
 } from 'react-native';
 import { IconSymbol } from '@/components/ui/IconSymbol';
-import { dbService } from '@/services/database';
+import { apiService } from '@/services/api';
+import { authService } from '@/services/auth';
+import { router } from 'expo-router';
 import { format, startOfMonth, endOfMonth, subDays } from 'date-fns';
 
 export default function InsightsScreen() {
@@ -20,6 +22,7 @@ export default function InsightsScreen() {
     daysLeft: 0,
     canSpend: 0,
   });
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     loadInsights();
@@ -27,57 +30,42 @@ export default function InsightsScreen() {
 
   const loadInsights = async () => {
     try {
-      await dbService.initialize();
-      const transactions = await dbService.getTransactions(1000);
+      setLoading(true);
       
-      const now = new Date();
-      const monthStart = startOfMonth(now);
-      const monthEnd = endOfMonth(now);
-      const lastMonthStart = startOfMonth(subDays(monthStart, 1));
-      const lastMonthEnd = endOfMonth(subDays(monthStart, 1));
-      
-      // This month's expenses
-      const thisMonthExpenses = transactions
-        .filter(t => t.type === 'expense' && t.date >= monthStart && t.date <= monthEnd)
-        .reduce((sum, t) => sum + t.amount, 0);
-      
-      // Last month's expenses
-      const lastMonthExpenses = transactions
-        .filter(t => t.type === 'expense' && t.date >= lastMonthStart && t.date <= lastMonthEnd)
-        .reduce((sum, t) => sum + t.amount, 0);
-      
-      // Daily average this month
-      const daysInMonth = now.getDate();
-      const avgDaily = thisMonthExpenses / daysInMonth;
-      
-      // Top category
-      const categoryTotals: { [key: string]: number } = {};
-      transactions
-        .filter(t => t.type === 'expense' && t.date >= monthStart)
-        .forEach(t => {
-          categoryTotals[t.category] = (categoryTotals[t.category] || 0) + t.amount;
-        });
-      
-      const topCategory = Object.entries(categoryTotals)
-        .sort(([, a], [, b]) => b - a)[0] || ['Food', 0];
-      
-      // Days left in month
-      const daysLeft = monthEnd.getDate() - now.getDate();
-      
-      // How much can spend per day for rest of month (assuming ₹25,000 budget)
-      const monthlyBudget = 25000;
-      const canSpend = Math.max(0, (monthlyBudget - thisMonthExpenses) / Math.max(1, daysLeft));
+      // Check authentication
+      if (!authService.isAuthenticated()) {
+        console.log('User not authenticated, redirecting to walkthrough');
+        router.replace('/walkthrough');
+        return;
+      }
+
+      // Load real-time insights data from enhanced analytics endpoint
+      const insightsData = await apiService.getMoneyInsights();
       
       setInsights({
-        thisMonth: thisMonthExpenses,
-        lastMonth: lastMonthExpenses,
-        avgDaily,
-        topCategory: { name: topCategory[0], amount: topCategory[1] },
-        daysLeft,
-        canSpend,
+        thisMonth: insightsData.this_month?.amount || 0,
+        lastMonth: 0, // Would be calculated from comparison in backend
+        avgDaily: insightsData.daily_average?.amount || 0,
+        topCategory: {
+          name: insightsData.top_category?.category || 'Food',
+          amount: insightsData.top_category?.amount || 0
+        },
+        daysLeft: insightsData.month_info?.days_left || 0,
+        canSpend: insightsData.budget_advice?.daily_allowance || 0,
       });
     } catch (error) {
       console.error('Error loading insights:', error);
+      // Set default values on error
+      setInsights({
+        thisMonth: 0,
+        lastMonth: 0,
+        avgDaily: 0,
+        topCategory: { name: 'Food', amount: 0 },
+        daysLeft: 0,
+        canSpend: 0,
+      });
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -128,6 +116,13 @@ export default function InsightsScreen() {
             Simple insights about your spending
           </Text>
         </View>
+
+        {loading ? (
+          <View style={styles.loadingContainer}>
+            <Text style={styles.loadingText}>Loading insights...</Text>
+          </View>
+        ) : (
+          <>
 
         {/* This Month Card */}
         <View 
@@ -241,6 +236,8 @@ export default function InsightsScreen() {
         </View>
 
         <View style={styles.bottomSpacer} />
+        </>
+        )}
       </ScrollView>
     </View>
   );
@@ -407,5 +404,16 @@ const styles = StyleSheet.create({
 
   bottomSpacer: {
     height: 120,
+  },
+  loadingContainer: {
+    padding: 40,
+    alignItems: 'center',
+    justifyContent: 'center',
+    flex: 1,
+  },
+  loadingText: {
+    fontSize: 16,
+    color: '#8E8E93',
+    textAlign: 'center',
   },
 });

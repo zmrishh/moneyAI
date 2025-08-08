@@ -4,7 +4,7 @@ import { Stack } from 'expo-router';
 import { IconSymbol } from '@/components/ui/IconSymbol';
 import { router } from 'expo-router';
 import BillTracker from '@/components/features/BillTracker';
-import { dbService } from '@/services/database';
+import { apiService } from '@/services/api';
 import { Bill } from '@/types';
 
 export default function BillsScreen() {
@@ -18,8 +18,7 @@ export default function BillsScreen() {
   const loadBills = async () => {
     try {
       setLoading(true);
-      await dbService.initialize();
-      const billsData = await dbService.getBills();
+      const billsData = await apiService.getBills();
       setBills(billsData);
     } catch (error) {
       console.error('Error loading bills:', error);
@@ -29,20 +28,21 @@ export default function BillsScreen() {
     }
   };
 
-  const handleAddBill = () => {
-    // For now, add a sample bill
-    const sampleBill: Omit<Bill, 'id'> = {
-      name: 'Electricity Bill',
-      amount: 2500,
-      due_date: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000), // 7 days from now
-      category: 'Bills & Utilities',
-      is_recurring: true,
-      recurrence_pattern: 'monthly',
-      is_paid: false,
-      auto_pay: false,
+  const handleAddBill = (billData: any) => {
+    // Format the data for the API
+    const bill = {
+      name: billData.name,
+      amount: parseFloat(billData.amount),
+      due_date: billData.due_date, // Should be in YYYY-MM-DD format
+      category: billData.category,
+      is_recurring: billData.is_recurring || false,
+      recurrence_pattern: billData.recurrence_pattern || null,
+      auto_pay: billData.auto_pay || false,
+      reminder_days: billData.reminder_days || 3,
+      notes: billData.notes || null,
     };
 
-    dbService.addBill(sampleBill)
+    apiService.createBill(bill)
       .then(() => {
         loadBills();
         Alert.alert('Success', 'Bill added successfully');
@@ -53,9 +53,9 @@ export default function BillsScreen() {
       });
   };
 
-  const handleMarkPaid = async (billId: string) => {
+  const handleMarkPaid = async (billId: string, actualAmount?: number, notes?: string) => {
     try {
-      await dbService.markBillPaid(billId);
+      await apiService.markBillPaid(billId, actualAmount, notes);
       loadBills();
       Alert.alert('Success', 'Bill marked as paid');
     } catch (error) {
@@ -64,9 +64,9 @@ export default function BillsScreen() {
     }
   };
 
-  const handleToggleAutoPay = async (billId: string) => {
+  const handleToggleAutoPay = async (billId: string, autoPay: boolean) => {
     try {
-      await dbService.toggleBillAutoPay(billId);
+      await apiService.toggleBillAutoPay(billId, autoPay);
       loadBills();
     } catch (error) {
       console.error('Error toggling auto-pay:', error);

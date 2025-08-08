@@ -260,10 +260,14 @@ def get_transaction_summary():
         return error_response(f"Failed to retrieve transaction summary: {str(e)}", 500)
 
 @transactions_bp.route('/categories', methods=['GET'])
+@require_auth
 def get_categories():
-    """Get all available transaction categories"""
+    """Get all available transaction categories for the authenticated user"""
     try:
-        result = supabase_client.table('categories').select('*').order('name').execute()
+        user = get_current_user()
+        
+        # Get user-specific categories
+        result = supabase_client.table('categories').select('*').eq('user_id', user['id']).order('name').execute()
         
         return success_response(result.data, "Categories retrieved successfully")
         

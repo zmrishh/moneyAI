@@ -158,7 +158,12 @@ def pay_bill(bill_id):
                 'updated_at': datetime.utcnow().isoformat()
             }
             
-            supabase_client.table('transactions').insert(transaction_data).execute()
+            try:
+                transaction_result = supabase_client.table('transactions').insert(transaction_data).execute()
+            except Exception as trans_error:
+                print(f"Error creating transaction: {type(trans_error).__name__}: {str(trans_error)}")
+                # Continue without failing the bill payment
+                pass
         
         # Generate next bill if recurring
         if bill['is_recurring'] and bill['recurrence_pattern']:
@@ -179,12 +184,21 @@ def pay_bill(bill_id):
             
             supabase_client.table('bills').insert(next_bill_data).execute()
         
-        return success_response({
+        response_data = {
             'bill_id': bill_id,
             'payment_date': payment_date,
             'actual_amount': actual_amount,
-            'transaction_created': create_transaction
-        }, "Bill marked as paid successfully")
+            'transaction_created': create_transaction,
+            '_change_event': {
+                'type': 'bill_paid',
+                'timestamp': datetime.utcnow().timestamp(),
+                'affects_summary': True,
+                'refresh_tabs': ['today', 'bills', 'transactions', 'analytics'],
+                'transaction_created': create_transaction
+            }
+        }
+        
+        return success_response(response_data, "Bill marked as paid successfully")
         
     except Exception as e:
         return error_response(f"Failed to pay bill: {str(e)}", 500)

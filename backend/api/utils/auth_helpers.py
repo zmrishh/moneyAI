@@ -35,6 +35,7 @@ def require_auth(f):
             g.auth_user = user_response.user
             
         except Exception as e:
+            print(f"Authentication error in require_auth: {type(e).__name__}: {str(e)}")
             error_message = str(e).lower()
             if 'expired' in error_message or 'invalid' in error_message:
                 return jsonify({

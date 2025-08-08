@@ -31,9 +31,9 @@ export default function DebtTracker({
   const [showPaymentModal, setShowPaymentModal] = useState(false);
   const [selectedDebt, setSelectedDebt] = useState<Debt | null>(null);
 
-  const filteredDebts = debts.filter(debt => debt.type === activeTab && !debt.is_settled);
-  const totalOwed = debts.filter(d => d.type === 'owe' && !d.is_settled).reduce((sum, d) => sum + d.amount, 0);
-  const totalOwedToMe = debts.filter(d => d.type === 'owed' && !d.is_settled).reduce((sum, d) => sum + d.amount, 0);
+  const filteredDebts = debts.filter(debt => debt.debt_type === activeTab && !debt.is_settled);
+  const totalOwed = debts.filter(d => d.debt_type === 'owe' && !d.is_settled).reduce((sum, d) => sum + d.amount, 0);
+  const totalOwedToMe = debts.filter(d => d.debt_type === 'owed' && !d.is_settled).reduce((sum, d) => sum + d.amount, 0);
 
   const formatCurrency = (amount: number) => {
     return new Intl.NumberFormat('en-IN', {
@@ -186,7 +186,7 @@ export default function DebtTracker({
                   <View style={styles.amountInfo}>
                     <Text style={[
                       styles.debtAmount,
-                      { color: debt.type === 'owe' ? '#FF6B6B' : '#34C759' }
+                      { color: debt.debt_type === 'owe' ? '#FF6B6B' : '#34C759' }
                     ]}>
                       {formatCurrency(remaining)}
                     </Text>
@@ -287,7 +287,7 @@ function AddDebtModal({ visible, onClose, onAdd }: {
   onAdd: (debt: Omit<Debt, 'id' | 'payments' | 'created_date'>) => void;
 }) {
   const [formData, setFormData] = useState({
-    type: 'owe' as 'owe' | 'owed',
+    debt_type: 'owe' as 'owe' | 'owed',
     person_name: '',
     amount: '',
     description: '',
@@ -300,7 +300,7 @@ function AddDebtModal({ visible, onClose, onAdd }: {
     }
 
     onAdd({
-      type: formData.type,
+      debt_type: formData.debt_type,
       person_name: formData.person_name,
       person_contact: undefined,
       amount: parseFloat(formData.amount),
@@ -309,7 +309,7 @@ function AddDebtModal({ visible, onClose, onAdd }: {
       is_settled: false,
     });
 
-    setFormData({ type: 'owe', person_name: '', amount: '', description: '' });
+    setFormData({ debt_type: 'owe', person_name: '', amount: '', description: '' });
     onClose();
   };
 
@@ -331,18 +331,18 @@ function AddDebtModal({ visible, onClose, onAdd }: {
             <Text style={styles.formLabel}>Type</Text>
             <View style={styles.typeSelector}>
               <Pressable
-                style={[styles.typeOption, formData.type === 'owe' && styles.typeOptionActive]}
-                onPress={() => setFormData({ ...formData, type: 'owe' })}
+                style={[styles.typeOption, formData.debt_type === 'owe' && styles.typeOptionActive]}
+                onPress={() => setFormData({ ...formData, debt_type: 'owe' })}
               >
-                <Text style={[styles.typeText, formData.type === 'owe' && styles.typeTextActive]}>
+                <Text style={[styles.typeText, formData.debt_type === 'owe' && styles.typeTextActive]}>
                   I Owe
                 </Text>
               </Pressable>
               <Pressable
-                style={[styles.typeOption, formData.type === 'owed' && styles.typeOptionActive]}
-                onPress={() => setFormData({ ...formData, type: 'owed' })}
+                style={[styles.typeOption, formData.debt_type === 'owed' && styles.typeOptionActive]}
+                onPress={() => setFormData({ ...formData, debt_type: 'owed' })}
               >
-                <Text style={[styles.typeText, formData.type === 'owed' && styles.typeTextActive]}>
+                <Text style={[styles.typeText, formData.debt_type === 'owed' && styles.typeTextActive]}>
                   Owed to Me
                 </Text>
               </Pressable>

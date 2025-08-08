@@ -47,6 +47,7 @@ def create_app(config_name='development'):
     from api.blueprints.subscriptions import subscriptions_bp
     from api.blueprints.ai import ai_bp
     from api.blueprints.analytics import analytics_bp
+    from api.blueprints.realtime import realtime_bp
     
     app.register_blueprint(auth_bp, url_prefix='/api/auth')
     app.register_blueprint(transactions_bp, url_prefix='/api/transactions')
@@ -57,5 +58,6 @@ def create_app(config_name='development'):
     app.register_blueprint(subscriptions_bp, url_prefix='/api/subscriptions')
     app.register_blueprint(ai_bp, url_prefix='/api/ai')
     app.register_blueprint(analytics_bp, url_prefix='/api/analytics')
+    app.register_blueprint(realtime_bp, url_prefix='/api/realtime')
     
     return app

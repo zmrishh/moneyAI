@@ -1,0 +1,29 @@
+🔧 Flask app configured with session lifetime: 604800 seconds
+🔧 Session cookie secure: False
+🔧 Secret key length: 20 characters
+🚀 Agent-Cofounder Authentication System
+⚠️  DEVELOPMENT MODE - Use a production WSGI server for deployment
+🌐 Server starting at: http://localhost:5090
+📝 Available routes:
+   • GET  /auth/login - Login page
+   • POST /auth/login - Login handler
+   • GET  /auth/signup - Signup page
+   • POST /auth/signup - Signup handler
+   • GET  /auth/google - Google OAuth login
+   • GET  /auth/callback - OAuth callback handler
+   • GET  /auth/login-success - Login confirmation page
+   • POST /auth/logout - Logout handler
+   • GET  /auth/reset-password - Password reset page
+   • POST /auth/reset-password - Password reset handler
+   • GET  /auth/profile - Get user profile
+   • POST /auth/profile - Update user profile
+   • GET  /auth/validate - Validate token
+   • GET  /auth/debug-routes - Debug routes
+   • GET  /auth/health - Health check
+🔑 Google OAuth: Configured with Supabase
+🔗 OAuth Callback: https://immwltgltccqefujsbbs.supabase.co/auth/v1/callback
+
+ * Serving Flask app 'app'
+ * Debug mode: on
+Address already in use
+Port 5090 is in use by another program. Either identify and stop that program, or start the server with a different port.
